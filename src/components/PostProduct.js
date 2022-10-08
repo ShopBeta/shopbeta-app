@@ -73,6 +73,12 @@ const PostProduct = ({ handleShut }) => {
                                 <input type="number" className="br3 ba pa2 w-100 fw5 w-80" required placeholder="80 maybe?" />
                             </span>
                         </div>
+                        <div className="tl pv2">
+                        <p className="pv1 f5 fw5">Old Price</p>
+                            <span>
+                                <input type="number" className="br3 ba pa2 w-100 fw5 w-80" required placeholder="95 maybe?" />
+                            </span>
+                        </div>
                         <p className="pv2">
                             <p className="f5 fw5">Add Image</p>
                             <div className="pv2 br-pill">
