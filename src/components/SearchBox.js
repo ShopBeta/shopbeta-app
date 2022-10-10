@@ -3,11 +3,12 @@ import React from "react";
 const SearchBox = ({searchChange}) => {    
     return(
       <div>
-            <div className="ph4 pa3">
+            <div className="ph6 pa3">
             <input 
-            className="pa2 icon-magnifier ph4 code f4 br-pill ba"
+            style={{backgroundColor: 'white'}}
+            className="pa2 icon-magnifier ph5 code f4 br-pill ba"
             type="search"
-            placeholder="Search...."
+            placeholder="Search products...."
             onChange={searchChange}
             />
         </div>

@@ -7,6 +7,7 @@ import Navbar from "../../components/Navbar";
 import SideBar from "../../components/SideBar";
 import img from '../../images/Beauty shop.jpg';
 import Map from "../../containers/Map";
+import Preloader from "../../components/Preloader";
 
 
 
@@ -34,6 +35,7 @@ const Settings = () => {
     render()
         return(
             <div className="home">
+                <Preloader />
                         <Navbar />
                     <div className="dt dt--fixed">
                        <div className="flex flex-wrap">

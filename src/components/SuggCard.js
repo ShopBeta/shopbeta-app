@@ -66,4 +66,20 @@ const SuggCard4 = () => {
     )
 }
 
-export { SuggCard1, SuggCard2, SuggCard3, SuggCard4 };
+const SuggCard5 = () => {
+    return(
+        <div className="dib pl1">
+            <Link to={"../Assets/Vendor/MarketPlace"} className="link black" >
+                <div className="flex flex-wrap white code earth tl bg-white b--black br3 pa3 ma1 grow bw2 shadow-5">
+                    <div> 
+                        <p className="pt2 b f5">Shoes</p>   
+                        <p className="b">$25 best deals</p>
+                        <span className="icon-arrow-right-circle ma2 pl6"></span>
+                    </div>
+                </div>
+            </Link>
+        </div>
+    )
+}
+
+export { SuggCard1, SuggCard2, SuggCard3, SuggCard4, SuggCard5 };

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import 'tachyons';
-import img from '../images/Puma Sneekers.jpg';
+import img from '../images/nike.jpg';
 import { Typography } from "@material-ui/core";
 import ModalDialog from "../containers/ModalDialog";
 import PurchaseModal from "../containers/PurchaseModal";
@@ -47,7 +47,7 @@ const Card = ({ name, username, heartcount, price, oldprice, rating }) => {
                     <div className="tc">
                         <img src={img} alt="shoes" className="br4 pv1 w-100" width="310px" height="230px"></img>
                     </div>
-                    <div className="tr f2 br-pill">
+                    <div className="tr f3 br-pill">
                             <small onClick={heartClick} className="icon-heart pointer ph2 grow"><small className="code black pl1 f5">{heartcount}</small></small>
                         </div>
                     <div className="tl">

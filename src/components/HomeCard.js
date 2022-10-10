@@ -36,7 +36,7 @@ const HomeCard = () => {
                 <PurchaseModal handleShow={open} handleShut={handleShut} />
                 <ModalDialog handleOpen={show} handleClose={handleClose} />
             <h3 className="f4 tl code orange">Sponsored</h3>
-            <div className="flex flex-wrap h5 bg-white b--black br3 ma2 pa2 bw2 shadow-5">
+            <div className="flex flex-wrap h5 bg-white b--black br3 ma2 pa2 bw2 shadow-4">
                 <div className="dtc w-50 tl pv4 ph2">
                     <button className="bg-red br4 white ba ph3 pv1 b"><small>-5%</small></button>
                 <div className="tc pa3 code">

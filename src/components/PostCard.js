@@ -3,6 +3,7 @@ import { useState } from "react";
 import 'tachyons';
 import vid from "../images/Often Whatsapp status.mp4"
 import img2 from '../images/space scenery.jpg';
+import imgP from '../images/nike.jpg';
 import './simple-line-icons/css/simple-line-icons.css';
 import CommentModal from "../containers/CommentModal";
 import ShareModal from "../containers/ShareModal";
@@ -74,7 +75,8 @@ const PostCard = ({ name }) => {
                         </Link>
                         <span className="pa2 fw5 f5">
                             <Link className="black link" to={"/Assets/Vendor/Profile"}>{name}</Link>
-                            <p className="f6 pa2 code fw3">12min ago</p>
+                            <p className="f6 code fw3">Santiago, CA .<small className="icon-globe ph2"></small></p>
+                            <p className="f6 pa1 code fw3">12min ago</p>
                         </span>
                         <span className="tr">
                             <button onClick={buttonClick} className="pa1 pointer ph3 bg hover-bg-mid-gray code b--black-50 br-pill">Follow</button>
@@ -147,7 +149,8 @@ const SharedPost = ({ name }) => {
                         </Link>
                         <span className="pa2 fw5 f5">
                             <Link className="black link" to={"/Assets/Vendor/Profile"}>{name}</Link>
-                            <p className="f6 pa2 code fw3">12min ago</p>
+                            <p className="f6 code fw3">Santiago, CA .<small className="icon-globe ph2"></small></p>
+                            <p className="f6 pa1 code fw3">12min ago</p>
                         </span>
                         <span className="tr">
                             <button onClick={buttonClick} className="pa1 pointer ph3 bg hover-bg-mid-gray code b--black-50 br-pill">Follow</button>
@@ -168,7 +171,8 @@ const SharedPost = ({ name }) => {
                         <img src={img2} alt="Accessories..." className="br-100" width="50px" height="50px" />
                         <span className="pa2 fw5 f5">
                             {name}
-                            <p className="f6 pa2 code fw3">12min ago</p>
+                            <p className="f6 code fw3">Santiago, CA .<small className="icon-globe ph2"></small></p>
+                            <p className="f6 pa1 code fw3">12min ago</p>
                         </span>
                         <span className="tr">
                             <button onClick={buttonClick} className="pa1 pointer ph3 bg hover-bg-mid-gray code b--black-50 br-pill">Follow</button>
@@ -251,7 +255,8 @@ const TextPost = ({ name }) => {
                         </Link>
                         <span className="pa2 fw5 f5">
                             <Link className="black link" to={"/Assets/Vendor/Profile"}>{name}</Link>
-                            <p className="f6 pa2 code fw3">12min ago</p>
+                            <p className="f6 code fw3">Santiago, CA .<small className="icon-globe ph2"></small></p>
+                            <p className="f6 pa1 code fw3">12min ago</p>
                         </span>
                         <span className="tr">
                             <button onClick={buttonClick} className="pa1 pointer ph3 bg hover-bg-mid-gray code b--black-50 br-pill">Follow</button>
@@ -327,7 +332,7 @@ const ProfilePost = ({ name }) => {
            <div className="tc">
                         <iframe 
                         title="maps"
-                        height="280"
+                        height="270"
                         className="w-100 b--black-10 br3"
                         loading="lazy"
                         allowFullScreen
@@ -345,36 +350,31 @@ const ProfilePost = ({ name }) => {
                         </Link>
                         <span className="pa2 fw5 f5">
                             <Link className="black link" to={"/Assets/Vendor/Profile"}>{name}</Link>
+                            <p className="f6 code fw3">Santiago, CA .<small className="icon-globe ph2"></small></p>
                             <p className="f6 pa2 code fw3">12min ago</p>
                         </span>
                         <span className="tr">
                             <button onClick={buttonClick} className="pa1 pointer ph3 bg hover-bg-mid-gray code b--black-50 br-pill">Follow</button>
                         </span>
                     </div>
-           <div className="pv1 tj">
-            <div className="flex flex-wrap pa2 tj">
-            <span className="pl2">
-            <div className="tj flex flex-wrap">
-                        <span className="pa2 tc fw5 f5">
-                        <Link to={"/Assets/Vendor/Profile"} className="link black">LandPocl</Link>
-                            <p className="f6 code fw3">Fashion industry</p>
-                            <p className="pv2 b f6 icon-location-pin tj"><small className="ph2 code">No 17 Isa Kaita Road Malalali, Kaduna, Nigeria</small></p>
-                            <p className="icon-phone b"><small className="ph2 code f7">+234 0805675889</small></p>
-                            <p className="icon-envelope b pv1"><small className="ph2 code f7">beautyshop23@gmail.com</small></p>
+            <div className="flex flex-wrap pv1 pa2 tl">
+            <img src={imgP} alt="Accessories..." className="br-100" width="100px" height="100px" />
+                        <span className="pa2 f3 fw5">
+                        <Link to={"/Assets/Vendor/Profile"} className="link black">Sammy Joe</Link>
+                        <p className="f6 code fw3">Santiago, CA .<small className="icon-globe ph2"></small></p>
+                            <p className="code ph2 pv2 f5">+234 0805675889</p>
+                            <p className="code ph2 f5">beautyshop23@gmail.com</p>
                         </span>     
-           <div className="tc pt3 f6">
+           <div className="pt3 f6">
            <span className="b">
-                <button onClick={buttonClick1} className="bg-orange white ba hover-bg-mid-gray pa2 tc br-pill ph5 ma1 pointer grow f6 fw6">Follow</button>
+                <button onClick={buttonClick1} className="bg-transparent ba hover-bg-mid-gray pa2 tc br-pill ph5 ma1 pointer grow f6 fw6">Follow</button>
             </span>
             <span className="b">
-                <Link to={"../Assets/Vendor/Profile"}><button className="bg-orange white ba hover-bg-mid-gray pa2 tc br-pill ph5 ma1 pointer grow f6 fw6">Items</button></Link>
+                <Link to={"../Assets/Vendor/Profile"}><button className="bg-transparent ba hover-bg-mid-gray pa2 tc br-pill ph5 ma1 pointer grow f6 fw6">Items</button></Link>
             </span>
            </div>
-           </div>
-            </span>
             </div>
-           </div>
-           <div className="pa2">
+           <div className="pt5 pa2">
                <span onClick={heartClick} className="pa2 fw5 ph3 icon-heart pointer f4 grow icon-share">
                    <small id="increment" className="pa1 code">44</small>
                </span>

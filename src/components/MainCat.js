@@ -19,10 +19,12 @@ const MainCat = () => {
                             <div className="flex flex-wrap tc bg-white b--black tj br3 pa3 pv4 ma2 grow bw2 shadow-5">
                                 <Link to={"../assets/vendor/MarketPlace"} className="link black">
                                     <div>
+                                            {val.Image}
                                         <h3> 
                                             {val.Title}   
                                         </h3>
-                                            {val.Icon}
+                                            
+                                            {/* {val.Icon} */}
                                     </div>
                                 </Link>
                             </div>

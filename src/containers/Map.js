@@ -5,7 +5,7 @@ const Map = () => {
     return(
         <div className="dtc w-40 pr3">
             <div className="pv1">
-            <div className="tl bg br3 pa3 ma2">
+            <div className="tl br3 pa3 ma2">
                     <p className="pv2 orange code f4">
                         Location
                     </p>

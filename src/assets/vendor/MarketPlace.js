@@ -5,11 +5,13 @@ import SideBar from '../../components/SideBar';
 import CardList from '../../containers/CardList';
 import { users } from '../../containers/Users';
 import Scroll from '../../containers/Scroll'; 
+import Preloader from "../../components/Preloader";
 
 
 const Products = () => {
     return(
         <div className="home">
+            <Preloader />
                         <Navbar />
                     <div className="dt dt--fixed">
                         <SideBar />

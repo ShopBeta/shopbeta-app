@@ -1,7 +1,8 @@
 import React from "react";
-import img from '../images/macbook.jpg';
-import img1 from '../images/Shirt.jpg';
-import img2 from '../images/Puma Sneekers.jpg';
+import img from '../images/nike.jpg';
+import img1 from '../images/coolshoe-3.jpg';
+import img2 from '../images/balenciaga.jpg';
+import img3 from '../images/Puma Sneekers.jpg';
 import Carousel from 'react-material-ui-carousel';
 
 function Carousell(props) {
@@ -18,6 +19,11 @@ function Carousell(props) {
         },
         {
             image: <img src={img2} width="460px" height="300px" className="br3" alt="Third slide" />,
+            name: 'Pitsu Coma',
+            description: 'Math Student'
+        },
+        {
+            image: <img src={img3} width="460px" height="300px" className="br3" alt="Third slide" />,
             name: 'Pitsu Coma',
             description: 'Math Student'
         },

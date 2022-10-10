@@ -53,7 +53,7 @@ const Purchase = ({ handleShut }) => {
                         <p className="fw5 f5"></p>
                     </div>
                             <div className="pv2 pa3">
-                                <div className="br4 b--orange ba pv2 pa2 bg-light-blue">
+                                <div className="br4 b--yellow ba pv2 pa2 mars white">
                                     <p>
                                         <p className="tr f4"><small className="icon-check b grow hover-red"></small></p>
                                         <small className="icon-bubbles pr2 f4"></small>
@@ -63,7 +63,7 @@ const Purchase = ({ handleShut }) => {
                                 </div>
                             </div>
                             <div className="pv2 pa3">
-                                <div className="pv2 br4 pa2 bg-light-blue">
+                                <div className="pv2 br4 pa2 mercury">
                                     <p>
                                         <p className="tr f4"><small className="icon-check b grow hover-red"></small></p>
                                         <small className="icon-credit-card pr2 f4"></small>
@@ -83,16 +83,17 @@ const Purchase = ({ handleShut }) => {
                             </div>
                         </div>
                         <div className="pv2">
-                        <p className="fw5 f4 pv2">Disclaimer</p>
                         <div className="pa3 f6">
                                 <h3 className="pv1">
                                 <small className="icon-info pr2 f5 blue"></small>
-                                    Policy Review
+                                   Disclaimer
                                 </h3>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium est assumenda distinctio sint repellat beatae dolore magnam pariatur ipsum, et deserunt asperiores doloribus sit at esse corrupti facilis aperiam nihil.
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum alias qui eaque mollitia, iure totam fugit possimus, harum necessitatibus odio non, consequuntur laudantium. Est iste sequi suscipit laboriosam dolorum repellat.
-                                </p>
+                                <div className="lh3 f5 fw5 pa2">
+                                    <p>No returns allowed on any FINAL SALE items, except for if flaws in products are found in the event
+                                        thst you are not 100% satisfied with any item you purchase, we accept returns on any item (other than FINAL). This implies that any product shipped or delivered with defects or material. Please contact us at info@shopbetaonline.com to approve your return.
+                                        We reserve the right to deny any refund to sender without prior return approval. Only warn out items will be accepted for returns/exchange within 30 days at whn item was delivered to you.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -114,7 +115,7 @@ const Purchase = ({ handleShut }) => {
                                 onClick={handleShow}
                                 type="submit"
                                 variant="contained"
-                                className="ph5 white pa2 bg-orange pointer ba hover-bg-mid-gray br-pill"
+                                className="ph5 white pa3 bg-orange pointer ba hover-bg-mid-gray br-pill"
                                 >
                                     Contact Seller
                                 </button>

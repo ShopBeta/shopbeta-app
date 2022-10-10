@@ -7,11 +7,13 @@ import CreditCard from "../components/CreditCard";
 import CreditCardInput from "../containers/CreditCardInput";
 import SalesInfo from "../components/SalesInfo";
 import ProfileInfo from "../components/ProfileInfo";
+import Preloader from "../components/Preloader";
 
 const Inventory = () => {
     render()
         return(
             <div className="home">
+                <Preloader />
                         <Navbar />
                     <div className="dt dt--fixed">
                         <SideBar />

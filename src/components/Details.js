@@ -58,25 +58,16 @@ const Details = ({ handleClose }) => {
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium est assumenda distinctio sint repellat beatae dolore magnam pariatur ipsum, et deserunt asperiores doloribus sit at esse corrupti facilis aperiam nihil.
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum alias qui eaque mollitia, iure totam fugit possimus, harum necessitatibus odio non, consequuntur laudantium. Est iste sequi suscipit laboriosam dolorum repellat.
                             </p>
-                            <p className="pv2 fw7">Review</p>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium est assumenda distinctio sint repellat beatae dolore magnam pariatur ipsum, et deserunt asperiores doloribus sit at esse corrupti facilis aperiam nihil.
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum alias qui eaque mollitia, iure totam fugit possimus, harum necessitatibus odio non, consequuntur laudantium. Est iste sequi suscipit laboriosam dolorum repellat.
-                            </p>
-                            <p className="pv2 fw7">How to use</p>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium est assumenda distinctio sint repellat beatae dolore magnam pariatur ipsum, et deserunt asperiores doloribus sit at esse corrupti facilis aperiam nihil.
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum alias qui eaque mollitia, iure totam fugit possimus, harum necessitatibus odio non, consequuntur laudantium. Est iste sequi suscipit laboriosam dolorum repellat.
-                            </p>
                             <div className="pa3 f6">
                                 <h3 className="pv2">
                                 <small className="icon-info pr2 f5 blue"></small>
-                                    Shop Policy Review
+                                    Item Review
                                 </h3>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium est assumenda distinctio sint repellat beatae dolore magnam pariatur ipsum, et deserunt asperiores doloribus sit at esse corrupti facilis aperiam nihil.
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum alias qui eaque mollitia, iure totam fugit possimus, harum necessitatibus odio non, consequuntur laudantium. Est iste sequi suscipit laboriosam dolorum repellat.
-                                </p>
+                                <div className="lh3 fw5 f5">
+                                    <p className="pa2">Check the quality of item(s) and make sure it meets your expectations before making payment.</p>
+                                    <p className="pa2">Aviod anything that appears too good to be true, such as unrealistically low price and promises of making quick money</p>
+                                    <p className="pa2">Never give out you financial information including bank account details , eBay/PayPal info and any other information that could be misused.</p>
+                                </div>
                             </div> 
         </div>
         <div className="f4 pv3 code">

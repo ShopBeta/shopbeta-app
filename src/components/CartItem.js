@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import img from '../images/Puma Sneekers.jpg';
+import img from '../images/nike.jpg';
 import { Typography } from "@material-ui/core";
 import { Carousell, Item } from "../containers/ImageCarousel";
 import PurchaseModal from "../containers/PurchaseModal";
@@ -36,10 +36,7 @@ const CartItem = ({ name, username, discount, price, oldprice, rating }) => {
                                 <small>{username}</small>
                             </p>
                         <div>
-                            <div className="tr">
-                                <small className="red fw7 code f4">-{discount}%</small>
-                            </div>
-                            <div className="f4 code">
+                            <div className="f4 pt4 code">
                                 <small className="bg-light-blue ph3 f3 pa2 br-pill">${price}</small> 
                                 <small className="pa2 line-through">${oldprice}</small>
                             </div>

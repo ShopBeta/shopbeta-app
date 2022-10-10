@@ -76,7 +76,7 @@ const PostProduct = ({ handleShut }) => {
                         <div className="tl pv2">
                         <p className="pv1 f5 fw5">Old Price</p>
                             <span>
-                                <input type="number" className="br3 ba pa2 w-100 fw5 w-80" required placeholder="95 maybe?" />
+                                <input type="number" className="br3 line-through ba pa2 w-100 fw5 w-80" required placeholder="95 maybe?" />
                             </span>
                         </div>
                         <p className="pv2">
@@ -92,10 +92,11 @@ const PostProduct = ({ handleShut }) => {
                                     <small className="icon-info pr2 f5 blue"></small>
                                         Some tips
                                     </h3>
-                                    <div className="code fw6">
-                                        <p>Ensure to upload high quality images</p>
+                                    <div className="code pa2 fw6">
+                                        <p>Give as much details and description about the product or service</p>
+                                        <p className="pv2">Ensure to upload high quality images</p>
                                         <p className="pv2">Image file size shouldn't exceed 5MB</p>
-                                        <p>730x920 is best recommended</p>
+                                        <p>680x680 is best recommended</p>
                                     </div>
                                 </div>
                             </div>
