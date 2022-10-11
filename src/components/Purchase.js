@@ -99,7 +99,7 @@ const Purchase = ({ handleShut }) => {
                     </div>
         </div>
         <div className="f4 pv2">
-                            <span className="bg-light-blue ph3 f3 code pa2 br-pill">$24</span> 
+                            <span className="bg-light-blue ph3 f3 code pa2 br-pill">$25</span> 
                             <span className="pa2 code line-through">$29</span>
                         </div>
                         <div className="pv2 tr">
