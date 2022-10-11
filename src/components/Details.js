@@ -65,7 +65,7 @@ const Details = ({ handleClose }) => {
                                 </h3>
                                 <div className="lh3 fw5 f5">
                                     <p className="pa2">Check the quality of item(s) and make sure it meets your expectations before making payment.</p>
-                                    <p className="pa2">Aviod anything that appears too good to be true, such as unrealistically low price and promises of making quick money</p>
+                                    <p className="pa2">Avoid anything that appears too good to be true, such as unrealistically low price and promises of making quick money</p>
                                     <p className="pa2">Never give out you financial information including bank account details , eBay/PayPal info and any other information that could be misused.</p>
                                 </div>
                             </div> 
