@@ -45,7 +45,7 @@ const Card = ({ name, username, heartcount, price, oldprice, rating }) => {
             <div onClick={handleOpen} className="flex w-100 flex-wrap tl bg-white b--black br3 pa3 grow bw2 shadow-5">
                 <Typography>
                     <div className="tc">
-                        <img src={img} alt="shoes" className="br4 pv1 w-100" width="310px" height="230px"></img>
+                        <img src={img} alt="item" className="br4 pv1 w-100" width="310px" height="230px"></img>
                     </div>
                     <div className="tr f3 br-pill">
                             <small onClick={heartClick} className="icon-heart pointer ph2 grow"><small className="code black pl1 f5">{heartcount}</small></small>

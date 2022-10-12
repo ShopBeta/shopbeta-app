@@ -50,7 +50,7 @@ const HomeCard = () => {
                    </div>
                 </div>
                 <div onClick={handleOpen} className="dtc w-50 pointer">
-                    <img src={img} alt="Accessories..." className="br3 w-100 pointer" width="500px" height="240px" />
+                    <img src={img} alt="sponsored" className="br3 w-100 pointer" width="500px" height="240px" />
                 </div>
             </div>
         </div>

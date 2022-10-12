@@ -86,7 +86,7 @@ const newComment = () => {
                                         <div className="">
                                             <div>
                                             <div className="tj flex flex-wrap">
-                        <img src={img} alt="Accessories..." className="br-100" width="50px" height="50px" />
+                        <img src={img} alt="avatar" className="br-100" width="50px" height="50px" />
                         <span className="pa2 fw5 f5">
                             Mary Jane
                             <p className="f6 code fw3">Beauty</p>
@@ -110,7 +110,7 @@ const newComment = () => {
                                         <div className="">
                                             <div>
                                             <div className="tj flex flex-wrap">
-                        <img src={img1} alt="Accessories..." className="br-100" width="50px" height="50px" />
+                        <img src={img1} alt="avatar" className="br-100" width="50px" height="50px" />
                         <span className="pa2 fw5 f5">
                             Ronel Michael
                             <p className="f6 code fw3">space</p>
@@ -132,7 +132,7 @@ const newComment = () => {
                                         <div className="pt2">
                                             <div>
                                             <div className="tj flex flex-wrap">
-                        <img src={img2} alt="Accessories..." className="br-100" width="50px" height="50px" />
+                        <img src={img2} alt="avatar" className="br-100" width="50px" height="50px" />
                         <span className="pa2 fw5 f5">
                             Harry Styles
                             <p className="f6 code fw3">Fashion</p>
@@ -151,12 +151,12 @@ const newComment = () => {
                                         </div>
                                     </div>
                             </div>
-                            <div className="pa2">
+                            <div className="pa2 tc">
                                                     <span className="pv2">
-                                                        <img src={img1} alt="avatar" className="br-100" width="50px" height="50px" />
+                                                        {/* <img src={img1} alt="avatar" className="br-100" width="50px" height="50px" /> */}
                                                         </span>
                                                         <span onClick={display} className="pv2 ph2">
-                                                        <input id="myInput" type="text" className="myInput pa2 br-pill b--black-50 w-70" placeholder="Comment here..." />
+                                                        <input id="myInput" type="text" className="myInput pa3 br-pill b--black-50 w-70" placeholder="Comment here..." />
                                                         </span>
                                                         <span className="ph2">
                                                             <small onClick={newComment} className="icon-paper-plane pointer f3 blue"></small>

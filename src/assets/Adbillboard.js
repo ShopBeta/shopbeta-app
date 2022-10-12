@@ -1,6 +1,5 @@
 import { render } from "@testing-library/react";
 import React from "react";
-import { useEffect } from "react";
 import './Home.css';
 import Navbar from '../components/Navbar';
 import SideBar from '../components/SideBar';

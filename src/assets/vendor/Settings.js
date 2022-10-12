@@ -45,29 +45,30 @@ const Settings = () => {
                             </div>
                          <div style={{ overflowY: 'scroll', height: '530px'}} className="pv3 pa4 code w-50">
                          <div className="tl pv2">
-                        <p className="pv1 f5 fw5">Name</p>
+                            <h3 className="pv2">Change Settings</h3>
+                        <p className="pv1 f5 fw5">Change Username</p>
                         <input type="text" className="br3 ba pa2 w-100" placeholder="Type in new username..." />
                     </div>
                     <div className="tl pv2">
-                        <p className="pv1 f5 fw5">Description</p>
+                        <p className="pv1 f5 fw5">Change Bio</p>
                         <p className="pv2">
                             <textarea id="myInput" className="br3 ba pa2 w-100 h3" placeholder="Something about your profile..." aria-label="With textarea"></textarea>
                         </p>
                     </div>
                     <div className="tl pv2">
-                        <p className="f5 fw5">Location</p>
+                        <p className="f5 fw5">Add Location</p>
                         <input type="text" className="br3 ba pa2 w-100" placeholder="Type in your location..." />
                     </div>
                     <div className="tl pv2">
-                        <p className="pv1 f5 fw5">Phone Number</p>
+                        <p className="pv1 f5 fw5">Add Phone Number</p>
                         <input type="tel" className="br3 ba pa2 w-100" placeholder="Input phone number..." />
                     </div>
                     <div className="tl pv2">
-                        <p className="pv1 f5 fw5">Email</p>
+                        <p className="pv1 f5 fw5">Set new Email</p>
                         <input type="email" className="br3 ba pa2 w-100" placeholder="Your email..." />
                     </div>
                     <div className="tl pv2">
-                        <p className="pv1 f5 fw5">Password</p>
+                        <p className="pv1 f5 fw5">Set Password</p>
                         <input type="password" className="br3 ba pa2 w-100" placeholder="Type in your new password..." />
                     </div>
                     <div className="tl pv2">
@@ -75,7 +76,7 @@ const Settings = () => {
                         <input type="password" className="br3 ba pa2 w-100" placeholder="Repeat password..." />
                     </div>
                     <p className="pv2">
-                        <p className="f5 fw5">Profile photo</p>
+                        <p className="f5 fw5">Set new Profile photo</p>
                         <div className="pv2 br-pill">
                             <input type="file" className="pa3 w-90 ba br3" id="customFile" />
                         </div>
