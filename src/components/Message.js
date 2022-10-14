@@ -1,5 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 import React from "react";
+import { useState, useEffect } from "react";
 import 'tachyons';
 import { Link } from "react-router-dom";
 import { MessageBlank } from "../assets/vendor/Pages";
@@ -20,68 +21,82 @@ const useStyles = makeStyles(theme => ({
 
 const Message = ({ handleShut }) => {
 
-    // display
+    const [data, setData] = useState({})
 
-    // const display = () => {
-    //     const my_div = document.getElementById('hide')
-    //     my_div.style['display'] = 'none'
-    // }
+    useEffect(() => {
+        fetch("https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js")
+        fetch("https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js")
+        fetch("https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js")
+        fetch("/socket.io/socket.io.js")
+        .then(res => res.json())
+        .then((data) => setData(data))
+        .catch((err) => {
+            console.log(err.message)
+        })
+    }, [])
+
+//     display
+
+//     const display = () => {
+//         const my_div = document.getElementById('hide')
+//         my_div.style['display'] = 'none'
+//     }
         
-    // create a new list item
+//    // create a new list item
 
-    // const newMessage = () => {
+//     const newMessage = () => {
         
-    //     const div = document.createElement("p", {id: 'element', style: {color: ""} , className: ''}) 
-    //             div.style.textAlign = 'right'
-    //             div.className = 'pv3 pv2 tj pb3 bg-light-blue pa3 br4'
+//         const div = document.createElement("p", {id: 'element', style: {color: ""} , className: ''}) 
+//                 div.style.textAlign = 'right'
+//                 div.className = 'pv3 pv2 tj pb3 bg-light-blue pa3 br4'
 
-    //     const inputValue = document.getElementById("myInput").value
+//         const inputValue = document.getElementById("myInput").value
 
-    //     const t =  document.createTextNode(inputValue)
+//         const t =  document.createTextNode(inputValue)
 
-    //     div.appendChild(t);
+//         div.appendChild(t);
     
-    //     document.getElementById("myUL").appendChild(div);
+//         document.getElementById("myUL").appendChild(div);
 
-    //     document.getElementById("myInput").value = "";
+//         document.getElementById("myInput").value = "";
         
-    //     const p = document.createElement("p");
+//         const p = document.createElement("p");
 
-    //     const Time = new Date()
-    //     Time.getTime()
-    //     Time.getDay()
+//         const Time = new Date()
+//         Time.getTime()
+//         Time.getDay()
         
-    //     const txt = document.createTextNode(Time.toLocaleString());
-    //         p.className = "code pv2 tr f7";
-    //         p.appendChild(txt);
-    //         document.getElementById('myUL').appendChild(p);
+//         const txt = document.createTextNode(Time.toLocaleString());
+//             p.className = "code pv2 tr f7";
+//             p.appendChild(txt);
+//             document.getElementById('myUL').appendChild(p);
         
-    // }
+//     }
 
 
-    // const heartMoji = () => {
-    //     document.getElementById("myInput").value = "";
+//     const heartMoji = () => {
+//         document.getElementById("myInput").value = "";
 
-    //     const p = document.createElement("p");
+//         const p = document.createElement("p");
         
-    //     const txt = document.createTextNode("");
-    //         p.className = "icon-heart pv2 pa2 tr red f2";
-    //         p.appendChild(txt);
-    //         document.getElementById('myUL').appendChild(p);
-    // }
+//         const txt = document.createTextNode("");
+//             p.className = "icon-heart pv2 pa2 tr red f2";
+//             p.appendChild(txt);
+//             document.getElementById('myUL').appendChild(p);
+//     }
 
-    // const location = () => {
-    //     const p = document.createElement("p")
-    //     const icon = document.createElement("p")
+//     const location = () => {
+//         const p = document.createElement("p")
+//         const icon = document.createElement("p")
         
-    //     const txt = document.createTextNode("my current location")
-    //         p.className = "blue code pv3 link tr pb3 w-100 pa3 br4"
-    //         icon.className = "icon-location-pin green f3 tr"
-    //         icon.appendChild(p)
-    //         p.appendChild(txt)
-    //         document.getElementById('myUL').appendChild(icon)
-    //         document.getElementById('myUL').appendChild(p)
-    // }
+//         const txt = document.createTextNode("my current location")
+//             p.className = "blue code pv3 link tr pb3 w-100 pa3 br4"
+//             icon.className = "icon-location-pin green f3 tr"
+//             icon.appendChild(p)
+//             p.appendChild(txt)
+//             document.getElementById('myUL').appendChild(icon)
+//             document.getElementById('myUL').appendChild(p)
+//     }
 
 // const socket = io()
 
@@ -297,18 +312,14 @@ const Message = ({ handleShut }) => {
                                     </div>
                                     </div>
                             <div className="pa2 tc">
-                                                        <span id="message-form" className="pv2">
-                                                        <input name="message" id="message-input" type="text" className="pa3 ba br-pill w-70" placeholder="Type your message..." required autoComplete="off"/>
-                                                        <small id="send-message" className="icon-paper-plane pointer blue f3 pa2"></small>
-                                                        <small className="icon-heart red pointer f3 pa2"></small>
-                                                        <small type="file" title="send media file" className="icon-camera pointer f3 pa2"></small>
-                                                        <small id="send-location" type="file" title="send location" className="icon-location-pin pointer f3 blue"></small>
-                                                        </span>
-                                                    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
+                                <span id="message-form" className="pv2">
+                                <input name="message" id="message-input" type="text" className="pa3 ba br-pill w-70" placeholder="Type your message..." required autoComplete="off"/>
+                                <small id="send-message" className="icon-paper-plane pointer blue f3 pa2"></small>
+                                <small className="icon-heart red pointer f3 pa2"></small>
+                                <small type="file" title="send media file" className="icon-camera pointer f3 pa2"></small>
+                                <small id="send-location" type="file" title="send location" className="icon-location-pin pointer f3 blue"></small>
+                                </span>
+                            </div>
             </div>
     )
 }

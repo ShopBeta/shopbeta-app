@@ -16,12 +16,12 @@ const Category = () => {
                         <Navbar />
                     <div className="dt dt--fixed">
                         <SideBar />
-                        <div>
+                    <div>
                         <h3 className="shop code fw5 f4 ph3 pb2">Category</h3>
-                       <div style={{ overflowY: 'scroll', height: '490px'}}>
+                        <div style={{ overflowY: 'scroll', height: '490px'}}>
                             <MainCat />
-                       </div>
                         </div>
+                    </div>
                         <HelpCard />
                     </div>
             </div>

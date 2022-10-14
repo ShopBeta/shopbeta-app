@@ -1,13 +1,26 @@
 import React from 'react';
-import History from '../components/History'
+import { useState, useEffect } from 'react';
+import FollowCard from '../components/FollowCard';
 
-const HistoryList = ({ users }) => {
+const FollowCardList = ({ users }) => {
+
+    const [data, setData] = useState({})
+
+    useEffect(() => {
+        fetch("https://shopbeta-app.herokuapp.com/users")
+        .then((res) => res.json())
+        .then((data) => setData(data))
+        .catch((err) => {
+            console.log(err.message)
+        })
+    }, [])
+
     return (
         <div>
             {
                 users.map((user, i) => {
                     return (
-                        <History 
+                        <FollowCard
                         key={i} 
                         id={users[i].id} 
                         name={users[i].name} 
@@ -25,4 +38,4 @@ const HistoryList = ({ users }) => {
     );
 }
 
-export default HistoryList;
+export default FollowCardList;

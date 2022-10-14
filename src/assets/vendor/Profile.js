@@ -20,9 +20,9 @@ const Profile = () => {
                            <SideBar />
                            <User />
                        </div>
-                        <Map />
-                    </div>
-                    </div>
+                    <Map />
+                </div>
+            </div>
         );
 }
 

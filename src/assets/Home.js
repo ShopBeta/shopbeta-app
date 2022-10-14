@@ -6,8 +6,9 @@ import SideBar from "../components/SideBar";
 import SocialCard from "../components/SocialCard"
 import HomeCard from "../components/HomeCard";
 import { SuggCard1, SuggCard2, SuggCard3, SuggCard4, SuggCard5 } from "../components/SuggCard";
-import FollowCard from "../components/FollowCard";
 import Preloader from "../components/Preloader";
+import { users } from "../containers/Users";
+import FollowCardList from "../containers/FollowCardList";
 
 
 const Home = () => {
@@ -31,14 +32,7 @@ const Home = () => {
                             <SuggCard4 />
                             <SuggCard5 />
                         <div style={{ overflowY: 'scroll', height: '180px'}}>
-                            <FollowCard />
-                            <FollowCard />
-                            <FollowCard />
-                            <FollowCard />
-                            <FollowCard />
-                            <FollowCard />
-                            <FollowCard />
-                            <FollowCard />
+                            <FollowCardList users={users} />
                         </div>
                        </div>
                         <SocialCard />

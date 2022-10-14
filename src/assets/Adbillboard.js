@@ -21,19 +21,19 @@ const AdbillBoard = () => {
                         <SideBar />
                         <div className="flex flex-wrap">
                             <h3 className="shop code fw5 f4 ph3 pb2">AdbillBoard</h3>
-                        <Scroll>
-                            <PostCardList users={users} />
-                            <SharedPostList users={users} />
-                            <TextPostList users={users} />
-                            <ProfilePostList users={users} />
-                            {/* <AdBlankPage />
-                            <ErrorPage /> */}
-                        </Scroll>
+                            <Scroll>
+                                <PostCardList users={users} />
+                                <SharedPostList users={users} />
+                                <TextPostList users={users} />
+                                <ProfilePostList users={users} />
+                                {/* <AdBlankPage />
+                                <ErrorPage /> */}
+                            </Scroll>
                         </div>
                         <PostAd/>
-                    </div>
             </div>
-        );
+        </div>
+    );
 }
 
 export default AdbillBoard;

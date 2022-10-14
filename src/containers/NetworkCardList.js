@@ -1,13 +1,13 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import Card from '../components/Card'
+import NetworkCard from '../components/NetworkCard';
 
-const CardList = ({ users }) => {
+const NetworkCardList = ({ users }) => {
 
     const [data, setData] = useState({})
 
     useEffect(() => {
-        fetch("https://shopbeta-app.herokuapp.com/products")
+        fetch("https://shopbeta-app.herokuapp.com/user/followers")
         .then((res) => res.json())
         .then((data) => setData(data))
         .catch((err) => {
@@ -20,7 +20,7 @@ const CardList = ({ users }) => {
             {
                 users.map((user, i) => {
                     return (
-                        <Card 
+                        <NetworkCard
                         key={i} 
                         id={users[i].id} 
                         name={users[i].name} 
@@ -38,4 +38,4 @@ const CardList = ({ users }) => {
     );
 }
 
-export default CardList;
+export default NetworkCardList;

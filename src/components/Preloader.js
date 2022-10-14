@@ -13,21 +13,21 @@ class Preloader extends Component {
         );
     } 
        render() {
-        const { preloading } = this.state
-        return(
-            <div>
-            { preloading &&
-                <section class="preloader">
-                <div class="spinner">
-                    <span class="spinner-rotate">
-                        <div className='tc' style={{color: '#ee9617', fontSize: '27px', fontWeight: '500', letterSpacing: '-1px'}}>ShopBeta</div>
-                    </span>
-                </div>
-                </section>
-            }
-            </div>
-    )
-       }
+            const { preloading } = this.state
+            return(
+                    <div>
+                        { preloading &&
+                            <section class="preloader">
+                                <div class="spinner">
+                                    <span class="spinner-rotate">
+                                        <div className='tc' style={{color: '#ee9617', fontSize: '27px', fontWeight: '500', letterSpacing: '-1px'}}>ShopBeta</div>
+                                    </span>
+                                </div>
+                            </section>
+                        }
+                    </div>
+                )
+    }
       
 }
 

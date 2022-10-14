@@ -8,9 +8,26 @@ import PurchaseModal from "../containers/PurchaseModal";
 
 const Card = ({ name, username, heartcount, price, oldprice, rating }) => {
 
-    const heartClick = event => {
+    const heartClick = async event => {
             event.currentTarget.style.color = 'orange';
             event.currentTarget.style.fontWeight = 'bold';
+
+            const count = {
+                heartcount: heartcount
+            }
+    
+            await fetch("https://shopbeta-app.herokuapp.com/products/:id/hearts", {
+                method: 'POST',
+                headers: {
+                'Content-type': "application/json"
+            },
+                body: JSON.stringify(count)
+        })
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((err) => {
+            console.log(err.message)
+        })
     }
 
     const [open, setOpen] = useState(false)

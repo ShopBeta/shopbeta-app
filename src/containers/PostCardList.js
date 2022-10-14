@@ -1,7 +1,21 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import { PostCard, SharedPost, TextPost, ProfilePost } from '../components/PostCard';
 
 const PostCardList = ({ users }) => {
+
+    const [data, setData] = useState({})
+
+    useEffect(() => {
+        fetch("https://shopbeta-app.herokuapp.com/feed")
+        .then((res) => res.json())
+        .then((data) => setData(data))
+        .catch((err) => {
+            console.log(err.message)
+        })
+    }, [])
+
+
     return (
         <div>
             {

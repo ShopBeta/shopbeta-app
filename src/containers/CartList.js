@@ -1,7 +1,20 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import CartItem from '../components/CartItem';
 
 const CartList = ({ users }) => {
+
+    const [data, setData] = useState({})
+
+    useEffect(() => {
+        fetch("https://shopbeta-app.herokuapp.com/cart")
+        .then((res) => res.json())
+        .then((data) => setData(data))
+        .catch((err) => {
+            console.log(err.message)
+        })
+    }, [])
+
     return (
         <div>
             {

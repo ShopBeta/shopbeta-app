@@ -12,17 +12,17 @@ const Products = () => {
     return(
         <div className="home">
             <Preloader />
-                        <Navbar />
-                    <div className="dt dt--fixed">
-                        <SideBar />
-                        <div className="flex flex-wrap tc">
-                            <h3 className="shop fw6 code f3 ph3 pb2">Products</h3>
-                        <Scroll>
-                            <CardList users={users} />
-                        </Scroll>
-                        </div>
-                    </div>
+                <Navbar />
+            <div className="dt dt--fixed">
+                <SideBar />
+            <div className="flex flex-wrap tc">
+                <h3 className="shop fw6 code f3 ph3 pb2">Products</h3>
+                    <Scroll>
+                        <CardList users={users} />
+                    </Scroll>
+                </div>
             </div>
+        </div>
     )
 }
 

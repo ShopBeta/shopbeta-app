@@ -1,10 +1,21 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import img from '../images/macbook.jpg';
 import ModalDialog from "../containers/ModalDialog";
 import PurchaseModal from "../containers/PurchaseModal";
 
 const HomeCard = () => {
+
+    const [data, setData] = useState({})
+
+    useEffect(() => {
+        fetch("https://shopbeta-app.herokuapp.com/products/:id")
+        .then((res) => res.json())
+        .then((data) => setData(data))
+        .catch((err) => {
+            console.log(err.message)
+        })
+    }, [])
 
     const [open, setOpen] = useState(false)
 

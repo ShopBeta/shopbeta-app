@@ -32,7 +32,6 @@ const HelpCard = () => {
                     </div>
             </div>
         </div>
-        ;
     </div>
     )
 }
