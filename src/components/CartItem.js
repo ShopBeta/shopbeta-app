@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import img from '../images/nike.jpg';
 import { Typography } from "@material-ui/core";
 import { Carousell, Item } from "../containers/ImageCarousel";

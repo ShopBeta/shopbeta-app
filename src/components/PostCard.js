@@ -33,10 +33,9 @@ const PostCard = ({ name }) => {
     const heartClick = async event => {
             event.currentTarget.style.color = 'orange';
             event.currentTarget.style.fontWeight = 'bold';
-            document.querySelector('#increment').innerHTML = + 1
 
             const count = {
-                heartcount: '12'
+                heartcount: '12' + 1
             }
     
             await fetch("https://shopbeta-app.herokuapp.com/feed/:id/hearts", {
@@ -154,10 +153,9 @@ const SharedPost = ({ name }) => {
     const heartClick = async event => {
             event.currentTarget.style.color = 'orange';
             event.currentTarget.style.fontWeight = 'bold';
-            document.querySelector('#increment').innerHTML = + 1
 
             const count = {
-                heartcount: '12'
+                heartcount: '12' + 1
             }
 
             await fetch("https://shopbeta-app.herokuapp.com/feed/:id/hearts", {
@@ -272,10 +270,9 @@ const TextPost = ({ name }) => {
     const heartClick = async event => {
             event.currentTarget.style.color = 'orange';
             event.currentTarget.style.fontWeight = 'bold';
-            document.querySelector('#increment').innerHTML = + 1
 
             const count = {
-                heartcount: '12'
+                heartcount: '12' + 1
             }
 
             await fetch("https://shopbeta-app.herokuapp.com/feed/:id/hearts", {
@@ -389,10 +386,9 @@ const ProfilePost = ({ name }) => {
     const heartClick = async event => {
             event.currentTarget.style.color = 'orange';
             event.currentTarget.style.fontWeight = 'bold';
-            document.querySelector('#increment').innerHTML = + 1
 
             const count = {
-                heartcount: '12'
+                heartcount: '12' + 1
             }
 
             await fetch("https://shopbeta-app.herokuapp.com/feed/:id/hearts", {

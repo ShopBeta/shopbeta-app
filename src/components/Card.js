@@ -6,22 +6,47 @@ import { Typography } from "@material-ui/core";
 import ModalDialog from "../containers/ModalDialog";
 import PurchaseModal from "../containers/PurchaseModal";
 
-const Card = ({ name, username, heartcount, price, oldprice, rating }) => {
+const Card = ({ name, username, images, heartcount, price, oldprice, rating }) => {
 
     const heartClick = async event => {
             event.currentTarget.style.color = 'orange';
             event.currentTarget.style.fontWeight = 'bold';
 
             const count = {
-                heartcount: heartcount
+                heart: {heartcount} + 1
             }
     
             await fetch("https://shopbeta-app.herokuapp.com/products/:id/hearts", {
                 method: 'POST',
                 headers: {
                 'Content-type': "application/json"
-            },
+                },
                 body: JSON.stringify(count)
+        })
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((err) => {
+            console.log(err.message)
+        })
+    }
+
+    const addCart = async event => {
+
+        const product = {
+            name: {name},
+            heart: {heartcount},
+            images: {images},
+            price: {price},
+            oldprice: {price},
+            rating: {rating}
+        }
+
+        await fetch("https://shopbeta-app.herokuapp.com/products/cart", {
+            method: 'POST',
+            headers: {
+            'Content-type': "application/json"
+        },
+            body: JSON.stringify(product)
         })
         .then((res) => res.json())
         .then((data) => console.log(data))
@@ -87,7 +112,7 @@ const Card = ({ name, username, heartcount, price, oldprice, rating }) => {
                         <div className="tc ph3">
                         <span className="monospace">
                             <button onClick={handleShow} className="pa3 br-pill f6 white pointer ph4 ba grow bg-orange hover-bg-mid-gray fw6">Buy it now</button>
-                            <button className="pa3 br-pill pointer f6 white ph4 grow ba bg-orange hover-bg-mid-gray fw6">Add to cart</button>
+                            <button onClick={addCart} className="pa3 br-pill pointer f6 white ph4 grow ba bg-orange hover-bg-mid-gray fw6">Add to cart</button>
                         </span>
                         </div>
                     </div>

@@ -32,8 +32,10 @@ const SharePost = ({ handleClose }) => {
 
     const post = async () => {
 
+        const text = document.getElementById('text').value
+
         const feed = {
-            text: 'helo new post here'
+            text
         }
 
         await fetch("https://shopbeta-app.herokuapp.com/user/:id/follow", {
@@ -76,7 +78,7 @@ const SharePost = ({ handleClose }) => {
                         </span>
                         <span>
                             <p className="pa2 fw6">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium est assumenda distinctio sint repellat beatae dolore magnam pariatur ipsum, et deserunt asperiores doloribus sit at esse corrupti facilis aperiam nihil.
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium est assumenda distinctio sint repellat beatae dolore magnam pariatur ipsum, et deserunt asperiores doloribus sit at esse corrupti facilis aperiam nihil.
                             </p>
                         </span>
                     </div>
@@ -84,7 +86,7 @@ const SharePost = ({ handleClose }) => {
             <img src={img1} className="br-100" alt="profile" width="50px" height="50px" />
             <form onSubmit={handleSubmit} action="https://shopbeta-app.herokuapp.com/feed" method="post">
                 <p className="pv2">
-                    <textarea id="myInput" name="text" className="pa2 br3 ba w-100 h3" placeholder="What's on your mind?" aria-label="With textarea"></textarea>
+                    <textarea id="text" name="text" className="pa2 br3 ba w-100 h3" placeholder="What's on your mind?" aria-label="With textarea"></textarea>
                 </p>
                 <div className="pv2 tc grow">
                     <button type="submit" variant="contained" className="ph5 pa2 bg-orange pointer ba hover-bg-mid-gray br-pill">

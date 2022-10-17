@@ -1,5 +1,4 @@
 import React from "react";
-// import { useState, useEffect } from "react";
 import 'tachyons';
 import NetworkCardList from "./NetworkCardList";
 import { users } from "./Users";

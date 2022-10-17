@@ -31,7 +31,7 @@ const Home = () => {
                             <SuggCard3 />
                             <SuggCard4 />
                             <SuggCard5 />
-                        <div style={{ overflowY: 'scroll', height: '180px'}}>
+                        <div style={{ overflowY: 'scroll', height: '172px'}}>
                             <FollowCardList users={users} />
                         </div>
                        </div>
