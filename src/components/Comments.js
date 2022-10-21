@@ -19,18 +19,48 @@ const useStyles = makeStyles(theme => ({
 
 
 
-const Comments = ({ handleShut }) => {
+const Comments = ({ handleShut, text, file }) => {
 
     const [data, setData] = useState({})
 
+    const token = localStorage.getItem("token")
+
     useEffect(() => {
-        fetch("https://shopbeta-app.herokuapp.com/feed/:id/comments")
+        fetch(`https://shopbeta-app.herokuapp.com/feed/${data._id}/comments`, {
+            method: "GET",
+            headers: {
+                'Authorization' : 'Bearer ' + token,
+                'Accept' : 'application/json, text/plain',
+                'Content-Type' : 'application/json'
+            },
+        })
         .then((res) => res.json())
         .then((data) => setData(data))
         .catch((err) => {
             console.log(err.message)
         })
-    }, [])
+    }, [data._id, token])
+
+    const addComment = async (text, file) => {
+
+        const comment = {
+            text: text,
+            file: file
+        }
+
+        await fetch(`https://shopbeta-app.herokuapp.com/feed/${data._id}/comments`, {
+            method: "POST",
+            headers: {
+                'Authorization' : 'Bearer ' + token,
+                'Accept' : 'application/json, text/plain',
+                'Content-Type' : 'application/json'
+            },
+            body: JSON.stringify(comment)
+        })
+        .catch((err) => {
+            console.log(err.message)
+        })
+    }
 
 
 //     // display
@@ -82,14 +112,15 @@ const Comments = ({ handleShut }) => {
 // }
 
     const classes = useStyles()
-    const handleSubmit1 = e => {
+    const handleSubmit = e => {
         e.preventDefault()
         handleShut()
+        addComment(text, file)
     }
 
         data.map((data, i) => {
             return(
-                    <div className={classes.root} onSubmit={handleSubmit1}>
+                    <div className={classes.root}>
                         <div className="tr pb2">
                             <small onClick={handleShut} className="icon-close f3 hover-red"></small>
                         </div>
@@ -179,18 +210,18 @@ const Comments = ({ handleShut }) => {
                                             </div>
                                     </div>
                                     <div className="pa2 tc">
-                                        <form action="https://shopbeta-app.herokuapp.com/feed/:id/comments" method="post">
+                                        <form onSubmit={handleSubmit}>
                                             <span className="pv2">
                                                 {/* <img src={img1} alt="avatar" className="br-100" width="50px" height="50px" /> */}
                                             </span>
                                             <span className="pv2 ph2">
-                                                <input id="myInput" name="text" type="text" className="myInput pa3 br-pill b--black-50 w-70" placeholder="Comment here..." />
+                                                <input id="myInput" name="text" value={text} type="text" className="myInput pa3 br-pill b--black-50 w-70" placeholder="Comment here..." />
                                             </span>
                                             <span className="ph2">
                                                 <button type="submit" className="icon-paper-plane bg-transparent b--transparent pointer f3 blue"></button>
                                             </span>
                                             <span className="ph2">
-                                                <small type='file' name="file" className="icon-camera pointer f3 blue"></small>
+                                                <small type='file' value={file} name="file" className="icon-camera pointer f3 blue"></small>
                                             </span>
                                         </form>
                                     </div>

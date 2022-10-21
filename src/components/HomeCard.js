@@ -8,14 +8,23 @@ const HomeCard = () => {
 
     const [data, setData] = useState({})
 
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzRlODRkMDllNmQ0NTcwNzZiZTYzN2QiLCJpYXQiOjE2NjYyODYxNDJ9.Tl_cK7rmzYsdXmfFFzGVaBstGSRRZVhN8NrDvCh77HA"
+
     useEffect(() => {
-        fetch("https://shopbeta-app.herokuapp.com/products/:id")
+        fetch(`https://shopbeta-app.herokuapp.com/products/${data._id}`, {
+            method: "GET",
+            headers: {
+                'Authorization' : 'Bearer ' + token,
+                'Accept' : 'application/json, text/plain',
+                'Content-Type' : 'application/json'
+            },
+        })
         .then((res) => res.json())
         .then((data) => setData(data))
         .catch((err) => {
             console.log(err.message)
         })
-    }, [])
+    }, [data._id, token])
 
     const [open, setOpen] = useState(false)
 
@@ -51,10 +60,13 @@ const HomeCard = () => {
                 <div className="dtc w-50 tl pv4 ph2">
                     <button className="bg-red br4 white ba ph3 pv1 b"><small>-5%</small></button>
                 <div className="tc pa3 code">
-                   <h3>White Tesla Roadstar</h3>
+                   <h3>
+                        {data.name}
+                        {/* White Tesla Roadstar */}
+                   </h3>
                 </div>
                    <div className="bg pa2 pv3 br3 b--black">
-                        <span className="tl f3 pv3 code fw5">$45</span>
+                        <span className="tl f3 pv3 code fw5">${data.price}</span>
                         <div className="tc">
                           <button onClick={handleShow} className="bg-orange white pointer ba w-100 pa3 br-pill grow"><small className="tc">Purchase</small></button>
                         </div>

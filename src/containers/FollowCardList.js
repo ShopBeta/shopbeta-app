@@ -7,7 +7,13 @@ const FollowCardList = ({ users }) => {
     const [data, setData] = useState({})
 
     useEffect(() => {
-        fetch("https://shopbeta-app.herokuapp.com/users")
+        fetch("https://shopbeta-app.herokuapp.com/users", {
+            method: "GET",
+            headers: {
+                'Accept' : 'application/json, text/plain',
+                'Content-Type' : 'application/json'
+            },
+        })
         .then((res) => res.json())
         .then((data) => setData(data))
         .catch((err) => {

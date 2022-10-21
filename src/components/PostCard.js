@@ -13,6 +13,10 @@ import { Link } from "react-router-dom";
 
 const PostCard = ({ name }) => {
 
+    const token = localStorage.getItem("token")
+
+    const [data, setData] = useState({})
+
     const buttonClick = async event => {
 
             event.currentTarget.style.backgroundColor = 'transparent';
@@ -20,14 +24,19 @@ const PostCard = ({ name }) => {
             event.currentTarget.style.fontWeight = 'bold';
             event.currentTarget.innerHTML = 'following';
 
-            await fetch("https://shopbeta-app.herokuapp.com/user/:id/follow", {
-                method: 'POST',
-            })
-            .then((res) => res.json())
-            .then((data) => console.log(data))
-            .catch((err) => {
-                console.log(err.message)
-            })
+               await fetch(`https://shopbeta-app.herokuapp.com/user/${data._id}/follow`, {
+                    method: "POST",
+                    headers: {
+                        'Authorization' : 'Bearer ' + token,
+                        'Accept' : 'application/json, text/plain',
+                        'Content-Type' : 'application/json'
+                    },
+                })
+                .then((res) => res.json())
+                .then((data) => console.log(data))
+                .catch((err) => {
+                    console.log(err.message)
+                })
     }
 
     const heartClick = async event => {
@@ -35,23 +44,24 @@ const PostCard = ({ name }) => {
             event.currentTarget.style.fontWeight = 'bold';
 
             const count = {
-                heartcount: '12' + 1
+                hearts: data.hearts + 1
             }
     
-            await fetch("https://shopbeta-app.herokuapp.com/feed/:id/hearts", {
-                method: 'POST',
+            await fetch(`https://shopbeta-app.herokuapp.com/feed/${data._id}/hearts`, {
+                method: "POST",
                 headers: {
-                'Content-type': "application/json"
-            },
+                    'Authorization' : 'Bearer ' + token,
+                    'Accept' : 'application/json, text/plain',
+                    'Content-Type' : 'application/json'
+                },
                 body: JSON.stringify(count)
-        })
-        .then((res) => res.json())
-        .then((data) => console.log(data))
-        .catch((err) => {
-            console.log(err.message)
-        })
+            })
+            .then((res) => res.json())
+            .then((data) => setData(data))
+            .catch((err) => {
+                console.log(err.message)
+            })
     }
-
 
     const [open, setOpen] = useState(false)
 
@@ -115,7 +125,7 @@ const PostCard = ({ name }) => {
                     </div>
                     <div className="pv1">
                         <span onClick={heartClick} className="pa2 fw5 ph3 icon-heart pointer f4 grow icon-share">
-                            <small id="increment" className="pa1 code">0</small>
+                            <small id="increment" className="pa1 code">{data.hearts}</small>
                         </span>
                         <span onClick={handleShow} className="pa2 f4 pointer fw5 grow icon-bubble">
                             <small className="pa1 code">26</small>
@@ -133,6 +143,11 @@ const PostCard = ({ name }) => {
 
 const SharedPost = ({ name }) => {
     
+    const token = localStorage.getItem("token")
+    
+    const [data, setData] = useState({})
+    
+   
     const buttonClick = async event => {
 
         event.currentTarget.style.backgroundColor = 'transparent';
@@ -140,14 +155,19 @@ const SharedPost = ({ name }) => {
         event.currentTarget.style.fontWeight = 'bold';
         event.currentTarget.innerHTML = 'following';
 
-        await fetch("https://shopbeta-app.herokuapp.com/user/:id/follow", {
-            method: 'POST',
-        })
-        .then((res) => res.json())
-        .then((data) => console.log(data))
-        .catch((err) => {
-            console.log(err.message)
-        })
+           await fetch(`https://shopbeta-app.herokuapp.com/user/${data._id}/follow`, {
+                method: "POST",
+                headers: {
+                    'Authorization' : 'Bearer ' + token,
+                    'Accept' : 'application/json, text/plain',
+                    'Content-Type' : 'application/json'
+                },
+            })
+            .then((res) => res.json())
+            .then((data) => console.log(data))
+            .catch((err) => {
+                console.log(err.message)
+            })
     }
 
     const heartClick = async event => {
@@ -155,22 +175,25 @@ const SharedPost = ({ name }) => {
             event.currentTarget.style.fontWeight = 'bold';
 
             const count = {
-                heartcount: '12' + 1
+                hearts: data.hearts + 1
             }
 
-            await fetch("https://shopbeta-app.herokuapp.com/feed/:id/hearts", {
-                method: 'POST',
+            await fetch(`https://shopbeta-app.herokuapp.com/feed/${data._id}/hearts`, {
+                method: "POST",
                 headers: {
-                'Content-type': "application/json"
-            },
+                    'Authorization' : 'Bearer ' + token,
+                    'Accept' : 'application/json, text/plain',
+                    'Content-Type' : 'application/json'
+                },
                 body: JSON.stringify(count)
-        })
-        .then((res) => res.json())
-        .then((data) => console.log(data))
-        .catch((err) => {
-            console.log(err.message)
-        })
+            })
+            .then((res) => res.json())
+            .then((data) => setData(data))
+            .catch((err) => {
+                console.log(err.message)
+            })
     }
+
 
     const [open, setOpen] = useState(false)
 
@@ -209,9 +232,9 @@ const SharedPost = ({ name }) => {
                         <p className="f6">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium est assumenda distinctio sint repellat beatae dolore magnam pariatur ipsum, et deserunt asperiores doloribus sit at esse corrupti facilis aperiam nihil.
                         </p>
-                        {/* <div className="pv2">
-                            <img src={img} alt="Accessories..." className="w-100 br3" height="auto" />
-                            </div> */}
+                        <div className="pv2">
+                            <img src={img2} alt="Accessories..." className="w-100 br3" height="auto" />
+                            </div>
                         </div>
                 </div>
             </div>
@@ -235,7 +258,7 @@ const SharedPost = ({ name }) => {
                     </div>
                     <div className="pa2">
                         <span onClick={heartClick} className="pa2 fw5 ph3 icon-heart pointer f4 grow">
-                            <small id="increment" className="pa1 code">44</small>
+                            <small id="increment" className="pa1 code">{data.hearts}</small>
                         </span>
                         <span onClick={handleShow} className="pa2 pointer f4 fw5 grow icon-bubble">
                             <small className="pa1 code">26</small>
@@ -250,6 +273,11 @@ const SharedPost = ({ name }) => {
 
 const TextPost = ({ name }) => {
 
+    const token = localStorage.getItem("token")
+
+    const [data, setData] = useState({})
+
+    
     const buttonClick = async event => {
 
         event.currentTarget.style.backgroundColor = 'transparent';
@@ -257,14 +285,19 @@ const TextPost = ({ name }) => {
         event.currentTarget.style.fontWeight = 'bold';
         event.currentTarget.innerHTML = 'following';
 
-        await fetch("https://shopbeta-app.herokuapp.com/user/:id/follow", {
-            method: 'POST',
-        })
-        .then((res) => res.json())
-        .then((data) => console.log(data))
-        .catch((err) => {
-            console.log(err.message)
-        })
+           await fetch(`https://shopbeta-app.herokuapp.com/user/${data._id}/follow`, {
+                method: "POST",
+                headers: {
+                    'Authorization' : 'Bearer ' + token,
+                    'Accept' : 'application/json, text/plain',
+                    'Content-Type' : 'application/json'
+                },
+            })
+            .then((res) => res.json())
+            .then((data) => console.log(data))
+            .catch((err) => {
+                console.log(err.message)
+            })
     }
 
     const heartClick = async event => {
@@ -272,24 +305,24 @@ const TextPost = ({ name }) => {
             event.currentTarget.style.fontWeight = 'bold';
 
             const count = {
-                heartcount: '12' + 1
+                hearts: data.hearts + 1
             }
 
-            await fetch("https://shopbeta-app.herokuapp.com/feed/:id/hearts", {
-                method: 'POST',
+            await fetch(`https://shopbeta-app.herokuapp.com/feed/${data._id}/hearts`, {
+                method: "POST",
                 headers: {
-                'Content-type': "application/json"
-            },
+                    'Authorization' : 'Bearer ' + token,
+                    'Accept' : 'application/json, text/plain',
+                    'Content-Type' : 'application/json'
+                },
                 body: JSON.stringify(count)
-        })
-        .then((res) => res.json())
-        .then((data) => console.log(data))
-        .catch((err) => {
-            console.log(err.message)
-        })
+            })
+            .then((res) => res.json())
+            .then((data) => setData(data))
+            .catch((err) => {
+                console.log(err.message)
+            })
     }
-
-
 
     const [open, setOpen] = useState(false)
 
@@ -346,7 +379,7 @@ const TextPost = ({ name }) => {
                 </div>
                 <div className="pa2">
                     <span onClick={heartClick} className="pa2 fw5 ph3 icon-heart pointer f4 grow icon-share">
-                        <small id="increment" className="pa1 code">44</small>
+                        <small id="increment" className="pa1 code">{data.hearts}</small>
                     </span>
                     <span onClick={handleShow} className="pa2 pointer f4 fw5 grow icon-bubble">
                         <small className="pa1 code">26</small>
@@ -364,8 +397,12 @@ const TextPost = ({ name }) => {
 
 
 const ProfilePost = ({ name }) => {
-
     
+    const token = localStorage.getItem("token")
+
+    const [data, setData] = useState({})
+
+   
     const buttonClick = async event => {
 
         event.currentTarget.style.backgroundColor = 'transparent';
@@ -373,14 +410,19 @@ const ProfilePost = ({ name }) => {
         event.currentTarget.style.fontWeight = 'bold';
         event.currentTarget.innerHTML = 'following';
 
-        await fetch("https://shopbeta-app.herokuapp.com/user/:id/follow", {
-            method: 'POST',
-        })
-        .then((res) => res.json())
-        .then((data) => console.log(data))
-        .catch((err) => {
-            console.log(err.message)
-        })
+           await fetch(`https://shopbeta-app.herokuapp.com/user/${data._id}/follow`, {
+                method: "POST",
+                headers: {
+                    'Authorization' : 'Bearer ' + token,
+                    'Accept' : 'application/json, text/plain',
+                    'Content-Type' : 'application/json'
+                },
+            })
+            .then((res) => res.json())
+            .then((data) => console.log(data))
+            .catch((err) => {
+                console.log(err.message)
+            })
     }
 
     const heartClick = async event => {
@@ -388,18 +430,20 @@ const ProfilePost = ({ name }) => {
             event.currentTarget.style.fontWeight = 'bold';
 
             const count = {
-                heartcount: '12' + 1
+                hearts: data.hearts + 1
             }
 
-            await fetch("https://shopbeta-app.herokuapp.com/feed/:id/hearts", {
-                method: 'POST',
+            await fetch(`https://shopbeta-app.herokuapp.com/feed/${data._id}/hearts`, {
+                method: "POST",
                 headers: {
-                'Content-type': "application/json"
-            },
+                    'Authorization' : 'Bearer ' + token,
+                    'Accept' : 'application/json, text/plain',
+                    'Content-Type' : 'application/json'
+                },
                 body: JSON.stringify(count)
             })
             .then((res) => res.json())
-            .then((data) => console.log(data))
+            .then((data) => setData(data))
             .catch((err) => {
                 console.log(err.message)
             })
@@ -412,8 +456,13 @@ const ProfilePost = ({ name }) => {
         event.currentTarget.style.fontWeight = 'bold';
         event.currentTarget.innerHTML = 'following';
 
-        await fetch("https://shopbeta-app.herokuapp.com/user/:id/follow", {
-            method: 'POST',
+        await fetch(`https://shopbeta-app.herokuapp.com/user/${data._id}/follow`, {
+            method: "POST",
+            headers: {
+                'Authorization' : 'Bearer ' + token,
+                'Accept' : 'application/json, text/plain',
+                'Content-Type' : 'application/json'
+            },
         })
         .then((res) => res.json())
         .then((data) => console.log(data))
@@ -488,7 +537,7 @@ const ProfilePost = ({ name }) => {
                     </div>
                     <div className="pt5 pa2">
                         <span onClick={heartClick} className="pa2 fw5 ph3 icon-heart pointer f4 grow icon-share">
-                            <small id="increment" className="pa1 code">44</small>
+                            <small id="increment" className="pa1 code">{data.hearts}</small>
                         </span>
                         <span onClick={handleShow} className="pa2 pointer f4 fw5 grow icon-bubble">
                             <small className="pa1 code">26</small>

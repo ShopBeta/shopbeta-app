@@ -6,35 +6,41 @@ import { Typography } from "@material-ui/core";
 import ModalDialog from "../containers/ModalDialog";
 import PurchaseModal from "../containers/PurchaseModal";
 
-const Card = ({ name, username, images, heartcount, price, oldprice, rating }) => {
+const Card = ({ id, name, images, heart, price, oldprice, rating }) => {
+
+    const token = localStorage.getItem("token")
+
+    const [data, setData] = useState({})
 
     const heartClick = async event => {
             event.currentTarget.style.color = 'orange';
             event.currentTarget.style.fontWeight = 'bold';
 
             const count = {
-                heart: {heartcount} + 1
+                heart: heart + 1
             }
-    
-            await fetch("https://shopbeta-app.herokuapp.com/products/:id/hearts", {
-                method: 'POST',
+
+            await fetch(`https://localhost:3000/${id}/hearts`, {
+                method: "POST",
                 headers: {
-                'Content-type': "application/json"
+                    'Authorization' : 'Bearer ' + token,
+                    'Accept' : 'application/json, text/plain',
+                    'Content-Type' : 'application/json'
                 },
                 body: JSON.stringify(count)
-        })
-        .then((res) => res.json())
-        .then((data) => console.log(data))
-        .catch((err) => {
-            console.log(err.message)
-        })
+            })
+            .then((res) => res.json())
+            .then((data) => setData(data))
+            .catch((err) => {
+                console.log(err.message)
+            })
     }
 
     const addCart = async event => {
 
         const product = {
             name: {name},
-            heart: {heartcount},
+            heart: {heart},
             images: {images},
             price: {price},
             oldprice: {price},
@@ -42,14 +48,16 @@ const Card = ({ name, username, images, heartcount, price, oldprice, rating }) =
         }
 
         await fetch("https://shopbeta-app.herokuapp.com/products/cart", {
-            method: 'POST',
+            method: "POST",
             headers: {
-            'Content-type': "application/json"
-        },
+                'Authorization' : 'Bearer ' + token,
+                'Accept' : 'application/json, text/plain',
+                'Content-Type' : 'application/json'
+            },
             body: JSON.stringify(product)
         })
         .then((res) => res.json())
-        .then((data) => console.log(data))
+        .then((data) => setData(data))
         .catch((err) => {
             console.log(err.message)
         })
@@ -90,7 +98,7 @@ const Card = ({ name, username, images, heartcount, price, oldprice, rating }) =
                         <img src={img} alt="item" className="br4 pv1 w-100" width="310px" height="230px"></img>
                     </div>
                     <div className="tr f3 br-pill">
-                            <small onClick={heartClick} className="icon-heart pointer ph2 grow"><small className="code black pl1 f5">{heartcount}</small></small>
+                            <small onClick={heartClick} className="icon-heart pointer ph2 grow"><small className="code black pl1 f5">{heart}</small></small>
                         </div>
                     <div className="tl">
                         <span className="">

@@ -17,31 +17,32 @@ const useStyles = makeStyles(theme => ({
 
 
 
-const SharePost = ({ handleClose }) => {
+const SharePost = ({ handleClose, text, file }) => {
 
     const [data, setData] = useState({})
 
     useEffect(() => {
-        fetch("https://shopbeta-app.herokuapp.com/feed/:id")
+        fetch(`https://shopbeta-app.herokuapp.com/feed/${data._id}`)
         .then((res) => res.json())
         .then((data) => setData(data))
         .catch((err) => {
             console.log(err.message)
         })
-    }, [])
+    }, [data._id])
 
-    const post = async () => {
+    const token = localStorage.getItem("token")
 
-        const text = document.getElementById('text').value
-
+    const post = async (text) => {
         const feed = {
-            text
+            text: text,
         }
 
-        await fetch("https://shopbeta-app.herokuapp.com/user/:id/follow", {
-            method: 'POST',
+        await fetch("https://shopbeta-app.herokuapp.com/feed", {
+            method: "POST",
             headers: {
-                'Content-type': "application/json"
+                'Authorization' : 'Bearer ' + token,
+                'Accept' : 'application/json, text/plain',
+                'Content-Type' : 'application/json'
             },
             body: JSON.stringify(feed)
         })
@@ -51,12 +52,11 @@ const SharePost = ({ handleClose }) => {
             console.log(err.message)
         })
     }
-
     const classes = useStyles()
     const handleSubmit = e => {
         e.preventDefault()
         handleClose()
-        post()
+        post(text)
     }
 
     return(
@@ -70,7 +70,7 @@ const SharePost = ({ handleClose }) => {
                     </div>
                 </div>
                 <div className="pa3 pv3 tj">
-                    <p className="f5 code fw6 pb2">Ronel Guiditta</p>
+                    <p className="f5 code fw6 pb2">{data.username}</p>
                     <div>
                         <span className="dib flex flex-wrap">
                             <img src={img} className="br3 ph2" alt="post file" width="100px" height="100px" />
@@ -78,15 +78,16 @@ const SharePost = ({ handleClose }) => {
                         </span>
                         <span>
                             <p className="pa2 fw6">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium est assumenda distinctio sint repellat beatae dolore magnam pariatur ipsum, et deserunt asperiores doloribus sit at esse corrupti facilis aperiam nihil.
+                                {data.text}
+                                {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium est assumenda distinctio sint repellat beatae dolore magnam pariatur ipsum, et deserunt asperiores doloribus sit at esse corrupti facilis aperiam nihil. */}
                             </p>
                         </span>
                     </div>
                 </div>
             <img src={img1} className="br-100" alt="profile" width="50px" height="50px" />
-            <form onSubmit={handleSubmit} action="https://shopbeta-app.herokuapp.com/feed" method="post">
+            <form onSubmit={handleSubmit}>
                 <p className="pv2">
-                    <textarea id="text" name="text" className="pa2 br3 ba w-100 h3" placeholder="What's on your mind?" aria-label="With textarea"></textarea>
+                    <textarea id="text" name="text" value={text} className="pa2 br3 ba w-100 h3" placeholder="What's on your mind?" aria-label="With textarea"></textarea>
                 </p>
                 <div className="pv2 tc grow">
                     <button type="submit" variant="contained" className="ph5 pa2 bg-orange pointer ba hover-bg-mid-gray br-pill">

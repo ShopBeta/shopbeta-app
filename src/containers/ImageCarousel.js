@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import img from '../images/nike.jpg';
 import img1 from '../images/coolshoe-3.jpg';
 import img2 from '../images/balenciaga.jpg';
@@ -6,6 +7,24 @@ import img3 from '../images/Puma Sneekers.jpg';
 import Carousel from 'react-material-ui-carousel';
 
 function Carousell(props) {
+
+    const [data, setData] = useState({})
+
+    useEffect(() => {
+        fetch("https://shopbeta-app.herokuapp.com/products", {
+            method: "GET",
+            headers: {
+                'Accept' : 'application/json, text/plain',
+                'Content-Type' : 'application/json'
+            },
+        })
+        .then((res) => res.json())
+        .then((data) => setData(data))
+        .catch((err) => {
+            console.log(err.message)
+        })
+    }, [])
+
     const items = [
         {
             image: <img src={img} width="460px" height="300px" className="br3" alt="First slide" />,
@@ -23,7 +42,7 @@ function Carousell(props) {
             description: 'Math Student'
         },
         {
-            image: <img src={img3} width="460px" height="300px" className="br3" alt="Third slide" />,
+            image: <img src={data.images} width="460px" height="300px" className="br3" alt="Third slide" />,
             name: 'Pitsu Coma',
             description: 'Math Student'
         },

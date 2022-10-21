@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
 
 
 
-const PostProduct = ({ handleShut }) => {
+const PostProduct = ({ handleShut, name, images, description, price, oldprice, category }) => {
 
     const [open, setOpen] = useState(false)
 
@@ -27,14 +27,42 @@ const PostProduct = ({ handleShut }) => {
         setOpen(true)
     }
 
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzRlODRkMDllNmQ0NTcwNzZiZTYzN2QiLCJpYXQiOjE2NjYyODYxNDJ9.Tl_cK7rmzYsdXmfFFzGVaBstGSRRZVhN8NrDvCh77HA"
+    
+    const product = async () => {
+        const product = {
+            name: document.querySelector('.name').value,
+            images: document.querySelector('.images').value,
+            description: document.querySelector('.description').value,
+            category: document.querySelector('.category').value,
+            price: document.querySelector('.price').value,
+            oldprice: document.querySelector('.oldprice').value
+        }
+
+        await fetch("http://localhost:3000/products", {
+            method: "POST",
+            headers: {
+                'Authorization' : 'Bearer ' + token,
+                'Accept' : 'application/json, text/plain',
+                'Content-Type' : 'application/json'
+            },
+            body: JSON.stringify(product)
+        })
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((err) => {
+            console.log(err.message)
+        })
+    }
+
     const classes = useStyles()
-    const handleSubmit1 = e => {
+    const handleSubmit = e => {
         e.preventDefault()
-        handleShut()
+        product()
     }
     return(
-            <div className={classes.root} onSubmit={handleSubmit1}>
-                <form action="https://shopbeta-app.herokuapp.com/products" method="post">  
+            <div className={classes.root}>
+                <form onSubmit={handleSubmit}>  
                     <Dialog open={open} handClick={handClick} />
                     <div className="tr pb2">
                         <small onClick={handleShut} className="icon-close f3 hover-red"></small>
@@ -42,16 +70,16 @@ const PostProduct = ({ handleShut }) => {
                     <div style={{ overflowY: 'scroll', height: '400px', width: '500px'}} className="pa3 code pv3 tj">
                             <div className="tl pv2">
                                 <p className="pv1 f5 fw5">Product's Name</p>
-                                <input type="text" name="name" className="br3 ba pa2 w-100" required placeholder="Product's name" />
+                                <input type="text" name="name" value={name} className="name br3 ba pa2 w-100" required placeholder="Product's name" />
                             </div>
                             <div className="tl pv2">
                                 <p className="pv1 f5 fw5">Description</p>
                                 <p className="pv2">
-                                    <textarea id="myInput" name="description" className="br3 ba pa2 w-100 h3" required placeholder="What's on your mind?" aria-label="With textarea"></textarea>
+                                    <textarea id="myInput" value={description} name="description" className="description br3 ba pa2 w-100 h3" required placeholder="What's on your mind?" aria-label="With textarea"></textarea>
                                 </p>
                             </div>
                             <p className="f5 fw5 pv2" for="Category">Category</p>
-                            <select className="f5 pa1 br3 ba w-100" name="category" id="Category">
+                            <select className="category f5 pa1 br3 ba w-100" value={category} name="category" id="Category">
                                 <option id="Women Fashion" name="Women Fashion">Women Fashion</option>
                                 <option id="Men Clothing" name="Men Clothing">Men Clothing</option>
                                 <option id="Phone and Accessories" name="Phone and Accessories">Phone and Accessories</option>
@@ -70,19 +98,19 @@ const PostProduct = ({ handleShut }) => {
                                 </select>
                                 </span>
                                 <span>
-                                    <input type="number" name="price" className="br3 ba pa2 w-100 fw5 w-80" required placeholder="80 maybe?" />
+                                    <input type="number" name="price" value={price} className="price br3 ba pa2 w-100 fw5 w-80" required placeholder="80 maybe?" />
                                 </span>
                             </div>
                             <div className="tl pv2">
                             <p className="pv1 f5 fw5">Old Price</p>
                                 <span>
-                                    <input type="number" name="oldprice" className="br3 line-through ba pa2 w-100 fw5 w-80" required placeholder="95 maybe?" />
+                                    <input type="number" name="oldprice" value={oldprice} className="oldprice br3 line-through ba pa2 w-100 fw5 w-80" required placeholder="95 maybe?" />
                                 </span>
                             </div>
                             <p className="pv2">
                                 <p className="f5 fw5">Add Image</p>
                                 <div className="pv2 br-pill">
-                                    <input type="file" name="images" className="pa3 w-90 ba br3" id="customFile" />
+                                    <input type="file" name="images" value={images} className="images pa3 w-90 ba br3" id="customFile" />
                                 </div>
                             </p>
                             <div>
@@ -102,8 +130,8 @@ const PostProduct = ({ handleShut }) => {
                                 </div>
                             </div>
             </div>
-                <div onClick={handClickShow} className="pv2 tc grow">
-                    <button onClick={handleSubmit1} type="submit" variant="contained" className="ph5 pa2 white mars pointer ba hover-bg-mid-gray br-pill">
+                <div className="pv2 tc grow">
+                    <button onClick={handClickShow} type="submit" variant="contained" className="ph5 pa2 white mars pointer ba hover-bg-mid-gray br-pill">
                         Post Product
                     </button>
                 </div>

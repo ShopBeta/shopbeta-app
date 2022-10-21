@@ -7,7 +7,13 @@ const NetworkCardList = ({ users }) => {
     const [data, setData] = useState({})
 
     useEffect(() => {
-        fetch("https://shopbeta-app.herokuapp.com/user/followers")
+        fetch("http://localhost:3000/user/followers", {
+            method: "GET",
+            headers: {
+                'Accept' : 'application/json, text/plain',
+                'Content-Type' : 'application/json'
+            },
+        })
         .then((res) => res.json())
         .then((data) => setData(data))
         .catch((err) => {

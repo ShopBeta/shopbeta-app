@@ -3,14 +3,28 @@ import React from "react";
 import { useState } from "react";
 import '../Home.css';
 import SideBar from '../../components/SideBar';
-import { users } from "../../containers/Users";
 import CardList from '../../containers/CardList';
 import Scroll from '../../containers/Scroll';
 import SearchBox from "../../components/SearchBox";
 import Preloader from "../../components/Preloader";
 
 
-const SearchPage = () => {
+const SearchPage = async () => {
+    
+    const [data, setData] = useState({})
+
+        await fetch("http://localhost:3000/products", {
+            method: "GET",
+            headers: {
+                'Accept' : 'application/json, text/plain',
+                'Content-Type' : 'application/json'
+            },
+        })
+        .then((res) => res.json())
+        .then((data) => setData(data))
+        .catch((err) => {
+            console.log(err.message)
+        })
 
     const [searchField, setSearchField] = useState("")
 
@@ -20,10 +34,10 @@ const SearchPage = () => {
 
     render()
 
-    const filteredCards = users.filter(
-        users => {
+    const filteredCards = data.filter(
+        data => {
             return (
-                users
+                data
                 .name
                 .toLowerCase()
                 .includes(searchField.toLowerCase())
@@ -55,7 +69,7 @@ const SearchPage = () => {
                         <div className="flex flex-wrap tc">
                             <h3 className="orange code fw7 f4 ph3 pb2">Search results</h3>
                         <Scroll>
-                            <CardList users={filteredCards} />
+                            <CardList data={filteredCards} />
                         </Scroll>
                     </div>
                 </div>

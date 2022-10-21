@@ -12,14 +12,23 @@ const User = () => {
 
     const [data, setData] = useState({})
 
+    const token = localStorage.getItem("token")
+
     useEffect(() => {
-        fetch("https://shopbeta-app.herokuapp.com/users/me", { method: "GET" })
+        fetch("http://localhost:3000/users/me", {
+            method: "GET",
+            headers: {
+                'Authorization' : 'Bearer ' + token,
+                'Accept' : 'application/json, text/plain',
+                'Content-Type' : 'application/json'
+            },
+        })
         .then((res) => res.json())
         .then((data) => setData(data))
         .catch((err) => {
             console.log(err.message)
         })
-    }, [])
+    }, [token])
 
     const [open, setOpen] = useState(false)
 
@@ -31,11 +40,48 @@ const User = () => {
         setOpen(true)
     }
 
+    const submit = async () => {
+        const user = {
+            email: 'ronelmichael14@gmail.com',
+            password: '47723532'
+        }
+
+        await fetch("http://localhost:3000/users/login", {
+            method: 'POST',
+            headers: {
+            'Content-type': "application/json",
+            },
+            body: JSON.stringify(user)
+    })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => {
+        console.log(err.message)
+    })
+    }
+
+    const logout = async () => {
+        await fetch("https://shopbeta-app.herokuapp.com/users/logout", {
+            method: 'POST',
+            headers: {
+                'Authorization' : 'Bearer ' + token,
+                'Accept' : 'application/json, text/plain',
+                'Content-Type' : 'application/json'
+            }
+        })
+        .catch((err) => {
+            console.log(err.message)
+        })
+    }
+
     const followClick = async event => {
         event.currentTarget.innerHTML = 'following';
 
-        await fetch("https://shopbeta-app.herokuapp.com/user/:id/follow", {
+        await fetch(`http://localhost:3000/user/${data._id}/follow`, {
             method: 'POST',
+            'Authorization' : 'Bearer ' + token,
+            'Accept' : 'application/json, text/plain',
+            'Content-Type' : 'application/json'
         })
         .then(res => res.json())
         .then(data => console.log(data))
@@ -48,8 +94,11 @@ const User = () => {
         event.currentTarget.style.color = 'orange';
         event.currentTarget.style.fontWeight = 'bold';
 
-        await fetch("https://shopbeta-app.herokuapp.com/user/:id/unfollow", {
+        await fetch(`https://shopbeta-app.herokuapp.com/user/${data._id}/unfollow`, {
             method: 'POST',
+            'Authorization' : 'Bearer ' + token,
+            'Accept' : 'application/json, text/plain',
+            'Content-Type' : 'application/json'
         })
         .then(res => res.json())
         .then(data => console.log(data))
@@ -63,13 +112,15 @@ const User = () => {
         event.currentTarget.style.fontWeight = 'bold';
 
         const count = {
-            hearts: '23' + 1
+            hearts: data.hearts + 1
         }
 
-        await fetch("https://shopbeta-app.herokuapp.com/users/:id/hearts", {
+        await fetch(`http://localhost:3000/users/${data._id}/hearts`, {
             method: 'POST',
             headers: {
-            'Content-type': "application/json"
+                'Authorization' : 'Bearer ' + token,
+                'Accept' : 'application/json, text/plain',
+                'Content-Type' : 'application/json'
         },
             body: JSON.stringify(count)
         })
@@ -91,14 +142,12 @@ const User = () => {
                         <img src={img} alt="avatar" className="br-100 b--white" width="320px" height="320px"></img>
                         <div className="tr">
                         <Link to={"/assets/Vendor/Settings"} className="link white"><span title="Edit profile" className="icon-settings f4 ph2 pointer fw5 hover-bg-light-blue br3 pa2 grow"></span></Link>
-                        <Link to={"/assets/indexes/Login Boxed.html"} className="link white"><span title="Logout" className="icon-logout ph3 fw5 f4 hover-bg-light-blue br3 pa2 pointer grow"></span></Link>
+                        <Link to={"#"} className="link white"><span title="Logout" onClick={logout} className="icon-logout ph3 fw5 f4 hover-bg-light-blue br3 pa2 pointer grow"></span></Link>
                         <h5 className="f3 code white fw5 tc">
                             {data.username}
-                            {/* Ronel Michael */}
                             </h5>
                         <p className="tc pa2 white code f6 fw6">
                             {data.location}
-                            {/* Santiago, CA . */}
                             <small className="icon-globe ph2"></small></p>
                     </div>
                 </div>
@@ -106,18 +155,20 @@ const User = () => {
             <div className="pv2 code fw6">
                 <p className="f3 fw5 orange code">
                     {data.followers}
-                    {/* 85,904  */}
                     <small className="icon-user"></small></p>
+                <p className="pv3 f4">
+                    <p className="fw5"><small className="ph2"></small>
+                        {data.bio}
+                    </p>
+                </p>
                 <p className="pv3 f4">
                     <p><small className="ph2"></small>
                         {data.phonenumber}
-                        {/* 0808077489 */}
                     </p>
                     <p><small className="ph2"></small>
                         {data.email}
-                        {/* ronelmike@gmail.com */}
                     </p>
-                    <p><small className="ph2"></small><a href="/webpage" className="link">www.ronelbeautyshop.com</a></p>
+                    <p><small className="ph2"></small><a href={data.website} target={data.website} className="link">{data.website}</a></p>
                 </p>
             </div>
             <span className="b">
@@ -127,7 +178,7 @@ const User = () => {
                 <button onClick={followClick} className="bg-transparent f6 pointer ba hover-bg-mid-gray pa2 tc br-pill ph5 ma1 grow b fw6">Follow</button>
             </span>
             <span className="b">
-                <small onClick={heartClick} title="Recommend" className="icon-heart fw5 pointer hover-bg-light-blue br3 f4 pa2 ph3 grow fw5">{data.hearts}</small>
+                <small onClick={heartClick} title="Recommend" className="icon-heart fw5 pointer hover-bg-light-blue br3 f4 pa2 ph3 grow fw5"><small className="ph2 code">{data.hearts}</small></small>
             </span>
             <span className="b">
                 <small onClick={unfollowClick} title="Unfollow" className="icon-user-unfollow pointer fw5 hover-bg-light-blue br3 f4 pa2 ph3 grow fw5"></small>
@@ -136,6 +187,9 @@ const User = () => {
                 <Link to={"../Assets/Adbillboard"} className="link black">
                     <small title="Share" className="icon-share fw5 hover-bg-light-blue br3 f4 pa2 ph3 grow fw5"></small>
                 </Link>
+            </span>
+            <span className="b">
+                <small onClick={submit} title="Unfollow" className="icon-home pointer fw5 hover-bg-light-blue br3 f4 pa2 ph3 grow fw5"> test</small>
             </span>
             </span>
             </div>
@@ -147,7 +201,6 @@ const User = () => {
             <div className="tc">
                 <p className="fw6 f4 pv3">Best rated from <small className="code ph2 f4">
                     {data.username}
-                    {/* Ronel Michael */}
                     </small></p>
                 <CardList users={users} />
             </div>
