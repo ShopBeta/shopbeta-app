@@ -1,11 +1,9 @@
 import React from "react";
-// import { useState } from "react";
 import { Link } from "react-router-dom";
 import img from '../images/2.jpg';
 
 const FollowCard = ({ id, username, location, hearts }) => {
 
-    // const [data, setData ] = useState({})
     const token = localStorage.getItem("token")
 
     const buttonClick = async event => {
@@ -26,10 +24,10 @@ const FollowCard = ({ id, username, location, hearts }) => {
         event.currentTarget.style.fontWeight = 'bold';
 
         const count = {
-            hearts: {hearts} + 1
+            hearts: hearts + 1
         }
 
-        await fetch(`http://localhost:3000/users/${id}/hearts`, {
+        await fetch(`https://shopbeta-app.herokuapp.com/users/${id}/hearts`, {
             method: 'POST',
             headers: {
                 'Authorization' : 'Bearer ' + token,

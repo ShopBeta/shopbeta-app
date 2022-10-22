@@ -35,11 +35,12 @@ const PostProduct = ({ handleShut, name, images, description, price, oldprice, c
             images: document.querySelector('.images').value,
             description: document.querySelector('.description').value,
             category: document.querySelector('.category').value,
+            currency: document.querySelector('.currency').value,
             price: document.querySelector('.price').value,
             oldprice: document.querySelector('.oldprice').value
         }
 
-        await fetch("http://localhost:3000/products", {
+        await fetch("https://shopbeta-app.herokuapp.com/products", {
             method: "POST",
             headers: {
                 'Authorization' : 'Bearer ' + token,
@@ -91,7 +92,7 @@ const PostProduct = ({ handleShut, name, images, description, price, oldprice, c
                             <div className="tl pv2">
                             <p className="pv1 f5 fw5">Price</p>
                                 <span>
-                                <select className="pa2 f5 fw5 b--transparent" name="currency" id="Category">
+                                <select className="currency pa2 f5 fw5 b--transparent" name="currency" id="Category">
                                     <option id="Women Fashion" name="Women Fashion">$</option>
                                     <option id="Women Fashion" name="Women Fashion">$</option>
                                     <option id="Women Fashion" name="Women Fashion">$</option>

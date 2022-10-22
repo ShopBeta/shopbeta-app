@@ -1,20 +1,22 @@
 import React from 'react';
 import CartItem from '../components/CartItem';
 
-const CartList = ({ data, id, name, heart, price, oldprice, rating}) => {
+const CartList = ({ cart, id, name, heart, currency, price, oldprice, rating}) => {
     return (
         <div>
             {
-                data.map((data, i) => {
+                cart.map((cart, i) => {
                     return (
                         <CartItem 
                         key={i} 
-                        id={data._id} 
-                        name={data.name} 
-                        heart={data.heart}
-                        price={data.price}
-                        oldprice={data.oldprice}
-                        rating={data.rating}
+                        id={cart._id} 
+                        name={cart.product.name} 
+                        heart={cart.product.heart}
+                        currency={cart.product.currency}
+                        price={cart.product.price}
+                        oldprice={cart.product.oldprice}
+                        rating={cart.product.rating}
+                        username={cart.product.owner}
                         />
                     )
                 })

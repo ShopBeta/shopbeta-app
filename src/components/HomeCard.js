@@ -6,12 +6,12 @@ import PurchaseModal from "../containers/PurchaseModal";
 
 const HomeCard = () => {
 
-    const [data, setData] = useState({})
+    const [product, setProduct] = useState({})
 
     const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzRlODRkMDllNmQ0NTcwNzZiZTYzN2QiLCJpYXQiOjE2NjYyODYxNDJ9.Tl_cK7rmzYsdXmfFFzGVaBstGSRRZVhN8NrDvCh77HA"
 
     useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/products/${data._id}`, {
+        fetch(`https://shopbeta-app.herokuapp.com/products/${product._id}`, {
             method: "GET",
             headers: {
                 'Authorization' : 'Bearer ' + token,
@@ -20,11 +20,11 @@ const HomeCard = () => {
             },
         })
         .then((res) => res.json())
-        .then((data) => setData(data))
+        .then((data) => setProduct(data))
         .catch((err) => {
             console.log(err.message)
         })
-    }, [data._id, token])
+    }, [product._id, token])
 
     const [open, setOpen] = useState(false)
 
@@ -61,12 +61,12 @@ const HomeCard = () => {
                     <button className="bg-red br4 white ba ph3 pv1 b"><small>-5%</small></button>
                 <div className="tc pa3 code">
                    <h3>
-                        {data.name}
+                        {product.name}
                         {/* White Tesla Roadstar */}
                    </h3>
                 </div>
                    <div className="bg pa2 pv3 br3 b--black">
-                        <span className="tl f3 pv3 code fw5">${data.price}</span>
+                        <span className="tl f3 pv3 code fw5">${product.price}</span>
                         <div className="tc">
                           <button onClick={handleShow} className="bg-orange white pointer ba w-100 pa3 br-pill grow"><small className="tc">Purchase</small></button>
                         </div>

@@ -1,37 +1,19 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
 import { PostCard, SharedPost, TextPost, ProfilePost } from '../components/PostCard';
 
-const PostCardList = ({ users }) => {
-
-    const [data, setData] = useState({})
-
-    useEffect(() => {
-        fetch("https://shopbeta-app.herokuapp.com/feed", {
-            method: "GET",
-            headers: {
-                'Accept' : 'application/json, text/plain',
-                'Content-Type' : 'application/json'
-            },
-        })
-        .then((res) => res.json())
-        .then((data) => setData(data))
-        .catch((err) => {
-            console.log(err.message)
-        })
-    }, [])
-
-
+const PostCardList = ({ feed, id, name, text, media }) => {
     return (
         <div>
             {
-                users.map((user, i) => {
+                feed.map((feed, i) => {
                     return (
                         <PostCard 
                         key={i} 
-                        id={users[i].id} 
-                        name={users[i].name} 
-                        email={users[i].email}
+                        id={feed._id} 
+                        name={feed.name}
+                        owner={feed.owner} 
+                        text={feed.text}
+                        media={feed.media}
                         />
                     )
                 })
@@ -59,17 +41,19 @@ const SharedPostList = ({ users }) => {
     );
 }
 
-const TextPostList = ({ users }) => {
+const TextPostList = ({ feed, id, text, hearts, media }) => {
     return (
         <div>
             {
-                users.map((user, i) => {
+                feed.map((feed, i) => {
                     return (
                         <TextPost 
                         key={i} 
-                        id={users[i].id} 
-                        name={users[i].name} 
-                        email={users[i].email}
+                        id={feed._id} 
+                        owner={feed.owner} 
+                        text={feed.text}
+                        hearts={feed.hearts}
+                        media={feed.media}
                         />
                     )
                 })
@@ -79,17 +63,19 @@ const TextPostList = ({ users }) => {
 }
 
 
-const ProfilePostList = ({ users }) => {
+const ProfilePostList = ({ feed, id, owner, text, media }) => {
     return (
         <div>
             {
-                users.map((user, i) => {
+                feed.map((feed, i) => {
                     return (
                         <ProfilePost 
                         key={i} 
-                        id={users[i].id} 
-                        name={users[i].name} 
-                        email={users[i].email}
+                        id={feed.id} 
+                        name={feed.name}
+                        owner={feed.owner} 
+                        text={feed.text}
+                        media={feed.media}
                         />
                     )
                 })

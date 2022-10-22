@@ -5,7 +5,7 @@ import { Typography } from "@material-ui/core";
 import { Carousell, Item } from "../containers/ImageCarousel";
 import PurchaseModal from "../containers/PurchaseModal";
 
-const CartItem = ({ name, username, price, oldprice, rating, description, image }) => {
+const CartItem = ({ id, name, username, currency, price, oldprice, rating }) => {
 
     const [open, setOpen] = useState(false)
 
@@ -16,6 +16,23 @@ const CartItem = ({ name, username, price, oldprice, rating, description, image 
     const handleShow = () => {
         setOpen(true)
     }
+    const token = localStorage.getItem("token")
+
+    const deleteClick = async () => {
+        await fetch(`https://shopbeta-app.herokuapp.com/cart/${id}`, {
+            method: "DELETE",
+            headers: {
+                'Authorization' : 'Bearer ' + token,
+                'Accept' : 'application/json, text/plain',
+                'Content-Type' : 'application/json'
+            },
+        })
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((err) => {
+                console.log(err.message)
+            })
+}
 
     return(
         <div className="pv2">
@@ -35,8 +52,8 @@ const CartItem = ({ name, username, price, oldprice, rating, description, image 
                                         </p>
                                     <div>
                                 <div className="f4 pt4 code">
-                                    <small className="bg-light-blue ph3 f3 pa2 br-pill">${price}</small> 
-                                    <small className="pa2 line-through">${oldprice}</small>
+                                    <small className="bg-light-blue ph3 f3 pa2 br-pill">{currency}{price}</small> 
+                                    <small className="pa2 line-through">{currency}{oldprice}</small>
                                 </div>
                                 <div className="pv2 tr">
                                     <span className="icon-star"></span>
@@ -51,7 +68,7 @@ const CartItem = ({ name, username, price, oldprice, rating, description, image 
                                         <button onClick={handleShow} className="pa3 white br-pill ba ph5 grow button-bg hover-bg-mid-gray fw6">Purchase</button>
                                     </span>
                                     <input type="number" className="pa1 code w3 tc mr3" />
-                                    <span className="pv3"><small title="delete" className="icon-trash f4 ph2 hover-red pa2 hover-bg-light-blue br3 blue grow"></small></span>   
+                                    <span onClick={deleteClick} className="pv3"><small title="delete" className="icon-trash f4 ph2 hover-red pa2 hover-bg-light-blue br3 blue grow"></small></span>   
                                 </div>
                              </div>
                         </div>

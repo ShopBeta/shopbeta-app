@@ -6,7 +6,7 @@ import { Typography } from "@material-ui/core";
 import ModalDialog from "../containers/ModalDialog";
 import PurchaseModal from "../containers/PurchaseModal";
 
-const Card = ({ id, name, images, heart, price, oldprice, rating }) => {
+const Card = ({ id, name, images, heart, currency, price, oldprice, rating }) => {
 
     const token = localStorage.getItem("token")
 
@@ -20,7 +20,7 @@ const Card = ({ id, name, images, heart, price, oldprice, rating }) => {
                 heart: heart + 1
             }
 
-            await fetch(`https://localhost:3000/${id}/hearts`, {
+            await fetch(`https://shopbeta-app.herokuapp.com/product/${id}/hearts`, {
                 method: "POST",
                 headers: {
                     'Authorization' : 'Bearer ' + token,
@@ -30,7 +30,7 @@ const Card = ({ id, name, images, heart, price, oldprice, rating }) => {
                 body: JSON.stringify(count)
             })
             .then((res) => res.json())
-            .then((data) => setData(data))
+            .then((data) => console.log(data))
             .catch((err) => {
                 console.log(err.message)
             })
@@ -39,15 +39,17 @@ const Card = ({ id, name, images, heart, price, oldprice, rating }) => {
     const addCart = event => {
 
         const product = {
+            product : {
             name: name,
             heart: heart,
             images: images,
             price: price,
             oldprice: price,
             rating: rating
+            }
         }
 
-        fetch("http://localhost:3000/cart", {
+        fetch(`https://shopbeta-app.herokuapp.com/cart/${id}`, {
             method: "POST",
             headers: {
                 'Authorization' : 'Bearer ' + token,
@@ -106,8 +108,8 @@ const Card = ({ id, name, images, heart, price, oldprice, rating }) => {
                         </span>
                     <div>
                         <div className="f4 pt1 code">
-                            <small className="bg-light-blue ph3 f3 pa2 br-pill">${price}</small> 
-                            <small className="pa2 line-through">${oldprice}</small>
+                            <small className="bg-light-blue ph3 f3 pa2 br-pill">{currency}{price}</small> 
+                            <small className="pa2 line-through">{currency}{oldprice}</small>
                         </div>
                         <div className="pv2 tr">
                             <span className="icon-star"></span>

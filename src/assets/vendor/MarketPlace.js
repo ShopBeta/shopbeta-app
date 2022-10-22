@@ -10,13 +10,13 @@ import Preloader from "../../components/Preloader";
 
 const Products = () => {
 
-    const [data, setData] = useState([])
+    const [product, setProduct] = useState([])
     useEffect(() => {
-        fetch("http://localhost:3000/products", {
+        fetch("https://shopbeta-app.herokuapp.com/products", {
             method: "GET",
         })
         .then((res) => res.json())
-        .then((data) => setData(data))
+        .then((data) => setProduct(data))
         .catch((err) => {
             console.log(err.message)
         })
@@ -31,7 +31,7 @@ const Products = () => {
             <div className="flex flex-wrap tc">
                 <h3 className="shop fw6 code f3 ph3 pb2">Products</h3>
                     <Scroll>
-                        <CardList data={data} />
+                        <CardList product={product} />
                     </Scroll>
                 </div>
             </div>

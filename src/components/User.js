@@ -14,7 +14,7 @@ const User = () => {
     const [user, setUser] = useState({})
 
     useEffect(() => {
-        fetch("http://localhost:3000/users/me", {
+        fetch("https://shopbeta-app.herokuapp.com/users/me", {
             method: "GET",
             headers: {
                 'Authorization' : 'Bearer ' + token,
@@ -29,13 +29,13 @@ const User = () => {
         })
     }, [token])
 
-    const [data, setData] = useState([])
+    const [product, setProduct] = useState([])
     useEffect(() => {
-        fetch("http://localhost:3000/products", {
+        fetch("https://shopbeta-app.herokuapp.com/products", {
             method: "GET",
         })
         .then((res) => res.json())
-        .then((data) => setData(data))
+        .then((data) => setProduct(data))
         .catch((err) => {
             console.log(err.message)
         })
@@ -88,7 +88,7 @@ const User = () => {
     const followClick = async event => {
         event.currentTarget.innerHTML = 'following';
 
-        await fetch(`http://localhost:3000/user/${data._id}/follow`, {
+        await fetch(`https://shopbeta-app.herokuapp.com/user/${user._id}/follow`, {
             method: 'POST',
             'Authorization' : 'Bearer ' + token,
             'Accept' : 'application/json, text/plain',
@@ -105,7 +105,7 @@ const User = () => {
         event.currentTarget.style.color = 'orange';
         event.currentTarget.style.fontWeight = 'bold';
 
-        await fetch(`https://shopbeta-app.herokuapp.com/user/${data._id}/unfollow`, {
+        await fetch(`https://shopbeta-app.herokuapp.com/user/${user._id}/unfollow`, {
             method: 'POST',
             'Authorization' : 'Bearer ' + token,
             'Accept' : 'application/json, text/plain',
@@ -123,10 +123,10 @@ const User = () => {
         event.currentTarget.style.fontWeight = 'bold';
 
         const count = {
-            hearts: data.hearts + 1
+            hearts: user.hearts + 1
         }
 
-        await fetch(`http://localhost:3000/users/${data._id}/hearts`, {
+        await fetch(`https://shopbeta-app.herokuapp.com/users/${user._id}/hearts`, {
             method: 'POST',
             headers: {
                 'Authorization' : 'Bearer ' + token,
@@ -149,32 +149,32 @@ const User = () => {
                     Account Profile
                 </p>
               <div className="tc b--black br3 pa3">
-                    <div className="cover br4">
-                        <img src={img} alt="avatar" className="br-100 b--white" width="320px" height="320px"></img>
+                    <div className="br4">
+                        <img src={user.avatar} alt="avatar" className="br-100 b--white" width="320px" height="320px"></img>
                         <div className="tr">
-                        <Link to={"/assets/Vendor/Settings"} className="link white"><span title="Edit profile" className="icon-settings f4 ph2 pointer fw5 hover-bg-light-blue br3 pa2 grow"></span></Link>
-                        <Link to={"#"} className="link white"><span title="Logout" onClick={logout} className="icon-logout ph3 fw5 f4 hover-bg-light-blue br3 pa2 pointer grow"></span></Link>
-                        <h5 className="f3 code white fw5 tc">
+                        <Link to={"/assets/Vendor/Settings"} className="link black"><span title="Edit profile" className="icon-settings f4 ph2 pointer fw5 hover-bg-light-blue br3 pa2 grow"></span></Link>
+                        <Link to={"#"} className="link"><span title="Logout" onClick={logout} className="icon-logout ph3 fw5 f4 hover-bg-light-blue br3 pa2 pointer grow"></span></Link>
+                        <h5 className="f3 fw5 tc">
                             {user.username}
                             </h5>
-                        <p className="tc pa2 white code f6 fw6">
+                        <p className="tc pa2 f6 fw5">
                             {user.location}
                             <small className="icon-globe ph2"></small></p>
                     </div>
                 </div>
             <span className="">
-            <div className="pv2 code fw6">
-                <p className="f3 fw5 orange code">
+            <div className="pv2">
+                <p className="f3 orange">
                     {user.followers}
                     {/* {user.followers.length} */}
                     <small className="ph2">followers</small>
                     <small className="icon-user"></small></p>
                 <p className="pv3 f4">
-                    <p className="fw5"><small className="ph2"></small>
+                    <p className=""><small className="ph2"></small>
                         {user.bio}
                     </p>
                 </p>
-                <p className="pv3 f4">
+                <p className="pv3 fw5 f4">
                     <p><small className="ph2"></small>
                         {user.phonenumber}
                     </p>
@@ -191,7 +191,7 @@ const User = () => {
                 <button onClick={followClick} className="bg-transparent f6 pointer ba hover-bg-mid-gray pa2 tc br-pill ph5 ma1 grow b fw6">Follow</button>
             </span>
             <span className="b">
-                <small onClick={heartClick} title="Recommend" className="icon-heart fw5 pointer hover-bg-light-blue br3 f4 pa2 ph3 grow fw5"><small className="ph2 code">{data.hearts}</small></small>
+                <small onClick={heartClick} title="Recommend" className="icon-heart fw5 pointer hover-bg-light-blue br3 f4 pa2 ph3 grow fw5"><small className="ph2 code">{user.hearts}</small></small>
             </span>
             <span className="b">
                 <small onClick={unfollowClick} title="Unfollow" className="icon-user-unfollow pointer fw5 hover-bg-light-blue br3 f4 pa2 ph3 grow fw5"></small>
@@ -201,9 +201,9 @@ const User = () => {
                     <small title="Share" className="icon-share fw5 hover-bg-light-blue br3 f4 pa2 ph3 grow fw5"></small>
                 </Link>
             </span>
-            <span className="b">
+            {/* <span className="b">
                 <small onClick={submit} title="Unfollow" className="icon-home pointer fw5 hover-bg-light-blue br3 f4 pa2 ph3 grow fw5"> test</small>
-            </span>
+            </span> */}
             </span>
             </div>
             <div className="tc">
@@ -215,7 +215,7 @@ const User = () => {
                 <p className="fw6 f4 pv3">Best rated from <small className="code ph2 f4">
                     {user.username}
                     </small></p>
-                <CardList data={data} />
+                <CardList product={product} />
             </div>
         </div>
     )

@@ -1,7 +1,7 @@
 import React from "react";
 import 'tachyons';
+import { useState, useEffect } from "react";
 import NetworkCardList from "./NetworkCardList";
-import { users } from "./Users";
 
 const PostAd = ({text, file}) => {
 
@@ -13,7 +13,7 @@ const PostAd = ({text, file}) => {
             media: document.querySelector('.media').value,
         }
 
-        await fetch("http://localhost:3000/feed", {
+        await fetch("https://shopbeta-app.herokuapp.com/feed", {
             method: "POST",
             headers: {
                 'Authorization' : 'Bearer ' + token,
@@ -28,6 +28,24 @@ const PostAd = ({text, file}) => {
             console.log(err.message)
         })
     }
+
+    
+    const [users, setUsers] = useState([])
+
+    useEffect(() => {
+        fetch("https://shopbeta-app.herokuapp.com/users", {
+            method: "GET",
+            headers: {
+                'Accept' : 'application/json, text/plain',
+                'Content-Type' : 'application/json'
+            },
+        })
+        .then((res) => res.json())
+        .then((data) => setUsers(data))
+        .catch((err) => {
+            console.log(err.message)
+        })
+    }, [])
 
     const handleSubmit = e => {
         e.preventDefault()

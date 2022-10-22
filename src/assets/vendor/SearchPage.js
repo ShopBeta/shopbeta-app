@@ -11,13 +11,13 @@ import Preloader from "../../components/Preloader";
 
 const SearchPage = () => {
     
-    const [data, setData] = useState([])
+    const [product, setProduct] = useState([])
     useEffect(() => {
-        fetch("http://localhost:3000/products", {
+        fetch("https://shopbeta-app.herokuapp.com/products", {
             method: "GET",
         })
         .then((res) => res.json())
-        .then((data) => setData(data))
+        .then((data) => setProduct(data))
         .catch((err) => {
             console.log(err.message)
         })
@@ -31,10 +31,10 @@ const SearchPage = () => {
 
     render()
 
-    const filteredCards = data.filter(
-        data => {
+    const filteredCards = product.filter(
+        product => {
             return (
-                data
+                product
                 .name
                 .toLowerCase()
                 .includes(searchField.toLowerCase())
@@ -52,7 +52,7 @@ const SearchPage = () => {
                                         <small title="Random" className="icon-layers hover-orange br3 f3 pa2 pointer ph3 fw5"></small>
                                 </span>
                                 <span className="pt4">
-                                    <small title="Alphabetical order" className="icon-list hover-bg-light pointer blue br3 f4 pa2 ph3 grow fw5"></small>
+                                    <small title="Alphabetical order" className="icon-list hover-bg-light-blue pointer br3 f4 pa2 ph3 grow fw5"></small>
                                 </span>
                                 <span className="pt4">
                                     <small title="Ascending order" className="icon-arrow-up-circle pointer hover-bg-light-blue br3 f4 pa2 ph3 grow fw5"></small>
@@ -66,7 +66,7 @@ const SearchPage = () => {
                         <div className="flex flex-wrap tc">
                             <h3 className="orange code fw7 f4 ph3 pb2">Search results</h3>
                         <Scroll>
-                            <CardList data={filteredCards} />
+                            <CardList product={filteredCards} />
                         </Scroll>
                     </div>
                 </div>

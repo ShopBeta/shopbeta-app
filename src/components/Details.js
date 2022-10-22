@@ -19,11 +19,11 @@ const useStyles = makeStyles(theme => ({
 
 const Details = ({ handleClose }) => {
 
-    const [data, setData] = useState({})
+    const [product, setProduct] = useState({})
     const token = localStorage.getItem("token")
 
     useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/products/${data._id}`, {
+        fetch(`https://shopbeta-app.herokuapp.com/products/${product._id}`, {
             method: "GET",
             headers: {
                 'Authorization' : 'Bearer ' + token,
@@ -32,11 +32,11 @@ const Details = ({ handleClose }) => {
             },
         })
         .then((res) => res.json())
-        .then((data) => setData(data))
+        .then((data) => setProduct(data))
         .catch((err) => {
             console.log(err.message)
         })
-    }, [data._id, token])
+    }, [product._id, token])
 
     const [open, setOpen] = useState(false)
 
@@ -70,11 +70,11 @@ const Details = ({ handleClose }) => {
                         {/* <img src={img} alt="shoes" className="br4 pv2" width="310px" height="230px"></img> */}
                     </div>
                     <div className="tl pv2">
-                        <h3>{data.name}</h3>
+                        <h3>{product.name}</h3>
                     </div>
                         <p className="pv2 fw7">Description</p>
                             <p>
-                                {data.description}
+                                {product.description}
                                 {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium est assumenda distinctio sint repellat beatae dolore magnam pariatur ipsum, et deserunt asperiores doloribus sit at esse corrupti facilis aperiam nihil.
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum alias qui eaque mollitia, iure totam fugit possimus, harum necessitatibus odio non, consequuntur laudantium. Est iste sequi suscipit laboriosam dolorum repellat. */}
                             </p>
@@ -91,8 +91,8 @@ const Details = ({ handleClose }) => {
                         </div> 
                     </div>
                     <div className="f4 pv3 code">
-                        <span className="bg-light-blue ph3 f3 pa2 br-pill">${data.price}</span> 
-                        <span className="pa2 code line-through">${data.oldprice}</span>
+                        <span className="bg-light-blue ph3 f3 pa2 br-pill">${product.price}</span> 
+                        <span className="pa2 code line-through">${product.oldprice}</span>
                     </div>
                     <div className="pv2 tr">
                         <span className="icon-star"></span>
@@ -100,7 +100,7 @@ const Details = ({ handleClose }) => {
                         <span className="icon-star grow"></span>
                         <span className="icon-star grow"></span>
                         <span className="icon-star grow"></span>
-                        <span className="pl2 code fw6 f5">{data.rating}</span>
+                        <span className="pl2 code fw6 f5">{product.rating}</span>
                     </div>
                     <div className="pv1 tc grow">
                         <button onClick={handleShow} type="submit" variant="contained" className="ph5 white pa2 bg-orange ba hover-bg-mid-gray br-pill">

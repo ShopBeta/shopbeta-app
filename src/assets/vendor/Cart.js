@@ -8,13 +8,13 @@ import Preloader from "../../components/Preloader";
 
 const Cart = () => {
 
-    const [data, setData] = useState([])
+    const [cart, setCart] = useState([])
     useEffect(() => {
-        fetch("http://localhost:3000/cart", {
+        fetch("https://shopbeta-app.herokuapp.com/cart", {
             method: "GET",
         })
         .then((res) => res.json())
-        .then((data) => setData(data))
+        .then((data) => setCart(data))
         .catch((err) => {
             console.log(err.message)
         })
@@ -29,10 +29,10 @@ const Cart = () => {
             <div className="flex flex-wrap">
                 <h3 className="code fw7 f3 orange ph3">
                     <small className="icon-basket ph2 f3"></small>
-                    <small className="ph3 code">{data.length}</small>
+                    <small className="ph3 code">{cart.length} items</small>
                 </h3>
             <div style={{ overflowY: 'scroll', height: '480px'}} className="pa2">
-                <CartList data={data} />
+                <CartList cart={cart} />
                     </div>
                 </div>
             </div>

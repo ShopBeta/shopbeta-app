@@ -1,17 +1,35 @@
 import { render } from "@testing-library/react";
 import React from "react";
 import './Home.css'
+import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import SideBar from "../components/SideBar";
 import SocialCard from "../components/SocialCard"
 import HomeCard from "../components/HomeCard";
 import { SuggCard1, SuggCard2, SuggCard3, SuggCard4, SuggCard5 } from "../components/SuggCard";
 import Preloader from "../components/Preloader";
-import { users } from "../containers/Users";
 import FollowCardList from "../containers/FollowCardList";
 
 
 const Home = () => {
+
+    const [users, setUsers] = useState([])
+
+    useEffect(() => {
+        fetch("https://shopbeta-app.herokuapp.com/users", {
+            method: "GET",
+            headers: {
+                'Accept' : 'application/json, text/plain',
+                'Content-Type' : 'application/json'
+            },
+        })
+        .then((res) => res.json())
+        .then((data) => setUsers(data))
+        .catch((err) => {
+            console.log(err.message)
+        })
+    }, [])
+
     render()
         return(
                <div className="home">

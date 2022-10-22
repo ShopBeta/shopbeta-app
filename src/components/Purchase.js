@@ -14,14 +14,14 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-const Purchase = ({ handleShut }) => {
+const Purchase = ({ handleShut, id }) => {
 
-    const [data, setData] = useState({})
+    const [product, setProduct] = useState({})
 
     useEffect(() => {
-        fetch("https://shopbeta-app.herokuapp.com/products/:id")
+        fetch(`https://shopbeta-app.herokuapp.com/products/${id}`)
         .then(res => res.json())
-        .then(data => setData(data))
+        .then(data => setProduct(data))
         .catch((err) => {
             console.log(err.message)
         })
@@ -52,7 +52,7 @@ const Purchase = ({ handleShut }) => {
                     <small onClick={handleShut} className="icon-close f3 hover-red"></small>
                     <div className="tl f4">
                         <p>
-                            <b>{data.name}</b>
+                            <b>{product.name}</b>
                         </p>
                     </div>
                 </div>
@@ -109,8 +109,8 @@ const Purchase = ({ handleShut }) => {
                     </div>
                 </div>
                 <div className="f4 pv2">
-                    <span className="bg-light-blue ph3 f3 code pa2 br-pill">$25</span> 
-                        <span className="pa2 code line-through">$29</span>
+                    <span className="bg-light-blue ph3 f3 code pa2 br-pill">${product.price}</span> 
+                        <span className="pa2 code line-through">${product.oldprice}</span>
                 </div>
                 <div className="pv2 tr">
                     <span className="icon-star"></span>
@@ -118,7 +118,7 @@ const Purchase = ({ handleShut }) => {
                     <span className="icon-star grow"></span>
                     <span className="icon-star grow"></span>
                     <span className="icon-star grow"></span>
-                    <span className="pl2 code fw6 f5">4.7</span>
+                    <span className="pl2 code fw6 f5">{product.rating}</span>
                 </div>
                 <div className="pv1 tc grow">
                     <button onClick={handleShow} type="submit" variant="contained" className="ph5 white pa3 bg-orange pointer ba hover-bg-mid-gray br-pill">

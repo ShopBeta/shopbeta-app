@@ -55,7 +55,7 @@ const changes = async () => {
         contactEmail: document.querySelector('.contactEmail').value
     }
 
-    await fetch("http://localhost:3000/users/me", {
+    await fetch("https://shopbeta-app.herokuapp.com/users/me", {
         method: "PATCH",
         headers: {
             'Authorization' : 'Bearer ' + token,
