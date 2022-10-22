@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from '../components/Card'
 
-const CardList = ({ data }) => {
+const CardList = ({ data, id, name, heart, price, oldprice, rating }) => {
     return (
         <div>
             {
@@ -9,12 +9,12 @@ const CardList = ({ data }) => {
                     return (
                         <Card 
                         key={i} 
-                        id={data[i].id} 
-                        name={data[i].name} 
-                        heart={data[i].heart}
-                        price={data[i].price}
-                        oldprice={data[i].oldprice}
-                        rating={data[i].rating}
+                        id={data._id} 
+                        name={data.name} 
+                        heart={data.heart}
+                        price={data.price}
+                        oldprice={data.oldprice}
+                        rating={data.rating}
                         />
                     )
                 })

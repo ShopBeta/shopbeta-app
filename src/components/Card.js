@@ -36,18 +36,18 @@ const Card = ({ id, name, images, heart, price, oldprice, rating }) => {
             })
     }
 
-    const addCart = async event => {
+    const addCart = event => {
 
         const product = {
-            name: {name},
-            heart: {heart},
-            images: {images},
-            price: {price},
-            oldprice: {price},
-            rating: {rating}
+            name: name,
+            heart: heart,
+            images: images,
+            price: price,
+            oldprice: price,
+            rating: rating
         }
 
-        await fetch("https://shopbeta-app.herokuapp.com/products/cart", {
+        fetch("http://localhost:3000/cart", {
             method: "POST",
             headers: {
                 'Authorization' : 'Bearer ' + token,

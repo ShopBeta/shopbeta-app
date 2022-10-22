@@ -4,15 +4,14 @@ import 'tachyons';
 import img from '../images/avatar3.png';
 import { SuggCard2, SuggCard3, SuggCard4 } from "./SuggCard";
 import CardList from "../containers/CardList";
-import { users } from "../containers/Users";
 import { Link } from "react-router-dom";
 import MessageModal from "../containers/MessageModal";
 
 const User = () => { 
 
-    const [data, setData] = useState({})
-
     const token = localStorage.getItem("token")
+
+    const [user, setUser] = useState({})
 
     useEffect(() => {
         fetch("http://localhost:3000/users/me", {
@@ -24,11 +23,23 @@ const User = () => {
             },
         })
         .then((res) => res.json())
-        .then((data) => setData(data))
+        .then((data) => setUser(data))
         .catch((err) => {
             console.log(err.message)
         })
     }, [token])
+
+    const [data, setData] = useState([])
+    useEffect(() => {
+        fetch("http://localhost:3000/products", {
+            method: "GET",
+        })
+        .then((res) => res.json())
+        .then((data) => setData(data))
+        .catch((err) => {
+            console.log(err.message)
+        })
+    }, [])
 
     const [open, setOpen] = useState(false)
 
@@ -144,31 +155,33 @@ const User = () => {
                         <Link to={"/assets/Vendor/Settings"} className="link white"><span title="Edit profile" className="icon-settings f4 ph2 pointer fw5 hover-bg-light-blue br3 pa2 grow"></span></Link>
                         <Link to={"#"} className="link white"><span title="Logout" onClick={logout} className="icon-logout ph3 fw5 f4 hover-bg-light-blue br3 pa2 pointer grow"></span></Link>
                         <h5 className="f3 code white fw5 tc">
-                            {data.username}
+                            {user.username}
                             </h5>
                         <p className="tc pa2 white code f6 fw6">
-                            {data.location}
+                            {user.location}
                             <small className="icon-globe ph2"></small></p>
                     </div>
                 </div>
             <span className="">
             <div className="pv2 code fw6">
                 <p className="f3 fw5 orange code">
-                    {data.followers}
+                    {user.followers}
+                    {/* {user.followers.length} */}
+                    <small className="ph2">followers</small>
                     <small className="icon-user"></small></p>
                 <p className="pv3 f4">
                     <p className="fw5"><small className="ph2"></small>
-                        {data.bio}
+                        {user.bio}
                     </p>
                 </p>
                 <p className="pv3 f4">
                     <p><small className="ph2"></small>
-                        {data.phonenumber}
+                        {user.phonenumber}
                     </p>
                     <p><small className="ph2"></small>
-                        {data.email}
+                        {user.email}
                     </p>
-                    <p><small className="ph2"></small><a href={data.website} target={data.website} className="link">{data.website}</a></p>
+                    <p><small className="ph2"></small><a href={user.website} target={user.website} className="link">{user.website}</a></p>
                 </p>
             </div>
             <span className="b">
@@ -200,9 +213,9 @@ const User = () => {
             </div>
             <div className="tc">
                 <p className="fw6 f4 pv3">Best rated from <small className="code ph2 f4">
-                    {data.username}
+                    {user.username}
                     </small></p>
-                <CardList users={users} />
+                <CardList data={data} />
             </div>
         </div>
     )

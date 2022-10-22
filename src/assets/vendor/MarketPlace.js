@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import '../Home.css';
 import { useState } from "react";
 import Navbar from '../../components/Navbar';
@@ -10,23 +10,17 @@ import Preloader from "../../components/Preloader";
 
 const Products = () => {
 
-    const [data, setData] = useState({})
-
+    const [data, setData] = useState([])
+    useEffect(() => {
         fetch("http://localhost:3000/products", {
             method: "GET",
-            headers: {
-                'Accept' : 'application/json, text/plain',
-                'Content-Type' : 'application/json'
-            },
         })
         .then((res) => res.json())
-        .then((data) => {
-            console.log(data)
-            setData(data)
-        })
+        .then((data) => setData(data))
         .catch((err) => {
             console.log(err.message)
         })
+    }, [])
 
     return(
         <div className="home">
@@ -37,7 +31,7 @@ const Products = () => {
             <div className="flex flex-wrap tc">
                 <h3 className="shop fw6 code f3 ph3 pb2">Products</h3>
                     <Scroll>
-                        <CardList data={setData} />
+                        <CardList data={data} />
                     </Scroll>
                 </div>
             </div>

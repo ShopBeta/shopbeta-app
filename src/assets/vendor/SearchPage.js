@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import '../Home.css';
 import SideBar from '../../components/SideBar';
 import CardList from '../../containers/CardList';
@@ -9,22 +9,19 @@ import SearchBox from "../../components/SearchBox";
 import Preloader from "../../components/Preloader";
 
 
-const SearchPage = async () => {
+const SearchPage = () => {
     
-    const [data, setData] = useState({})
-
-        await fetch("http://localhost:3000/products", {
+    const [data, setData] = useState([])
+    useEffect(() => {
+        fetch("http://localhost:3000/products", {
             method: "GET",
-            headers: {
-                'Accept' : 'application/json, text/plain',
-                'Content-Type' : 'application/json'
-            },
         })
         .then((res) => res.json())
         .then((data) => setData(data))
         .catch((err) => {
             console.log(err.message)
         })
+    }, [])
 
     const [searchField, setSearchField] = useState("")
 

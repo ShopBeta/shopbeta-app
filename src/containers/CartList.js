@@ -1,41 +1,20 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
 import CartItem from '../components/CartItem';
 
-const CartList = ({ users }) => {
-
-    const [data, setData] = useState({})
-
-    useEffect(() => {
-        fetch("https://shopbeta-app.herokuapp.com/cart", {
-            method: "GET",
-            headers: {
-                'Accept' : 'application/json, text/plain',
-                'Content-Type' : 'application/json'
-            },
-        })
-        .then((res) => res.json())
-        .then((data) => setData(data))
-        .catch((err) => {
-            console.log(err.message)
-        })
-    }, [])
-
+const CartList = ({ data, id, name, heart, price, oldprice, rating}) => {
     return (
         <div>
             {
-                users.map((user, i) => {
+                data.map((data, i) => {
                     return (
                         <CartItem 
                         key={i} 
-                        id={users[i].id} 
-                        name={users[i].name} 
-                        username={users[i].username}
-                        heartcount={users[i].heartcount}
-                        discount={users[i].discount}
-                        price={users[i].price}
-                        oldprice={users[i].oldprice}
-                        rating={users[i].rating}
+                        id={data._id} 
+                        name={data.name} 
+                        heart={data.heart}
+                        price={data.price}
+                        oldprice={data.oldprice}
+                        rating={data.rating}
                         />
                     )
                 })
