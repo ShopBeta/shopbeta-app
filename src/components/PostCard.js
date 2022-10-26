@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import 'tachyons';
-import vid from "../images/Often Whatsapp status.mp4"
+// import vid from "../images/Often Whatsapp status.mp4"
 import img2 from '../images/space scenery.jpg';
 import imgP from '../images/nike.jpg';
 import './simple-line-icons/css/simple-line-icons.css';
@@ -11,12 +11,28 @@ import { Link } from "react-router-dom";
 import { Carousell, Item } from "../containers/ImageCarousel";
 
 
-const TextPost = ({ name, id, owner, text, hearts }) => {
+const TextPost = ({ name, id, owner, text, hearts, time}) => {
 
     const token = localStorage.getItem("token")
+    console.log(owner)
+
+    const [user, setUser] = useState({})
+    useEffect(() => {
+        fetch(`https://shopbeta-app.herokuapp.com/users/${owner}`, {
+            method: "GET",
+            headers: {
+                'Accept' : 'application/json, text/plain',
+                'Content-Type' : 'application/json'
+            },
+        })
+        .then((res) => res.json())
+        .then((data) => setUser(data))
+        .catch((err) => {
+            console.log(err.message)
+        })
+    }, [owner])
 
     const [comment, setComment] = useState({})
-
     useEffect(() => {
         fetch(`https://shopbeta-app.herokuapp.com/feed/${id}/comments`, {
             method: "GET",
@@ -30,9 +46,7 @@ const TextPost = ({ name, id, owner, text, hearts }) => {
         .catch((err) => {
             console.log(err.message)
         })
-    }, [comment._id])
-
-    const [data, setData] = useState({})
+    }, [id])
 
     const buttonClick = async event => {
 
@@ -41,18 +55,26 @@ const TextPost = ({ name, id, owner, text, hearts }) => {
         event.currentTarget.style.fontWeight = 'bold';
         event.currentTarget.innerHTML = 'following';
 
-           await fetch(`https://shopbeta-app.herokuapp.com/user/${owner}/follow`, {
+           await fetch(`https://shopbeta-app.herokuapp.com/user/${user._id}/follow`, {
                 method: "POST",
                 headers: {
                     'Authorization' : 'Bearer ' + token,
                     'Content-Type' : 'application/json'
-                },
+                }
             })
             .then((res) => res.json())
-            .then((data) => console.log(data))
+            .then((data) => {
+                console.log(data)
+                if (data.follow === true) {
+                    event.currentTarget.innerHTML = 'following';
+                } else {
+                    event.currentTarget.innerHTML = 'follow';
+                }
+            })
             .catch((err) => {
                 console.log(err.message)
             })
+
     }
 
     const heartClick = async event => {
@@ -106,7 +128,7 @@ const TextPost = ({ name, id, owner, text, hearts }) => {
         <div className="dib">
             <CommentModal handleShow={show} handleShut={handleShut} />
             <ShareModal handleOpen={open} handleClose={handleClose} />
-                <div className="flex flex-wrap bg-white b--black br3 ma3 pa2 bw2 shadow-5">
+                <div style={{width: '855px'}} className="flex flex-wrap bg-white b--black br3 ma3 pa2 bw2 shadow-5">
                     <div className="w-40 f6">
                         <div className="tc ba ma3 br4">
                             <p className="f2 mid-gray pa6">Aa</p>
@@ -118,32 +140,32 @@ const TextPost = ({ name, id, owner, text, hearts }) => {
                         <img src={img2} alt="Accessories..." className="br-100" width="50px" height="50px" />
                     </Link>
                     <span className="pa2 fw5 f5">
-                        <Link className="black link" to={"/Assets/Vendor/Profile"}>{owner}</Link>
-                        <p className="f6 code fw3">Santiago, CA .<small className="icon-globe ph2"></small></p>
-                        <p className="f6 pa1 code fw3">12min ago</p>
+                        <Link className="black link" to={"/Assets/Vendor/Profile"}>{user.username}</Link>
+                        <p className="f6 code fw3">{user.location}<small className="icon-globe ph2"></small></p>
+                        <p className="f6 pa1 code fw3">{time}</p>
                     </span>
                     <span className="tr">
                         <button onClick={buttonClick} className="pa1 pointer ph3 bg hover-bg-mid-gray code b--black-50 br-pill">Follow</button>
                     </span>
                 </div>
                 <div style={{ overflowY: 'auto', height: '200px'}} className="pa2 tj">
-                    <p className="w-100">
+                    <p style={{lineHeight: "20px"}} className="w-100">
                         {text}
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium est assumenda distinctio sint repellat beatae dolore magnam pariatur ipsum, et deserunt asperiores doloribus sit at esse corrupti facilis aperiam nihil.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum alias qui eaque mollitia, iure totam fugit possimus, harum necessitatibus odio non, consequuntur laudantium. Est iste sequi suscipit laboriosam dolorum repellat.
                     </p>
                 </div>
                 <div className="pa2">
                     <span onClick={heartClick} className="pa2 fw5 ph3 icon-heart pointer f4 grow icon-share">
                         <small id="increment" className="pa1 code">{hearts}</small>
                     </span>
-                    <span onClick={handleShow} className="pa2 pointer f4 fw5 grow icon-bubble">
-                        <small className="pa1 code">{comment.length}</small>
+                    <span onClick={() => {window.history.pushState(null, "", id)}} className="pa2 pointer f4 fw5 grow icon-bubble">
+                        <small onClick={handleShow} className="pa1 code">{comment.length}</small>
                     </span>
-                    <span onClick={handleOpen} className="pa2 fw5 f4 grow pointer icon-share">
-                        <small className="pa1 code"></small>
+                    <span onClick={() => {window.history.pushState(null, "", id)}} className="pa2 fw5 f4 grow pointer icon-share">
+                        <small onClick={handleOpen} className="pa1 code"></small>
                     </span>
+                    <span onClick={() => {window.history.pushState(null, "", id)}}>
                         <input onClick={handleShow} type="text" className="pa2 br-pill b--black-50 w-50" placeholder="Comment here..." />
+                    </span>
                     </div>
                 </div>
             </div>

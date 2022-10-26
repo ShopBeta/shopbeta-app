@@ -1,51 +1,49 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import 'tachyons';
-import { SuggCard2, SuggCard3, SuggCard4 } from "./SuggCard";
-import CardList from "../containers/CardList";
+// import img from '../images/avatar3.png';
+import { SuggCard2, SuggCard3, SuggCard4 } from "../components/SuggCard";
+// import CardList from "./CardList";
 import { Link } from "react-router-dom";
-import MessageModal from "../containers/MessageModal";
+import MessageModal from "./MessageModal";
 
 const User = () => { 
     
     const token = localStorage.getItem("token")
     console.log(token)
+    const pathname = window.location.pathname.split('/')
+    const path = pathname[3]
+    console.log(path)
   
-    const [user, setUser] = useState({})
-
+    const [user, setUser] = useState([])
     useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/users/me`, {
-            method: "GET",
-            headers: {
-                'Authorization' : 'Bearer ' + token,
-                'Accept' : 'application/json, text/plain',
-                'Content-Type' : 'application/json'
-            },
+        fetch(`https://shopbeta-app.herokuapp.com/users/${path}`, {
+            method: 'POST',
         })
         .then((res) => res.json())
         .then((data) => setUser(data))
         .catch((err) => {
             console.log(err.message)
         })
-    }, [token])
+        
+    }, [path])
 
-
-    const [product, setProduct] = useState([])
-    useEffect(() => {
-        fetch("https://shopbeta-app.herokuapp.com/products/me", {
-            method: "GET",
-            headers: {
-                'Authorization' : 'Bearer ' + token,
-                'Accept' : 'application/json, text/plain',
-                'Content-Type' : 'application/json'
-            },
-        })
-        .then((res) => res.json())
-        .then((data) => setProduct(data))
-        .catch((err) => {
-            console.log(err.message)
-        })
-    }, [token])
+    // const [product, setProduct] = useState([])
+    // useEffect(() => {
+    //     fetch("http://localhost:3000/products", {
+    //         method: "GET",
+    //         headers: {
+    //             'Authorization' : 'Bearer ' + token,
+    //             'Accept' : 'application/json, text/plain',
+    //             'Content-Type' : 'application/json'
+    //         },
+    //     })
+    //     .then((res) => res.json())
+    //     .then((data) => setProduct(data))
+    //     .catch((err) => {
+    //         console.log(err.message)
+    //     })
+    // }, [token])
 
     const [open, setOpen] = useState(false)
 
@@ -55,20 +53,6 @@ const User = () => {
 
     const handleShow = () => {
         setOpen(true)
-    }
-
-    const logout = async () => {
-        await fetch("https://shopbeta-app.herokuapp.com/users/logout", {
-            method: 'POST',
-            headers: {
-                'Authorization' : 'Bearer ' + token,
-                'Accept' : 'application/json, text/plain',
-                'Content-Type' : 'application/json'
-            }
-        })
-        .catch((err) => {
-            console.log(err.message)
-        })
     }
 
     const followClick = async event => {
@@ -152,8 +136,6 @@ const User = () => {
                     <div className="br4">
                         <img src={user.avatar} alt="avatar" className="br-100 b--white" width="320px" height="320px"></img>
                         <div className="tr">
-                        <Link to={"/assets/Vendor/Settings"} className="link black"><span title="Edit profile" className="icon-settings f4 ph2 pointer fw5 hover-bg-light-blue br3 pa2 grow"></span></Link>
-                        <Link to={"#"} className="link"><span title="Logout" onClick={logout} className="icon-logout ph3 fw5 f4 hover-bg-light-blue br3 pa2 pointer grow"></span></Link>
                         <h5 className="f3 fw5 tc">
                             {user.username}
                             </h5>
@@ -208,12 +190,12 @@ const User = () => {
                 <SuggCard2 />
                 <SuggCard3 />
             </div>
-            <div className="tc">
+            {/* <div className="tc">
                 <p className="fw6 f4 pv3">Best rated from <small className="code ph2 f4">
                     {user.username}
                     </small></p>
                 <CardList product={product} />
-            </div>
+            </div> */}
         </div>
     )
 }

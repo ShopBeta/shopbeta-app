@@ -1,4 +1,3 @@
-import { render } from "@testing-library/react";
 import React from "react";
 import './Home.css'
 import { useState, useEffect } from "react";
@@ -12,9 +11,8 @@ import FollowCardList from "../containers/FollowCardList";
 
 
 const Home = () => {
-
+    
     const [users, setUsers] = useState([])
-
     useEffect(() => {
         fetch("https://shopbeta-app.herokuapp.com/users", {
             method: "GET",
@@ -30,31 +28,32 @@ const Home = () => {
         })
     }, [])
 
-    render()
         return(
                <div className="home">
-                <Preloader />
+                <div>
+                    <Preloader />
                     <Navbar />
                     <div className="dt dt--fixed">
                         <SideBar />
                        <div className="ma2">
                             <div className="tc pb2">
-                            <HomeCard />
+                                <HomeCard />
                             </div>
-                        <p className="f4 pa2 orange monospace">
+                        {/* <p className="f4 pa2 orange monospace">
                             Recommended
-                        </p>
+                        </p> */}
                             <SuggCard1 />
                             <SuggCard2 />
                             <SuggCard3 />
                             <SuggCard4 />
                             <SuggCard5 />
-                        <div style={{ overflowY: 'scroll', height: '172px'}}>
+                        <div style={{ overflowY: 'scroll', height: '165px'}}>
                             <FollowCardList users={users} />
                         </div>
                        </div>
                         <SocialCard />
                     </div>
+                </div>
             </div>
         );
 }

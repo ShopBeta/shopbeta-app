@@ -25,7 +25,6 @@ const Navbar = () => {
         <nav className="bg-transparent" position="sticky">
             <Toolbar>
             <div style={{color: '#ee9617', fontSize: '21px', fontWeight: '500', letterSpacing: '-1px'}}>ShopBeta</div>
-                {/* <img src={img} alt="user logo" className="br-100" width="65px" height="55px" /> */}
                 <Typography variant="h6" className={classes.title}>
                 <p>
                    <Link to={"/assets/vendor/SearchPage"}><SearchBox /></Link>

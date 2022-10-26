@@ -19,15 +19,7 @@ const Purchase = ({ handleShut, id }) => {
     const [product, setProduct] = useState({})
     const pathname = window.location.pathname.split('/')
     const path = pathname[3]
-
-    useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/products/${path}`)
-        .then(res => res.json())
-        .then(data => setProduct(data))
-        .catch((err) => {
-            console.log(err.message)
-        })
-    }, [path])
+    console.log(path)
 
     useEffect(() => {
         fetch(`https://shopbeta-app.herokuapp.com/cart/${path}`)

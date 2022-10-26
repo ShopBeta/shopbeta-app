@@ -1,9 +1,13 @@
 import React from "react";
 import 'tachyons';
-import img from '../images/nike.jpg';
+import img from '../images/Women Fashion.png';
 import img1 from '../images/men clothing.jpg'
 import img2 from '../images/images-3.jpg'
 import img3 from '../images/apple-macbook.jpg'
+import img4 from '../images/Beauty shop.jpg'
+import img5 from '../images/Bonus.jpg'
+import img6 from '../images/nike.jpg'
+import img7 from '../images/LOW POWER 1.webp'
 import '../components/simple-line-icons/css/simple-line-icons.css';
 
 export const catData = [
@@ -33,25 +37,25 @@ export const catData = [
     },
     {
         Title: <p className="fw5 code">Home and Garden</p>,
-        Image:  <div className="tc"><img src={img} alt="home and garden" className="br4 pv1 w-100" width="310px" height="230px"></img></div>,
+        Image:  <div className="tc"><img src={img7} alt="home and garden" className="br4 pv1 w-100" width="310px" height="230px"></img></div>,
         Icon: <h1><p className="icon-support shop pa2 fw5 tc h1"></p></h1>,
         Link: '/assets/vendor/Marketplace'
     },
     {
         Title: <p className="fw5 code">Beauty and Health</p>,
-        Image:  <div className="tc"><img src={img} alt="beauty and health" className="br4 pv1 w-100" width="310px" height="230px"></img></div>,
+        Image:  <div className="tc"><img src={img4} alt="beauty and health" className="br4 pv1 w-100" width="310px" height="230px"></img></div>,
         Icon: <h1><p className="icon-heart shop pa2 fw5 tc h1"></p></h1>,
         Link: '/assets/vendor/Marketplace'
     },
     {
         Title: <p className="fw5 code">Sports and Entertainment </p>,
-        Image:  <div className="tc"><img src={img} alt="sport and entertainment" className="br4 pv1 w-100" width="310px" height="230px"></img></div>,
+        Image:  <div className="tc"><img src={img6} alt="sport and entertainment" className="br4 pv1 w-100" width="310px" height="230px"></img></div>,
         Icon: <h1><p className="icon-game-controller shop pa2 fw5 tc h1"></p></h1>,
         Link: '/Sports & Entertainment'
     },
     {
         Title: <p className="fw5 code">Bonus Bundles</p>,
-        Image:  <div className="tc"><img src={img} alt="bonus bondles" className="br4 pv1 w-100" width="310px" height="230px"></img></div>,
+        Image:  <div className="tc"><img src={img5} alt="bonus bondles" className="br4 pv1 w-100" width="310px" height="230px"></img></div>,
         Icon: <h1><p className="icon-emotsmile shop pa2 fw5 tc h1"></p></h1>,
         Link: '/Bonus Bundles'
     }

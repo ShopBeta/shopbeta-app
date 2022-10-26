@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import React, { useState } from "react";
+import React from "react";
 import '../Home.css'
 import Navbar from "../../components/Navbar";
 import SideBar from "../../components/SideBar";
@@ -9,7 +9,7 @@ import Preloader from "../../components/Preloader";
 
 const Settings = ({username, bio, email, password, phonenumber, location, avatar, website, contactEmail}) => {
 
-const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzRlODRkMDllNmQ0NTcwNzZiZTYzN2QiLCJpYXQiOjE2NjYyODYxNDJ9.Tl_cK7rmzYsdXmfFFzGVaBstGSRRZVhN8NrDvCh77HA"
+const token = localStorage.getItem("token")
     
 const logoutAllClick = async () => {
             await fetch("https://shopbeta-app.herokuapp.com/users/logoutAll", {

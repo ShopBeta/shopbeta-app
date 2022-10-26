@@ -1,6 +1,7 @@
 import React from "react";
 import 'tachyons';
 import { useState, useEffect } from "react";
+import Dialog from "../containers/Dialog";
 import NetworkCardList from "./NetworkCardList";
 
 const PostAd = ({text, file}) => {
@@ -47,6 +48,16 @@ const PostAd = ({text, file}) => {
         })
     }, [])
 
+    const [open, setOpen] = useState(false)
+
+    const handClick = () => {
+        setOpen(false)
+    }
+    
+    const handClickShow = () => {
+        setOpen(true)
+    }
+
     const handleSubmit = e => {
         e.preventDefault()
         feed()
@@ -54,6 +65,7 @@ const PostAd = ({text, file}) => {
 
     return(
         <div className="dtc w-25 pr2">
+            <Dialog open={open} handClick={handClick} />
                 <div className="pv2">
                     <form onSubmit={handleSubmit} className="tl br3 pa3 ma2">
                         <p className="pv1 orange fw6 code tc f4">
@@ -71,7 +83,7 @@ const PostAd = ({text, file}) => {
                                     <textarea id="myInput" name="text" value={text} className="text pa2 br3 ba w-100 h3" placeholder="What's on your mind?" aria-label="With textarea" required></textarea>
                                 </p>
                             </p>
-                            <div className="tc">
+                            <div onClick={handClickShow} className="tc">
                                 <button type="submit" className="pa2 w-100 br-pill ba grow mars hover-bg-mid-gray">
                                     <small className="fw5 white code f5">Post Ad</small>
                                 </button>

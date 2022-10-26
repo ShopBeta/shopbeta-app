@@ -1,7 +1,7 @@
 import React from 'react';
 import Comment from '../components/Comment'
 
-const CommentList = ({ comment, text, file, time}) => {
+const CommentList = ({ comment, text, file, owner, time}) => {
     return (
         <div>
             {
@@ -12,6 +12,7 @@ const CommentList = ({ comment, text, file, time}) => {
                         id={comment._id} 
                         text={comment.text} 
                         file={comment.file}
+                        owner={comment.owner}
                         time={comment.createdAt}
                         />
                     )

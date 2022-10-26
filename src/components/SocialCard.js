@@ -48,7 +48,7 @@ const SocialCard = () => {
                             <small>MESSAGES</small>
                             <span className="tr orange f7 code fw7 pl4">new: 5</span>
                         </p>
-                        <div className="pv2 w-100" style={{ overflowY: 'auto', height: '380px'}} >
+                        <div className="pv2 w-100" style={{ overflowY: 'auto', height: '400px'}} >
                         <div onClick={handleShow} className="pv1 pointer grow tj flex flex-wrap">
                             <img src={img} alt="Accessories..." className="br-100" width="50px" height="50px" />
                             <span className="pa2 fw5 f5">

@@ -13,6 +13,7 @@ const CartList = ({ cart, id, name, heart, currency, price, oldprice, rating}) =
                         name={cart.product.name} 
                         heart={cart.product.heart}
                         currency={cart.product.currency}
+                        description={cart.product.description}
                         price={cart.product.price}
                         oldprice={cart.product.oldprice}
                         rating={cart.product.rating}

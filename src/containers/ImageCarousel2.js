@@ -11,7 +11,7 @@ function Carousell(props) {
     const [data, setData] = useState({})
 
     useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/products/${path}`, {
+        fetch(`https://shopbeta-app.herokuapp.com/cart/${path}`, {
             method: "GET",
             headers: {
                 'Accept' : 'application/json, text/plain',

@@ -20,10 +20,13 @@ const useStyles = makeStyles(theme => ({
 const Details = ({ handleClose }) => {
 
     const [product, setProduct] = useState({})
+    const pathname = window.location.pathname.split('/')
+    const path = pathname[3]
+    console.log(path)
     const token = localStorage.getItem("token")
 
     useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/products/${product._id}`, {
+        fetch(`https://shopbeta-app.herokuapp.com/products/${path}`, {
             method: "GET",
             headers: {
                 'Authorization' : 'Bearer ' + token,
@@ -36,7 +39,7 @@ const Details = ({ handleClose }) => {
         .catch((err) => {
             console.log(err.message)
         })
-    }, [product._id, token])
+    }, [path, token])
 
     const [open, setOpen] = useState(false)
 
@@ -83,7 +86,7 @@ const Details = ({ handleClose }) => {
                             <small className="icon-info pr2 f5 blue"></small>
                                 Item Review
                         </h3>
-                            <div className="lh3 code fw5 f5">
+                            <div style={{lineHeight: "20px", fontSize: "13.5px"}} className="fw5">
                                 <p className="pa2">Check the quality of item(s) and make sure it meets your expectations before making payment.</p>
                                 <p className="pa2">Avoid anything that appears too good to be true, such as unrealistically low price and promises of making quick money</p>
                                 <p className="pa2">Never give out you financial information including bank account details , eBay/PayPal info and any other information that could be misused.</p>
@@ -91,8 +94,8 @@ const Details = ({ handleClose }) => {
                         </div> 
                     </div>
                     <div className="f4 pv3 code">
-                        <span className="bg-light-blue ph3 f3 pa2 br-pill">${product.price}</span> 
-                        <span className="pa2 code line-through">${product.oldprice}</span>
+                        <span className="bg-light-blue ph3 f3 pa2 br-pill">{product.currency}{product.price}</span> 
+                        <span className="pa2 code line-through">{product.currency}{product.oldprice}</span>
                     </div>
                     <div className="pv2 tr">
                         <span className="icon-star"></span>

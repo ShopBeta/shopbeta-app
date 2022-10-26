@@ -1,7 +1,7 @@
 import React from 'react';
 import { PostCard, SharedPost, TextPost, ProfilePost } from '../components/PostCard';
 
-const PostCardList = ({ feed, id, name, text, media }) => {
+const PostCardList = ({ feed, id, name, text, media, time }) => {
     return (
         <div>
             {
@@ -14,6 +14,7 @@ const PostCardList = ({ feed, id, name, text, media }) => {
                         owner={feed.owner} 
                         text={feed.text}
                         media={feed.media}
+                        time={feed.createdAt}
                         />
                     )
                 })

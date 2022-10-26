@@ -7,14 +7,10 @@ import PurchaseModal from "../containers/PurchaseModal";
 const HomeCard = () => {
 
     const [product, setProduct] = useState({})
-
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzRlODRkMDllNmQ0NTcwNzZiZTYzN2QiLCJpYXQiOjE2NjYyODYxNDJ9.Tl_cK7rmzYsdXmfFFzGVaBstGSRRZVhN8NrDvCh77HA"
-
     useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/products/${product._id}`, {
+        fetch(`https://shopbeta-app.herokuapp.com/products`, {
             method: "GET",
             headers: {
-                'Authorization' : 'Bearer ' + token,
                 'Accept' : 'application/json, text/plain',
                 'Content-Type' : 'application/json'
             },
@@ -24,7 +20,7 @@ const HomeCard = () => {
         .catch((err) => {
             console.log(err.message)
         })
-    }, [product._id, token])
+    }, [])
 
     const [open, setOpen] = useState(false)
 
@@ -55,19 +51,32 @@ const HomeCard = () => {
         <div className="dib w-100">
                 <PurchaseModal handleShow={open} handleShut={handleShut} />
                 <ModalDialog handleOpen={show} handleClose={handleClose} />
-            <h3 className="f4 tl code orange">Sponsored</h3>
-            <div className="flex flex-wrap h5 bg-white b--black br3 ma2 pa2 bw2 shadow-4">
-                <div className="dtc w-50 tl pv4 ph2">
-                    <button className="bg-red br4 white ba ph3 pv1 b"><small>-5%</small></button>
-                <div className="tc pa3 code">
+            <p className="f4 tl pl2 code orange">Sponsored</p>
+            <div className="flex flex-wrap h6 bg-white b--black br3 ma2 pa2 bw2 shadow-4">
+                <div className="dtc w-50 tl pv3 ph2">
+                <p className="pv1 code f5">
+                    by Ronel
+                </p>
+                <div className="tc pt5 pa2 code">
                    <h3>
-                        {product.name}
-                        {/* White Tesla Roadstar */}
+                        {/* {product.name} */}
+                        White Macbook Laptop
                    </h3>
                 </div>
                    <div className="bg pa2 pv3 br3 b--black">
-                        <span className="tl f3 pv3 code fw5">${product.price}</span>
-                        <div className="tc">
+                        <span className="tl f3 pv3 code fw5">
+                            $250
+                            {/* {product.currency}{product.price} */}
+                        </span>
+                        <div className="pv2 tr">
+                            <span className="icon-star"></span>
+                            <span className="icon-star"></span>
+                            <span className="icon-star"></span>
+                            <span className="icon-star"></span>
+                            <span className="icon-star"></span>
+                            <span className="pl2 code fw6 f5">4.5</span>
+                        </div>
+                        <div onClick={() => {window.history.pushState(null, "", product._id)}} className="tc">
                           <button onClick={handleShow} className="bg-orange white pointer ba w-100 pa3 br-pill grow"><small className="tc">Purchase</small></button>
                         </div>
                    </div>

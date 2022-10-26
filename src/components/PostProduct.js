@@ -20,6 +20,7 @@ const PostProduct = ({ handleShut, name, images, description, price, oldprice, c
     const [open, setOpen] = useState(false)
 
     const handClick = () => {
+        handleShut()
         setOpen(false)
     }
     
@@ -27,7 +28,7 @@ const PostProduct = ({ handleShut, name, images, description, price, oldprice, c
         setOpen(true)
     }
 
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzRlODRkMDllNmQ0NTcwNzZiZTYzN2QiLCJpYXQiOjE2NjYyODYxNDJ9.Tl_cK7rmzYsdXmfFFzGVaBstGSRRZVhN8NrDvCh77HA"
+    const token = localStorage.getItem("token")
     
     const product = async () => {
         const product = {
@@ -94,8 +95,9 @@ const PostProduct = ({ handleShut, name, images, description, price, oldprice, c
                                 <span>
                                 <select className="currency pa2 f5 fw5 b--transparent" name="currency" id="Category">
                                     <option id="Women Fashion" name="Women Fashion">$</option>
-                                    <option id="Women Fashion" name="Women Fashion">$</option>
-                                    <option id="Women Fashion" name="Women Fashion">$</option>
+                                    <option id="Women Fashion" name="Women Fashion">£</option>
+                                    <option id="Women Fashion" name="Women Fashion">₦</option> 
+                                    <option id="Women Fashion" name="Women Fashion">GH¢</option> 
                                 </select>
                                 </span>
                                 <span>
