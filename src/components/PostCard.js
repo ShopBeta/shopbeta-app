@@ -2,16 +2,17 @@ import React from "react";
 import { useState, useEffect } from "react";
 import 'tachyons';
 // import vid from "../images/Often Whatsapp status.mp4"
-import img2 from '../images/space scenery.jpg';
+import img2 from '../images/home_wallpaper_2.jpg';
 import imgP from '../images/nike.jpg';
 import './simple-line-icons/css/simple-line-icons.css';
 import CommentModal from "../containers/CommentModal";
 import ShareModal from "../containers/ShareModal";
+import UserModal from "../containers/UserModal";
 import { Link } from "react-router-dom";
 import { Carousell, Item } from "../containers/ImageCarousel";
 
 
-const TextPost = ({ name, id, owner, text, hearts, time}) => {
+const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
 
     const token = localStorage.getItem("token")
     console.log(owner)
@@ -123,36 +124,39 @@ const TextPost = ({ name, id, owner, text, hearts, time}) => {
      //functon to handle payment modal open
     const handleOpen = () => {
         setOpen(true)
-    }       
+    }   
+    
     return(
-        <div className="dib">
+        <div style={{width: '750px'}} className="dib pl4">
+            <UserModal handleOpen={open} handleClose={handleClose} />
             <CommentModal handleShow={show} handleShut={handleShut} />
-            <ShareModal handleOpen={open} handleClose={handleClose} />
-                <div style={{width: '855px'}} className="flex flex-wrap bg-white b--black br3 ma3 pa2 bw2 shadow-5">
-                    <div className="w-40 f6">
-                        <div className="tc ba ma3 br4">
-                            <p className="f2 mid-gray pa6">Aa</p>
-                        </div>
-                </div>
-                <div className="w-60 tl">
-                <div className="tj flex flex-wrap">
-                    <Link to={"/Assets/Vendor/Profile"} className="link black">
-                        <img src={img2} alt="Accessories..." className="br-100" width="50px" height="50px" />
-                    </Link>
-                    <span className="pa2 fw5 f5">
-                        <Link className="black link" to={"/Assets/Vendor/Profile"}>{user.username}</Link>
-                        <p className="f6 code fw3">{user.location}<small className="icon-globe ph2"></small></p>
+            {/* <ShareModal handleOpen={open} handleClose={handleClose} /> */}
+                <div className="bg-white b--black br3 ma3 pa2 bw2 shadow-5">
+                <div className="tj flex f4 flex-wrap">
+                    <span  onClick={() => {window.history.pushState(null, "", id)}}>
+                        <img src={imgP} alt="avatar..." onClick={handleOpen} className="br-100 pointer" width="55px" height="55px" />
+                    </span>
+                    <span onClick={() => {window.history.pushState(null, "", id)}} className="pa2 pointer fw5">
+                        <span onClick={handleOpen}>{user.username}</span>
+                        <p className="f6 code fw3">{user.location}.<small className="icon-globe ph2"></small></p>
                         <p className="f6 pa1 code fw3">{time}</p>
                     </span>
                     <span className="tr">
                         <button onClick={buttonClick} className="pa1 pointer ph3 bg hover-bg-mid-gray code b--black-50 br-pill">Follow</button>
                     </span>
                 </div>
-                <div style={{ overflowY: 'auto', height: '200px'}} className="pa2 tj">
-                    <p style={{lineHeight: "20px"}} className="w-100">
+                <div className="pa2">
+                <div style={{ height: 'auto', textAlign: 'justify'}} className="pa2">
+                    <p style={{lineHeight: "20px"}} className="f4">
                         {text}
                     </p>
                 </div>
+                </div>
+                <div className="side2">
+                <img src={img2} alt="post..." className="br4"  />
+                    {/* <video className="br3" controls>
+                        <source src={vid} type="video/mp4"></source>
+                    </video> */}
                 <div className="pa2">
                     <span onClick={heartClick} className="pa2 fw5 ph3 icon-heart pointer f4 grow icon-share">
                         <small id="increment" className="pa1 code">{hearts}</small>
@@ -164,12 +168,12 @@ const TextPost = ({ name, id, owner, text, hearts, time}) => {
                         <small onClick={handleOpen} className="pa1 code"></small>
                     </span>
                     <span onClick={() => {window.history.pushState(null, "", id)}}>
-                        <input onClick={handleShow} type="text" className="pa2 br-pill b--black-50 w-50" placeholder="Comment here..." />
+                        <input onClick={handleShow} type="text" className="pa3 br-pill b--black-50 w-50" placeholder="Comment here..." />
                     </span>
                     </div>
                 </div>
+                </div>
             </div>
-        </div>
     )
 }
 

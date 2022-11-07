@@ -4,7 +4,6 @@ import { useState } from "react";
 import Navbar from '../../components/Navbar';
 import SideBar from '../../components/SideBar';
 import CardList from '../../containers/CardList';
-import Scroll from '../../containers/Scroll'; 
 import Preloader from "../../components/Preloader";
 
 
@@ -23,16 +22,18 @@ const Products = () => {
     }, [])
 
     return(
-        <div className="home">
+        <div className="">
             <Preloader />
                 <Navbar />
-            <div className="dt dt--fixed">
-                <SideBar />
-            <div className="flex flex-wrap tc">
-                <h3 className="shop fw6 code f3 ph3 pb2">Products</h3>
-                    <Scroll>
-                        <CardList product={product} />
-                    </Scroll>
+            <div className="">
+                <div className="dtc">
+                    <SideBar />
+                </div>
+            <div className="dtc pl4 pv6 tc">
+                <h3 className="shop fw6 code f4 ph3 pb2">Products</h3>
+                        <div className="tc">
+                            <CardList product={product} />
+                        </div>
                 </div>
             </div>
         </div>

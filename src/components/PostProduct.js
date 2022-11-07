@@ -66,7 +66,7 @@ const PostProduct = ({ handleShut, name, images, description, price, oldprice, c
             <div className={classes.root}>
                 <form onSubmit={handleSubmit}>  
                     <Dialog open={open} handClick={handClick} />
-                    <div className="tr pb2">
+                    <div className="tr w-100 pb2">
                         <small onClick={handleShut} className="icon-close f3 hover-red"></small>
                     </div>
                     <div style={{ overflowY: 'scroll', height: '400px', width: '500px'}} className="pa3 code pv3 tj">

@@ -315,9 +315,7 @@ const Message = ({ handleShut }) => {
                                 <span id="message-form" className="pv2">
                                 <input name="message" id="message-input" type="text" className="pa3 ba br-pill w-70" placeholder="Type your message..." required autoComplete="off"/>
                                 <small id="send-message" className="icon-paper-plane pointer blue f3 pa2"></small>
-                                <small className="icon-heart red pointer f3 pa2"></small>
                                 <small type="file" title="send media file" className="icon-camera pointer f3 pa2"></small>
-                                <small id="send-location" type="file" title="send location" className="icon-location-pin pointer f3 blue"></small>
                                 </span>
                             </div>
             </div>

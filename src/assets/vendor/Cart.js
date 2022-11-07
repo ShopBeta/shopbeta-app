@@ -21,17 +21,19 @@ const Cart = () => {
     }, [])
 
     return(
-        <div className="home">
+        <div className="">
             <Preloader />
             <Navbar />
-            <div className="dt dt--fixed">
-                <SideBar />
-            <div className="flex flex-wrap">
+            <div className="">
+                <div className="dtc">
+                    <SideBar />
+                </div>
+            <div className="dtc pv6 tc">
                 <h3 className="code fw7 f3 orange ph3">
                     <small className="icon-basket ph2 f3"></small>
                     <small className="ph3 code">{cart.length} items</small>
                 </h3>
-            <div style={{ overflowY: 'scroll', height: '480px'}} className="pa2">
+            <div className="pa3 pl4 tc">
                 <CartList cart={cart} />
                     </div>
                 </div>

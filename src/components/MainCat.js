@@ -5,7 +5,7 @@ import { catData } from "../containers/CatData";
 
 const MainCat = () => {
     return (
-        <div className="dtc tc">
+        <div className="dtc bg-white tc">
             {
                     catData.map((val, key) => {
                         return (

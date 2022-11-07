@@ -1,8 +1,10 @@
 import React from "react";
 // import UsersProfile from "../assets/vendor/UsersProfile";
-import img from '../images/2.jpg';
+import { useState } from "react";
+import UserModal from "../containers/UserModal";
+import img from '../images/space scenery.jpg';
 
-const FollowCard = ({ id, username, location, hearts }) => {
+const FollowCard = ({ id, username, avatar, location, hearts, bio, website, phonenumber, email }) => {
 
     const token = localStorage.getItem("token")
 
@@ -17,25 +19,6 @@ const FollowCard = ({ id, username, location, hearts }) => {
             .catch((err) => {
                 console.log(err.message)
             })
-    }
-    console.log(id)
-
-    const url = '/assets/vendor/UsersProfile'
-    const newUser = async () => {
-         await fetch(url, {
-            method: "POST",
-            headers: {
-                'Content-type': "application/json",
-            },
-            body: JSON.stringify(id)       
-        })
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data)
-        })
-        .catch((err) => {
-            console.log(`Couldn't register new user`)
-        })
     }
 
     const heartClick = async event => {
@@ -62,25 +45,37 @@ const FollowCard = ({ id, username, location, hearts }) => {
         })
     }
 
+    const [open, setOpen] = useState(false)
+
+    const handleClose= () => {
+        setOpen(false)
+    }
+
+    const handleOpen = () => {
+        setOpen(true)
+    }
+
         return(
             <div className="dib">
-                <div className="flex flex-wrap tl br3 pa3 bw2 shadow-4 bg-white b--black ma2 pa2">
-                    <form onSubmit={newUser} action={url}>
-                        <div className="tj flex flex-wrap">
-                            {/* <button type="submit">Click me</button> */}
-                            <img src={img} alt="Accessories..." className="pointer br-100" width="50px" height="50px" />
-                            <span className="pointer pa2 fw5 f5">
-                                {username}
-                                <p className="f6 pa2 code fw3">{location}<small className="icon-globe ph2"></small></p>
+                <UserModal handleOpen={open} handleClose={handleClose} />
+                <div className="tl br3 pa3 bw2 shadow-4 bg-white b--black ma2 pa2">
+                        <div className="flex flex-wrap">
+                            <span onClick={() => {window.history.pushState(null, "", id)}}>
+                                <img onClick={handleOpen} src={img} alt="avatar" className="pointer br-100" width="100px" height="100px" />
                             </span>
-                            <span>
-                                <small onClick={heartClick} className="icon-heart pointer ph4 f4 tc"></small>
-                                    <button onClick={buttonClick} className="bg-transparent pointer b--black-10 hover-bg-mid-gray pa1 tc br-pill ph4 ma3 grow f6 b fw6">
-                                    <small>Follow</small>
-                                </button>
+                            <span onClick={() => {window.history.pushState(null, "", id)}} className="pointer pa2 fw5 f5">
+                                <p onClick={handleOpen}>{username}</p>
+                                <p className="f6 pa2 code fw3"><small className="icon-location-pin ph2"></small>{location}</p>
+                                {/* <p className="f6 pa2 code fw3"><small className="icon-envelope ph2"></small>{email}</p> */}
+                                <p className="f6 pa2 code fw3"><small className="icon-phone ph2"></small>{phonenumber}</p>
                             </span>
-                        </div>       
-                    </form> 
+                        </div>   
+                        <div className="tc">
+                             <small onClick={heartClick} className="icon-heart pointer ph4 f4"></small>
+                             <button onClick={buttonClick} className="bg-transparent pointer b--black-10 hover-bg-mid-gray pa1 tc br-pill ph6 pa2 ma3 grow f6 b fw6">
+                                <small>Follow</small>
+                             </button>
+                        </div>    
             </div>
         </div>
     )

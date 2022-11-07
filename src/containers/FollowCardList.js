@@ -13,10 +13,12 @@ const FollowCardList = ({ users }) => {
                         id={users._id} 
                         username={users.username}
                         hearts={users.hearts}
-                        discount={users.discount}
-                        price={users.price}
-                        oldprice={users.oldprice}
-                        rating={users.rating}
+                        bio={users.bio}
+                        location={users.location}
+                        website={users.website}
+                        email={users.contactEmail}
+                        phonenumber={users.phonenumber}
+                        avatar={users.avatar}
                         />
                     )
                 })

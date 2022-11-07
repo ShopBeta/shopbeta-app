@@ -46,8 +46,8 @@ const CommentBlank = () => {
 
 const MessageBlank = () => {
     return(
-        <div>
-            <div className="pv6 code pa4 ph6 code">
+        <div className="ph6">
+            <div className="pv6 code pa4 ph2 code">
                     <p className="icon-bubbles mid-gray tc f1"></p>
                     <p className="f4 tc pv2">No Messages yet</p>
                     <p className="pv2 orange code f5">"Send a message to start a conversation"</p>

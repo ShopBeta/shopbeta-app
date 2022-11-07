@@ -51,26 +51,27 @@ const CartItem = ({ id, name, username, description, currency, price, oldprice, 
 }
 
     return(
-        <div className="pv2">
+        <div className="pv2 dib ma2">
             <PurchaseModal handleShow={open} handleShut={handleShut} />
-                <div className="flex flex-wrap tl">
-                    <div className="w-30">
-                        <div className="ma4">
-                            <div className="flex flex-wrap tl bg-white b--black br3 pa3 ma1 bw2 shadow-5">
-                                <Typography>
-                                    <div>
-                                        <img src={img} alt="shoes" className="br4 pv2" width="310px" height="230px"></img>
-                                    </div>
-                                    <div className="tl">
-                                        <p><b>{name}</b></p>
-                                        <p className="code f4">
-                                            <small>by {user.username}</small>
-                                        </p>
-                                    <div>
-                                <div className="f4 pt4 code">
-                                    <small className="bg-light-blue ph3 f3 pa2 br-pill">{currency}{price}</small> 
-                                    <small className="pa2 line-through">{currency}{oldprice}</small>
-                                </div>
+            <div className="tr pb2">
+                    <small onClick={deleteClick} title="delete" className="icon-close f3 hover-red"></small>
+                </div>
+                <div className="flex flex-wrap">
+                    <div className="flex flex-wrap bg-white b--black br3 pa4 ma1 bw2 shadow-5">
+                    <Typography>
+                        <div>
+                            <img src={img} alt="shoes" className="br4 pv2" width="310px" height="230px"></img>
+                        </div>
+                            <div className="tl">
+                                <p><b>{name}</b></p>
+                                    <p className="code f4">
+                                        <small>by {user.username}</small>
+                                    </p>
+                                <div>
+                            <div className="f4 pt4 code">
+                                <small className="bg-light-blue ph3 f3 pa2 br-pill">{currency}{price}</small> 
+                                <small className="pa2 line-through">{currency}{oldprice}</small>
+                            </div>
                                 <div className="pv2 tr">
                                     <span className="icon-star"></span>
                                     <span className="icon-star grow"></span>
@@ -81,23 +82,14 @@ const CartItem = ({ id, name, username, description, currency, price, oldprice, 
                                 </div>
                                 <div className="tc">
                                     <span onClick={() => {window.history.pushState(null, "", id)}} className="monospace ph3">
-                                        <button onClick={handleShow} className="pa3 white br-pill ba ph5 grow bg-orange hover-bg-mid-gray fw6">Purchase</button>
+                                        <button onClick={handleShow} className="pa3 white br-pill ba ph6 grow bg-orange hover-bg-mid-gray fw6">Purchase</button>
                                     </span>
                                     {/* <input type="number" className="pa1 code w3 tc mr3" /> */}
-                                    <span onClick={deleteClick} className="pv3"><small title="delete" className="icon-trash f4 ph2 hover-red pa2 hover-bg-light-blue br3 blue grow"></small></span>   
                                 </div>
                              </div>
                         </div>
                     </Typography>
-                </div>
-            </div>
-        </div>
-            <div className="w-30 tc pv2">
-                <Carousell>
-                    <Item />
-                </Carousell>
-            </div>
-                <div className="w-40 tl">
+                    <div style={{width: '430px'}} className="">
                     <div style={{ overflowY: 'auto', height: '500px'}} className="pa4 pv3 tj">
                         <h3 className="pv2 fw5">Description</h3>
                             <p>
@@ -106,7 +98,7 @@ const CartItem = ({ id, name, username, description, currency, price, oldprice, 
                             <div className="pa3 f6">
                                 <h3 className="pv2">
                                     <small className="icon-info pr2 f5 blue"></small>
-                                        Shop Policy Review
+                                    Shop Policy Review
                                 </h3>
                                 <p style={{lineHeight: "20px", fontSize: "13.5px"}} className="fw5">
                                     No returns allowed on any FINAL SALE items, except for if flaws in products are found in the event
@@ -117,7 +109,8 @@ const CartItem = ({ id, name, username, description, currency, price, oldprice, 
                     </div>
                 </div>
             </div>
-        </div>
+            </div>   
+            </div>
     )
 }
 

@@ -17,7 +17,7 @@ const SideBar = () => {
     }
 
     return (
-        <div className="sidebar w-10 dtc tc">
+        <div className="sidebar w-10 fw7 dtc tc f3 pv7">
                <ModalDialog2 handleShow={open} handleShut={handleShut} />
             <ul className="sidebarList">
                 { 
@@ -26,7 +26,7 @@ const SideBar = () => {
                             <li key={key}
                                 id={window.location.pathname === val.Link ? "active" : ""  } 
                                 
-                                className="pv3 pointer hover-bg-light-blue br4 row">
+                                className="pv3 pointer br4 row">
                                     
                                 <div id="Icon">{val.Icon}</div>
                                 <div id="Title">{val.Title}</div>

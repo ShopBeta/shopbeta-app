@@ -12,15 +12,17 @@ import Preloader from "../../components/Preloader";
 const Profile = () => {
     render()
         return(
-            <div className="home">
+            <div className="">
                 <Preloader />
                         <Navbar />
-                    <div className="dt dt--fixed">
-                       <div className="flex flex-wrap">
+                    <div className="">
+                       <div className="dtc">
                            <SideBar />
-                           <User />
                        </div>
-                    <Map />
+                       <div className="tc pv6">
+                        <User />
+                       </div>
+                    {/* <Map /> */}
                 </div>
             </div>
         );

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import 'tachyons';
-import { SuggCard2, SuggCard3, SuggCard4 } from "./SuggCard";
+import { SuggCard1, SuggCard2, SuggCard5 } from "./SuggCard";
 import CardList from "../containers/CardList";
 import { Link } from "react-router-dom";
 import MessageModal from "../containers/MessageModal";
@@ -143,14 +143,14 @@ const User = () => {
     }
 
     return (
-        <div style={{ overflowY: 'scroll', height: '540px'}} className="dib tl w-90">
+        <div style={{ overflowY: 'scroll', height: '540px'}} className="dib w-100">
             <MessageModal handleShow={open} handleShut={handleShut} />
               <p className="f5 fw6 orange code">
                     Account Profile
                 </p>
               <div className="tc b--black br3 pa3">
                     <div className="br4">
-                        <img src={user.avatar} alt="avatar" className="br-100 b--white" width="320px" height="320px"></img>
+                        <img src={`https://shopbeta-app.herokuapp.com/users/${user._id}/avatar`} alt="avatar" className="br-100 b--white" width="320px" height="320px"></img>
                         <div className="tr">
                         <Link to={"/assets/Vendor/Settings"} className="link black"><span title="Edit profile" className="icon-settings f4 ph2 pointer fw5 hover-bg-light-blue br3 pa2 grow"></span></Link>
                         <Link to={"#"} className="link"><span title="Logout" onClick={logout} className="icon-logout ph3 fw5 f4 hover-bg-light-blue br3 pa2 pointer grow"></span></Link>
@@ -158,8 +158,9 @@ const User = () => {
                             {user.username}
                             </h5>
                         <p className="tc pa2 f6 fw5">
+                            <small className="icon-location-pin pr2"></small>
                             {user.location}
-                            <small className="icon-globe ph2"></small></p>
+                        </p>
                     </div>
                 </div>
             <span className="">
@@ -170,18 +171,25 @@ const User = () => {
                     <small className="ph2">followers</small>
                     <small className="icon-user"></small></p>
                 <p className="pv3 f4">
-                    <p className=""><small className="ph2"></small>
+                    <p className="tj">
                         {user.bio}
                     </p>
                 </p>
                 <p className="pv3 fw5 f4">
-                    <p><small className="ph2"></small>
+                    <p>
+                        <small className="icon-phone pr2"></small>
                         {user.phonenumber}
                     </p>
-                    <p><small className="ph2"></small>
+                    <p>
+                        <small className="icon-envelope pr2"></small>
                         {user.email}
                     </p>
-                    <p><small className="ph2"></small><a href={user.website} target={user.website} className="link">{user.website}</a></p>
+                    <p>
+                        <small className="icon-globe pr2"></small>
+                        <a href={user.website} target={user.website} className="link">
+                            {user.website}
+                        </a>
+                    </p>
                 </p>
             </div>
             <span className="b">
@@ -204,9 +212,9 @@ const User = () => {
             </span>
             </div>
             <div className="tc">
-                <SuggCard4/>
+                <SuggCard1/>
                 <SuggCard2 />
-                <SuggCard3 />
+                <SuggCard5 />
             </div>
             <div className="tc">
                 <p className="fw6 f4 pv3">Best rated from <small className="code ph2 f4">

@@ -4,25 +4,25 @@ import './Home.css'
 import Navbar from "../components/Navbar";
 import SideBar from "../components/SideBar";
 import MainCat from '../components/MainCat';
-import HelpCard from '../components/HelpCard'; 
 import Preloader from "../components/Preloader";
 
 
 const Category = () => {
     render()
         return(
-            <div className="home">
+            <div className="">
                 <Preloader />
                         <Navbar />
-                    <div className="dt dt--fixed">
-                        <SideBar />
-                    <div>
-                        <h3 className="shop code fw5 f4 ph3 pb2">Category</h3>
-                        <div style={{ overflowY: 'scroll', height: '490px'}}>
+                    <div className="">
+                        <div className="dtc">
+                            <SideBar />
+                        </div>
+                    <div className="pl4 pv6 tc dtc">
+                        <h3 className="shop code fw5 f3 ph3 pb2">Categories</h3>
+                        <div className="tc">
                             <MainCat />
                         </div>
                     </div>
-                        <HelpCard />
                     </div>
             </div>
         );

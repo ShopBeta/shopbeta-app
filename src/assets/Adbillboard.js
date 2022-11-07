@@ -6,7 +6,6 @@ import Navbar from '../components/Navbar';
 import SideBar from '../components/SideBar';
 import { TextPostList } from '../containers/PostCardList';
 // import { AdBlankPage, ErrorPage } from "./Vendor/Pages";
-import Scroll from '../containers/Scroll'; 
 import PostAd from "../containers/PostAd";
 import Preloader from "../components/Preloader";
 
@@ -27,23 +26,25 @@ const AdbillBoard = () => {
 
     render()
         return(
-            <div className="home">
+            <div className="">
                 <Preloader />
                         <Navbar />
-                    <div className="dt dt--fixed">
-                        <SideBar />
-                        <div className="flex flex-wrap">
-                            <h3 className="shop code fw5 f4 ph3 pb2">AdbillBoard</h3>
-                            <Scroll>
-                                <TextPostList feed={feed} />
+                    <div className="">
+                        <div className="dtc">
+                            <SideBar />
+                        </div>
+                        <div className="pa4 pv5 dtc">
+                            <h3 className="shop code tc fw5 pa4 f4 ph3">AdbillBoard</h3>
+                                <div className="tc">
+                                    <PostAd/>
+                                    <TextPostList feed={feed} />
+                                </div>
                                 {/* <PostCardList feed={feed} /> */}
                                 {/* <SharedPostList users={users} />
                                 <ProfilePostList feed={feed} /> */}
                                 {/* <AdBlankPage />
                                 <ErrorPage /> */}
-                            </Scroll>
                         </div>
-                        <PostAd/>
             </div>
         </div>
     );

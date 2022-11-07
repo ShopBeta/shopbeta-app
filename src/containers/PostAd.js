@@ -2,7 +2,6 @@ import React from "react";
 import 'tachyons';
 import { useState, useEffect } from "react";
 import Dialog from "../containers/Dialog";
-import NetworkCardList from "./NetworkCardList";
 
 const PostAd = ({text, file}) => {
 
@@ -30,24 +29,6 @@ const PostAd = ({text, file}) => {
         })
     }
 
-    
-    const [users, setUsers] = useState([])
-
-    useEffect(() => {
-        fetch("https://shopbeta-app.herokuapp.com/users", {
-            method: "GET",
-            headers: {
-                'Accept' : 'application/json, text/plain',
-                'Content-Type' : 'application/json'
-            },
-        })
-        .then((res) => res.json())
-        .then((data) => setUsers(data))
-        .catch((err) => {
-            console.log(err.message)
-        })
-    }, [])
-
     const [open, setOpen] = useState(false)
 
     const handClick = () => {
@@ -64,7 +45,7 @@ const PostAd = ({text, file}) => {
     }
 
     return(
-        <div className="dtc w-25 pr2">
+        <div className="pl5 ph6">
             <Dialog open={open} handClick={handClick} />
                 <div className="pv2">
                     <form onSubmit={handleSubmit} className="tl br3 pa3 ma2">
@@ -84,19 +65,13 @@ const PostAd = ({text, file}) => {
                                 </p>
                             </p>
                             <div onClick={handClickShow} className="tc">
-                                <button type="submit" className="pa2 w-100 br-pill ba grow mars hover-bg-mid-gray">
-                                    <small className="fw5 white code f5">Post Ad</small>
+                                <button type="submit" className="pa3 w-50 br-pill ba grow mars hover-bg-mid-gray">
+                                    <small className="fw7 white code f5">Post Ad</small>
                                 </button>
                             </div>
                     </form>
                 </div>
             <div>
-            <p className="pv2 fw5 f4 ph4">
-                <small>NETWORK</small>
-            </p>
-                <div style={{ overflowY: 'auto', height: '200px'}} className="pa2">
-                  <NetworkCardList users={users} />
-               </div>
             </div>
         </div>
     )

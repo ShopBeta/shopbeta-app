@@ -3,9 +3,7 @@ import './Home.css'
 import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import SideBar from "../components/SideBar";
-import SocialCard from "../components/SocialCard"
-import HomeCard from "../components/HomeCard";
-import { SuggCard1, SuggCard2, SuggCard3, SuggCard4, SuggCard5 } from "../components/SuggCard";
+import SocialCard from '../components/SocialCard'
 import Preloader from "../components/Preloader";
 import FollowCardList from "../containers/FollowCardList";
 
@@ -29,29 +27,28 @@ const Home = () => {
     }, [])
 
         return(
-               <div className="home">
+               <div className="">
                 <div>
                     <Preloader />
                     <Navbar />
-                    <div className="dt dt--fixed">
+                    <div className="">
+                        <div className="dtc">
                         <SideBar />
-                       <div className="ma2">
-                            <div className="tc pb2">
-                                <HomeCard />
-                            </div>
-                        {/* <p className="f4 pa2 orange monospace">
-                            Recommended
-                        </p> */}
-                            <SuggCard1 />
-                            <SuggCard2 />
-                            <SuggCard3 />
-                            <SuggCard4 />
-                            <SuggCard5 />
-                        <div style={{ overflowY: 'scroll', height: '165px'}}>
-                            <FollowCardList users={users} />
+                        </div>
+                       <div className="pv5 pl4 tc">
+                            <span className="">
+                                <SocialCard />
+                            </span>
+                            <span className="pb2 tc">
+                                <p className="pv2 code fw6 orange f4">
+                                    Stores or users you may like
+                                </p>
+                                <FollowCardList users={users} />
+                                <FollowCardList users={users} />
+                            </span>
+                            <div>
                         </div>
                        </div>
-                        <SocialCard />
                     </div>
                 </div>
             </div>
