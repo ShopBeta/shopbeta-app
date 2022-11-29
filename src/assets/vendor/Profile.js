@@ -17,12 +17,11 @@ const Profile = () => {
                         <Navbar />
                     <div className="">
                        <div className="dtc">
-                           <SideBar />
+                           {/* <SideBar /> */}
                        </div>
                        <div className="tc pv6">
                         <User />
                        </div>
-                    {/* <Map /> */}
                 </div>
             </div>
         );

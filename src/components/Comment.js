@@ -26,11 +26,12 @@ const Comment = ({ text, file, owner, time }) => {
                             <div className="">
                                 <div>
                                     <div className="tj flex flex-wrap">
-                                        <img src={user.avatar} alt="avatar" className="br-100" width="50px" height="50px" />
+                                        <img src={`https://shopbeta-app.herokuapp.com/users/${user._id}/avatar`} alt="avatar" className="br-100" width="50px" height="50px" />
                                         <span className="pa2 fw5 f5">
                                             {user.username}
                                             <p className="f6 code fw3">
                                                 {user.location}
+                                                <small className="icon-location-pin ph2"></small>
                                             </p>
                                         </span>
                                             </div>

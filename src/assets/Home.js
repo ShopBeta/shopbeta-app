@@ -26,6 +26,8 @@ const Home = () => {
         })
     }, [])
 
+    console.log(users)
+
         return(
                <div className="">
                 <div>
@@ -33,17 +35,16 @@ const Home = () => {
                     <Navbar />
                     <div className="">
                         <div className="dtc">
-                        <SideBar />
+                        {/* <SideBar /> */}
                         </div>
-                       <div className="pv5 pl4 tc">
+                       <div className="pv5 tc">
                             <span className="">
                                 <SocialCard />
                             </span>
                             <span className="pb2 tc">
-                                <p className="pv2 code fw6 orange f4">
+                                <p className="pv2 orange f4">
                                     Stores or users you may like
                                 </p>
-                                <FollowCardList users={users} />
                                 <FollowCardList users={users} />
                             </span>
                             <div>

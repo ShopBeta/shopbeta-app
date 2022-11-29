@@ -1,19 +1,15 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import 'tachyons';
-import img from '../images/avatar3.png';
-import { SuggCard2, SuggCard3, SuggCard4 } from "../components/SuggCard";
-import CardList from "./CardList";
 import { Link } from "react-router-dom";
 import MessageModal from "./MessageModal";
-import Map from "./Map";
 
 const User = ({ handleClose }) => { 
     
     const token = localStorage.getItem("token")
     console.log(token)
     const pathname = window.location.pathname.split('/')
-    const path = pathname[1]
+    const path = pathname[2]
     console.log(path)
   
     const [user, setUser] = useState({})
@@ -29,9 +25,10 @@ const User = ({ handleClose }) => {
         
     }, [path])
 
-    const [product, setProduct] = useState([])
+    const [followers, setFollowers] = useState({})
+
     useEffect(() => {
-        fetch("https://shopbeta-app.herokuapp.com/products", {
+        fetch(`https://shopbeta-app.herokuapp.com/users/${user._id}/followers`, {
             method: "GET",
             headers: {
                 'Authorization' : 'Bearer ' + token,
@@ -40,11 +37,11 @@ const User = ({ handleClose }) => {
             },
         })
         .then((res) => res.json())
-        .then((data) => setProduct(data))
+        .then((data) => setFollowers(data))
         .catch((err) => {
             console.log(err.message)
         })
-    }, [token])
+    }, [user._id, token])
 
     const [open, setOpen] = useState(false)
 
@@ -137,7 +134,7 @@ const User = ({ handleClose }) => {
                 <div className="tc b--black br3 pa2">
                         <div className="br4 tj flex flex-wrap">
                             <span>
-                                <img src={img} alt="avatar" className="br-100 b--white" width="220px" height="220px"></img>
+                                <img src={`https://shopbeta-app.herokuapp.com/users/${user._id}/avatar`} alt="avatar" className="br-100 b--white" width="220px" height="220px"></img>
                             </span>
                             <span className="pa4">
                             <h5 className="f3 fw5">
@@ -145,12 +142,13 @@ const User = ({ handleClose }) => {
                                 </h5>
                             <p className="pv2 f6 fw5">
                                 <small className="icon-location-pin pr2"></small>
-                                FTC, Abuja, Nigeria
                                 {user.location}.
                             </p>
-                            <p className="f3 orange">
-                                {user.followers}
-                                {/* {user.followers.length} */}
+                            <p className="f4 orange">
+                                <span className="icon-heart ph3 f4 orange">
+                                    <small className="ph2 black code">{user.hearts}</small>
+                                </span>
+                                {followers.length}
                                 <small className="ph2">followers</small>
                             </p>
                             <p className="pv3 f5">
@@ -162,7 +160,7 @@ const User = ({ handleClose }) => {
                             <p className="pv1 fw5 f5">
                                 <p>
                                 <small className="icon-phone pr2"></small>
-                                    +234{user.phonenumber}
+                                    {user.phonenumber}
                                 </p>
                                 <p>
                                 <small className="icon-envelope pr2"></small>
@@ -178,8 +176,8 @@ const User = ({ handleClose }) => {
                         </span>
                     </div>
                    <div className="pv1">
-                   <p className="pv3 f5">
-                        <p className="tc ph5"> 
+                   <p className="f5 pb2">
+                        <p className="tc ph2"> 
                             {user.bio}
                         </p>
                     </p>
@@ -190,7 +188,7 @@ const User = ({ handleClose }) => {
                             <button onClick={followClick} className="bg-transparent f6 pointer ba hover-bg-mid-gray pa2 tc br-pill ph5 ma1 grow b fw6">Follow</button>
                         </span>
                         <span className="b">
-                            <small onClick={heartClick} title="Recommend" className="icon-heart fw5 pointer hover-bg-light-blue br3 f4 pa2 ph3 grow fw5"><small className="ph2 code">{user.hearts}</small></small>
+                            <small onClick={heartClick} title="Recommend" className="icon-heart fw5 pointer br3 f4 br-pill bg-light-blue pa2 ph3 grow fw5"></small>
                         </span>
                         <span className="b">
                             <small onClick={unfollowClick} title="Unfollow" className="icon-user-unfollow pointer fw5 hover-bg-light-blue br3 f4 pa2 ph3 grow fw5"></small>
@@ -200,22 +198,12 @@ const User = ({ handleClose }) => {
                                 <small title="Share" className="icon-share fw5 hover-bg-light-blue br3 f4 pa2 ph3 grow fw5"></small>
                             </Link>
                         </span>
+                        
                    </div>
                 </div>
-                <div className="tc">
-                    <SuggCard4/>
-                    <SuggCard2 />
-                    <SuggCard3 />
                 </div>
-                <div className="tc">
-                    <p className="fw6 f4 ">check out the best rated from <small className="code ph2 f4">
-                        {user.username}
-                        </small></p>
-                    <CardList product={product} />
-                </div>
-                </div>
-                <p className="pa3 f4">
-                    <span className="orange fw6 bg-light-blue pa2 br4 ph2 code">{user.username}</span> is located at <span className="orange">{user.location}</span>
+                <p className="pa3 f5">
+                    <span className="fw6 bg-light-blue pa2 br4 ph2 code">{user.username}</span> is located in <span className="orange fw6">{user.location}</span>
                 </p>
         </div>
     )

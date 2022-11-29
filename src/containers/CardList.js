@@ -13,6 +13,7 @@ const CardList = ({ product, id, name, owner, heart, description, currency, pric
                         name={product.name} 
                         username={product.owner}
                         heart={product.heart}
+                        images={product.images}
                         description={product.description}
                         price={product.price}
                         currency={product.currency}

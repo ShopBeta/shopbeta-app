@@ -14,7 +14,7 @@ const PostCardList = ({ feed, id, name, text, media, time }) => {
                         owner={feed.owner} 
                         text={feed.text}
                         media={feed.media}
-                        time={feed.createdAt}
+                        time={feed.time}
                         />
                     )
                 })

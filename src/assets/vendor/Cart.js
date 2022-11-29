@@ -26,7 +26,7 @@ const Cart = () => {
             <Navbar />
             <div className="">
                 <div className="dtc">
-                    <SideBar />
+                    {/* <SideBar /> */}
                 </div>
             <div className="dtc pv6 tc">
                 <h3 className="code fw7 f3 orange ph3">

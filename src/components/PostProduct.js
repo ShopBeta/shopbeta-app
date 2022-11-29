@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import 'tachyons';
 import Dialog from "../containers/Dialog";
 
@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
 
 
 
-const PostProduct = ({ handleShut, name, images, description, price, oldprice, category }) => {
+const PostProduct = ({ handleShut, name, images, description, currency, price, oldprice, category }) => {
 
     const [open, setOpen] = useState(false)
 
@@ -29,55 +29,46 @@ const PostProduct = ({ handleShut, name, images, description, price, oldprice, c
     }
 
     const token = localStorage.getItem("token")
-    
-    const product = async () => {
-        const product = {
-            name: document.querySelector('.name').value,
-            images: document.querySelector('.images').value,
-            description: document.querySelector('.description').value,
-            category: document.querySelector('.category').value,
-            currency: document.querySelector('.currency').value,
-            price: document.querySelector('.price').value,
-            oldprice: document.querySelector('.oldprice').value
-        }
 
-        await fetch("https://shopbeta-app.herokuapp.com/products", {
-            method: "POST",
+    const [user, setUser] = useState({})
+
+    useEffect(() => {
+        fetch(`https://shopbeta-app.herokuapp.com/users/me`, {
+            method: "GET",
             headers: {
                 'Authorization' : 'Bearer ' + token,
                 'Accept' : 'application/json, text/plain',
                 'Content-Type' : 'application/json'
             },
-            body: JSON.stringify(product)
         })
         .then((res) => res.json())
-        .then((data) => console.log(data))
+        .then((data) => setUser(data))
         .catch((err) => {
             console.log(err.message)
         })
-    }
+    }, [token])
 
     const classes = useStyles()
     const handleSubmit = e => {
         e.preventDefault()
-        product()
+        // product()
     }
     return(
             <div className={classes.root}>
-                <form onSubmit={handleSubmit}>  
+                <form action={`https://shopbeta-app.herokuapp.com/products/${user._id}`} method="post" encType="multipart/form-data">  
                     <Dialog open={open} handClick={handClick} />
                     <div className="tr w-100 pb2">
                         <small onClick={handleShut} className="icon-close f3 hover-red"></small>
                     </div>
-                    <div style={{ overflowY: 'scroll', height: '400px', width: '500px'}} className="pa3 code pv3 tj">
+                    <div style={{ overflowY: 'scroll', height: '400px'}} className="pa3 code pv3 tj">
                             <div className="tl pv2">
                                 <p className="pv1 f5 fw5">Product's Name</p>
-                                <input type="text" name="name" value={name} className="name br3 ba pa2 w-100" required placeholder="Product's name" />
+                                <input type="text" name="name" className="name br3 ba pa2 w-100" required placeholder="Product's name" />
                             </div>
                             <div className="tl pv2">
                                 <p className="pv1 f5 fw5">Description</p>
                                 <p className="pv2">
-                                    <textarea id="myInput" value={description} name="description" className="description br3 ba pa2 w-100 h3" required placeholder="What's on your mind?" aria-label="With textarea"></textarea>
+                                    <textarea id="myInput" name="description" className="description br3 ba pa2 w-100 h3" required placeholder="What's on your mind?" aria-label="With textarea"></textarea>
                                 </p>
                             </div>
                             <p className="f5 fw5 pv2" for="Category">Category</p>
@@ -94,26 +85,26 @@ const PostProduct = ({ handleShut, name, images, description, price, oldprice, c
                             <p className="pv1 f5 fw5">Price</p>
                                 <span>
                                 <select className="currency pa2 f5 fw5 b--transparent" name="currency" id="Category">
-                                    <option id="Women Fashion" name="Women Fashion">$</option>
-                                    <option id="Women Fashion" name="Women Fashion">£</option>
-                                    <option id="Women Fashion" name="Women Fashion">₦</option> 
-                                    <option id="Women Fashion" name="Women Fashion">GH¢</option> 
+                                    <option id="dollar" name="dollar">$</option>
+                                    <option id="pounds" name="pounds">£</option>
+                                    <option id="naira" name="naira">₦</option> 
+                                    <option id="cedi" name="ghanian cedi">GH¢</option> 
                                 </select>
                                 </span>
                                 <span>
-                                    <input type="number" name="price" value={price} className="price br3 ba pa2 w-100 fw5 w-80" required placeholder="80 maybe?" />
+                                    <input type="number" name="price" className="price br3 ba pa2 w-100 fw5 w-80" required placeholder="80 maybe?" />
                                 </span>
                             </div>
                             <div className="tl pv2">
                             <p className="pv1 f5 fw5">Old Price</p>
                                 <span>
-                                    <input type="number" name="oldprice" value={oldprice} className="oldprice br3 line-through ba pa2 w-100 fw5 w-80" required placeholder="95 maybe?" />
+                                    <input type="number" name="oldprice" className="oldprice br3 line-through ba pa2 w-100 fw5 w-80" required placeholder="95 maybe?" />
                                 </span>
                             </div>
                             <p className="pv2">
                                 <p className="f5 fw5">Add Image</p>
                                 <div className="pv2 br-pill">
-                                    <input type="file" name="images" value={images} className="images pa3 w-90 ba br3" id="customFile" />
+                                    <input type="file" name="images" className="images pa3 w-90 ba br3" id="customFile" />
                                 </div>
                             </p>
                             <div>
@@ -134,7 +125,7 @@ const PostProduct = ({ handleShut, name, images, description, price, oldprice, c
                             </div>
             </div>
                 <div className="pv2 tc grow">
-                    <button onClick={handClickShow} type="submit" variant="contained" className="ph5 pa2 white mars pointer ba hover-bg-mid-gray br-pill">
+                    <button type="submit" onClick={handClickShow} variant="contained" className="ph5 pa2 white mars pointer ba hover-bg-mid-gray br-pill">
                         Post Product
                     </button>
                 </div>

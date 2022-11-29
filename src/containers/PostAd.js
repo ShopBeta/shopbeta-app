@@ -6,28 +6,23 @@ import Dialog from "../containers/Dialog";
 const PostAd = ({text, file}) => {
 
     const token = localStorage.getItem("token")
-    
-    const feed = async () => {
-        const feed = {
-            text: document.querySelector('.text').value,
-            media: document.querySelector('.media').value,
-        }
-
-        await fetch("https://shopbeta-app.herokuapp.com/feed", {
-            method: "POST",
+        
+    const [user, setUser] = useState({})
+    useEffect(() => {
+        fetch(`https://shopbeta-app.herokuapp.com/users/me`, {
+            method: "GET",
             headers: {
                 'Authorization' : 'Bearer ' + token,
                 'Accept' : 'application/json, text/plain',
                 'Content-Type' : 'application/json'
             },
-            body: JSON.stringify(feed)
         })
         .then((res) => res.json())
-        .then((data) => console.log(data))
+        .then((data) => setUser(data))
         .catch((err) => {
             console.log(err.message)
         })
-    }
+    }, [token])
 
     const [open, setOpen] = useState(false)
 
@@ -41,14 +36,13 @@ const PostAd = ({text, file}) => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        feed()
     }
 
     return(
         <div className="pl5 ph6">
             <Dialog open={open} handClick={handClick} />
                 <div className="pv2">
-                    <form onSubmit={handleSubmit} className="tl br3 pa3 ma2">
+                    <form action={`https://shopbeta-app.herokuapp.com/feed/${user._id}`} method="post" encType="multipart/form-data" className="tl br3 pa3 ma2">
                         <p className="pv1 orange fw6 code tc f4">
                             Post an Ad
                         </p>

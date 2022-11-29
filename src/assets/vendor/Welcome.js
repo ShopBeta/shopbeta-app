@@ -1,7 +1,6 @@
 import React from "react";
 import 'tachyons'
 import '../Home.css'
-import { Link } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import MainCat from '../../components/MainCat';
 import Preloader from "../../components/Preloader";
@@ -23,7 +22,6 @@ const Welcome = () => {
             email: email,
             password: password
         }
-
 
         fetch("https://shopbeta-app.herokuapp.com/users/login", {
             method: 'POST',
@@ -119,18 +117,28 @@ const Welcome = () => {
                         </span>
                     </div>
                 </div>
-            <div className="tc pa2">
-                <Link to={"../assets/Adbillboard"} className="black"><button className="bg-orange white pa3 f6 pointer ba hover-bg-mid-gray pa2 tc br-pill ph6 ma1 grow b fw6">Proceed to Dashboard</button>
-                </Link>
-                        </div>
+                <form action={`https://shopbeta-app.herokuapp.com/users/${user._id}/avatar`} method="post" encType="multipart/form-data" className="tl br3 pa3 ma2">
+                        <p className="pv1 orange fw6 code tc f4">
+                            {/* Upload Profile photo */}
+                        </p>
+                        <p className="pv2 fw5">
+                            <small className="f5 code tc fw6 ph2">Upload Profile photo</small>
+                                <div className="pv2 pa2 br3 tc ba">
+                                    <input type="file" name="avatar" className="avatar pa2 w-100"/>
+                                </div>
+                        </p>
+                            <div className="tc">
+                                <button type="submit" className="bg-transparent f6 pointer ba hover-bg-mid-gray pa2 tc br-pill ph5 ma1 grow b fw6">Upload</button>
+                            </div>
+                        </form>
                             <div className="pa2 tc" style={{ overflowY: 'scroll', height: '300px'}}>
                                 <p className="pv2 f4 fw6 orange">Follow other social shoppers</p>
-                                <FollowCardList users={users} /><FollowCardList users={users} />
+                                <FollowCardList users={users} />
                                     </div>
                                 </div>
                         </div>
                         <div style={{ overflowY: 'scroll', height: '540px'}}>
-                        <p className="pv1 f4 fw6 orange">Check a Category</p>
+                        <p className="pv1 ph2 f4 fw6 orange">Check a Category</p>
                                 <MainCat />
                             </div>
                         </div>

@@ -19,12 +19,13 @@ const useStyles = makeStyles(theme => ({
 
 const Details = ({ handleClose }) => {
 
-    const [product, setProduct] = useState({})
     const pathname = window.location.pathname.split('/')
     const path = pathname[3]
     console.log(path)
-    const token = localStorage.getItem("token")
 
+    const token = localStorage.getItem("token")
+    
+    const [product, setProduct] = useState({})
     useEffect(() => {
         fetch(`https://shopbeta-app.herokuapp.com/products/${path}`, {
             method: "GET",
@@ -65,12 +66,11 @@ const Details = ({ handleClose }) => {
                     <div className="tr pb2">
                         <small onClick={handleClose} className="icon-close f3 hover-red"></small>
                     </div>
-                    <div style={{ overflow: 'auto', height: '350px'}} className="pa3 pv3 tj">
+                    <div style={{ overflow: 'auto', height: '330px'}} className="pa3 pv3 tj">
                     <div className="tc">
                         <Carousell>
                             <Item />
                         </Carousell>
-                        {/* <img src={img} alt="shoes" className="br4 pv2" width="310px" height="230px"></img> */}
                     </div>
                     <div className="tl pv2">
                         <h3>{product.name}</h3>
@@ -78,8 +78,6 @@ const Details = ({ handleClose }) => {
                         <p className="pv2 fw7">Description</p>
                             <p>
                                 {product.description}
-                                {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium est assumenda distinctio sint repellat beatae dolore magnam pariatur ipsum, et deserunt asperiores doloribus sit at esse corrupti facilis aperiam nihil.
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum alias qui eaque mollitia, iure totam fugit possimus, harum necessitatibus odio non, consequuntur laudantium. Est iste sequi suscipit laboriosam dolorum repellat. */}
                             </p>
                     <div className="pa3 f6">
                         <h3 className="pv2">

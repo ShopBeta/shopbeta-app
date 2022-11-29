@@ -16,19 +16,35 @@ const useStyles = makeStyles(theme => ({
 
 const Purchase = ({ handleShut, id }) => {
 
-    const [product, setProduct] = useState({})
     const pathname = window.location.pathname.split('/')
     const path = pathname[3]
     console.log(path)
 
+    const [product, setProduct] = useState({})
     useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/cart/${path}`)
+        fetch(`https://shopbeta-app.herokuapp.com/products/${path}`)
         .then(res => res.json())
         .then(data => setProduct(data))
         .catch((err) => {
             console.log(err.message)
         })
     }, [path])
+
+    const [user, setUser] = useState({})
+    useEffect(() => {
+        fetch(`https://shopbeta-app.herokuapp.com/users/${product.owner}`, {
+            method: "GET",
+            headers: {
+                'Accept' : 'application/json, text/plain',
+                'Content-Type' : 'application/json'
+            },
+        })
+        .then((res) => res.json())
+        .then((data) => setUser(data))
+        .catch((err) => {
+            console.log(err.message)
+        })
+    }, [product.owner])
 
      //declare a new state variable for modal to open
      const [open, setOpen] = useState(false)
@@ -52,7 +68,7 @@ const Purchase = ({ handleShut, id }) => {
             <div className={classes.root} onSubmit={handleSubmit1}>
                 <MessageModal handleShow={open} handleShut={handleClose} />
                 <div className="tr pb2">
-                    <small onClick={handleShut} className="icon-close f3 hover-red"></small>
+                    <small onClick={handleShut} className="icon-close pointer f3 hover-red"></small>
                     <div className="tl f4">
                         <p>
                             <b>{product.name}</b>
@@ -65,12 +81,12 @@ const Purchase = ({ handleShut, id }) => {
                             <p className="code b f5 pv2">Check to see if Product is available</p>
                             <p className="fw5 f5"></p>
                         </div>
-                            <div className="pv2 pa3">
+                        <div className="pv2 pa3">
                                 <div className="br4 b--yellow ba pv2 pa2 mars white">
                                     <p>
                                         <p className="tr f4"><small className="icon-check b grow hover-red"></small></p>
                                         <small className="icon-bubbles pr2 f4"></small>
-                                        Contact Seller
+                                        Message Seller
                                     <p className="tr fw6"><small>Media: Chat interface</small></p>
                                     </p>
                                 </div>
@@ -79,9 +95,9 @@ const Purchase = ({ handleShut, id }) => {
                                 <div className="pv2 br4 pa2 mercury white">
                                     <p>
                                         <p className="tr f4"><small className="icon-check b grow hover-red"></small></p>
-                                        <small className="icon-credit-card pr2 f4"></small>
-                                        Pay with Credit Card
-                                    <p className="tr fw6"><small>Saved Card</small></p>
+                                        <small className="icon-phone pr2 f4"></small>
+                                        {user.phonenumber}
+                                    <p className="tr fw6"><small>Phone number</small></p>
                                     </p>
                                 </div>
                             </div>

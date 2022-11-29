@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import 'tachyons';
-import img from '../images/nike.jpg';
 import { Typography } from "@material-ui/core";
 import ModalDialog from "../containers/ModalDialog";
 import PurchaseModal from "../containers/PurchaseModal";
@@ -50,21 +49,22 @@ const Card = ({ id, name, username, images, heart, description, currency, price,
             })
     }
 
-    const addCart = event => {
+    const addCart = async event => {
 
         const product = {
             product : {
+            _id: id,
             name: name,
             heart: heart,
             description: description,
-            images: images,
             price: price,
             oldprice: price,
             rating: rating
             }
         }
 
-        fetch(`https://shopbeta-app.herokuapp.com/cart/${id}`, {
+        await fetch(`https://shopbeta-app.herokuapp.com/cart/${id}`, {
+            // mode: 'no-cors',
             method: "POST",
             headers: {
                 'Authorization' : 'Bearer ' + token,
@@ -74,7 +74,7 @@ const Card = ({ id, name, username, images, heart, description, currency, price,
             body: JSON.stringify(product)
         })
         .then((res) => res.json())
-        .then((data) => console.data(data))
+        .then((data) => console.log(data))
         .catch((err) => {
             console.log(err.message)
         })
@@ -104,10 +104,10 @@ const Card = ({ id, name, username, images, heart, description, currency, price,
             <ModalDialog handleOpen={show} handleClose={handleClose} />
             <PurchaseModal handleShow={open} handleShut={handleShut} />
             <div onClick={() => {window.history.pushState(null, "", id)}}>
-            <div onClick={handleShow} className="flex w-100 flex-wrap tl bg-white b--black br3 pa3 grow bw2 shadow-5">
+            <div onClick={handleShow} className="flex w-100 flex-wrap pointer tl bg-white b--black br3 pa3 bw2 shadow-5">
                 <Typography>
                     <div className="tc">
-                        <img src={img} alt="item" className="br4 pv1 w-100" width="310px" height="230px"></img>
+                        <img src={`https://shopbeta-app.herokuapp.com/products/${id}/images`} alt="item" className="br4 pv1 w-100" width="310px" height="230px"></img>
                     </div>
                     <div className="tr f3 br-pill">
                             <small onClick={heartClick} className="icon-heart pointer ph2 grow"><small className="code black pl1 f5">{heart}</small></small>
@@ -141,8 +141,8 @@ const Card = ({ id, name, username, images, heart, description, currency, price,
                     </div>
                 </div>
                 </Typography>
+            </div>
         </div>
-       </div>
         </div>
     )
 }

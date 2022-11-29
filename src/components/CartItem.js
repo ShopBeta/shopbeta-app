@@ -1,11 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import img from '../images/nike.jpg';
 import { Typography } from "@material-ui/core";
-import { Carousell, Item } from "../containers/ImageCarousel2";
 import PurchaseModal from "../containers/PurchaseModal2";
 
-const CartItem = ({ id, name, username, description, currency, price, oldprice, rating }) => {
+const CartItem = ({ id, images, name, username, description, currency, price, oldprice, rating }) => {
 
     const [open, setOpen] = useState(false)
 
@@ -54,13 +52,13 @@ const CartItem = ({ id, name, username, description, currency, price, oldprice, 
         <div className="pv2 dib ma2">
             <PurchaseModal handleShow={open} handleShut={handleShut} />
             <div className="tr pb2">
-                    <small onClick={deleteClick} title="delete" className="icon-close f3 hover-red"></small>
+                    <small onClick={deleteClick} title="delete" className="icon-close pointer f3 hover-red"></small>
                 </div>
                 <div className="flex flex-wrap">
                     <div className="flex flex-wrap bg-white b--black br3 pa4 ma1 bw2 shadow-5">
                     <Typography>
                         <div>
-                            <img src={img} alt="shoes" className="br4 pv2" width="310px" height="230px"></img>
+                            <img src={`https://shopbeta-app.herokuapp.com/products/${images}/images`} alt="shoes" className="br4 pv2" width="310px" height="230px"></img>
                         </div>
                             <div className="tl">
                                 <p><b>{name}</b></p>
@@ -81,10 +79,9 @@ const CartItem = ({ id, name, username, description, currency, price, oldprice, 
                                     <span className="pl2 fw6 code f5">{rating}</span>
                                 </div>
                                 <div className="tc">
-                                    <span onClick={() => {window.history.pushState(null, "", id)}} className="monospace ph3">
+                                    <span onClick={() => {window.history.pushState(null, "", images)}} className="monospace ph3">
                                         <button onClick={handleShow} className="pa3 white br-pill ba ph6 grow bg-orange hover-bg-mid-gray fw6">Purchase</button>
                                     </span>
-                                    {/* <input type="number" className="pa1 code w3 tc mr3" /> */}
                                 </div>
                              </div>
                         </div>

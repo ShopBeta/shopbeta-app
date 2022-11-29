@@ -31,10 +31,10 @@ const AdbillBoard = () => {
                         <Navbar />
                     <div className="">
                         <div className="dtc">
-                            <SideBar />
+                            {/* <SideBar /> */}
                         </div>
                         <div className="pa4 pv5 dtc">
-                            <h3 className="shop code tc fw5 pa4 f4 ph3">AdbillBoard</h3>
+                            <h3 className="shop tl fw5 pt5 pa4 f4 ph3">AdbillBoard</h3>
                                 <div className="tc">
                                     <PostAd/>
                                     <TextPostList feed={feed} />

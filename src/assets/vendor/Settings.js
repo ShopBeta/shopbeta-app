@@ -3,7 +3,6 @@ import React from "react";
 import '../Home.css'
 import Navbar from "../../components/Navbar";
 import SideBar from "../../components/SideBar";
-import Map from "../../containers/Map";
 import Preloader from "../../components/Preloader";
 
 
@@ -83,13 +82,13 @@ const handleSubmit = e => {
                 <Navbar />
                     <div className="">
                            <div className="dtc">
-                            <SideBar />
+                            {/* <SideBar /> */}
                            </div>
-                      <div className="pa4 tc pv6 pl5">
-                        <div className="pv3 dib code">
+                      <div className="pa4 tc pv6">
+                        <div className="pv3 dib">
+                            <h3 className="tr"><small className="icon-settings f4 ph2"></small>Change Settings</h3>
                                 <form onSubmit={handleSubmit}>
                                     <div className="tl pv2">
-                                        <h3 className="pv2">Change Settings</h3>
                                         <p className="pv1 f5 fw5">Change Username</p>
                                         <input type="text" name="username" value={username} className="username br3 ba pa2 w-100" placeholder="Type in new username..." />
                                     </div>
@@ -127,36 +126,19 @@ const handleSubmit = e => {
                                         <p className="pv1 f5 fw5">Repeat Password</p>
                                         <input type="password" value={password} name="password" className="br3 ba pa2 w-100" placeholder="Repeat password..." />
                                     </div>
-                                    <p className="pv2">
-                                        <p className="f5 fw5">Set new Profile photo</p>
-                                        <div className="pv2 br-pill">
-                                            <input type="file" value={avatar} name="avatar" className="avatar pa3 w-90 ba br3" id="customFile" />
-                                        </div>
-                                    </p>
                                     <p className="tr">
-                                        <button type="submit" className="bg-orange white hover-bg-mid-gray pa2 tc br3 ph4 ma1 grow b fw6">Save</button>
+                                        <button type="submit" className="bg-transparent orange hover-bg-mid-gray pa2 tc br-pill ba ph4 ma1 grow pv3 b fw6">Save settings</button>
                                     </p>
                                     <div>
                                         <div className="pv2">
-                                            <div className="pa3 pv1 tj f6">
-                                                <h3 className="pv1">
-                                                    <small className="icon-info pr2 f5 blue"></small>
-                                                    Some tips
-                                                </h3>
-                                                <div className="code fw6">
-                                                    <p>Ensure to upload high quality images</p>
-                                                    <p className="pv2">Image file size shouldn't exceed 5MB</p>
-                                                    <p>680x680 is best recommended</p>
-                                                </div>
-                                            </div>
                                     <div className="pv2">
                                         <span className="tc pa2 pv2">
                                             Logout from all devices that you've logged in from before
-                                            <a href="https://shopbetaonline.herokuapp.com/indexes/login.html" className="link"><p onClick={logoutAllClick} className="bg-blue white hover-bg-mid-gray pa3 pointer tc br3 ph3 ma1 grow b fw6"> Log-out all devices</p></a>
+                                            <a href="https://shopbetaonline.herokuapp.com/indexes/login.html" className="black link"><p onClick={logoutAllClick} className="bg-transparent hover-bg-mid-gray pa3 pointer tc ba br-pill ph3 ma1 grow b fw6"> Log-out all devices</p></a>
                                         </span>
                                         <span className="tc pa2 pv2">
                                             Delete this account
-                                            <a href="https://shopbetaonline.herokuapp.com"  className="link"><p onClick={deleteClick} className="bg-red white hover-bg-mid-gray pa3 pointer tc br3 ph4 ma1 grow b fw6"> Delete Account</p></a>
+                                            <a href="https://shopbetaonline.herokuapp.com/indexes/register.html"  className="black link"><p onClick={deleteClick} className="bg-transparent hover-bg-red hover-bg-mid-gray pa3 pointer tc br-pill ba ph4 ma1 grow b fw6"> Delete Account</p></a>
                                         </span>
                                         </div>
                                     </div>

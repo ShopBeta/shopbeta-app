@@ -29,14 +29,21 @@ const Purchase = ({ handleShut, id }) => {
         })
     }, [path])
 
+    const [user, setUser] = useState({})
     useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/cart/${path}`)
-        .then(res => res.json())
-        .then(data => setProduct(data))
+        fetch(`https://shopbeta-app.herokuapp.com/users/${product.owner}`, {
+            method: "GET",
+            headers: {
+                'Accept' : 'application/json, text/plain',
+                'Content-Type' : 'application/json'
+            },
+        })
+        .then((res) => res.json())
+        .then((data) => setUser(data))
         .catch((err) => {
             console.log(err.message)
         })
-    }, [path])
+    }, [product.owner])
 
      //declare a new state variable for modal to open
      const [open, setOpen] = useState(false)
@@ -60,7 +67,7 @@ const Purchase = ({ handleShut, id }) => {
             <div className={classes.root} onSubmit={handleSubmit1}>
                 <MessageModal handleShow={open} handleShut={handleClose} />
                 <div className="tr pb2">
-                    <small onClick={handleShut} className="icon-close f3 hover-red"></small>
+                    <small onClick={handleShut} className="icon-close pointer f3 hover-red"></small>
                     <div className="tl f4">
                         <p>
                             <b>{product.name}</b>
@@ -78,7 +85,7 @@ const Purchase = ({ handleShut, id }) => {
                                     <p>
                                         <p className="tr f4"><small className="icon-check b grow hover-red"></small></p>
                                         <small className="icon-bubbles pr2 f4"></small>
-                                        Contact Seller
+                                        Message Seller
                                     <p className="tr fw6"><small>Media: Chat interface</small></p>
                                     </p>
                                 </div>
@@ -87,9 +94,9 @@ const Purchase = ({ handleShut, id }) => {
                                 <div className="pv2 br4 pa2 mercury white">
                                     <p>
                                         <p className="tr f4"><small className="icon-check b grow hover-red"></small></p>
-                                        <small className="icon-credit-card pr2 f4"></small>
-                                        Pay with Credit Card
-                                    <p className="tr fw6"><small>Saved Card</small></p>
+                                        <small className="icon-phone pr2 f4"></small>
+                                        {user.phonenumber}
+                                    <p className="tr fw6"><small>Phone number</small></p>
                                     </p>
                                 </div>
                             </div>

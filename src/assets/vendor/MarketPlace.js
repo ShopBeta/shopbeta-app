@@ -29,9 +29,9 @@ const Products = () => {
                 <div className="dtc">
                     <SideBar />
                 </div>
-            <div className="dtc pl4 pv6 tc">
+            <div className="pv6 tc">
                 <h3 className="shop fw6 code f4 ph3 pb2">Products</h3>
-                        <div className="tc">
+                        <div className="tc pl4">
                             <CardList product={product} />
                         </div>
                 </div>

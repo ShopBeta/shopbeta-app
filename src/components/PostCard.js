@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import 'tachyons';
-// import vid from "../images/Often Whatsapp status.mp4"
 import img2 from '../images/home_wallpaper_2.jpg';
 import imgP from '../images/nike.jpg';
 import './simple-line-icons/css/simple-line-icons.css';
@@ -16,6 +15,7 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
 
     const token = localStorage.getItem("token")
     console.log(owner)
+    console.log(time)
 
     const [user, setUser] = useState({})
     useEffect(() => {
@@ -44,6 +44,18 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
         })
         .then((res) => res.json())
         .then((data) => setComment(data))
+        .catch((err) => {
+            console.log(err.message)
+        })
+    }, [id])
+
+    const [feed, setFeed] = useState({})
+    useEffect(() => {
+        fetch(`https://shopbeta-app.herokuapp.com/feed/${id}`, {
+            method: "GET",
+        })
+        .then((res) => res.json())
+        .then((data) => setFeed(data))
         .catch((err) => {
             console.log(err.message)
         })
@@ -127,22 +139,22 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
     }   
     
     return(
-        <div style={{width: '750px'}} className="dib pl4">
+        <div style={{width: '750px'}} className="dib">
             <UserModal handleOpen={open} handleClose={handleClose} />
             <CommentModal handleShow={show} handleShut={handleShut} />
             {/* <ShareModal handleOpen={open} handleClose={handleClose} /> */}
                 <div className="bg-white b--black br3 ma3 pa2 bw2 shadow-5">
                 <div className="tj flex f4 flex-wrap">
                     <span  onClick={() => {window.history.pushState(null, "", id)}}>
-                        <img src={imgP} alt="avatar..." onClick={handleOpen} className="br-100 pointer" width="55px" height="55px" />
+                        <img src={`https://shopbeta-app.herokuapp.com/users/${owner}/avatar`} alt="avatar..." onClick={handleOpen} className="br-100 pointer" width="55px" height="55px" />
                     </span>
                     <span onClick={() => {window.history.pushState(null, "", id)}} className="pa2 pointer fw5">
                         <span onClick={handleOpen}>{user.username}</span>
                         <p className="f6 code fw3">{user.location}.<small className="icon-globe ph2"></small></p>
-                        <p className="f6 pa1 code fw3">{time}</p>
+                        <p className="f6 pa1 code fw3">{feed.owner}</p>
                     </span>
                     <span className="tr">
-                        <button onClick={buttonClick} className="pa1 pointer ph3 bg hover-bg-mid-gray code b--black-50 br-pill">Follow</button>
+                        <button onClick={buttonClick} className="bg-transparent f5 pointer ba hover-bg-mid-gray pa2 tc br-pill ph4 ma1 grow b fw6">Follow</button>
                     </span>
                 </div>
                 <div className="pa2">
@@ -153,7 +165,7 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
                 </div>
                 </div>
                 <div className="side2">
-                <img src={img2} alt="post..." className="br4"  />
+                <img src={`https://shopbeta-app.herokuapp.com/feed/${id}/media`} alt="post..." className="br4"  />
                     {/* <video className="br3" controls>
                         <source src={vid} type="video/mp4"></source>
                     </video> */}
@@ -215,7 +227,7 @@ const PostCard = ({ id, name, owner, text, media }) => {
                 hearts: feed.hearts + 1
             }
     
-            await fetch(`http://localhost:3000/feed/${feed._id}/hearts`, {
+            await fetch(`https://shopbeta-app.herokuapp.com/feed/${feed._id}/hearts`, {
                 method: "POST",
                 headers: {
                     'Authorization' : 'Bearer ' + token,
@@ -348,7 +360,7 @@ const SharedPost = ({ name }) => {
                 hearts: data.hearts + 1
             }
 
-            await fetch(`http://localhost:3000/feed/${data._id}/hearts`, {
+            await fetch(`https://shopbeta-app.herokuapp.com/feed/${data._id}/hearts`, {
                 method: "POST",
                 headers: {
                     'Authorization' : 'Bearer ' + token,

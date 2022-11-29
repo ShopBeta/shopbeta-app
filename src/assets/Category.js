@@ -15,10 +15,10 @@ const Category = () => {
                         <Navbar />
                     <div className="">
                         <div className="dtc">
-                            <SideBar />
+                            {/* <SideBar /> */}
                         </div>
-                    <div className="pl4 pv6 tc dtc">
-                        <h3 className="shop code fw5 f3 ph3 pb2">Categories</h3>
+                    <div className="pv6 tc dtc">
+                        <h3 className="shop fw5 tl f4 ph3 pb2">Categories</h3>
                         <div className="tc">
                             <MainCat />
                         </div>
