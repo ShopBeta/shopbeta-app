@@ -22,7 +22,7 @@ const Navbar = () => {
         <nav className="bg-white pv2 shadow-5" style={{position: 'fixed', width: '100%'}}>
             <Typography>
             <div className="">
-                <span style={{color: '#ee9617', fontSize: '22px', fontWeight: '500', letterSpacing: '-1px'}} className="pa2 pr6">ShopBeta</span>
+                <span style={{color: '#ee9617', fontSize: '22px', fontWeight: '500', letterSpacing: '-1px'}} className="pa2 pr5">ShopBeta</span>
                 <span style={{textAlign: 'right'}} className="tr ph2">
                     <Link className="link tr f3 black ph3 icon-magnifier pointer hover-bg-light-blue br3 pa2 grow" to={"/assets/vendor/SearchPage"}></Link>
                     <Link className="link f3 black ph4 icon-settings pointer hover-bg-light-blue br3 pa2 grow"to={"/assets/vendor/Settings"}></Link>
