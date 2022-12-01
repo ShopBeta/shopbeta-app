@@ -6,7 +6,7 @@ const Comment = ({ text, file, owner, time }) => {
 
     const [user, setUser] = useState({})
     useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/users/${owner}`, {
+        fetch(`http://localhost:3000/users/${owner}`, {
             method: "GET",
             headers: {
                 'Accept' : 'application/json, text/plain',
@@ -43,7 +43,6 @@ const Comment = ({ text, file, owner, time }) => {
                                                         <small class="opacity-6 code">
                                                             <i class="pr2"></i>
                                                             {time}
-                                                            11:01 AM | Yesterday
                                                         </small>
                                                     </div>
                                                 </div>

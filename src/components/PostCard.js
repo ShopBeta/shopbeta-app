@@ -151,7 +151,7 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
                     <span onClick={() => {window.history.pushState(null, "", id)}} className="pa2 pointer fw5">
                         <span onClick={handleOpen}>{user.username}</span>
                         <p className="f6 code fw3">{user.location}.<small className="icon-globe ph2"></small></p>
-                        <p className="f6 pa1 code fw3">{feed.owner}</p>
+                        <p className="f6 pa1 code fw3">{time}</p>
                     </span>
                     <span className="tr">
                         <button onClick={buttonClick} className="bg-transparent f5 pointer ba hover-bg-mid-gray pa2 tc br-pill ph4 ma1 grow b fw6">Follow</button>

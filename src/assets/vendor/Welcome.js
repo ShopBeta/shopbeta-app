@@ -1,10 +1,9 @@
 import React from "react";
 import 'tachyons'
 import '../Home.css'
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import MainCat from '../../components/MainCat';
 import Preloader from "../../components/Preloader";
-import FollowCardList from "../../containers/FollowCardList";
 
 
 const Welcome = () => {
@@ -40,22 +39,6 @@ const Welcome = () => {
             console.log(err.message)
         })
 
-
-    const [users, setUsers] = useState([])
-    useEffect(() => {
-        fetch("https://shopbeta-app.herokuapp.com/users", {
-            method: "GET",
-            headers: {
-                'Accept' : 'application/json, text/plain',
-                'Content-Type' : 'application/json'
-            },
-        })
-        .then((res) => res.json())
-        .then((data) => setUsers(data))
-        .catch((err) => {
-            console.log(err.message)
-        })
-    }, [])
 
     const token = localStorage.getItem("token")
     console.log(token)
@@ -131,15 +114,12 @@ const Welcome = () => {
                                 <button type="submit" className="bg-transparent f6 pointer ba hover-bg-mid-gray pa2 tc br-pill ph5 ma1 grow b fw6">Upload</button>
                             </div>
                         </form>
-                            <div className="pa2 tc" style={{ overflowY: 'scroll', height: '300px'}}>
-                                <p className="pv2 f4 fw6 orange">Follow other social shoppers</p>
-                                <FollowCardList users={users} />
-                                    </div>
-                                </div>
-                        </div>
-                        <div style={{ overflowY: 'scroll', height: '540px'}}>
-                        <p className="pv1 ph2 f4 fw6 orange">Check a Category</p>
-                                <MainCat />
+                            <div className="pv2 tc">
+                                <Link to={"/assets/vendor/Profile"}>
+                                    <button className="bg-orange white f6 pointer ba hover-bg-mid-gray pa3 tc br-pill ph5 ma1 grow b fw6">Proceed to Dashboard</button>
+                                </Link>
+                            </div>
+                            </div>
                             </div>
                         </div>
                     </div>

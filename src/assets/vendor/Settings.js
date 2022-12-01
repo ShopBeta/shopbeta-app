@@ -2,6 +2,8 @@ import { render } from "@testing-library/react";
 import React from "react";
 import '../Home.css'
 import Navbar from "../../components/Navbar";
+import { useState, useEffect } from "react";
+import Dialog from "../../containers/Dialog";
 import SideBar from "../../components/SideBar";
 import Preloader from "../../components/Preloader";
 
@@ -49,7 +51,6 @@ const changes = async () => {
         password: document.querySelector('.password').value,
         phonenumber: document.querySelector('.phonenumber').value,
         location: document.querySelector('.location').value,
-        avatar: document.querySelector('.avatar').value,
         website: document.querySelector('.website').value,
         contactEmail: document.querySelector('.contactEmail').value
     }
@@ -70,6 +71,16 @@ const changes = async () => {
     })
 }
 
+const [open, setOpen] = useState(false)
+
+const handClick = () => {
+    setOpen(false)
+}
+
+const handClickShow = () => {
+    setOpen(true)
+}
+
 const handleSubmit = e => {
     e.preventDefault()
     changes()
@@ -78,6 +89,7 @@ const handleSubmit = e => {
     render()
         return(
             <div className="">
+                <Dialog open={open} handClick={handClick} />
                 <Preloader />
                 <Navbar />
                     <div className="">
@@ -127,7 +139,7 @@ const handleSubmit = e => {
                                         <input type="password" value={password} name="password" className="br3 ba pa2 w-100" placeholder="Repeat password..." />
                                     </div>
                                     <p className="tr">
-                                        <button type="submit" className="bg-transparent orange hover-bg-mid-gray pa2 tc br-pill ba ph4 ma1 grow pv3 b fw6">Save settings</button>
+                                        <button onClick={handClickShow} type="submit" className="bg-transparent orange hover-bg-mid-gray pa2 tc br-pill ba ph4 ma1 grow pv3 b fw6">Save settings</button>
                                     </p>
                                     <div>
                                         <div className="pv2">

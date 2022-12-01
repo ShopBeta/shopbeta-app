@@ -13,7 +13,7 @@ const CommentList = ({ comment, text, file, owner, time}) => {
                         text={comment.text} 
                         file={comment.file}
                         owner={comment.owner}
-                        time={comment.createdAt}
+                        time={comment.text.time}
                         />
                     )
                 })
