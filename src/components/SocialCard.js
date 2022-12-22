@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import 'tachyons';
+import 'tachyons';  
 import img from '../images/tst-image3.jpg'
 import img1 from '../images/shopbeta logo -1.png'
 import MessageModal from "../containers/MessageModal";
@@ -69,7 +69,7 @@ const SocialCard = () => {
                                         just now | Today
                                 </small>
                             </div>
-                </div>
+                        </div>
                    </div>
                 </div>
             </div>

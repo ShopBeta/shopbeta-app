@@ -95,7 +95,7 @@ const Comments = ({ handleShut, text, file, owner }) => {
     }
 
             return(
-                    <div style={{width: '600px'}} className={classes.root}>
+                    <div style={{width: '460px'}} className={classes.root}>
                         <Dialog open={open} handClick={handClick} />
                         <div className="tr pb2">
                             <small onClick={handleShut} className="icon-close f3 hover-red"></small>

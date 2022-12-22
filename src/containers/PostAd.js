@@ -39,11 +39,11 @@ const PostAd = ({text, file}) => {
     }
 
     return(
-        <div className="pl5 ph6">
+        <div className="">
             <Dialog open={open} handClick={handClick} />
                 <div className="pv2">
                     <form action={`https://shopbeta-app.herokuapp.com/feed/${user._id}`} method="post" encType="multipart/form-data" className="tl br3 pa3 ma2">
-                        <p className="pv1 orange fw6 code tc f4">
+                        <p className="pv1 fw6 code tc f4">
                             Post an Ad
                         </p>
                         <p className="pv2 fw5">

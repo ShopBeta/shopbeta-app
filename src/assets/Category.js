@@ -18,7 +18,7 @@ const Category = () => {
                             {/* <SideBar /> */}
                         </div>
                     <div className="pv6 tc dtc">
-                        <h3 className="shop fw5 tl f4 ph3 pb2">Categories</h3>
+                        <h3 className="fw5 tl f3 ph3 pb2">Categories</h3>
                         <div className="tc">
                             <MainCat />
                         </div>

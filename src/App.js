@@ -9,6 +9,7 @@ import MarketPlace from "./assets/vendor/MarketPlace";
 import Cart from "./assets/vendor/Cart";
 import Settings from "./assets/vendor/Settings";
 import Welcome from "./assets/vendor/Welcome";
+import Messages from "./assets/Messages";
 
 const App = () => {
     return (
@@ -17,6 +18,7 @@ const App = () => {
              <Routes>
                 <Route index element={<Home />} />
                 <Route exact path="/assets/Adbillboard" element={<AdbillBoard />} />
+                <Route exact path="/assets/Messages" element={<Messages />} />
                 <Route exact path="/assets/Category" element={<Category />} />
                 <Route exact path="/assets/vendor/SearchPage" element={<SearchPage />} />
                 <Route exact path="/assets/vendor/MarketPlace" element={<MarketPlace />} />

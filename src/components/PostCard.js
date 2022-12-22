@@ -139,13 +139,13 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
     }   
     
     return(
-        <div style={{width: '750px'}} className="dib">
+        <div style={{width: '530px'}} className="">
             <UserModal handleOpen={open} handleClose={handleClose} />
             <CommentModal handleShow={show} handleShut={handleShut} />
             {/* <ShareModal handleOpen={open} handleClose={handleClose} /> */}
                 <div className="bg-white b--black br3 ma3 pa2 bw2 shadow-5">
                 <div className="tj flex f4 flex-wrap">
-                    <span  onClick={() => {window.history.pushState(null, "", id)}}>
+                    <span onClick={() => {window.history.pushState(null, "", id)}}>
                         <img src={`https://shopbeta-app.herokuapp.com/users/${owner}/avatar`} alt="avatar..." onClick={handleOpen} className="br-100 pointer" width="55px" height="55px" />
                     </span>
                     <span onClick={() => {window.history.pushState(null, "", id)}} className="pa2 pointer fw5">
@@ -170,17 +170,17 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
                         <source src={vid} type="video/mp4"></source>
                     </video> */}
                 <div className="pa2">
-                    <span onClick={heartClick} className="pa2 fw5 ph3 icon-heart pointer f4 grow icon-share">
+                    <span onClick={heartClick} className="pa2 fw5 ph3 icon-heart pointer f4 grow">
                         <small id="increment" className="pa1 code">{hearts}</small>
                     </span>
                     <span onClick={() => {window.history.pushState(null, "", id)}} className="pa2 pointer f4 fw5 grow icon-bubble">
                         <small onClick={handleShow} className="pa1 code">{comment.length}</small>
                     </span>
-                    <span onClick={() => {window.history.pushState(null, "", id)}} className="pa2 fw5 f4 grow pointer icon-share">
+                    <span onClick={() => {window.history.pushState(null, "", id)}} disabled className="pa2 fw5 f4 grow pointer disabled icon-share">
                         <small onClick={handleOpen} className="pa1 code"></small>
                     </span>
                     <span onClick={() => {window.history.pushState(null, "", id)}}>
-                        <input onClick={handleShow} type="text" className="pa3 br-pill b--black-50 w-50" placeholder="Comment here..." />
+                        <input onClick={handleShow} type="text" className="pa3 br-pill b--black-50 w-70" placeholder="Comment here..." />
                     </span>
                     </div>
                 </div>

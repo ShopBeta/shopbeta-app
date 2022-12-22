@@ -3,7 +3,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import './Home.css';
 import Navbar from '../components/Navbar';
-import SideBar from '../components/SideBar';
 import { TextPostList } from '../containers/PostCardList';
 // import { AdBlankPage, ErrorPage } from "./Vendor/Pages";
 import PostAd from "../containers/PostAd";
@@ -30,12 +29,12 @@ const AdbillBoard = () => {
                 <Preloader />
                         <Navbar />
                     <div className="">
-                        <div className="dtc">
+                        <div className="">
                             {/* <SideBar /> */}
                         </div>
-                        <div className="pa4 pv5 dtc">
-                            <h3 className="shop tl fw5 pt5 pa4 f4 ph3">AdbillBoard</h3>
-                                <div className="tc">
+                        <div className="pa1 pv5 tc">
+                            <h3 className="tl fw5 pt5 pa4 f3 ph4">AdbillBoard</h3>
+                                <div className="dib tc">
                                     <PostAd/>
                                     <TextPostList feed={feed} />
                                 </div>
