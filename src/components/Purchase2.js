@@ -1,8 +1,8 @@
 import { makeStyles } from "@material-ui/core";
 import React from "react";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import 'tachyons';
-import MessageModal from "../containers/MessageModal";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -46,18 +46,6 @@ const Purchase = ({ handleShut, id }) => {
         })
     }, [product.owner])
 
-     //declare a new state variable for modal to open
-     const [open, setOpen] = useState(false)
-
-     //functon to handle payment modal close
-     const handleClose = () => {
-        setOpen(false)
-    }
-
-     //functon to handle payment modal open
-    const handleShow = (event) => {
-        setOpen(true)
-    }
 
     const classes = useStyles()
     const handleSubmit1 = e => {
@@ -66,7 +54,6 @@ const Purchase = ({ handleShut, id }) => {
     }
     return(
             <div className={classes.root} onSubmit={handleSubmit1}>
-                <MessageModal handleShow={open} handleShut={handleClose} />
                 <div className="tr pb2">
                     <small onClick={handleShut} className="icon-close pointer f3 hover-red"></small>
                     <div className="tl f4">
@@ -101,7 +88,7 @@ const Purchase = ({ handleShut, id }) => {
                                     </p>
                                 </div>
                             </div>
-                            <div className="tl pv2">
+                            {/* <div className="tl pv2">
                                 <p className="f5 code b pv2">Chat with seller to buy Product</p>
                             </div>
                             <div className="tc">
@@ -110,15 +97,15 @@ const Purchase = ({ handleShut, id }) => {
                                     <p className="f4 tc pv2">Message Seller</p>
                                     <p className="pv2 orange code f5">"Send a message to start a conversation"</p>
                                 </div>
-                            </div>
+                            </div> */}
                             <div className="pv2">
                             <div className="pa3 f6">
                                 <h3 className="pv1">
                                 <small className="icon-info pr2 f5 blue"></small>
                                    Disclaimer
                                 </h3>
-                                <div className="lh3 f5 code fw5 pa2">
-                                <p style={{lineHeight: "20px", fontSize: "13.5px"}} className="fw5">
+                                <div className="lh3 f5 code fw6 pa2">
+                                <p style={{lineHeight: "20px", fontSize: "13.5px"}} className="fw6">
                                     No returns allowed on any FINAL SALE items, except for if flaws in products are found in the event
                                     that you are not 100% satisfied with any item you purchase, we accept returns on any item (other than FINAL). This implies that any product shipped or delivered with defects or material. Please contact us at info@shopbetaonline.com to approve your return.
                                     We reserve the right to deny any refund to sender without prior return approval. Only warn out items will be accepted for returns/exchange within 30 days at when item was delivered to you.
@@ -141,9 +128,11 @@ const Purchase = ({ handleShut, id }) => {
                     <span className="pl2 code fw6 f5">{product.rating}</span>
                 </div>
                 <div className="pv1 tc grow">
-                    <button onClick={handleShow} type="submit" variant="contained" className="ph5 white pa3 bg-orange pointer ba hover-bg-mid-gray br-pill">
-                        Contact Seller
-                    </button>
+                   <Link onClick={() => {window.localStorage.setItem("userId", product.owner)}} className="link black" to={"/assets/vendor/User"}>
+                        <button type="submit" variant="contained" className="ph5 white pa3 bg-orange pointer ba hover-bg-mid-gray br-pill">
+                            Contact Seller
+                        </button>
+                    </Link>
                 </div>
             </div>
     )

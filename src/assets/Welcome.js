@@ -1,9 +1,9 @@
 import React from "react";
 import 'tachyons'
-import '../Home.css'
+import './Home.css'
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Preloader from "../../components/Preloader";
+import Preloader from "../components/Preloader";
 
 
 const Welcome = () => {
@@ -34,6 +34,7 @@ const Welcome = () => {
         .then((data) => {
             console.log(data)
             window.localStorage.setItem("token", data.token)
+            window.localStorage.setItem("meId", data.user._id)
         })
         .catch((err) => {
             console.log(err.message)
@@ -41,14 +42,13 @@ const Welcome = () => {
 
 
     const token = localStorage.getItem("token")
-    console.log(token)
-  
-    const [user, setUser] = useState({})
+    const me = localStorage.getItem("meId")
+
+    const [user, setUser] = useState([])
     useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/users/me`, {
+        fetch(`http://localhost:3000/users/${me}`, {
             method: "GET",
             headers: {
-                'Authorization' : 'Bearer ' + token,
                 'Accept' : 'application/json, text/plain',
                 'Content-Type' : 'application/json'
             },
@@ -58,7 +58,10 @@ const Welcome = () => {
         .catch((err) => {
             console.log(err.message)
         })
-    }, [token])
+    }, [me])
+
+    console.log(token)
+    console.log(me)
 
         return(
             <div className="bg-white">

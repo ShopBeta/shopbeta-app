@@ -1,4 +1,3 @@
-import { render } from '@testing-library/react'
 import React, { Component} from 'react'
 import 'tachyons'
 
@@ -6,6 +5,7 @@ class Preloader extends Component {
     state = {
         preloading:true
     }
+    
     componentDidMount() {
         setTimeout(
             () => this.setState(() => ({ preloading: false})),
@@ -16,11 +16,12 @@ class Preloader extends Component {
             const { preloading } = this.state
             return(
                     <div>
-                        { preloading &&
-                            <section class="preloader">
-                                <div class="spinner">
-                                    <span class="spinner-rotate">
-                                        <div className='tc' style={{color: '#ee9617', fontSize: '27px', fontWeight: '500', letterSpacing: '-1px'}}>ShopBeta</div>
+                        { 
+                            preloading &&
+                            <section className="preloader">
+                                <div className="spinner">
+                                    <span className="spinner-rotate">
+                                        <div className='tc code' style={{color: '#ee9617', fontSize: '27px', fontWeight: '500', letterSpacing: '-1px'}}>Spongebuy</div>
                                     </span>
                                 </div>
                             </section>

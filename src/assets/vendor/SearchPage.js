@@ -26,7 +26,7 @@ const SearchPage = () => {
 
     const onSearchChange = e => {
         setSearchField(e.target.value)
-}
+    }
 
     render()
 
@@ -45,7 +45,7 @@ const SearchPage = () => {
             <div className="">
                 <Preloader />
                     <div className="flex flex-wrap">
-                        <div style={{color: '#ee9617', fontSize: '21px', fontWeight: '500', letterSpacing: '-1px'}} className="pa4">ShopBeta</div>
+                        <div style={{color: '#ee9617', fontSize: '23px', fontWeight: '550', letterSpacing: '-1px'}} className="pa4 code">Sponge</div>
                             <SearchBox searchChange={onSearchChange} />
                         </div>
                     <div className="">

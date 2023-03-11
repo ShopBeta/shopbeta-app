@@ -1,14 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import 'tachyons';
+import moment from "moment";
 import img2 from '../images/home_wallpaper_2.jpg';
 import imgP from '../images/nike.jpg';
 import './simple-line-icons/css/simple-line-icons.css';
 import CommentModal from "../containers/CommentModal";
 import ShareModal from "../containers/ShareModal";
-import UserModal from "../containers/UserModal";
 import { Link } from "react-router-dom";
-import { Carousell, Item } from "../containers/ImageCarousel";
 
 
 const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
@@ -19,7 +18,7 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
 
     const [user, setUser] = useState({})
     useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/users/${owner}`, {
+        fetch(`http://localhost:3000/users/${owner}`, {
             method: "GET",
             headers: {
                 'Accept' : 'application/json, text/plain',
@@ -35,7 +34,7 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
 
     const [comment, setComment] = useState({})
     useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/feed/${id}/comments`, {
+        fetch(`http://localhost:3000/feed/${id}/comments`, {
             method: "GET",
             headers: {
                 'Accept' : 'application/json, text/plain',
@@ -44,18 +43,6 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
         })
         .then((res) => res.json())
         .then((data) => setComment(data))
-        .catch((err) => {
-            console.log(err.message)
-        })
-    }, [id])
-
-    const [feed, setFeed] = useState({})
-    useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/feed/${id}`, {
-            method: "GET",
-        })
-        .then((res) => res.json())
-        .then((data) => setFeed(data))
         .catch((err) => {
             console.log(err.message)
         })
@@ -114,8 +101,6 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
             })
     }
 
-    const [open, setOpen] = useState(false)
-
     const [show, setShow] = useState(false)
 
     //functon to handle payment modal close
@@ -126,32 +111,28 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
      //functon to handle payment modal open
     const handleShow = () => {
         setShow(true)
-    }
-
-       //functon to handle payment modal close
-       const handleClose= () => {
-        setOpen(false)
-    }
-
-     //functon to handle payment modal open
-    const handleOpen = () => {
-        setOpen(true)
-    }   
+    } 
     
     return(
-        <div style={{width: '530px'}} className="">
-            <UserModal handleOpen={open} handleClose={handleClose} />
+        <div style={{width: '450px'}} className="">
             <CommentModal handleShow={show} handleShut={handleShut} />
             {/* <ShareModal handleOpen={open} handleClose={handleClose} /> */}
-                <div className="bg-white b--black br3 ma3 pa2 bw2 shadow-5">
+            <div className="bg-white b--black br3 ma3 pa2 bw2 shadow-5">
                 <div className="tj flex f4 flex-wrap">
                     <span onClick={() => {window.history.pushState(null, "", id)}}>
-                        <img src={`https://shopbeta-app.herokuapp.com/users/${owner}/avatar`} alt="avatar..." onClick={handleOpen} className="br-100 pointer" width="55px" height="55px" />
+                        <Link onClick={() => {window.localStorage.setItem("userId", owner)}} className="link black" to={"/assets/vendor/User"}>
+                            <img src={`http://localhost:3000/users/${owner}/avatar`} alt="Accessories..." className="br-100" width="55px" height="55px" />
+                        </Link>
                     </span>
-                    <span onClick={() => {window.history.pushState(null, "", id)}} className="pa2 pointer fw5">
-                        <span onClick={handleOpen}>{user.username}</span>
+                    <span onClick={() => {window.history.pushState(null, "", id)}} className="pa2 f5 pointer fw5">
+                        <Link onClick={() => {window.localStorage.setItem("userId", owner)}} className="link black" to={"/assets/vendor/User"}>
+                            <span>{user.username}</span>
+                        </Link>
                         <p className="f6 code fw3">{user.location}.<small className="icon-globe ph2"></small></p>
-                        <p className="f6 pa1 code fw3">{time}</p>
+                        <p className="f6 pa1 code fw3">
+                            {moment(time).from()}
+                            <span class="ph2">{moment(time).format('h:mm a')}</span>
+                        </p>
                     </span>
                     <span className="tr">
                         <button onClick={buttonClick} className="bg-transparent f5 pointer ba hover-bg-mid-gray pa2 tc br-pill ph4 ma1 grow b fw6">Follow</button>
@@ -159,29 +140,26 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
                 </div>
                 <div className="pa2">
                 <div style={{ height: 'auto', textAlign: 'justify'}} className="pa2">
-                    <p style={{lineHeight: "20px"}} className="f4">
+                    <p style={{lineHeight: "20px"}} className="f5">
                         {text}
                     </p>
                 </div>
                 </div>
                 <div className="side2">
-                <img src={`https://shopbeta-app.herokuapp.com/feed/${id}/media`} alt="post..." className="br4"  />
-                    {/* <video className="br3" controls>
-                        <source src={vid} type="video/mp4"></source>
-                    </video> */}
-                <div className="pa2">
-                    <span onClick={heartClick} className="pa2 fw5 ph3 icon-heart pointer f4 grow">
-                        <small id="increment" className="pa1 code">{hearts}</small>
-                    </span>
-                    <span onClick={() => {window.history.pushState(null, "", id)}} className="pa2 pointer f4 fw5 grow icon-bubble">
-                        <small onClick={handleShow} className="pa1 code">{comment.length}</small>
-                    </span>
-                    <span onClick={() => {window.history.pushState(null, "", id)}} disabled className="pa2 fw5 f4 grow pointer disabled icon-share">
-                        <small onClick={handleOpen} className="pa1 code"></small>
-                    </span>
-                    <span onClick={() => {window.history.pushState(null, "", id)}}>
-                        <input onClick={handleShow} type="text" className="pa3 br-pill b--black-50 w-70" placeholder="Comment here..." />
-                    </span>
+                    <img src={`http://localhost:3000/feed/${id}/media`} alt="post..." className="br4"  />
+                    <div className="pa2">
+                        <span onClick={heartClick} className="pa2 fw5 ph3 icon-heart pointer f4 grow">
+                            <small id="increment" className="pa1 code">{hearts}</small>
+                        </span>
+                        <span onClick={() => {window.history.pushState(null, "", id)}} className="pa2 pointer f4 fw5 grow icon-bubble">
+                            <small onClick={handleShow} className="pa1 code">{comment.length}</small>
+                        </span>
+                        {/* <span onClick={() => {window.history.pushState(null, "", id)}} disabled className="pa2 fw5 f4 grow pointer disabled icon-share">
+                            <small className="pa1 code"></small>
+                        </span> */}
+                        <span onClick={() => {window.history.pushState(null, "", id)}}>
+                            <input onClick={handleShow} type="text" className="pa3 br-pill b--black-50 w-70" placeholder="Comment here..." />
+                        </span>
                     </div>
                 </div>
                 </div>
@@ -189,34 +167,71 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
     )
 }
 
-const PostCard = ({ id, name, owner, text, media }) => {
+const VideoPost = ({ name, id, owner, media, text, hearts, time}) => {
 
     const token = localStorage.getItem("token")
+    console.log(owner)
+    console.log(time)
 
-    const [data, setData] = useState({})
-    
-    const [feed, setFeed] = useState({})
+    const [user, setUser] = useState({})
+    useEffect(() => {
+        fetch(`http://localhost:3000/users/${owner}`, {
+            method: "GET",
+            headers: {
+                'Accept' : 'application/json, text/plain',
+                'Content-Type' : 'application/json'
+            },
+        })
+        .then((res) => res.json())
+        .then((data) => setUser(data))
+        .catch((err) => {
+            console.log(err.message)
+        })
+    }, [owner])
+
+    const [comment, setComment] = useState({})
+    useEffect(() => {
+        fetch(`http://localhost:3000/feed/${id}/comments`, {
+            method: "GET",
+            headers: {
+                'Accept' : 'application/json, text/plain',
+                'Content-Type' : 'application/json'
+            },
+        })
+        .then((res) => res.json())
+        .then((data) => setComment(data))
+        .catch((err) => {
+            console.log(err.message)
+        })
+    }, [id])
 
     const buttonClick = async event => {
 
-            event.currentTarget.style.backgroundColor = 'transparent';
-            event.currentTarget.style.color = 'orange';
-            event.currentTarget.style.fontWeight = 'bold';
-            event.currentTarget.innerHTML = 'following';
+        event.currentTarget.style.backgroundColor = 'transparent';
+        event.currentTarget.style.color = 'orange';
+        event.currentTarget.style.fontWeight = 'bold';
+        event.currentTarget.innerHTML = 'following';
 
-               await fetch(`https://shopbeta-app.herokuapp.com/user/${data._id}/follow`, {
-                    method: "POST",
-                    headers: {
-                        'Authorization' : 'Bearer ' + token,
-                        'Accept' : 'application/json, text/plain',
-                        'Content-Type' : 'application/json'
-                    },
-                })
-                .then((res) => res.json())
-                .then((data) => setData(data))
-                .catch((err) => {
-                    console.log(err.message)
-                })
+           await fetch(`https://shopbeta-app.herokuapp.com/user/${user._id}/follow`, {
+                method: "POST",
+                headers: {
+                    'Authorization' : 'Bearer ' + token,
+                    'Content-Type' : 'application/json'
+                }
+            })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data)
+                if (data.follow === true) {
+                    event.currentTarget.innerHTML = 'following';
+                } else {
+                    event.currentTarget.innerHTML = 'follow';
+                }
+            })
+            .catch((err) => {
+                console.log(err.message)
+            })
+
     }
 
     const heartClick = async event => {
@@ -224,10 +239,10 @@ const PostCard = ({ id, name, owner, text, media }) => {
             event.currentTarget.style.fontWeight = 'bold';
 
             const count = {
-                hearts: feed.hearts + 1
+                hearts: hearts + 1
             }
-    
-            await fetch(`https://shopbeta-app.herokuapp.com/feed/${feed._id}/hearts`, {
+
+            await fetch(`https://shopbeta-app.herokuapp.com/feed/${id}/hearts`, {
                 method: "POST",
                 headers: {
                     'Authorization' : 'Bearer ' + token,
@@ -237,13 +252,11 @@ const PostCard = ({ id, name, owner, text, media }) => {
                 body: JSON.stringify(count)
             })
             .then((res) => res.json())
-            .then((data) => setFeed(data))
+            .then((data) => console.log(data))
             .catch((err) => {
                 console.log(err.message)
             })
     }
-
-    const [open, setOpen] = useState(false)
 
     const [show, setShow] = useState(false)
 
@@ -255,72 +268,64 @@ const PostCard = ({ id, name, owner, text, media }) => {
      //functon to handle payment modal open
     const handleShow = () => {
         setShow(true)
-    }
-
-       //functon to handle payment modal close
-       const handleClose= () => {
-        setOpen(false)
-    }
-
-     //functon to handle payment modal open
-    const handleOpen = () => {
-        setOpen(true)
-    }
-        return(
-            <div className="dib">
-                 <CommentModal handleShow={show} handleShut={handleShut} />
-                 <ShareModal handleOpen={open} handleClose={handleClose} />
-                <div className="flex flex-wrap bg-white b--black br3 ma3 pa2 bw2 shadow-5">
-                    <div className="w-50">
-                        <div className="w-100">
-                            <Carousell><Item /></Carousell>
-                        </div>
-                        <div className="ma2">
-                            <div>
-                                {/* <video className="w-100 h-80 br3" controls>
+    } 
+    
+    return(
+            <div style={{Height: '600px', width: '450px'}} className="">
+                <CommentModal handleShow={show} handleShut={handleShut} />
+                    <div className="bg-white b--black br3 ma3 pa2 bw2 shadow-5">
+                        <div className="side2">
+                            <img src={`http://localhost:3000/feed/${id}/media`} alt="post..." className="br4"  />
+                                {/* <video className="br3" controls>
                                     <source src={vid} type="video/mp4"></source>
                                 </video> */}
-                                {/* <img src={media} className="br3 w-100 h-80 br3" alt="First slide" /> */}
+                            <div className="f4">
+                                <span className="icon-eye pr2"></span>
+                                <span className="pr7"> 
+                                    <small class="opacity-6 code">
+                                        <i class="pr2"></i>
+                                        2K | Views
+                                    </small>
+                                </span>
+                                <span className="f6 pa1 code fw3">
+                                    {moment(time).from()}
+                                    {/* <span class="ph2">{moment(time).format('h:mm a')}</span> */}
+                                </span>
                             </div>
-                        </div>
-                    </div>
-                    <div className="w-50">
-                        <div className="tj flex flex-wrap">
-                        <Link to={"/Assets/Vendor/Profile"} className="link black">
-                            <img src={img2} alt="Accessories..." className="br-100" width="50px" height="50px" />
-                            </Link>
-                            <span className="pa2 fw5 f5">
-                                <Link className="black link" to={"/Assets/Vendor/Profile"}>{owner}</Link>
-                                <p className="f6 code fw3">Santiago, CA .<small className="icon-globe ph2"></small></p>
-                                <p className="f6 pa1 code fw3">12min ago</p>
-                            </span>
-                            <span className="tr">
-                                <button onClick={buttonClick} className="pa1 pointer ph3 bg hover-bg-mid-gray code b--black-50 br-pill">Follow</button>
-                            </span>
-                        </div>
-                        <div style={{ overflowY: 'auto', height: '190px'}} className="pa2 pv2 tj">
-                        <p>
-                            {text}
-                            {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium est assumenda distinctio sint repellat beatae dolore magnam pariatur ipsum, et deserunt asperiores doloribus sit at esse corrupti facilis aperiam nihil.
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum alias qui eaque mollitia, iure totam fugit possimus, harum necessitatibus odio non, consequuntur laudantium. Est iste sequi suscipit laboriosam dolorum repellat. */}
-                        </p>
-                    </div>
-                    <div className="pv1">
-                        <span onClick={heartClick} className="pa2 fw5 ph3 icon-heart pointer f4 grow icon-share">
-                            <small id="increment" className="pa1 code">{feed.hearts}</small>
-                        </span>
-                        <span onClick={handleShow} className="pa2 f4 pointer fw5 grow icon-bubble">
-                            <small className="pa1 code">26</small>
-                        </span>
-                        <span onClick={handleOpen} className="pa2 fw5 pointer f4 grow icon-share">
-                            <small className="pa1 code"></small>
-                        </span>
-                        <input onClick={handleShow} type="text" className="pa2 br-pill b--black-50 w-50" placeholder="Comment here..." />
+                          <div className="">
+                            <div className="pa2">
+                                <div style={{ height: 'auto', textAlign: 'justify'}} className="pa2">
+                                    <div style={{lineHeight: "18px"}} className="f6">
+                                        {text}
+                                    </div>
+                                    <div className="pa2 tr">
+                                            <p onClick={heartClick} className="pa2 fw5 ph3 pointer icon-heart pointer f3">
+                                                <small id="increment" className="pa1 code">{hearts}</small>
+                                            </p>
+                                            <p onClick={() => {window.history.pushState(null, "", id)}} className="pa2 pointer f3 fw5 icon-bubble">
+                                                <small onClick={handleShow} className="pa1 f5 code">{comment.length}</small>
+                                            </p>
+                                            <p className="tr">  
+                                                <Link onClick={() => {window.localStorage.setItem("userId", owner)}} className="link black" to={"/assets/vendor/User"}>
+                                                    <img src={`http://localhost:3000/users/${owner}/avatar`} alt="Accessories..." className="br-100 pointer" width="55px" height="55px" />
+                                                </Link>
+                                                <Link onClick={() => {window.localStorage.setItem("userId", owner)}} className="link black" to={"/assets/vendor/User"}>
+                                                    <p className="pa2 pointer fw5">
+                                                        <p>{user.username}</p>
+                                                    </p>
+                                                </Link>
+                                                <p onClick={buttonClick} className="bg-transparent f5 pointer blue hover-orange tr br-pill ph2 b fw6">
+                                                    Follow
+                                                </p>
+                                            </p>
+                                    </div>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>
         </div>
-    );
+    )
 }
 
 const SharedPost = ({ name }) => {
@@ -607,4 +612,4 @@ const ProfilePost = ({ name, id, owner, text, media }) => {
     )
 }
 
-export { PostCard, SharedPost, TextPost, ProfilePost };
+export { VideoPost, SharedPost, TextPost, ProfilePost };

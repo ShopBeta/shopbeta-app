@@ -4,7 +4,6 @@ import '../Home.css'
 import Navbar from "../../components/Navbar";
 import { useState, useEffect } from "react";
 import Dialog from "../../containers/Dialog";
-import SideBar from "../../components/SideBar";
 import Preloader from "../../components/Preloader";
 
 
@@ -27,7 +26,7 @@ const logoutAllClick = async () => {
 }
 
 const deleteClick = async () => {
-        await fetch("https://shopbeta-app.herokuapp.com/users/me", {
+        await fetch("https://shopbeta-app.herokuapp.com/users/deleteme", {
             method: "DELETE",
             headers: {
                 'Authorization' : 'Bearer ' + token,
@@ -42,7 +41,6 @@ const deleteClick = async () => {
             })
 }
 
-
 const changes = async () => {
     const update = {
         username: document.querySelector('.username').value,
@@ -55,7 +53,7 @@ const changes = async () => {
         contactEmail: document.querySelector('.contactEmail').value
     }
 
-    await fetch("https://shopbeta-app.herokuapp.com/users/me", {
+    await fetch("https://shopbeta-app.herokuapp.com/users/updateme", {
         method: "PATCH",
         headers: {
             'Authorization' : 'Bearer ' + token,
@@ -92,50 +90,56 @@ const handleSubmit = e => {
                 <Dialog open={open} handClick={handClick} />
                 <Preloader />
                 <Navbar />
-                    <div className="">
-                           <div className="dtc">
-                            {/* <SideBar /> */}
-                           </div>
-                      <div className="pa4 tc pv6">
-                        <div className="pv3 dib">
+                    <div className="tc">
+                      <div style={{width: '430px'}} className="dib pa3 tc pv6">
+                        <div className="pv3">
                             <h3 className="tr"><small className="icon-settings f4 ph2"></small>Change Settings</h3>
                                 <form onSubmit={handleSubmit}>
                                     <div className="tl pv2">
                                         <p className="pv1 f5 fw5">Change Username</p>
+                                        <small className="icon-user f4 fw5"></small>
                                         <input type="text" name="username" value={username} className="username br3 ba pa2 w-100" placeholder="Type in new username..." />
                                     </div>
-                                    <div className="tl pv2">
-                                        <p className="pv1 f5">Change Bio</p>
-                                        <p className="pv2">
+                                    <div className="tl pv1">
+                                        <p className="pv1 f5 fw5">Change Bio</p>
+                                        <p className="pv1">
+                                            <small className="icon-note f4 fw5"></small>
                                             <textarea id="myInput" name="bio" value={bio} className="bio br3 ba pa2 w-100 h3" placeholder="Something about your profile..." aria-label="With textarea"></textarea>
                                         </p>
                                     </div>
                                     <div className="tl pv2">
-                                        <p className="f5 fw5">Add Location</p>
+                                        <p className="pv1 f5 fw5">Add Location</p>
+                                        <small className="icon-location-pin f4 fw5"></small>
                                         <input id="location" type="text" name="location" value={location} className="location br3 ba pa2 w-100" placeholder="Type in your location..." />
                                     </div>
                                     <div className="tl pv2">
                                         <p className="pv1 f5 fw5">Add Phone Number</p>
+                                        <small className="icon-phone f4 fw5"></small>
                                         <input type="tel" name="phonenumber" value={phonenumber} className="phonenumber br3 ba pa2 w-100" placeholder="Input phone number..." />
                                     </div>
                                     <div className="tl pv2">
                                         <p className="pv1 f5 fw5">Set new Email</p>
+                                        <small className="icon-envelope f4 fw5"></small>
                                         <input type="email" name="email" value={email} className="email br3 ba pa2 w-100" placeholder="Your email..." />
                                     </div>
                                     <div className="tl pv2">
                                         <p className="pv1 f5 fw5">Add Website</p>
+                                        <small className="icon-globe f4 fw5"></small>
                                         <input type="url" name="website" value={website} className="website br3 ba pa2 w-100" placeholder="Your website..." />
                                     </div>
                                     <div className="tl pv2">
                                         <p className="pv1 f5 fw5">Set contact Email</p>
+                                        <small className="icon-envelope f4 fw5"></small>
                                         <input type="email" name="contactEmail" value={contactEmail} className="contactEmail br3 ba pa2 w-100" placeholder="Your contact email..." />
                                     </div>
                                     <div className="tl pv2">
                                         <p className="pv1 f5 fw5">Set Password</p>
+                                        <small className="icon-lock f4 fw5"></small>
                                         <input type="password" value={password} className="password br3 ba pa2 w-100" placeholder="Type in your new password..." />
                                     </div>
                                     <div className="tl pv2">
                                         <p className="pv1 f5 fw5">Repeat Password</p>
+                                        <small className="icon-lock f4 fw5"></small>
                                         <input type="password" value={password} name="password" className="br3 ba pa2 w-100" placeholder="Repeat password..." />
                                     </div>
                                     <p className="tr">

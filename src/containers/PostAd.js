@@ -34,19 +34,26 @@ const PostAd = ({text, file}) => {
         setOpen(true)
     }
 
+    const handleShut = () => {
+        setOpen(false)
+    }
+
     const handleSubmit = e => {
         e.preventDefault()
     }
 
     return(
-        <div className="">
+        <div style={{width: '460px'}} className="">
             <Dialog open={open} handClick={handClick} />
+                <div className="tr w-100 pa2 pb2">
+                    <small onClick={handleShut} className="icon-close pointer f3 hover-red"></small>
+                </div>
                 <div className="pv2">
                     <form action={`https://shopbeta-app.herokuapp.com/feed/${user._id}`} method="post" encType="multipart/form-data" className="tl br3 pa3 ma2">
                         <p className="pv1 fw6 code tc f4">
                             Post an Ad
                         </p>
-                        <p className="pv2 fw5">
+                        <p className="fw5">
                             <small className="f5 code tc fw6 ph2">Video or Image</small>
                                 <div className="pv2 pa2 br3 tc bg ba">
                                     <input type="file" value={file} name="media" className="media pa3 w-100"/>
@@ -55,17 +62,17 @@ const PostAd = ({text, file}) => {
                             <p className="pv2 fw5">
                                 <small className="ph2 code fw6 f5">Text</small>
                                 <p className="pv2">
-                                    <textarea id="myInput" name="text" value={text} className="text pa2 br3 ba w-100 h3" placeholder="What's on your mind?" aria-label="With textarea" required></textarea>
+                                    <textarea id="myInput" name="text" value={text} className="text pa2 br3 ba w-100 h4" placeholder="What's on your mind?" aria-label="With textarea" required></textarea>
                                 </p>
                             </p>
                             <div onClick={handClickShow} className="tc">
-                                <button type="submit" className="pa3 w-50 br-pill ba grow mars hover-bg-mid-gray">
-                                    <small className="fw7 white code f5">Post Ad</small>
+                                <button type="submit" className="pa3 w-50 pointer br-pill ba grow bg-transparent orange hover-bg-mid-gray">
+                                    <small className="fw7 code f5">Post Ad</small>
                                 </button>
                             </div>
-                    </form>
-                </div>
-            <div>
+                        </form>
+                    </div>
+                <div>
             </div>
         </div>
     )

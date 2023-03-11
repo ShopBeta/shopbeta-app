@@ -44,6 +44,14 @@ body {
     border-radius: 20px #ee9617;
 }
 
+.navbar {
+    color: black;
+}
+
+.navbar #active {
+    background-color: lightgray;
+}
+
 .row #Icon {
     flex: 30%;
     display: grid;

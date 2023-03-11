@@ -1,15 +1,15 @@
+import { render } from "@testing-library/react";
 import React from "react";
 import './Home.css'
-import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
-import SideBar from "../components/SideBar";
-import SocialCard from '../components/SocialCard'
+import { useState, useEffect } from "react";
+import MainCat from '../components/MainCat';
 import Preloader from "../components/Preloader";
 import FollowCardList from "../containers/FollowCardList";
 
 
 const Home = () => {
-    
+
     const [users, setUsers] = useState([])
     useEffect(() => {
         fetch("https://shopbeta-app.herokuapp.com/users", {
@@ -25,31 +25,27 @@ const Home = () => {
             console.log(err.message)
         })
     }, [])
-
+    
     console.log(users)
 
+    render()
         return(
-               <div className="">
-                <div>
-                    <Preloader />
-                    <Navbar />
-                    <div className="">
-                        <div className="dtc">
-                        {/* <SideBar /> */}
+            <div className="">
+                <Preloader />
+                        <Navbar />
+                    <div className="pv6 tc dtc">
+                        <div className="tc">
+                            <MainCat />
                         </div>
-                       <div className="pv5 tc">
-                            <span className="">
-                                <SocialCard />
-                            </span>
-                            <span className="pb2 tc">
-                                <p className="pv2 orange f4">
-                                    Stores or users you may like
-                                </p>
-                                <FollowCardList users={users} />
-                            </span>
+                        <p className="pv4 tc orange fw6 code f4">
+                            Stores or users you may like
+                        </p>
+                        <div className="tj flex flex-wrap">
+                                <div className="tc">
+                                    <FollowCardList users={users} />
+                                </div>
                             <div>
                         </div>
-                       </div>
                     </div>
                 </div>
             </div>

@@ -46,7 +46,7 @@ const CartItem = ({ id, images, name, username, description, currency, price, ol
         .catch((err) => {
                 console.log(err.message)
             })
-}
+    }
 
     return(
         <div className="pv2 dib ma2">
@@ -102,12 +102,12 @@ const CartItem = ({ id, images, name, username, description, currency, price, ol
                                     that you are not 100% satisfied with any item you purchase, we accept returns on any item (other than FINAL). This implies that any product shipped or delivered with defects or material. Please contact us at info@shopbetaonline.com to approve your return.
                                     We reserve the right to deny any refund to sender without prior return approval. Only warn out items will be accepted for returns/exchange within 30 days at when item was delivered to you.
                                 </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             </div>   
-            </div>
+        </div>
     )
 }
 

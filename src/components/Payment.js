@@ -3,7 +3,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import 'tachyons';
 import CreditCard from "./CreditCard";
-import MessageModal from "../containers/MessageModal";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -28,19 +27,6 @@ const Payment = ({ handleShut }) => {
         })
     }, [])
 
-     //declare a new state variable for modal to open
-     const [open, setOpen] = useState(false)
-
-     //functon to handle payment modal close
-     const handleClose = () => {
-        setOpen(false)
-    }
-
-     //functon to handle payment modal open
-    const handleShow = (event) => {
-        setOpen(true)
-    }
-
     const classes = useStyles()
     const handleSubmit1 = e => {
         e.preventDefault()
@@ -48,7 +34,6 @@ const Payment = ({ handleShut }) => {
     }
     return(
             <div className={classes.root} onSubmit={handleSubmit1}>
-                <MessageModal handleShow={open} handleShut={handleClose} />
                 <div className="tr pb2">
                     <small onClick={handleShut} className="icon-close f3 hover-red"></small>
                 </div>
@@ -118,7 +103,7 @@ const Payment = ({ handleShut }) => {
                     <span className="pl2 code fw6 f5">4.7</span>
                 </div>
             <div className="pv2 tc grow">
-                <button onClick={handleShow} type="submit" variant="contained" className="ph5 pa2 bg-orange pointer ba hover-bg-mid-gray br-pill">
+                <button type="submit" variant="contained" className="ph5 pa2 bg-orange pointer ba hover-bg-mid-gray br-pill">
                     Purchase
                 </button>
             </div>

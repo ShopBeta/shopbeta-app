@@ -31,7 +31,6 @@ const PostProduct = ({ handleShut, name, images, description, currency, price, o
     const token = localStorage.getItem("token")
 
     const [user, setUser] = useState({})
-
     useEffect(() => {
         fetch(`https://shopbeta-app.herokuapp.com/users/me`, {
             method: "GET",
@@ -49,16 +48,13 @@ const PostProduct = ({ handleShut, name, images, description, currency, price, o
     }, [token])
 
     const classes = useStyles()
-    const handleSubmit = e => {
-        e.preventDefault()
-        // product()
-    }
+ 
     return(
             <div className={classes.root}>
                 <form action={`https://shopbeta-app.herokuapp.com/products/${user._id}`} method="post" encType="multipart/form-data">  
                     <Dialog open={open} handClick={handClick} />
                     <div className="tr w-100 pb2">
-                        <small onClick={handleShut} className="icon-close f3 hover-red"></small>
+                        <small onClick={handleShut} className="icon-close pointer f3 hover-red"></small>
                     </div>
                     <div style={{ overflowY: 'scroll', height: '400px'}} className="pa3 code pv3 tj">
                             <div className="tl pv2">

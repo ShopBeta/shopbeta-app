@@ -1,6 +1,6 @@
 import React from "react";
-import { useState } from "react";
-import UserModal from "../containers/UserModal";
+import { Link } from "react-router-dom";
+
 
 const FollowCard = ({ id, username, avatar, location, hearts, bio, website, phonenumber, email }) => {
 
@@ -43,31 +43,21 @@ const FollowCard = ({ id, username, avatar, location, hearts, bio, website, phon
         })
     }
 
-    const [open, setOpen] = useState(false)
-
-    const handleClose= () => {
-        setOpen(false)
-    }
-
-    const handleOpen = () => {
-        setOpen(true)
-    }
-
-
         return(
             <div className="dib">
-                <UserModal handleOpen={open} handleClose={handleClose} />
                 <div className="tl br3 pa3 bw2 shadow-4 bg-white b--black ma2 pa2">
-                        <div className="flex flex-wrap">
-                            <span onClick={() => {window.history.pushState(null, "", id)}}>
-                                <img onClick={handleOpen} src={`https://shopbeta-app.herokuapp.com/users/${id}/avatar`} alt="avatar" className="pointer br-100" width="100px" height="100px" />
+                    <Link className="link black" to={"/assets/vendor/User"}>
+                        <div onClick={() => {window.localStorage.setItem("userId", id)}} className="flex flex-wrap">
+                            <span>
+                                <img src={`https://shopbeta-app.herokuapp.com/users/${id}/avatar`} alt="avatar" className="pointer br-100" width="100px" height="100px" />
                             </span>
-                            <span onClick={() => {window.history.pushState(null, "", id)}} className="pointer pa2 fw5 f5">
-                                <p onClick={handleOpen}>{username}</p>
+                            <span className="pointer pa2 fw5 f5">
+                                <p>{username}</p>
                                 <p className="f6 pa2 code fw3"><small className="icon-location-pin ph2"></small>{location}</p>
                                 <p className="f6 pa2 code fw3"><small className="icon-phone ph2"></small>{phonenumber}</p>
                             </span>
-                        </div>   
+                        </div>
+                    </Link>   
                         <div className="tc">
                              <small onClick={heartClick} className="icon-heart pointer ph4 f4"></small>
                              <button onClick={buttonClick} className="bg-transparent pointer b--black-10 hover-bg-mid-gray pa1 tc br-pill ph6 pa2 ma3 grow f6 b fw6">

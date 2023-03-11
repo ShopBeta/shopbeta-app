@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import 'tachyons';
 import { Typography } from "@material-ui/core";
 import ModalDialog from "../containers/ModalDialog";
@@ -116,9 +117,11 @@ const Card = ({ id, name, username, images, heart, description, currency, price,
                         <span className="">
                             <b>{ name }</b>
                         </span>
-                        <p className="pv1 code f5">
-                            by { user.username }
-                        </p>
+                        <Link onClick={() => {window.localStorage.setItem("userId", user._id)}} className="link black" to={"/assets/vendor/User"}>
+                            <p className="pv1 code f5">
+                                by { user.username }
+                            </p>
+                        </Link>
                     <div>
                         <div className="f4 pt1 code">
                             <small className="bg-light-blue ph3 f3 pa2 br-pill">{currency}{price}</small> 

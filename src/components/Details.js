@@ -2,7 +2,6 @@ import { makeStyles } from "@material-ui/core";
 import React from "react";
 import { useState, useEffect } from "react";
 import 'tachyons';
-// import img from '../Images/Puma Sneekers.jpg'
 import { Carousell, Item } from "../containers/ImageCarousel";
 import PurchaseModal from "../containers/PurchaseModal";
 
@@ -64,7 +63,7 @@ const Details = ({ handleClose }) => {
             <div className={classes.root} onSubmit={handleSubmit}>
                 <PurchaseModal handleShow={open} handleShut={handleShut} />
                     <div className="tr pb2">
-                        <small onClick={handleClose} className="icon-close f3 hover-red"></small>
+                        <small onClick={handleClose} className="icon-close pointer f3 hover-red"></small>
                     </div>
                     <div style={{ overflow: 'auto', height: '330px'}} className="pa3 pv3 tj">
                     <div className="tc">
@@ -86,8 +85,8 @@ const Details = ({ handleClose }) => {
                         </h3>
                             <div style={{lineHeight: "20px", fontSize: "13.5px"}} className="fw5">
                                 <p className="pa2">Check the quality of item(s) and make sure it meets your expectations before making payment.</p>
-                                <p className="pa2">Avoid anything that appears too good to be true, such as unrealistically low price and promises of making quick money</p>
-                                <p className="pa2">Never give out you financial information including bank account details , eBay/PayPal info and any other information that could be misused.</p>
+                                <p className="pa2">Avoid anything that appears too good to be true, such as unrealistically low price and promises of making quick money.</p>
+                                <p className="pa2">Never give out you financial information including bank account details, eBay/PayPal info and any other information that could be misused.</p>
                             </div>
                         </div> 
                     </div>
@@ -104,7 +103,7 @@ const Details = ({ handleClose }) => {
                         <span className="pl2 code fw6 f5">{product.rating}</span>
                     </div>
                     <div className="pv1 tc grow">
-                        <button onClick={handleShow} type="submit" variant="contained" className="ph5 white pa2 bg-orange ba hover-bg-mid-gray br-pill">
+                        <button onClick={handleShow} type="submit" variant="contained" className="ph5 white pa3 pointer bg-orange ba hover-bg-mid-gray br-pill">
                             Buy now
                         </button>
                     </div>

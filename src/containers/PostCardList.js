@@ -1,13 +1,13 @@
 import React from 'react';
-import { PostCard, SharedPost, TextPost, ProfilePost } from '../components/PostCard';
+import { VideoPost, SharedPost, TextPost, ProfilePost } from '../components/PostCard';
 
-const PostCardList = ({ feed, id, name, text, media, time }) => {
+const VideoPostList = ({ feed, id, name, text, media, time }) => {
     return (
         <div>
             {
                 feed.map((feed, i) => {
                     return (
-                        <PostCard 
+                        <VideoPost 
                         key={i} 
                         id={feed._id} 
                         name={feed.name}
@@ -42,7 +42,7 @@ const SharedPostList = ({ users }) => {
     );
 }
 
-const TextPostList = ({ feed, id, text, hearts, media }) => {
+const TextPostList = ({ feed, id, text, hearts, time, media }) => {
     return (
         <div>
             {
@@ -55,6 +55,7 @@ const TextPostList = ({ feed, id, text, hearts, media }) => {
                         text={feed.text}
                         hearts={feed.hearts}
                         media={feed.media}
+                        time={feed.time}
                         />
                     )
                 })
@@ -62,7 +63,6 @@ const TextPostList = ({ feed, id, text, hearts, media }) => {
         </div>
     );
 }
-
 
 const ProfilePostList = ({ feed, id, owner, text, media }) => {
     return (
@@ -85,4 +85,4 @@ const ProfilePostList = ({ feed, id, owner, text, media }) => {
     );
 }
 
-export { PostCardList, SharedPostList, TextPostList, ProfilePostList };
+export { VideoPostList, SharedPostList, TextPostList, ProfilePostList };

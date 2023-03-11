@@ -4,9 +4,8 @@ import { useState, useEffect } from "react";
 import './Home.css';
 import Navbar from '../components/Navbar';
 import { TextPostList } from '../containers/PostCardList';
-// import { AdBlankPage, ErrorPage } from "./Vendor/Pages";
-import PostAd from "../containers/PostAd";
 import Preloader from "../components/Preloader";
+import SideBar from "../components/SideBar2";
 
 
 const AdbillBoard = () => {
@@ -29,23 +28,17 @@ const AdbillBoard = () => {
                 <Preloader />
                         <Navbar />
                     <div className="">
-                        <div className="">
-                            {/* <SideBar /> */}
-                        </div>
                         <div className="pa1 pv5 tc">
-                            <h3 className="tl fw5 pt5 pa4 f3 ph4">AdbillBoard</h3>
+                            <h3 className="tl pt4 pa4 code f3 ph4">AdbillBoard</h3>
                                 <div className="dib tc">
-                                    <PostAd/>
+                                    <div className="dtc bg-blue">
+                                            <SideBar />
+                                        </div>
                                     <TextPostList feed={feed} />
                                 </div>
-                                {/* <PostCardList feed={feed} /> */}
-                                {/* <SharedPostList users={users} />
-                                <ProfilePostList feed={feed} /> */}
-                                {/* <AdBlankPage />
-                                <ErrorPage /> */}
                         </div>
-            </div>
-        </div>
+                    </div>
+                </div>
     );
 }
 

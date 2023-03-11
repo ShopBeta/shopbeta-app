@@ -2,19 +2,16 @@ import React from "react";
 import { useState, useEffect } from "react";
 import 'tachyons';
 import { Link } from "react-router-dom";
-import MessageModal from "./MessageModal";
 
-const User = ({ handleClose }) => { 
+const User = () => { 
     
     const token = localStorage.getItem("token")
+    const userId = localStorage.getItem("userId")
     console.log(token)
-    const pathname = window.location.pathname.split('/')
-    const path = pathname[2]
-    console.log(path)
-  
+
     const [user, setUser] = useState({})
     useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/users/${path}`, {
+        fetch(`https://shopbeta-app.herokuapp.com/users/${userId}`, {
             method: 'GET',
         })
         .then((res) => res.json())
@@ -23,12 +20,11 @@ const User = ({ handleClose }) => {
             console.log(err.message)
         })
         
-    }, [path])
+    }, [userId])
 
     const [followers, setFollowers] = useState({})
-
     useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/users/${user._id}/followers`, {
+        fetch(`https://shopbeta-app.herokuapp.com/users/${userId}/followers`, {
             method: "GET",
             headers: {
                 'Authorization' : 'Bearer ' + token,
@@ -41,16 +37,54 @@ const User = ({ handleClose }) => {
         .catch((err) => {
             console.log(err.message)
         })
-    }, [user._id, token])
+    }, [userId, token])
 
-    const [open, setOpen] = useState(false)
+    const [following, setFollowing] = useState({})
+    useEffect(() => {
+        fetch(`https://shopbeta-app.herokuapp.com/users/${userId}/following`, {
+            method: "GET",
+            headers: {
+                'Authorization' : 'Bearer ' + token,
+                'Accept' : 'application/json, text/plain',
+                'Content-Type' : 'application/json'
+            },
+        })
+        .then((res) => res.json())
+        .then((data) => setFollowing(data))
+        .catch((err) => {
+            console.log(err.message)
+        })
+    }, [userId, token])
 
-    const handleShut= () => {
-        setOpen(false)
-    }
+    const initiateChat = async () => {
 
-    const handleShow = () => {
-        setOpen(true)
+        const chatInitiator = '634e857e9e6d457076be6386'
+        // const chatInitiator = req.user._id
+        const userIds = [
+            userId,
+            chatInitiator
+        ]
+        const type = 'consumer-to-consumer'
+
+         await fetch('https://shopbeta-app.herokuapp.com/chat/initiate', {
+            method: "POST",
+            headers: {
+                'Content-type': "application/json",
+            },
+            body: JSON.stringify({
+                userIds,
+                type,
+                chatInitiator
+            })       
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data)
+            window.localStorage.setItem("chatroom", data.chatRoomId)
+        })
+        .catch((err) => {
+            console.log(`Couldn't create new chatroom`)
+        })
     }
 
     const followClick = async event => {
@@ -124,88 +158,79 @@ const User = ({ handleClose }) => {
         })
     }
 
-    return (
-            <div>
-                <MessageModal handleShow={open} handleShut={handleShut} />
-                <div className="tr pv2 pb2">
-                    <small onClick={handleClose} className="icon-close pa3 f3 hover-red"></small>
-                </div>
-                <div style={{ overflowY: 'scroll', height: '450px'}} className="dib pv3 w-100 pa2">
-                <div className="tc b--black br3 pa2">
-                        <div className="br4 tj flex flex-wrap">
-                            <span>
-                                <img src={`https://shopbeta-app.herokuapp.com/users/${user._id}/avatar`} alt="avatar" className="br-100 b--white" width="220px" height="220px"></img>
-                            </span>
-                            <span className="pa4">
-                            <h5 className="f3 fw5">
-                                {user.username}
+    const handleSubmit = () => {
+        initiateChat()
+    }
+    return  (
+                <div className="dib w-100 pa2">
+                    <div className="tc b--black br3 pa3">
+                            <div className="br4">
+                                <img src={`https://shopbeta-app.herokuapp.com/users/${user._id}/avatar`} alt="avatar" className="br-100 b--white" width="250px" height="250px"></img>
+                                <div className="tr">
+                                <h5 className="f3 fw5 tc">
+                                    {user.username}
                                 </h5>
-                            <p className="pv2 f6 fw5">
-                                <small className="icon-location-pin pr2"></small>
-                                {user.location}.
-                            </p>
-                            <p className="f4 orange">
-                                <span className="icon-heart ph3 f4 orange">
-                                    <small className="ph2 black code">{user.hearts}</small>
-                                </span>
+                                <p className="tc pa2 f6 fw5">
+                                    {user.location}
+                                    <small className="icon-location-pin ph2"></small>
+                                </p>
+                            </div>
+                        </div>
+                    <div>
+                        <p>
+                            <span className="icon-heart ph3 f4 orange">
+                                <small className="ph2 black code">{user.hearts}</small>
+                            </span>
+                            <span className="f3 ph2">
                                 {followers.length}
                                 <small className="ph2">followers</small>
-                            </p>
-                            <p className="pv3 f5">
-                                <p className="tj">
-                                    <small className="icon-check f5 yellow pr2"></small>
-                                    Recommended by the ShopBeta team
-                                </p>
-                            </p>
-                            <p className="pv1 fw5 f5">
-                                <p>
-                                <small className="icon-phone pr2"></small>
-                                    {user.phonenumber}
-                                </p>
-                                <p>
-                                <small className="icon-envelope pr2"></small>
-                                    {user.email}
-                                </p>
-                                <p>
-                                    <small className="icon-globe pr2"></small>
-                                    <a href={user.website} target={user.website} className="link">
-                                        {user.website}
-                                    </a>
-                                </p>
-                            </p>
-                        </span>
-                    </div>
-                   <div className="pv1">
-                   <p className="f5 pb2">
-                        <p className="tc ph2"> 
-                            {user.bio}
+                                <small className="ph2">.</small>
+                            </span>
+                            <span className="f3">
+                                {following.length}
+                                <small className="ph2">following</small>
+                            </span>
                         </p>
-                    </p>
-                    <span className="b">
-                            <button onClick={handleShow} className="bg-transparent f6 ba hover-bg-mid-gray pointer pa2 tc br-pill ph5 ma1 grow b fw6">Message</button>
+                        <p className="pv3 tc f4">
+                            <p className="ph2">
+                                {user.bio}
+                            </p>
+                        </p>
+                        <p className="pv3 fw5 code f4">
+                            <p>
+                                <small className="icon-phone pr2"></small>
+                                {user.phonenumber}
+                            </p>
+                            <p>
+                                <small className="icon-envelope pr2"></small>
+                                {user.contactEmail}
+                            </p>
+                            <p>
+                                <small className="icon-globe pr2"></small>
+                                <a href={user.website} target={user.website} className="link">
+                                    {user.website}
+                                </a>
+                            </p>
+                        </p>
+                    </div>
+                    <div>
+                        <span className="b">
+                            <Link className="link black" to={"/assets/Messages"}>
+                                <button onClick={handleSubmit} className="bg-transparent f6 ba hover-bg-mid-gray pointer pa2 tc br-pill ph5 ma1 grow b fw6">Message</button>
+                            </Link>
                         </span>
                         <span className="b">
                             <button onClick={followClick} className="bg-transparent f6 pointer ba hover-bg-mid-gray pa2 tc br-pill ph5 ma1 grow b fw6">Follow</button>
                         </span>
                         <span className="b">
-                            <small onClick={heartClick} title="Recommend" className="icon-heart fw5 pointer br3 f4 br-pill bg-light-blue pa2 ph3 grow fw5"></small>
+                            <small onClick={heartClick} title="Recommend" className="icon-heart fw5 pointer br3 f3 hover-bg-light-blue pa2 ph3 grow"></small>
                         </span>
                         <span className="b">
-                            <small onClick={unfollowClick} title="Unfollow" className="icon-user-unfollow pointer fw5 hover-bg-light-blue br3 f4 pa2 ph3 grow fw5"></small>
+                            <small onClick={unfollowClick} title="Unfollow" className="icon-user-unfollow pointer fw5 hover-bg-light-blue br3 f3 pa2 ph3 grow"></small>
                         </span>
-                        <span className="b">
-                            <Link to={"../Assets/Adbillboard"} className="link black">
-                                <small title="Share" className="icon-share fw5 hover-bg-light-blue br3 f4 pa2 ph3 grow fw5"></small>
-                            </Link>
-                        </span>
-                        
-                   </div>
+                    </div>
                 </div>
-                </div>
-                <p className="pa3 f5">
-                    <span className="fw6 bg-light-blue pa2 br4 ph2 code">{user.username}</span> is located in <span className="orange fw6">{user.location}</span>
-                </p>
-        </div>
+            </div>
     )
 }
 

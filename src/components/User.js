@@ -2,19 +2,37 @@ import React from "react";
 import { useState, useEffect } from "react";
 import 'tachyons';
 import { Link } from "react-router-dom";
-import MessageModal from "../containers/MessageModal";
 
 const User = () => { 
     
     const token = localStorage.getItem("token")
     console.log(token)
   
-    const [user, setUser] = useState({})
+    // const [user, setUser] = useState({})
+    // useEffect(() => {
+    //     fetch(`https://shopbeta-app.herokuapp.com/users/fetchme`, {
+    //         method: "GET",
+    //         headers: {
+    //             'Authorization' : 'Bearer ' + token,
+    //             'Accept' : 'application/json, text/plain',
+    //             'Content-Type' : 'application/json'
+    //         },
+    //     })
+    //     .then((res) => res.json())
+    //     .then((data) => setUser(data))
+    //     .catch((err) => {
+    //         console.log(err.message)
+    //     })
+    // }, [token])
+    // console.log(user._id)
+
+    const me = localStorage.getItem("meId")
+
+    const [user, setUser] = useState([])
     useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/users/me`, {
+        fetch(`https://shopbeta-app.herokuapp.com/users/${me}`, {
             method: "GET",
             headers: {
-                'Authorization' : 'Bearer ' + token,
                 'Accept' : 'application/json, text/plain',
                 'Content-Type' : 'application/json'
             },
@@ -24,9 +42,9 @@ const User = () => {
         .catch((err) => {
             console.log(err.message)
         })
-    }, [token])
-    
-    console.log(user._id)
+    }, [me])
+
+    console.log(me)
 
     const [followers, setFollowers] = useState({})
     useEffect(() => {
@@ -45,12 +63,22 @@ const User = () => {
         })
     }, [user._id, token])
 
-
-    const [open, setOpen] = useState(false)
-
-    const handleShut= () => {
-        setOpen(false)
-    }
+    const [following, setFollowing] = useState({})
+    useEffect(() => {
+        fetch(`https://shopbeta-app.herokuapp.com/users/${user._id}/following`, {
+            method: "GET",
+            headers: {
+                'Authorization' : 'Bearer ' + token,
+                'Accept' : 'application/json, text/plain',
+                'Content-Type' : 'application/json'
+            },
+        })
+        .then((res) => res.json())
+        .then((data) => setFollowing(data))
+        .catch((err) => {
+            console.log(err.message)
+        })
+    }, [user._id, token])
 
     const logout = async () => {
         await fetch("https://shopbeta-app.herokuapp.com/users/logout", {
@@ -68,10 +96,9 @@ const User = () => {
 
     return (
         <div className="dib w-100 pa2">
-            <MessageModal handleShow={open} handleShut={handleShut} />
               <div className="tc b--black br3 pa3">
                     <div className="br4">
-                        <img src={`https://shopbeta-app.herokuapp.com/users/${user._id}/avatar`} alt="avatar" className="br-100 b--white" width="250px" height="250px"></img>
+                        <img src={`https://shopbeta-app.herokuapp.com/users/${me}/avatar`} alt="avatar" className="br-100 b--white" width="250px" height="250px"></img>
                         <div className="tr">
                         <Link to={"/assets/Vendor/Settings"} className="link black"><span title="Edit profile" className="icon-settings f4 ph2 pointer fw5 hover-bg-light-blue br3 pa2 grow"></span></Link>
                         <a href="https://shopbetaonline.netlify.app/indexes/login.html" className="link black"><span title="Logout" onClick={logout} className="icon-logout ph3 fw5 f4 hover-bg-light-blue br3 pa2 pointer grow"></span></a>
@@ -89,9 +116,16 @@ const User = () => {
                     <span className="icon-heart ph3 f4 orange">
                         <small className="ph2 black code">{user.hearts}</small>
                     </span>
-                    {followers.length}
-                    <small className="ph2">followers</small>
-                    <small className="icon-user orange"></small>
+                    <span className="f3 ph2">
+                        {followers.length}
+                        <small className="ph2">followers</small>
+                        <small className="icon-user orange"></small>
+                    </span>
+                    <span className="f3">
+                        {following.length}
+                        <small className="ph2">following</small>
+                        <small className="icon-user orange"></small>
+                    </span>
                 </p>
                 <p className="pv3 tc f4">
                     <p className="ph2">
