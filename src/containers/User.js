@@ -7,7 +7,9 @@ const User = () => {
     
     const token = localStorage.getItem("token")
     const userId = localStorage.getItem("userId")
+    const me = localStorage.getItem("meId")
     console.log(token)
+    console.log(me)
 
     const [user, setUser] = useState({})
     useEffect(() => {
@@ -58,8 +60,8 @@ const User = () => {
 
     const initiateChat = async () => {
 
-        const chatInitiator = '634e857e9e6d457076be6386'
-        // const chatInitiator = req.user._id
+        const chatInitiator = me
+        
         const userIds = [
             userId,
             chatInitiator
