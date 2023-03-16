@@ -1,20 +1,20 @@
 import React from 'react';
 import { VideoPost, SharedPost, TextPost, ProfilePost } from '../components/PostCard';
 
-const VideoPostList = ({ feed, id, name, text, media, time }) => {
+const VideoPostList = ({ video, id, name, text, media, time }) => {
     return (
         <div>
             {
-                feed.map((feed, i) => {
+                video.map((video, i) => {
                     return (
                         <VideoPost 
                         key={i} 
-                        id={feed._id} 
-                        name={feed.name}
-                        owner={feed.owner} 
-                        text={feed.text}
-                        media={feed.media}
-                        time={feed.time}
+                        id={video._id} 
+                        name={video.name}
+                        owner={video.owner} 
+                        text={video.text}
+                        media={video.video}
+                        time={video.time}
                         />
                     )
                 })

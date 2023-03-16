@@ -92,18 +92,12 @@ const User = () => {
     const followClick = async event => {
         event.currentTarget.innerHTML = 'following';
 
-        const userDetails = {
-            user,
-        }
-
-        await fetch(`https://shopbeta-app.herokuapp.com/user/${user._id}/follow`, {
+        await fetch(`https://shopbeta-app.herokuapp.com/user/${user._id}/follow/${me}`, {
             method: 'POST',
             headers: {
-                'Authorization' : 'Bearer ' + token,
                 'Accept' : 'application/json, text/plain',
                 'Content-Type' : 'application/json'
             },
-            body: JSON.stringify(userDetails)
         })
         .then(res => res.json())
         .then(data => console.log(data))
@@ -116,18 +110,12 @@ const User = () => {
         event.currentTarget.style.color = 'orange';
         event.currentTarget.style.fontWeight = 'bold';
 
-        const userDetails = {
-            user,
-         }
-
-        await fetch(`https://shopbeta-app.herokuapp.com/user/${user._id}/unfollow`, {
+        await fetch(`https://shopbeta-app.herokuapp.com/user/${user._id}/unfollow/${me}`, {
             method: 'POST',
             headers: {
-                'Authorization' : 'Bearer ' + token,
                 'Accept' : 'application/json, text/plain',
                 'Content-Type' : 'application/json'
             },
-            body: JSON.stringify(userDetails)
         })
         .then(res => res.json())
         .then(data => console.log(data))

@@ -19,6 +19,9 @@ const useStyles = makeStyles(theme => ({
 const Comments = ({ handleShut, text, file, owner }) => {
 
     const token = localStorage.getItem("token")
+    const me = localStorage.getItem("meId")
+    console.log(me)
+
     const pathname = window.location.pathname.split('/')
     const path = pathname[2]
     console.log(path)
@@ -41,29 +44,12 @@ const Comments = ({ handleShut, text, file, owner }) => {
         }, 2000); // every 5 minutes (100000)
     }, [path])
 
-    const [user, setUser] = useState({})
-    useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/users/me`, {
-            method: "GET",
-            headers: {
-                'Authorization' : 'Bearer ' + token,
-                'Accept' : 'application/json, text/plain',
-                'Content-Type' : 'application/json'
-            },
-        })
-        .then((res) => res.json())
-        .then((data) => setUser(data))
-        .catch((err) => {
-            console.log(err.message)
-        })
-    }, [token])
-
     const addComment = async () => {
 
         const comment = {
             text: document.querySelector('#text').value,
             file: document.querySelector('.file').value,
-            owner: user._id
+            owner: me
         }
 
         await fetch(`https://shopbeta-app.herokuapp.com/feed/${path}/comments`, {

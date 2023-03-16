@@ -1,7 +1,7 @@
 import React from 'react';
 import CartItem from '../components/CartItem';
 
-const CartList = ({ cart, images, id, name, heart, currency, price, oldprice, rating}) => {
+const CartList = ({ cart, productId, id }) => {
     return (
         <div>
             {
@@ -10,15 +10,7 @@ const CartList = ({ cart, images, id, name, heart, currency, price, oldprice, ra
                         <CartItem 
                         key={i} 
                         id={cart._id}
-                        images={cart.product._id} 
-                        name={cart.product.name} 
-                        heart={cart.product.heart}
-                        currency={cart.product.currency}
-                        description={cart.product.description}
-                        price={cart.product.price}
-                        oldprice={cart.product.oldprice}
-                        rating={cart.product.rating}
-                        username={cart.product.owner}
+                        productId={cart.product} 
                         />
                     )
                 })

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Typography } from "@material-ui/core";
 import PurchaseModal from "../containers/PurchaseModal2";
 
-const CartItem = ({ id, images, name, username, description, currency, price, oldprice, rating }) => {
+const CartItem = ({ id, productId }) => {
 
     const [open, setOpen] = useState(false)
 
@@ -15,6 +15,20 @@ const CartItem = ({ id, images, name, username, description, currency, price, ol
         setOpen(true)
     }
     const token = localStorage.getItem("token")
+
+    const [product, setProduct] = useState([])
+    useEffect(() => {
+        fetch(`https://shopbeta-app.herokuapp.com/products/${productId}`, {
+            method: "GET",
+        })
+        .then((res) => res.json())
+        .then((data) => setProduct(data))
+        .catch((err) => {
+            console.log(err.message)
+        })
+    }, [productId])
+
+    const username = product.owner
 
     const [user, setUser] = useState({})
     useEffect(() => {
@@ -58,17 +72,17 @@ const CartItem = ({ id, images, name, username, description, currency, price, ol
                     <div className="flex flex-wrap bg-white b--black br3 pa4 ma1 bw2 shadow-5">
                     <Typography>
                         <div>
-                            <img src={`https://shopbeta-app.herokuapp.com/products/${images}/images`} alt="shoes" className="br4 pv2" width="310px" height="230px"></img>
+                            <img src={`https://shopbeta-app.herokuapp.com/products/${productId}/images`} alt="shoes" className="br4 pv2" width="310px" height="230px"></img>
                         </div>
                             <div className="tl">
-                                <p><b>{name}</b></p>
+                                <p><b>{product.name}</b></p>
                                     <p className="code f4">
                                         <small>by {user.username}</small>
                                     </p>
                                 <div>
                             <div className="f4 pt4 code">
-                                <small className="bg-light-blue ph3 f3 pa2 br-pill">{currency}{price}</small> 
-                                <small className="pa2 line-through">{currency}{oldprice}</small>
+                                <small className="bg-light-blue ph3 f3 pa2 br-pill">{product.currency}{product.price}</small> 
+                                <small className="pa2 line-through">{product.currency}{product.oldprice}</small>
                             </div>
                                 <div className="pv2 tr">
                                     <span className="icon-star"></span>
@@ -76,10 +90,10 @@ const CartItem = ({ id, images, name, username, description, currency, price, ol
                                     <span className="icon-star grow"></span>
                                     <span className="icon-star grow"></span>
                                     <span className="icon-star grow"></span>
-                                    <span className="pl2 fw6 code f5">{rating}</span>
+                                    <span className="pl2 fw6 code f5">{product.rating}</span>
                                 </div>
                                 <div className="tc">
-                                    <span onClick={() => {window.history.pushState(null, "", images)}} className="monospace ph3">
+                                    <span onClick={() => {window.history.pushState(null, "", productId)}} className="monospace ph3">
                                         <button onClick={handleShow} className="pa3 white br-pill ba ph6 grow bg-orange hover-bg-mid-gray fw6">Purchase</button>
                                     </span>
                                 </div>
@@ -90,7 +104,7 @@ const CartItem = ({ id, images, name, username, description, currency, price, ol
                     <div style={{ overflowY: 'auto', height: '500px'}} className="pa4 pv3 tj">
                         <h3 className="pv2 fw5">Description</h3>
                             <p>
-                                {description}
+                                {product.description}
                             </p>
                             <div className="pa3 f6">
                                 <h3 className="pv2">

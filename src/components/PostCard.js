@@ -13,12 +13,14 @@ import { Link } from "react-router-dom";
 const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
 
     const token = localStorage.getItem("token")
+    const me = localStorage.getItem("meId")
+    console.log(me)
     console.log(owner)
     console.log(time)
 
     const [user, setUser] = useState({})
     useEffect(() => {
-        fetch(`http://localhost:3000/users/${owner}`, {
+        fetch(`https://shopbeta-app.herokuapp.com/users/${owner}`, {
             method: "GET",
             headers: {
                 'Accept' : 'application/json, text/plain',
@@ -34,7 +36,7 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
 
     const [comment, setComment] = useState({})
     useEffect(() => {
-        fetch(`http://localhost:3000/feed/${id}/comments`, {
+        fetch(`https://shopbeta-app.herokuapp.com/feed/${id}/comments`, {
             method: "GET",
             headers: {
                 'Accept' : 'application/json, text/plain',
@@ -55,22 +57,14 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
         event.currentTarget.style.fontWeight = 'bold';
         event.currentTarget.innerHTML = 'following';
 
-           await fetch(`https://shopbeta-app.herokuapp.com/user/${user._id}/follow`, {
+           await fetch(`https://shopbeta-app.herokuapp.com/user/${user._id}/follow/${me}`, {
                 method: "POST",
                 headers: {
-                    'Authorization' : 'Bearer ' + token,
                     'Content-Type' : 'application/json'
-                }
+                },
             })
             .then((res) => res.json())
-            .then((data) => {
-                console.log(data)
-                if (data.follow === true) {
-                    event.currentTarget.innerHTML = 'following';
-                } else {
-                    event.currentTarget.innerHTML = 'follow';
-                }
-            })
+            .then((data) => console.log(data))
             .catch((err) => {
                 console.log(err.message)
             })
@@ -121,7 +115,7 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
                 <div className="tj flex f4 flex-wrap">
                     <span onClick={() => {window.history.pushState(null, "", id)}}>
                         <Link onClick={() => {window.localStorage.setItem("userId", owner)}} className="link black" to={"/assets/vendor/User"}>
-                            <img src={`http://localhost:3000/users/${owner}/avatar`} alt="Accessories..." className="br-100" width="55px" height="55px" />
+                            <img src={`https://shopbeta-app.herokuapp.com/users/${owner}/avatar`} alt="Accessories..." className="br-100" width="55px" height="55px" />
                         </Link>
                     </span>
                     <span onClick={() => {window.history.pushState(null, "", id)}} className="pa2 f5 pointer fw5">
@@ -146,7 +140,7 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
                 </div>
                 </div>
                 <div className="side2">
-                    <img src={`http://localhost:3000/feed/${id}/media`} alt="post..." className="br4"  />
+                    <img src={`https://shopbeta-app.herokuapp.com/feed/${id}/media`} alt="post..." className="br4"  />
                     <div className="pa2">
                         <span onClick={heartClick} className="pa2 fw5 ph3 icon-heart pointer f4 grow">
                             <small id="increment" className="pa1 code">{hearts}</small>
@@ -167,15 +161,17 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
     )
 }
 
-const VideoPost = ({ name, id, owner, media, text, hearts, time}) => {
+const VideoPost = ({ id, owner, media, text, hearts, time}) => {
 
     const token = localStorage.getItem("token")
+    const me = localStorage.getItem("meId")
+    console.log(me)
     console.log(owner)
     console.log(time)
 
     const [user, setUser] = useState({})
     useEffect(() => {
-        fetch(`http://localhost:3000/users/${owner}`, {
+        fetch(`https://shopbeta-app.herokuapp.com/users/${owner}`, {
             method: "GET",
             headers: {
                 'Accept' : 'application/json, text/plain',
@@ -191,7 +187,7 @@ const VideoPost = ({ name, id, owner, media, text, hearts, time}) => {
 
     const [comment, setComment] = useState({})
     useEffect(() => {
-        fetch(`http://localhost:3000/feed/${id}/comments`, {
+        fetch(`https://shopbeta-app.herokuapp.com/video/${id}/comments`, {
             method: "GET",
             headers: {
                 'Accept' : 'application/json, text/plain',
@@ -212,22 +208,14 @@ const VideoPost = ({ name, id, owner, media, text, hearts, time}) => {
         event.currentTarget.style.fontWeight = 'bold';
         event.currentTarget.innerHTML = 'following';
 
-           await fetch(`https://shopbeta-app.herokuapp.com/user/${user._id}/follow`, {
+           await fetch(`https://shopbeta-app.herokuapp.com/user/${user._id}/follow/${me}`, {
                 method: "POST",
                 headers: {
-                    'Authorization' : 'Bearer ' + token,
                     'Content-Type' : 'application/json'
-                }
+                },
             })
             .then((res) => res.json())
-            .then((data) => {
-                console.log(data)
-                if (data.follow === true) {
-                    event.currentTarget.innerHTML = 'following';
-                } else {
-                    event.currentTarget.innerHTML = 'follow';
-                }
-            })
+            .then((data) => console.log(data))
             .catch((err) => {
                 console.log(err.message)
             })
@@ -242,7 +230,7 @@ const VideoPost = ({ name, id, owner, media, text, hearts, time}) => {
                 hearts: hearts + 1
             }
 
-            await fetch(`https://shopbeta-app.herokuapp.com/feed/${id}/hearts`, {
+            await fetch(`https://shopbeta-app.herokuapp.com/video/${id}/hearts`, {
                 method: "POST",
                 headers: {
                     'Authorization' : 'Bearer ' + token,
@@ -275,10 +263,9 @@ const VideoPost = ({ name, id, owner, media, text, hearts, time}) => {
                 <CommentModal handleShow={show} handleShut={handleShut} />
                     <div className="bg-white b--black br3 ma3 pa2 bw2 shadow-5">
                         <div className="side2">
-                            <img src={`http://localhost:3000/feed/${id}/media`} alt="post..." className="br4"  />
-                                {/* <video className="br3" controls>
-                                    <source src={vid} type="video/mp4"></source>
-                                </video> */}
+                            <video style={{Height: 'auto', width: '100%'}} className="br4" controls>
+                                <source src={`https://shopbeta-app.herokuapp.com/video/${id}/video`} type="video/mp4"></source>
+                            </video>
                             <div className="f4">
                                 <span className="icon-eye pr2"></span>
                                 <span className="pr7"> 
@@ -307,7 +294,7 @@ const VideoPost = ({ name, id, owner, media, text, hearts, time}) => {
                                             </p>
                                             <p className="tr">  
                                                 <Link onClick={() => {window.localStorage.setItem("userId", owner)}} className="link black" to={"/assets/vendor/User"}>
-                                                    <img src={`http://localhost:3000/users/${owner}/avatar`} alt="Accessories..." className="br-100 pointer" width="55px" height="55px" />
+                                                    <img src={`https://shopbeta-app.herokuapp.com/users/${owner}/avatar`} alt="Accessories..." className="br-100 pointer" width="55px" height="55px" />
                                                 </Link>
                                                 <Link onClick={() => {window.localStorage.setItem("userId", owner)}} className="link black" to={"/assets/vendor/User"}>
                                                     <p className="pa2 pointer fw5">

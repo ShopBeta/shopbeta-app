@@ -9,6 +9,9 @@ import PurchaseModal from "../containers/PurchaseModal";
 const Card = ({ id, name, username, images, heart, description, currency, price, oldprice, rating }) => {
 
     const token = localStorage.getItem("token")
+    const me = localStorage.getItem("meId")
+    console.log(me)
+    console.log(token)
 
     const [user, setUser] = useState({})
     useEffect(() => {
@@ -52,27 +55,12 @@ const Card = ({ id, name, username, images, heart, description, currency, price,
 
     const addCart = async event => {
 
-        const product = {
-            product : {
-            _id: id,
-            name: name,
-            heart: heart,
-            description: description,
-            price: price,
-            oldprice: price,
-            rating: rating
-            }
-        }
-
-        await fetch(`https://shopbeta-app.herokuapp.com/cart/${id}`, {
-            // mode: 'no-cors',
+        await fetch(`https://shopbeta-app.herokuapp.com/cart/${me}/product/${id}`, {
             method: "POST",
             headers: {
-                'Authorization' : 'Bearer ' + token,
                 'Accept' : 'application/json, text/plain',
                 'Content-Type' : 'application/json'
             },
-            body: JSON.stringify(product)
         })
         .then((res) => res.json())
         .then((data) => console.log(data))
@@ -108,7 +96,7 @@ const Card = ({ id, name, username, images, heart, description, currency, price,
             <div onClick={handleShow} className="flex w-100 flex-wrap pointer tl bg-white b--black br3 pa3 bw2 shadow-5">
                 <Typography>
                     <div className="tc">
-                        <img src={`https://shopbeta-app.herokuapp.com/products/${id}/images`} alt="item" className="br4 pv1 w-100" width="310px" height="230px"></img>
+                        <img src={`https://shopbeta-app.herokuapp.com/products/${id}/images-1`} alt="item" className="br4 pv1 w-100" width="310px" height="230px"></img>
                     </div>
                     <div className="tr f3 br-pill">
                             <small onClick={heartClick} className="icon-heart pointer ph2 grow"><small className="code black pl1 f5">{heart}</small></small>

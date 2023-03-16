@@ -31,22 +31,18 @@ const Welcome = () => {
             body: JSON.stringify(User)
         })
         .then((res) => res.json())
-        .then((data) => {
-            console.log(data)
-            window.localStorage.setItem("token", data.token)
-            window.localStorage.setItem("meId", data.user._id)
-        })
+        .then((data) => window.localStorage.setItem("token", data.token))
+        .then((data) => window.localStorage.setItem("meId", data.user._id))
         .catch((err) => {
             console.log(err.message)
         })
-
 
     const token = localStorage.getItem("token")
     const me = localStorage.getItem("meId")
 
     const [user, setUser] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:3000/users/${me}`, {
+        fetch(`https://shopbeta-app.herokuapp.com/users/${me}`, {
             method: "GET",
             headers: {
                 'Accept' : 'application/json, text/plain',

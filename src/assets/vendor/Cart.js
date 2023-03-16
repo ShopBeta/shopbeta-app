@@ -9,7 +9,7 @@ const Cart = () => {
 
     const [cart, setCart] = useState([])
     useEffect(() => {
-        fetch("https://shopbeta-app.herokuapp.coms/cart", {
+        fetch("https://shopbeta-app.herokuapp.com/cart", {
             method: "GET",
         })
         .then((res) => res.json())

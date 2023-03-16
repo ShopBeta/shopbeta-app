@@ -5,7 +5,7 @@ import './Home.css';
 import Navbar from '../components/Navbar';
 import { TextPostList } from '../containers/PostCardList';
 import Preloader from "../components/Preloader";
-import SideBar from "../components/SideBar2";
+import SideBar from "../components/FeedSideBar";
 
 
 const AdbillBoard = () => {

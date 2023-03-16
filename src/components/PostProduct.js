@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import 'tachyons';
 import Dialog from "../containers/Dialog";
 
@@ -28,30 +28,14 @@ const PostProduct = ({ handleShut, name, images, description, currency, price, o
         setOpen(true)
     }
 
-    const token = localStorage.getItem("token")
-
-    const [user, setUser] = useState({})
-    useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/users/me`, {
-            method: "GET",
-            headers: {
-                'Authorization' : 'Bearer ' + token,
-                'Accept' : 'application/json, text/plain',
-                'Content-Type' : 'application/json'
-            },
-        })
-        .then((res) => res.json())
-        .then((data) => setUser(data))
-        .catch((err) => {
-            console.log(err.message)
-        })
-    }, [token])
+    const me = localStorage.getItem("meId")
+    console.log(me)
 
     const classes = useStyles()
  
     return(
             <div className={classes.root}>
-                <form action={`https://shopbeta-app.herokuapp.com/products/${user._id}`} method="post" encType="multipart/form-data">  
+                <form action={`https://shopbeta-app.herokuapp.com/products/${me}`} method="post" encType="multipart/form-data">  
                     <Dialog open={open} handClick={handClick} />
                     <div className="tr w-100 pb2">
                         <small onClick={handleShut} className="icon-close pointer f3 hover-red"></small>
@@ -98,9 +82,9 @@ const PostProduct = ({ handleShut, name, images, description, currency, price, o
                                 </span>
                             </div>
                             <p className="pv2">
-                                <p className="f5 fw5">Add Image</p>
+                                <p className="f5 fw5">Add Images</p>
                                 <div className="pv2 br-pill">
-                                    <input type="file" name="images" className="images pa3 w-90 ba br3" id="customFile" />
+                                    <input type="file" name="images" multiple="multiple" className="images pa3 w-90 ba br3" id="customFile" />
                                 </div>
                             </p>
                             <div>
@@ -112,8 +96,8 @@ const PostProduct = ({ handleShut, name, images, description, currency, price, o
                                         </h3>
                                         <div className="code pa2 fw6">
                                             <p>Give as much details and description about the product or service</p>
-                                            <p className="pv2">Ensure to upload high quality images</p>
-                                            <p className="pv2">Image file size shouldn't exceed 5MB</p>
+                                            <p className="pv2">Ensure to upload 4 high quality images</p>
+                                            <p className="pv2">Each image file size shouldn't exceed 5MB</p>
                                             <p>680x680 is best recommended</p>
                                         </div>
                                     </div>

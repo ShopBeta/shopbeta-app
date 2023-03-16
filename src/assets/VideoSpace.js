@@ -5,18 +5,18 @@ import './Home.css';
 import Navbar from '../components/Navbar';
 import { VideoPostList } from '../containers/PostCardList';
 import Preloader from "../components/Preloader";
-import SideBar from "../components/SideBar2";
+import SideBar from "../components/VideoSideBar";
 
 
 const VideoSpace = () => {
 
-    const [feed, setFeed] = useState([])
+    const [video, setVideo] = useState([])
     useEffect(() => {
-        fetch("http://localhost:3000/feed", {
+        fetch("https://shopbeta-app.herokuapp.com/video", {
             method: "GET",
         })
         .then((res) => res.json())
-        .then((data) => setFeed(data))
+        .then((data) => setVideo(data))
         .catch((err) => {
             console.log(err.message)
         })
@@ -35,7 +35,7 @@ const VideoSpace = () => {
                                     <div className="dtc bg-blue">
                                         <SideBar />
                                     </div>
-                                    <VideoPostList feed={feed} />
+                                    <VideoPostList video={video} />
                                 </div>
                         </div>
             </div>

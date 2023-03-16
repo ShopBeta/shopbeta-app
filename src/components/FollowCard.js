@@ -5,11 +5,13 @@ import { Link } from "react-router-dom";
 const FollowCard = ({ id, username, avatar, location, hearts, bio, website, phonenumber, email }) => {
 
     const token = localStorage.getItem("token")
+    const me = localStorage.getItem("meId")
+    console.log(me)
 
     const buttonClick = async event => {
             event.currentTarget.innerHTML = 'following';
             
-            await fetch(`https://shopbeta-app.herokuapp.com/user/${id}/follow`, {
+            await fetch(`https://shopbeta-app.herokuapp.com/user/${id}/follow/${me}`, {
                 method: 'POST',
             })
             .then((res) => res.json())
