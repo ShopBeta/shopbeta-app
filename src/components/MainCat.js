@@ -23,13 +23,11 @@ const MainCat = () => {
             {
                     catData.map((val, key) => {
                         return (
-                                <div
-                                    className="dib tc pa2-l"
-                                    key={key} 
-                                    onClick={() => {
-                                            window.location.pathname = val.Link;
-                                        }}>
-                                                        
+                                <div className="dib tc pa2-l" key={key} 
+                                    // onClick={() => {
+                                    //         window.location.pathname = val.Link;
+                                    //     }}
+                                >                      
                                 <div>
                                 <Link to={"../assets/vendor/MarketPlace"} className="link black">
                                     <div className="dib">

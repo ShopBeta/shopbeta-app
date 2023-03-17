@@ -30,7 +30,7 @@ const Navbar = () => {
                         </Link>
                         <Link to={"../assets/Adbillboard"} title="feed" className="navbar pv2 f3 hover-bg-light-gray br3 icon-picture black ph4" ></Link>
                         <Link to={"../assets/VideoSpace"} title="video space" className="navbar pv2 f3 hover-bg-light-gray br3 icon-social-youtube black ph4"></Link>
-                        <Link to={"../assets/Chats"} title="Chats" target={"../assets/Chats"} className="navbar ph4 br3 black hover-bg-light-gray f3 link icon-bubbles pv2"></Link>
+                        <Link to={"../assets/Chats"} title="Chats" className="navbar ph4 br3 black hover-bg-light-gray f3 link icon-bubbles pv2"></Link>
                         <Link to={"../assets/Vendor/Cart"} title="cart" className="navbar ph4 f3 black hover-bg-light-gray br3 link icon-basket pv2"></Link>
                         <Link className="navbar link f3 black ph4 icon-settings pointer hover-bg-light-gray br3 pa2 grow"to={"/assets/vendor/Settings"}></Link>
                         <Link style={{justifyContent: 'flex-end'}} to={"/assets/vendor/Profile"} className="navbar pt2 pointer br3 pa2 f4">
