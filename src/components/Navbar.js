@@ -23,12 +23,12 @@ const Navbar = () => {
         <nav className="bg-white tc pv2 shadow-2" style={{position: 'fixed', width: '100%', borderBottom: '1px thin black'}}>
             <Typography>
                 <div className="">
-                    <span style={{color: '#ee9617', fontSize: '23px', fontWeight: '500', letterSpacing: '-1px'}} className="pa2 pr3 code"><img src={img} alt="logo" className="br4 ph2" width="24px" height="24px" />Sponge</span>
+                    <span style={{color: '#ee9617', fontSize: '23px', fontWeight: '510', letterSpacing: '-3px'}} className="pa2 pr3 code"><img src={img} alt="logo" className="br4 ph2" width="24px" height="24px" />ShopBeta</span>
                     <span style={{fontSize: '29px'}} className="">
                         <Link className="link" to={"/assets/vendor/SearchPage"}>
-                            <input style={{fontSize: '19px',  fontWeight: '300', color: 'black'}} className="pa2 pr6 ph4 code br-pill ba" type="search" placeholder="Search products...."/>          
+                            <input style={{fontSize: '19px',  fontWeight: '300', color: 'black'}} className="pa2 ph3 code br-pill ba" type="search" placeholder="Search products...."/>          
                         </Link>
-                        <Link to={"../assets/Adbillboard"} title="feed" className="navbar pv2 f3 hover-bg-light-gray br3 icon-picture black ph4" ></Link>
+                        <Link to={"../assets/Adbillboard"} title="feed" className="navbar pv2 f3 hover-bg-light-gray br3 pl2 icon-picture black pr4" ></Link>
                         <Link to={"../assets/VideoSpace"} title="video space" className="navbar pv2 f3 hover-bg-light-gray br3 icon-social-youtube black ph4"></Link>
                         <Link to={"../assets/Chats"} title="Chats" className="navbar ph4 br3 black hover-bg-light-gray f3 link icon-bubbles pv2"></Link>
                         <Link to={"../assets/Vendor/Cart"} title="cart" className="navbar ph4 f3 black hover-bg-light-gray br3 link icon-basket pv2"></Link>

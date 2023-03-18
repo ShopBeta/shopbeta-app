@@ -21,7 +21,7 @@ class Preloader extends Component {
                             <section className="preloader">
                                 <div className="spinner">
                                     <span className="spinner-rotate">
-                                        <div className='tc code' style={{color: '#ee9617', fontSize: '27px', fontWeight: '500', letterSpacing: '-1px'}}>Spongebuy</div>
+                                        <div className='tc code' style={{color: '#ee9617', fontSize: '27px', fontWeight: '500', letterSpacing: '-1px'}}>ShopBeta</div>
                                     </span>
                                 </div>
                             </section>

@@ -71,9 +71,9 @@ const Chats = () => {
                     <Navbar />
 
                     <div className="pt6 pa2">
-                        <span style={{color: 'black', fontSize: '29px', fontWeight: '500', letterSpacing: '-1px'}} className="tl ph3 tj code">Chats</span>
+                        <span style={{color: 'black', fontSize: '29px', fontWeight: '500', letterSpacing: '-1px'}} className="tl pr3 tj code">Chats</span>
                         <span className="tc">
-                            <input style={{backgroundColor: 'white'}} className="pa2 icon-magnifier ph5 code f4 br-pill ba" type="search" placeholder="Search chats...." searchChange={onSearchChange} onChange={onSearchChange}/>
+                            <input style={{backgroundColor: 'white'}} className="pa2 icon-magnifier ph4 code f4 br-pill ba" type="search" placeholder="Search chats...." searchChange={onSearchChange} onChange={onSearchChange}/>
                         </span>
                     </div>
                     <div style={{overflowY: 'auto', height: '770px', width: '440px'}} className="dib tc">
