@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f3efd54d.css",
+    "main.js": "/static/js/main.0503f957.js",
+    "static/js/787.07678160.chunk.js": "/static/js/787.07678160.chunk.js",
+    "static/media/home_wallpaper_2.jpg": "/static/media/home_wallpaper_2.ef7034ceb528b4f0f83d.jpg",
+    "static/media/banner_img.png": "/static/media/banner_img.13f844c42de75ddf5760.png",
+    "static/media/women clothings.jpg": "/static/media/women clothings.a52c97e236de5fba1df6.jpg",
+    "static/media/Simple-Line-Icons.svg?v=2.4.0": "/static/media/Simple-Line-Icons.552f86e1450eb8ec4325.svg",
+    "static/media/men clothings.jpg": "/static/media/men clothings.211b283769a55fe06393.jpg",
+    "static/media/Simple-Line-Icons.woff?v=2.4.0": "/static/media/Simple-Line-Icons.5c9febce52054ae0b96d.woff",
+    "static/media/nike.jpg": "/static/media/nike.83383daf6df25e061d96.jpg",
+    "static/media/Simple-Line-Icons.eot?v=2.4.0": "/static/media/Simple-Line-Icons.85e8c542d5e137beecf9.eot",
+    "static/media/Simple-Line-Icons.ttf?v=2.4.0": "/static/media/Simple-Line-Icons.3ec13a24af3fdda11107.ttf",
+    "static/media/Simple-Line-Icons.woff2?v=2.4.0": "/static/media/Simple-Line-Icons.3826fa1cb2348dd93948.woff2",
+    "static/media/beauty-products.jpg": "/static/media/beauty-products.c148d89236dd3aabeda7.jpg",
+    "static/media/phone-vector.jpg": "/static/media/phone-vector.2d375cdd40277dc19330.jpg",
+    "static/media/free-sports.jpg": "/static/media/free-sports.e364da3fdf7fcd39144a.jpg",
+    "static/media/shoes.webp": "/static/media/shoes.10976eae29c3297960a2.webp",
+    "index.html": "/index.html",
+    "main.f3efd54d.css.map": "/static/css/main.f3efd54d.css.map",
+    "main.0503f957.js.map": "/static/js/main.0503f957.js.map",
+    "787.07678160.chunk.js.map": "/static/js/787.07678160.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f3efd54d.css",
+    "static/js/main.0503f957.js"
+  ]
+}
