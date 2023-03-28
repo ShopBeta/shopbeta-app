@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core";
 import { Typography } from "@material-ui/core";
-import img from '../images/shop-local.png'
+import img from '../images/shopbeta logo.png'
 import './simple-line-icons/css/simple-line-icons.css';
 import { Link } from "react-router-dom";
 
@@ -23,10 +23,10 @@ const Navbar = () => {
         <nav className="bg-white tc pv2 shadow-2" style={{position: 'fixed', width: '100%', borderBottom: '1px thin black'}}>
             <Typography>
                 <div className="">
-                    <span style={{color: '#ee9617', fontSize: '23px', fontWeight: '510', letterSpacing: '-3px'}} className="pa2 pr3 code"><img src={img} alt="logo" className="br4 ph2" width="24px" height="24px" />ShopBeta</span>
+                    <span style={{color: '#ee9617', fontSize: '25px', fontWeight: '515', letterSpacing: '-3px'}} className="pa2 pr3 code">ShopBeta</span>
                     <span style={{fontSize: '29px'}} className="">
                         <Link className="link" to={"/assets/vendor/SearchPage"}>
-                            <input style={{fontSize: '19px',  fontWeight: '300', color: 'black'}} className="pa2 ph3 code br-pill ba" type="search" placeholder="Search products...."/>          
+                            <input style={{fontSize: '19px',  fontWeight: '300', color: 'black'}} className="pa2 ph4 code br-pill ba" type="search" placeholder="Search products...."/>          
                         </Link>
                         <Link to={"../assets/Adbillboard"} title="feed" className="navbar pv2 f3 hover-bg-light-gray br3 pl2 icon-picture black pr4" ></Link>
                         <Link to={"../assets/VideoSpace"} title="video space" className="navbar pv2 f3 hover-bg-light-gray br3 icon-social-youtube black ph4"></Link>

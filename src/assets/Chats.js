@@ -1,6 +1,6 @@
 import React from "react";
 import './Home.css'
-import img from '../images/shop-local.png'
+import img from '../images/shopbeta logo.png'
 import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Preloader from "../components/Preloader";
@@ -70,10 +70,10 @@ const Chats = () => {
                     <Preloader />
                     <Navbar />
 
-                    <div className="pt6 pa2">
-                        <span style={{color: 'black', fontSize: '29px', fontWeight: '500', letterSpacing: '-1px'}} className="tl pr3 tj code">Chats</span>
+                    <div className="pt6 tc pa1">
+                        <span style={{color: 'black', fontSize: '29px', fontWeight: '500', letterSpacing: '-2px'}} className="tl pr3 tj code">Chats</span>
                         <span className="tc">
-                            <input style={{backgroundColor: 'white'}} className="pa2 icon-magnifier ph4 code f4 br-pill ba" type="search" placeholder="Search chats...." searchChange={onSearchChange} onChange={onSearchChange}/>
+                            <input style={{backgroundColor: 'white'}} className="pa2 icon-magnifier ph5 code f4 br-pill ba" type="search" placeholder="Search chats...." searchChange={onSearchChange} onChange={onSearchChange}/>
                         </span>
                     </div>
                     <div style={{overflowY: 'auto', height: '770px', width: '440px'}} className="dib tc">
@@ -84,7 +84,7 @@ const Chats = () => {
                                 </div>
                                 <div className="">
                                     <div className="pa3 br4">
-                                        <p className="orange fw6 code">SpongeBuy, Inc</p>
+                                        <p className="orange fw6 code">ShopBeta, Inc</p>
                                         <p className="pt2">Contact the support team at shopbeta22@gmail.com</p>
                                     </div>
                                     <small class="opacity-6 pl6 code">
