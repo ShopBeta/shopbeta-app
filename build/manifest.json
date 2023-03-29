@@ -3,17 +3,17 @@
   "name": "ShopBeta",
   "icons": [
     {
-      "src": "sell-stock.ico",
+      "src": "shopbeta.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "sell-stock logo.png",
+      "src": "shopbeta.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "190x190"
     },
     {
-      "src": "shop-local.png",
+      "src": "shopbeta.png",
       "type": "image/png",
       "sizes": "512x512"
     }
