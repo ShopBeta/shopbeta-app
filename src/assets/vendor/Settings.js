@@ -91,7 +91,7 @@ const handleSubmit = e => {
                 <Preloader />
                 <Navbar />
                     <div className="tc">
-                      <div style={{width: '370px'}} className="dib pa3 tc pv6">
+                      <div style={{width: '360px'}} className="dib pa3 tc pv6">
                         <div className="pv3">
                             <h3 className="tr"><small className="icon-settings f4 ph2"></small>Change Settings</h3>
                                 <form onSubmit={handleSubmit}>
