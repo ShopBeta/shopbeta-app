@@ -45,7 +45,7 @@ const SearchPage = () => {
             <div className="">
                 <Preloader />
                     <div className="flex flex-wrap">
-                        <div style={{color: '#ee9617', fontSize: '23px', fontWeight: '550', letterSpacing: '-1px'}} className="pa4 code">Sponge</div>
+                        <div style={{color: '#ee9617', fontSize: '23px', fontWeight: '550', letterSpacing: '-1px'}} className="pa4 code">ShopBeta</div>
                             <SearchBox searchChange={onSearchChange} />
                         </div>
                     <div className="">

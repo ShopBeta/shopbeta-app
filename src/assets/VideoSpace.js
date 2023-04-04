@@ -12,7 +12,7 @@ const VideoSpace = () => {
 
     const [video, setVideo] = useState([])
     useEffect(() => {
-        fetch("https://shopbeta-app.herokuapp.com/video", {
+        fetch("http://localhost:3200/video", {
             method: "GET",
         })
         .then((res) => res.json())
@@ -30,7 +30,7 @@ const VideoSpace = () => {
                         <Navbar />
                     <div className="">
                         <div className="pa1 pv5 tc">
-                            <h3 className="tl pt4 pa4 code f3 ph4">VideoSpace</h3>
+                            <h3 className="tl pt5 pa4 code f3 ph4">VideoSpace</h3>
                                 <div className="dib tc">
                                     <div className="dtc bg-blue">
                                         <SideBar />

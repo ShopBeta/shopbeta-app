@@ -23,19 +23,14 @@ const MainCat = () => {
             {
                     catData.map((val, key) => {
                         return (
-                                <div className="dib tc pa2-l" key={key} 
-                                    // onClick={() => {
-                                    //         window.location.pathname = val.Link;
-                                    //     }}
-                                >                      
+                                <div className="dib tc" key={key}>                      
                                 <div>
                                 <Link to={"../assets/vendor/MarketPlace"} className="link black">
                                     <div className="dib">
-                                        <div className="tl br3 pa3 bw2 grow bg-transparent b--black ma2 pa2">
+                                        <div className="tl br3 bw2 grow bg-transparent b--black ma2 pa2">
                                                 <div className="flex flex-wrap">
                                                     <p className="tc">
                                                         {val.Image}
-                                                        {/* <img src={val.Image} alt="avatar" className="pointer br-100" width="100px" height="100px" /> */}
                                                     </p>
                                                 </div>   
                                                 <div className="tc">

@@ -47,11 +47,11 @@ const FollowCard = ({ id, username, avatar, location, hearts, bio, website, phon
 
         return(
             <div className="dib">
-                <div className="tl br3 pa3 bw2 shadow-4 bg-white b--black ma2 pa2">
+                <div className="tl br3 bw2 shadow-4 bg-white b--black ma2 pa2">
                     <Link className="link black" to={"/assets/vendor/User"}>
                         <div onClick={() => {window.localStorage.setItem("userId", id)}} className="flex flex-wrap">
                             <span>
-                                <img src={`https://shopbeta-app.herokuapp.com/users/${id}/avatar`} alt="avatar" className="pointer br-100" width="100px" height="100px" />
+                                <img src={`http://localhost:3200/users/${id}/avatar`} alt="avatar" className="pointer br-100" width="100px" height="100px" />
                             </span>
                             <span className="pointer pa2 fw5 f5">
                                 <p>{username}</p>

@@ -23,7 +23,7 @@ const PostVideo = ({text, file}) => {
     }
 
     return(
-        <div style={{width: '385px'}} className="">
+        <div style={{width: '310px'}} className="">
             <Dialog open={open} handClick={handClick} />
                 <div className="tr w-100 pa2 pb2">
                     <small onClick={handleShut} className="icon-close pointer f3 hover-red"></small>

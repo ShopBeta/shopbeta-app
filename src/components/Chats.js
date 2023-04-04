@@ -10,7 +10,7 @@ const Chatrooms = ({ roomId, userId, createdAt }) => {
 
     const [user, setUser] = useState({})
     useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/users/${userId}`, {
+        fetch(`http://localhost:3200/users/${userId}`, {
             method: "GET",
             headers: {
                 'Accept' : 'application/json, text/plain',
@@ -50,16 +50,16 @@ const Chatrooms = ({ roomId, userId, createdAt }) => {
                     <div className="dib tc w-100 b--black">
                         <div id="messages" onClick={window.localStorage.setItem("chatroom", roomId)} className="pv2 br3 b-black pointer tj flex flex-wrap">
                             <div className="pa2">
-                                <img src={`https://shopbeta-app.herokuapp.com/users/${userId}/avatar`} alt="avatar" className="br-100" width="55px" height="55px" />
+                                <img src={`http://localhost:3200/users/${userId}/avatar`} alt="avatar" className="br-100" width="50px" height="50px" />
                             </div>
                             <Link className="link black" to={"/assets/Messages"}>
                                 <div onClick={markread} className="grow">
                                     <div className="pa3 br4">
                                         <p className="orange">{user.username}</p>
-                                        <p className="pt2">Click to view recent conversations  .....</p>
+                                        <p className="pt2">Click to view recent conversations.....</p>
                                     </div>
-                                    <small class="opacity-6 pl4 code">
-                                        <i class="pl7 pr3">last seen</i>
+                                    <small class="opacity-6 pl5 code">
+                                        <i class="pl6 pr3">last seen</i>
                                         {moment(createdAt).format('h:mm a')}
                                     </small>
                                 </div>
@@ -74,7 +74,7 @@ const Messages = ({ id, roomid, time, message, user}) => {
 
     const [users, setUsers] = useState({})
     useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/users/${user}`, {
+        fetch(`http://localhost:3200/users/${user}`, {
             method: "GET",
             headers: {
                 'Accept' : 'application/json, text/plain',
@@ -93,13 +93,13 @@ const Messages = ({ id, roomid, time, message, user}) => {
                 <div>
                     <div id="messages" className="pv2 pointer tj flex flex-wrap">
                         <Link onClick={() => {window.localStorage.setItem("userId", user)}} className="link black" to={"/assets/vendor/User"}>
-                            <img src={`https://shopbeta-app.herokuapp.com/users/${user}/avatar`} alt="avatar" className="br-100 ph2" width="55px" height="55px" />
+                            <img src={`http://localhost:3200/users/${user}/avatar`} alt="avatar" className="br-100 ph2 pa3" width="55px" height="55px" />
                         </Link>
                         <div className="pv2">
                             <small class="opacity-6 code">
                                 <i class="ph2">{users.username}</i>
                             </small>
-                            <div className="bg-light-blue pa3 br4">
+                            <div style={{width: '260px'}} className="tj bg-light-blue pa3 br4">
                                 {message}
                             </div>
                             <div className="tr">

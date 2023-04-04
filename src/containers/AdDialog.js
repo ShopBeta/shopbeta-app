@@ -5,7 +5,7 @@ import PostAd from "../containers/PostAd";
 const AdDialog = ({ handleShow, handleShut}) => {
     return(
         //Props recieved from app.js
-        <Dialog open={handleShow} onClose={handleShut}>
+        <Dialog className="w-100" open={handleShow} onClose={handleShut}>
             <PostAd handleShut={handleShut} />
         </Dialog>
     )

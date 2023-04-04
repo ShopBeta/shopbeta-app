@@ -12,7 +12,7 @@ const AdbillBoard = () => {
 
     const [feed, setFeed] = useState([])
     useEffect(() => {
-        fetch("https://shopbeta-app.herokuapp.com/feed", {
+        fetch("http://localhost:3200/feed", {
             method: "GET",
         })
         .then((res) => res.json())
@@ -29,7 +29,7 @@ const AdbillBoard = () => {
                         <Navbar />
                     <div className="">
                         <div className="pa1 pv5 tc">
-                            <h3 className="tl pt4 pa4 code f3 ph4">AdbillBoard</h3>
+                            <h3 className="tl pt5 pa4 code f3 ph4">AdbillBoard</h3>
                                 <div className="dib tc">
                                     <div className="dtc bg-blue">
                                             <SideBar />

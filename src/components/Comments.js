@@ -2,7 +2,6 @@ import { makeStyles } from "@material-ui/core";
 import React from "react";
 import { useState, useEffect } from "react";
 import 'tachyons';
-// import { CommentBlank } from "../assets/vendor/Pages";
 import Dialog from "../containers/Dialog";
 import CommentList from "../containers/CommentList";
 
@@ -29,7 +28,7 @@ const Comments = ({ handleShut, text, file, owner }) => {
     const [comment, setComment] = useState([])
     useEffect(() => {
         setInterval(function() {
-            fetch(`https://shopbeta-app.herokuapp.com/feed/${path}/comments`, {
+            fetch(`http://localhost:3200/feed/${path}/comments`, {
                 method: "GET",
                 headers: {
                     'Accept' : 'application/json, text/plain',
@@ -83,36 +82,35 @@ const Comments = ({ handleShut, text, file, owner }) => {
     }
 
             return(
-                    <div style={{width: '385px'}} className={classes.root}>
+                    <div style={{width: '310px'}} className={classes.root}>
                         <Dialog open={open} handClick={handClick} />
                         <div className="tr pb2">
                             <small onClick={handleShut} className="icon-close pointer f3 hover-red"></small>
                         </div>
-                        <div id="myUL" style={{ overflowY: 'auto', height: '400px'}} className="pa3 f5 pv3 tj">
+                        <div id="myUL" style={{ overflowY: 'auto', height: '400px'}} className="f5 pv3 tj">
                             <div className="tl pv2">
-                                    <p className="f5 code b pv2">Comment here to join the conversation</p>
+                                    <p className="f5 b pv2">Comment here to join the conversation</p>
                                 </div>
                                 <div className="tc f5">
-                                    <div className="code pa4 ph5 code">
+                                    <div className="pa4 ph5">
                                         <p className="icon-bubbles mid-gray tc f1"></p>
-                                        <p className="f4 tc pv2">Comments Section</p>
-                                        <p className="pv2 orange code f5">"Type to a send a comment"</p>
+                                        <p className="pv2 orange f5">"Type to a send a comment"</p>
                                     </div>
                                 </div>  
                                 <div>
                                     <CommentList comment={comment}/>
                                 </div>
                                     </div>
-                                    <div className="pa2 tc">
+                                    <div className="tc">
                                         <form onSubmit={handleSubmit}>
-                                            <span className="pv2 ph2">
-                                                <input id="text" name="text" value={text} type="text" className="text pa3 br-pill b--black-50 w-75" placeholder="Comment here..." />
+                                            <span className="pv2">
+                                                <input id="text" name="text" value={text} type="text" className="text pa3 br-pill b--black-50 ba w-75" placeholder="Comment here..." />
                                             </span>
-                                            <span onClick={handClickShow} className="ph2">
-                                                <button type="submit" className="icon-paper-plane bg-transparent b--transparent pointer f3 blue"></button>
+                                            <span onClick={handClickShow} className="ph1">
+                                                <button type="submit" className="icon-paper-plane bg-transparent b--transparent pointer f3 orange"></button>
                                             </span>
-                                            <span className="ph2">
-                                                <small type='file' value={file} name="file" className="file icon-camera pointer f3 blue"></small>
+                                            <span className="ph1">
+                                                <small type='file' value={file} name="file" className="file icon-camera pointer f3 orange"></small>
                                             </span>
                                         </form>
                                     </div>

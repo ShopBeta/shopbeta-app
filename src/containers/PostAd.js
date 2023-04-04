@@ -23,13 +23,13 @@ const PostAd = ({text, file}) => {
     }
 
     return(
-        <div style={{width: '385px'}} className="">
+        <div style={{width: '310px'}} className="">
             <Dialog open={open} handClick={handClick} />
                 <div className="tr w-100 pa2 pb2">
                     <small onClick={handleShut} className="icon-close pointer f3 hover-red"></small>
                 </div>
                 <div className="pv2">
-                    <form action={`http://localhost:3000/feed/${me}`} method="post" encType="multipart/form-data" className="tl br3 pa3 ma2">
+                    <form action={`https://shopbeta-app.herokuapp.com/feed/${me}`} method="post" encType="multipart/form-data" className="tl br3 pa3 ma2">
                         <p className="pv1 fw6 code tc f4">
                             Post an Ad
                         </p>

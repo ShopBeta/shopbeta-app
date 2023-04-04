@@ -62,13 +62,13 @@ const Purchase = ({ handleShut, id }) => {
                         </p>
                     </div>
                 </div>
-                <div style={{ overflowY: 'scroll', height: '340px'}} className="pa3 pv3 tj">
+                <div style={{ overflowY: 'scroll', height: '340px'}} className="pv3 tj">
                     <div>
                         <div className="tl pv2">
-                            <p className="code b f5 pv2">Check to see if Product is available</p>
+                            <p className="b f5 pv2">Check to see if Product is available</p>
                             <p className="fw5 f5"></p>
                         </div>
-                        <div className="pv2 pa3">
+                        <div className="pv2 pa2">
                                 <div className="br4 b--yellow ba pv2 pa2 mars white">
                                     <p>
                                         <p className="tr f4"><small className="icon-check b grow hover-red"></small></p>
@@ -78,7 +78,7 @@ const Purchase = ({ handleShut, id }) => {
                                     </p>
                                 </div>
                             </div>
-                            <div className="pv2 pa3">
+                            <div className="pv2 pa2">
                                 <div className="pv2 br4 pa2 mercury white">
                                     <p>
                                         <p className="tr f4"><small className="icon-check b grow hover-red"></small></p>
@@ -88,23 +88,13 @@ const Purchase = ({ handleShut, id }) => {
                                     </p>
                                 </div>
                             </div>
-                            {/* <div className="tl pv2">
-                                <p className="f5 code b pv2">Chat with seller to buy Product</p>
-                            </div>
-                            <div className="tc">
-                                <div className="code pa4 ph6 code">
-                                    <p className="icon-bubbles mid-gray tc f1"></p>
-                                    <p className="f4 tc pv2">Message Seller</p>
-                                    <p className="pv2 orange code f5">"Send a message to start a conversation"</p>
-                                </div>
-                            </div> */}
                             <div className="pv2">
-                            <div className="pa3 f6">
+                            <div className="pa2 f6">
                                 <h3 className="pv1">
                                 <small className="icon-info pr2 f5 blue"></small>
                                    Disclaimer
                                 </h3>
-                                <div className="lh3 f5 code fw6 pa2">
+                                <div className="lh3 f5 fw6 pa2">
                                 <p style={{lineHeight: "20px", fontSize: "13.5px"}} className="fw6">
                                     No returns allowed on any FINAL SALE items, except for if flaws in products are found in the event
                                     that you are not 100% satisfied with any item you purchase, we accept returns on any item (other than FINAL). This implies that any product shipped or delivered with defects or material. Please contact us at info@shopbetaonline.com to approve your return.

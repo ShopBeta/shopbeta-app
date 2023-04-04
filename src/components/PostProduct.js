@@ -40,7 +40,7 @@ const PostProduct = ({ handleShut, name, images, description, currency, price, o
                     <div className="tr w-100 pb2">
                         <small onClick={handleShut} className="icon-close pointer f3 hover-red"></small>
                     </div>
-                    <div style={{ overflowY: 'scroll', height: '400px'}} className="pa3 code pv3 tj">
+                    <div style={{ overflowY: 'scroll', height: '400px'}} className="pa1 code pv3 tj">
                             <div className="tl pv2">
                                 <p className="pv1 f5 fw5">Product's Name</p>
                                 <input type="text" name="name" className="name br3 ba pa2 w-100" required placeholder="Product's name" />
@@ -59,7 +59,8 @@ const PostProduct = ({ handleShut, name, images, description, currency, price, o
                                 <option id="Consumer Electronics" name="Consumer Electronics">Consumer Electronics</option>
                                 <option id="Home and Garden" name="Home and Garden">Home and Garden</option>
                                 <option id="Beauty and Health" name="Beauty and Health">Beauty and Health</option>
-                                <option id="Sports and Entertainment" name="Sports and Entertainment">Sports and Entertainment</option>
+                                <option id="Sports" name="Sports">Sports</option>
+                                <option id="Shoes" name="Shoes">Shoes</option>
                             </select>
                             <div className="tl pv2">
                             <p className="pv1 f5 fw5">Price</p>
@@ -89,12 +90,12 @@ const PostProduct = ({ handleShut, name, images, description, currency, price, o
                             </p>
                             <div>
                                 <div className="pv2">
-                                <div className="pa3 pv1 tj f6">
+                                <div className="pa2 pv1 tj f6">
                                         <h3 className="pv1">
                                         <small className="icon-info pr2 f5 blue"></small>
                                             Some tips
                                         </h3>
-                                        <div className="code pa2 fw6">
+                                        <div className="pa2 fw6">
                                             <p>Give as much details and description about the product or service</p>
                                             <p className="pv2">Ensure to upload 4 high quality images</p>
                                             <p className="pv2">Each image file size shouldn't exceed 5MB</p>
@@ -105,7 +106,7 @@ const PostProduct = ({ handleShut, name, images, description, currency, price, o
                             </div>
             </div>
                 <div className="pv2 tc grow">
-                    <button type="submit" onClick={handClickShow} variant="contained" className="ph5 pa2 white mars pointer ba hover-bg-mid-gray br-pill">
+                    <button type="submit" onClick={handClickShow} variant="contained" className="ph5 pa2 white bg-transparent orange fw5 pointer ba hover-bg-mid-gray br-pill">
                         Post Product
                     </button>
                 </div>

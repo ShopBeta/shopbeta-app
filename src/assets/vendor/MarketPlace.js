@@ -11,7 +11,7 @@ const Products = () => {
 
     const [product, setProduct] = useState([])
     useEffect(() => {
-        fetch("https://shopbeta-app.herokuapp.com/products", {
+        fetch("http://localhost:3200/products", {
             method: "GET",
         })
         .then((res) => res.json())
@@ -30,7 +30,7 @@ const Products = () => {
                     <SideBar />
                 </div>
             <div className="pv6 tc">
-                <h3 className="shop fw6 code f4 ph3 pb2">Products</h3>
+                <h3 className="fw6 code fw5 f3 ph3 pb2">Products</h3>
                         <div className="tc pl4">
                             <CardList product={product} />
                         </div>

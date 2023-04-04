@@ -12,7 +12,7 @@ const Home = () => {
 
     const [users, setUsers] = useState([])
     useEffect(() => {
-        fetch("https://shopbeta-app.herokuapp.com/users", {
+        fetch("http://localhost:3200/users", {
             method: "GET",
             headers: {
                 'Accept' : 'application/json, text/plain',
@@ -37,8 +37,8 @@ const Home = () => {
                         <div className="tc">
                             <MainCat />
                         </div>
-                        <p className="pv4 tc orange fw6 code f4">
-                            Stores or users you may like
+                        <p className="pv4 tc code fw6 f4">
+                            Suggestions
                         </p>
                         <div className="tj flex flex-wrap">
                                 <div className="tc">

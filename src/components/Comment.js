@@ -1,13 +1,14 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import moment from "moment";
+import { Link } from "react-router-dom";
 
 
 const Comment = ({ text, file, owner, time }) => {
 
     const [user, setUser] = useState({})
     useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/users/${owner}`, {
+        fetch(`http://localhost:3200/users/${owner}`, {
             method: "GET",
             headers: {
                 'Accept' : 'application/json, text/plain',
@@ -22,33 +23,31 @@ const Comment = ({ text, file, owner, time }) => {
     }, [owner])
 
     return(
-            <div>
                 <div class="chat-wrapper">
                             <div className="">
                                 <div>
                                     <div className="tj flex flex-wrap">
-                                        <img src={`https://shopbeta-app.herokuapp.com/users/${user._id}/avatar`} alt="avatar" className="br-100" width="50px" height="50px" />
-                                        <span className="pa2 fw5 f6">
-                                            {user.username}
-                                            <p className="f6 code fw3">
-                                                {user.location}
-                                                <small className="icon-location-pin ph2"></small>
-                                            </p>
-                                        </span>
+                                        <Link onClick={() => {window.localStorage.setItem("userId", user)}} className="link black" to={"/assets/vendor/User"}>
+                                            <img src={`http://localhost:3200/users/${user._id}/avatar`} alt="avatar" className="br-100 pv3 ph2" width="50px" height="50px" />
+                                        </Link>
+                                        <div className="pv2">
+                                            <small class="opacity-6 code">
+                                                <i class="ph2">{user.username}</i>
+                                            </small>
+                                            <div style={{width: '200px'}} className="bg-light-blue pa3 br4">
+                                                {text}
                                             </div>
-                                                </div>
-                                                    <div className="pv2">
-                                                        <div className="bg-light-blue pa3 br4">
-                                                            {text}
-                                                        </div>
-                                                        <small class="opacity-6 code">
-                                                            <i class="pr2"></i>
-                                                            {moment(time).format('h:mm a')}
-                                                        </small>
-                                                    </div>
-                                                </div>
-                                            </div> 
-            </div>
+                                            <div class="opacity-6 tr code">
+                                                <small>
+                                                    <i class="ph2"></i>
+                                                    {moment(time).format('h:mm a')}
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>                       
     )
 }
 

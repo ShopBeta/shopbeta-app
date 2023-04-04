@@ -65,7 +65,7 @@ const Details = ({ handleClose }) => {
                     <div className="tr pb2">
                         <small onClick={handleClose} className="icon-close pointer f3 hover-red"></small>
                     </div>
-                    <div style={{ overflow: 'auto', height: '330px'}} className="pa3 pv3 tj">
+                    <div style={{ overflow: 'auto', height: '330px'}} className="pv3 tj">
                     <div className="tc">
                         <Carousell>
                             <Item />
@@ -78,7 +78,7 @@ const Details = ({ handleClose }) => {
                             <p>
                                 {product.description}
                             </p>
-                    <div className="pa3 f6">
+                    <div className="pa2 f6">
                         <h3 className="pv2">
                             <small className="icon-info pr2 f5 blue"></small>
                                 Item Review

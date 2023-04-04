@@ -20,7 +20,7 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
 
     const [user, setUser] = useState({})
     useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/users/${owner}`, {
+        fetch(`http://localhost:3200/users/${owner}`, {
             method: "GET",
             headers: {
                 'Accept' : 'application/json, text/plain',
@@ -36,7 +36,7 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
 
     const [comment, setComment] = useState({})
     useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/feed/${id}/comments`, {
+        fetch(`http://localhost:3200/feed/${id}/comments`, {
             method: "GET",
             headers: {
                 'Accept' : 'application/json, text/plain',
@@ -108,22 +108,22 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
     } 
     
     return(
-        <div style={{width: '450px'}} className="">
+        <div style={{width: '370px'}} className="dib">
             <CommentModal handleShow={show} handleShut={handleShut} />
             {/* <ShareModal handleOpen={open} handleClose={handleClose} /> */}
             <div className="bg-white b--black br3 ma3 pa2 bw2 shadow-5">
                 <div className="tj flex f4 flex-wrap">
                     <span onClick={() => {window.history.pushState(null, "", id)}}>
                         <Link onClick={() => {window.localStorage.setItem("userId", owner)}} className="link black" to={"/assets/vendor/User"}>
-                            <img src={`https://shopbeta-app.herokuapp.com/users/${owner}/avatar`} alt="Accessories..." className="br-100" width="55px" height="55px" />
+                            <img src={`http://localhost:3200/users/${owner}/avatar`} alt="avatar" className="br-100" width="55px" height="55px" />
                         </Link>
                     </span>
                     <span onClick={() => {window.history.pushState(null, "", id)}} className="pa2 f5 pointer fw5">
                         <Link onClick={() => {window.localStorage.setItem("userId", owner)}} className="link black" to={"/assets/vendor/User"}>
                             <span>{user.username}</span>
                         </Link>
-                        <p className="f6 code fw3">{user.location}.<small className="icon-globe ph2"></small></p>
-                        <p className="f6 pa1 code fw3">
+                        <p className="f6 fw4">{user.location}.<small className="icon-globe ph2"></small></p>
+                        <p className="f6 pa1 fw4">
                             {moment(time).from()}
                             <span class="ph2">{moment(time).format('h:mm a')}</span>
                         </p>
@@ -140,9 +140,9 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
                 </div>
                 </div>
                 <div className="side2">
-                    <img src={`https://shopbeta-app.herokuapp.com/feed/${id}/media`} alt="post..." className="br4"  />
+                    <img src={`http://localhost:3200/feed/${id}/media`} alt="post..." className="br4"  />
                     <div className="pa2">
-                        <span onClick={heartClick} className="pa2 fw5 ph3 icon-heart pointer f4 grow">
+                        <span onClick={heartClick} className="pa2 fw5 ph2 icon-heart pointer f4 grow">
                             <small id="increment" className="pa1 code">{hearts}</small>
                         </span>
                         <span onClick={() => {window.history.pushState(null, "", id)}} className="pa2 pointer f4 fw5 grow icon-bubble">
@@ -152,7 +152,7 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
                             <small className="pa1 code"></small>
                         </span> */}
                         <span onClick={() => {window.history.pushState(null, "", id)}}>
-                            <input onClick={handleShow} type="text" className="pa3 br-pill b--black-50 w-70" placeholder="Comment here..." />
+                            <input onClick={handleShow} type="text" className="pa3 br-pill b--black-50 ba w-70" placeholder="Comment here..." />
                         </span>
                     </div>
                 </div>
@@ -171,7 +171,7 @@ const VideoPost = ({ id, owner, media, text, hearts, time}) => {
 
     const [user, setUser] = useState({})
     useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/users/${owner}`, {
+        fetch(`http://localhost:3200/users/${owner}`, {
             method: "GET",
             headers: {
                 'Accept' : 'application/json, text/plain',
@@ -187,7 +187,7 @@ const VideoPost = ({ id, owner, media, text, hearts, time}) => {
 
     const [comment, setComment] = useState({})
     useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/video/${id}/comments`, {
+        fetch(`http://localhost:3200/video/${id}/comments`, {
             method: "GET",
             headers: {
                 'Accept' : 'application/json, text/plain',
@@ -259,18 +259,18 @@ const VideoPost = ({ id, owner, media, text, hearts, time}) => {
     } 
     
     return(
-            <div style={{Height: '600px', width: '450px'}} className="">
+            <div style={{Height: '580px', width: '370px'}} className="dib">
                 <CommentModal handleShow={show} handleShut={handleShut} />
                     <div className="bg-white b--black br3 ma3 pa2 bw2 shadow-5">
                         <div className="side2">
                             <video style={{Height: 'auto', width: '100%'}} className="br4" controls>
-                                <source src={`https://shopbeta-app.herokuapp.com/video/${id}/video`} type="video/mp4"></source>
+                                <source src={`http://localhost:3200/video/${id}/video`} type="video/mp4"></source>
                             </video>
                             <div className="f4">
                                 <span className="icon-eye pr2"></span>
-                                <span className="pr7"> 
+                                <span className="pr6"> 
                                     <small class="opacity-6 code">
-                                        <i class="pr2"></i>
+                                        <i class=""></i>
                                         2K | Views
                                     </small>
                                 </span>
@@ -294,7 +294,7 @@ const VideoPost = ({ id, owner, media, text, hearts, time}) => {
                                             </p>
                                             <p className="tr">  
                                                 <Link onClick={() => {window.localStorage.setItem("userId", owner)}} className="link black" to={"/assets/vendor/User"}>
-                                                    <img src={`https://shopbeta-app.herokuapp.com/users/${owner}/avatar`} alt="Accessories..." className="br-100 pointer" width="55px" height="55px" />
+                                                    <img src={`http://localhost:3200/users/${owner}/avatar`} alt="avatar" className="br-100 pointer" width="55px" height="55px" />
                                                 </Link>
                                                 <Link onClick={() => {window.localStorage.setItem("userId", owner)}} className="link black" to={"/assets/vendor/User"}>
                                                     <p className="pa2 pointer fw5">

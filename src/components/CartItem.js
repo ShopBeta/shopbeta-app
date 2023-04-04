@@ -18,7 +18,7 @@ const CartItem = ({ id, productId }) => {
 
     const [product, setProduct] = useState([])
     useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/products/${productId}`, {
+        fetch(`http://localhost:3200/products/${productId}`, {
             method: "GET",
         })
         .then((res) => res.json())
@@ -32,7 +32,7 @@ const CartItem = ({ id, productId }) => {
 
     const [user, setUser] = useState({})
     useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/users/${username}`, {
+        fetch(`http://localhost:3200/users/${username}`, {
             method: "GET",
             headers: {
                 'Accept' : 'application/json, text/plain',
@@ -63,7 +63,7 @@ const CartItem = ({ id, productId }) => {
     }
 
     return(
-        <div className="pv2 dib ma2">
+        <div style={{width: '360px'}} className="pv2 dib">
             <PurchaseModal handleShow={open} handleShut={handleShut} />
             <div className="tr pb2">
                     <small onClick={deleteClick} title="delete" className="icon-close pointer f3 hover-red"></small>
@@ -72,7 +72,7 @@ const CartItem = ({ id, productId }) => {
                     <div className="flex flex-wrap bg-white b--black br3 pa4 ma1 bw2 shadow-5">
                     <Typography>
                         <div>
-                            <img src={`https://shopbeta-app.herokuapp.com/products/${productId}/images`} alt="shoes" className="br4 pv2" width="310px" height="230px"></img>
+                            <img src={`http://localhost:3200/products/${productId}/images`} alt="product" className="br4 pv2" width="310px" height="230px"></img>
                         </div>
                             <div className="tl">
                                 <p><b>{product.name}</b></p>
@@ -100,8 +100,8 @@ const CartItem = ({ id, productId }) => {
                              </div>
                         </div>
                     </Typography>
-                    <div style={{width: '430px'}} className="">
-                    <div style={{ overflowY: 'auto', height: '500px'}} className="pa4 pv3 tj">
+                    <div className="">
+                    <div style={{ overflowY: 'auto', height: '500px'}} className="pa1 pv3 tj">
                         <h3 className="pv2 fw5">Description</h3>
                             <p>
                                 {product.description}

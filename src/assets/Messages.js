@@ -16,7 +16,7 @@ const Messages = () => {
 
     const [user, setUser] = useState([])
     useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/chat/${roomId}/users`, {
+        fetch(`http://localhost:3200/chat/${roomId}/users`, {
             method: "GET",
             headers: {
                 'Accept' : 'application/json, text/plain',
@@ -33,7 +33,7 @@ const Messages = () => {
     const [chats, setChats] = useState([])
     useEffect(() => {    
         setInterval(function() {
-            fetch(`https://shopbeta-app.herokuapp.com/chat/messages/${roomId}`, {
+            fetch(`http://localhost:3200/chat/messages/${roomId}`, {
                 method: "GET",
                 headers: {
                     'Accept' : 'application/json, text/plain',
@@ -131,12 +131,12 @@ const Messages = () => {
                             <div className="f3 pa2 tl fw6 code">{user.username}<p className="f4 code ph3 icon-phone">{user.phonenumber}</p></div>
                         </div>
                     </div>
-                    <div style={{overflowY: 'auto', height: '451px', width: '430px'}} className="dib messages tc">
+                    <div style={{overflowY: 'auto', height: '451px', width: '370px'}} className="dib messages tc">
                         <div className="br3 pa2 b--black">
                             <div  className="br3 pa2 w-100">
                                 <Link className="link black" to={"/assets/vendor/User"}>
                                     <div onClick={() => {window.localStorage.setItem("userId", user._id)}} className="pv2 pointer">
-                                        <img src={`https://shopbeta-app.herokuapp.com/users/${user._id}/avatar`} alt="Accessories..." className="br-100" width="65px" height="65px" />
+                                        <img src={`http://localhost:3200/users/${user._id}/avatar`} alt="Accessories..." className="br-100" width="65px" height="65px" />
                                         <div className="pa2 fw5 f5">
                                             {user.username}
                                             <p className="f6 pa1 code orange fw3"><small className="icon-location-pin pr2"></small>{user.location}</p>
@@ -144,7 +144,7 @@ const Messages = () => {
                                     </div>
                                 </Link>
                                 <div className="pb2">
-                                    <div className=" pa3 f6 br4">
+                                    <div className="pa3 f6 br4">
                                         Welcome to ShopBeta! <br/>Send a message to start a conversation. We strongly encourage constructive conversations to improve your social shopping experience.
                                     </div>
                                 </div>

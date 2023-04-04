@@ -28,13 +28,13 @@ const SideBar = () => {
                                 
                                 className="pt5 pointer">
                                     
-                                <small id="Icon" className="pa3 hover-bg-light-blue br3 white orange">{val.Icon}</small>
+                                <small id="Icon" className="pa2 hover-bg-light-blue br3 orange">{val.Icon}</small>
                                 <small id="Title">{val.Title}</small>
                             </p>
                         );
                     })}
             </div>
-            <small onClick={handleShow} title="post product" className="f1 fw5 venus br-pill grow pa3 pointer icon-plus">
+            <small onClick={handleShow} title="post product" className="f1 fw5 bg-white br-pill grow pa2 pointer icon-plus">
             </small>
         </div>
     );
