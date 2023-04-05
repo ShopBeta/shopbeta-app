@@ -23,12 +23,12 @@ const Navbar = () => {
         <nav className="bg-white fw5 tc pv2 shadow-2" style={{position: 'fixed', width: '100%', borderBottom: '1px thin black'}}>
             <Typography>
                 <div className="">
-                    <span style={{color: '#ee9617', fontSize: '27px', fontWeight: '520', letterSpacing: '-3px'}} className="pa1 pr5 code">ShopBeta</span>
+                    <span style={{color: '#ee9617', fontSize: '27px', fontWeight: '520', letterSpacing: '-3px'}} className="pr5 code">ShopBeta</span>
                     <span style={{fontSize: '29px'}} className="ph2">
                         {/* <Link className="link" to={"/assets/vendor/SearchPage"}>
                             <input style={{fontSize: '19px',  fontWeight: '300', color: 'black'}} className="pa2 ph4 code br-pill ba" type="search" placeholder="Search products...."/>          
                         </Link> */}
-                        <Link to={""} title="feed" className="ph4 fw5 link black" ></Link>
+                        <Link title="feed" className="ph4 fw5 link black" ></Link>
                         <Link to={"../assets/vendor/SearchPage"} title="feed" className="navbar pv2 f3 hover-bg-light-gray br3 icon-magnifier ph4 fw5 link black" ></Link>
                         <Link style={{justifyContent: 'flex-end'}} to={"/assets/vendor/Profile"} className="navbar pt2 pointer fw5 br3 pa2 ph4 f4">
                             <svg width="22px" height="22px" viewBox="0 0 16 16" className="black bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
