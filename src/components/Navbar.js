@@ -20,10 +20,10 @@ const Navbar = () => {
     const classes = useStyles();
 
     return(
-        <nav className="bg-white tc pv2 shadow-2" style={{position: 'fixed', width: '100%', borderBottom: '1px thin black'}}>
+        <nav className="bg-white fw5 tc pv2 shadow-2" style={{position: 'fixed', width: '100%', borderBottom: '1px thin black'}}>
             <Typography>
                 <div className="">
-                    <span style={{color: '#ee9617', fontSize: '27px', fontWeight: '515', letterSpacing: '-3px'}} className="pa1 pr4 code">ShopBeta</span>
+                    <span style={{color: '#ee9617', fontSize: '27px', fontWeight: '520', letterSpacing: '-3px'}} className="pa1 pr5 code">ShopBeta</span>
                     <span style={{fontSize: '29px'}} className="ph2">
                         {/* <Link className="link" to={"/assets/vendor/SearchPage"}>
                             <input style={{fontSize: '19px',  fontWeight: '300', color: 'black'}} className="pa2 ph4 code br-pill ba" type="search" placeholder="Search products...."/>          

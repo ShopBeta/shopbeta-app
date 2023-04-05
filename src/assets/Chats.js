@@ -76,7 +76,7 @@ const Chats = () => {
                             <input style={{backgroundColor: 'white'}} className="pa2 icon-magnifier ph4 code f4 br-pill ba" type="search" placeholder="Search chats...." searchChange={onSearchChange} onChange={onSearchChange}/>
                         </span>
                     </div>
-                    <div style={{overflowY: 'auto', height: '770px', width: '370px'}} className="dib tc">
+                    <div style={{overflowY: 'auto', height: '770px', width: '360px'}} className="dib tc">
                         <div className="dib tc br3 pa2 w-100 b--black">
                             <div className="pv2 br3 b-black tj flex flex-wrap">
                                 <div className="pa2">

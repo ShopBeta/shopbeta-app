@@ -108,7 +108,7 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
     } 
     
     return(
-        <div style={{width: '370px'}} className="dib">
+        <div style={{width: '360px'}} className="dib">
             <CommentModal handleShow={show} handleShut={handleShut} />
             {/* <ShareModal handleOpen={open} handleClose={handleClose} /> */}
             <div className="bg-white b--black br3 ma3 pa2 bw2 shadow-5">
@@ -259,7 +259,7 @@ const VideoPost = ({ id, owner, media, text, hearts, time}) => {
     } 
     
     return(
-            <div style={{Height: '580px', width: '370px'}} className="dib">
+            <div style={{Height: '580px', width: '360px'}} className="dib">
                 <CommentModal handleShow={show} handleShut={handleShut} />
                     <div className="bg-white b--black br3 ma3 pa2 bw2 shadow-5">
                         <div className="side2">
