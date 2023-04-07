@@ -8,7 +8,7 @@ const Comment = ({ text, file, owner, time }) => {
 
     const [user, setUser] = useState({})
     useEffect(() => {
-        fetch(`http://localhost:3200/users/${owner}`, {
+        fetch(`https://shopbeta-api.onrender.com/users/${owner}`, {
             method: "GET",
             headers: {
                 'Accept' : 'application/json, text/plain',
@@ -28,7 +28,7 @@ const Comment = ({ text, file, owner, time }) => {
                                 <div>
                                     <div className="tj flex flex-wrap">
                                         <Link onClick={() => {window.localStorage.setItem("userId", user)}} className="link black" to={"/assets/vendor/User"}>
-                                            <img src={`http://localhost:3200/users/${user._id}/avatar`} alt="avatar" className="br-100 pv3 ph2" width="50px" height="50px" />
+                                            <img src={`https://shopbeta-api.onrender.com/users/${user._id}/avatar`} alt="avatar" className="br-100 pv3 ph2" width="50px" height="50px" />
                                         </Link>
                                         <div className="pv2">
                                             <small class="opacity-6 code">

@@ -10,7 +10,7 @@ const Chatrooms = ({ roomId, userId, createdAt }) => {
 
     const [user, setUser] = useState({})
     useEffect(() => {
-        fetch(`http://localhost:3200/users/${userId}`, {
+        fetch(`https://shopbeta-api.onrender.com/users/${userId}`, {
             method: "GET",
             headers: {
                 'Accept' : 'application/json, text/plain',
@@ -31,7 +31,7 @@ const Chatrooms = ({ roomId, userId, createdAt }) => {
 
     const markread = async () => {
 
-        await fetch(`https://shopbeta-app.herokuapp.com/chat/${roomId}/mark-read/${me}`, {
+        await fetch(`https://shopbeta-api.onrender.com/chat/${roomId}/mark-read/${me}`, {
            method: "PUT",
            headers: {
                'Content-type': "application/json",
@@ -50,7 +50,7 @@ const Chatrooms = ({ roomId, userId, createdAt }) => {
                     <div className="dib tc w-100 b--black">
                         <div id="messages" onClick={window.localStorage.setItem("chatroom", roomId)} className="pv2 br3 b-black pointer tj flex flex-wrap">
                             <div className="pa2">
-                                <img src={`http://localhost:3200/users/${userId}/avatar`} alt="avatar" className="br-100" width="50px" height="50px" />
+                                <img src={`https://shopbeta-api.onrender.com/users/${userId}/avatar`} alt="avatar" className="br-100" width="50px" height="50px" />
                             </div>
                             <Link className="link black" to={"/assets/Messages"}>
                                 <div onClick={markread} className="grow">
@@ -74,7 +74,7 @@ const Messages = ({ id, roomid, time, message, user}) => {
 
     const [users, setUsers] = useState({})
     useEffect(() => {
-        fetch(`http://localhost:3200/users/${user}`, {
+        fetch(`https://shopbeta-api.onrender.com/users/${user}`, {
             method: "GET",
             headers: {
                 'Accept' : 'application/json, text/plain',
@@ -93,7 +93,7 @@ const Messages = ({ id, roomid, time, message, user}) => {
                 <div>
                     <div id="messages" className="pv2 pointer tj flex flex-wrap">
                         <Link onClick={() => {window.localStorage.setItem("userId", user)}} className="link black" to={"/assets/vendor/User"}>
-                            <img src={`http://localhost:3200/users/${user}/avatar`} alt="avatar" className="br-100 ph2 pa3" width="55px" height="55px" />
+                            <img src={`https://shopbeta-api.onrender.com/users/${user}/avatar`} alt="avatar" className="br-100 ph2 pa3" width="55px" height="55px" />
                         </Link>
                         <div className="pv2">
                             <small class="opacity-6 code">

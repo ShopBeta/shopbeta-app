@@ -21,7 +21,7 @@ const Purchase = ({ handleShut, id }) => {
     const path = pathname[3]
 
     useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/products/${path}`)
+        fetch(`https://shopbeta-api.onrender.com/products/${path}`)
         .then(res => res.json())
         .then(data => setProduct(data))
         .catch((err) => {
@@ -31,7 +31,7 @@ const Purchase = ({ handleShut, id }) => {
 
     const [user, setUser] = useState({})
     useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/users/${product.owner}`, {
+        fetch(`https://shopbeta-api.onrender.com/users/${product.owner}`, {
             method: "GET",
             headers: {
                 'Accept' : 'application/json, text/plain',

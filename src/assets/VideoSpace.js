@@ -12,7 +12,7 @@ const VideoSpace = () => {
 
     const [video, setVideo] = useState([])
     useEffect(() => {
-        fetch("http://localhost:3200/video", {
+        fetch("https://shopbeta-api.onrender.com/video", {
             method: "GET",
         })
         .then((res) => res.json())

@@ -13,7 +13,7 @@ const User = () => {
 
     const [user, setUser] = useState({})
     useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/users/${userId}`, {
+        fetch(`https://shopbeta-api.onrender.com/users/${userId}`, {
             method: 'GET',
         })
         .then((res) => res.json())
@@ -26,7 +26,7 @@ const User = () => {
 
     const [followers, setFollowers] = useState({})
     useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/users/${userId}/followers`, {
+        fetch(`https://shopbeta-api.onrender.com/users/${userId}/followers`, {
             method: "GET",
             headers: {
                 'Authorization' : 'Bearer ' + token,
@@ -43,7 +43,7 @@ const User = () => {
 
     const [following, setFollowing] = useState({})
     useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/users/${userId}/following`, {
+        fetch(`https://shopbeta-api.onrender.com/users/${userId}/following`, {
             method: "GET",
             headers: {
                 'Authorization' : 'Bearer ' + token,
@@ -68,7 +68,7 @@ const User = () => {
         ]
         const type = 'consumer-to-consumer'
 
-         await fetch('https://shopbeta-app.herokuapp.com/chat/initiate', {
+         await fetch('https://shopbeta-api.onrender.com/chat/initiate', {
             method: "POST",
             headers: {
                 'Content-type': "application/json",
@@ -92,7 +92,7 @@ const User = () => {
     const followClick = async event => {
         event.currentTarget.innerHTML = 'following';
 
-        await fetch(`https://shopbeta-app.herokuapp.com/user/${user._id}/follow/${me}`, {
+        await fetch(`https://shopbeta-api.onrender.com/user/${user._id}/follow/${me}`, {
             method: 'POST',
             headers: {
                 'Accept' : 'application/json, text/plain',
@@ -110,7 +110,7 @@ const User = () => {
         event.currentTarget.style.color = 'orange';
         event.currentTarget.style.fontWeight = 'bold';
 
-        await fetch(`https://shopbeta-app.herokuapp.com/user/${user._id}/unfollow/${me}`, {
+        await fetch(`https://shopbeta-api.onrender.com/user/${user._id}/unfollow/${me}`, {
             method: 'POST',
             headers: {
                 'Accept' : 'application/json, text/plain',
@@ -132,7 +132,7 @@ const User = () => {
             hearts: user.hearts + 1
         }
 
-        await fetch(`https://shopbeta-app.herokuapp.com/users/${user._id}/hearts`, {
+        await fetch(`https://shopbeta-api.onrender.com/users/${user._id}/hearts`, {
             method: 'POST',
             headers: {
                 'Authorization' : 'Bearer ' + token,
@@ -155,7 +155,7 @@ const User = () => {
                 <div className="dib w-100 pa2">
                     <div className="tc b--black br3 pa3">
                             <div className="br4">
-                                <img src={`https://shopbeta-app.herokuapp.com/users/${user._id}/avatar`} alt="avatar" className="br-100 b--white" width="250px" height="250px"></img>
+                                <img src={`https://shopbeta-api.onrender.com/users/${user._id}/avatar`} alt="avatar" className="br-100 b--white" width="250px" height="250px"></img>
                                 <div className="tr">
                                 <h5 className="f3 fw5 tc">
                                     {user.username}

@@ -8,7 +8,7 @@ const MainCat = () => {
 
     const [product, setProduct] = useState([])
     useEffect(() => {
-        fetch("https://shopbeta-app.herokuapp.com/products", {
+        fetch("https://shopbeta-api.onrender.com/products", {
             method: "GET",
         })
         .then((res) => res.json())

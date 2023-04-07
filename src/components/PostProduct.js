@@ -35,7 +35,7 @@ const PostProduct = ({ handleShut, name, images, description, currency, price, o
  
     return(
             <div className={classes.root}>
-                <form action={`https://shopbeta-app.herokuapp.com/products/${me}`} method="post" encType="multipart/form-data">  
+                <form action={`https://shopbeta-api.onrender.com/products/${me}`} method="post" encType="multipart/form-data">  
                     <Dialog open={open} handClick={handClick} />
                     <div className="tr w-100 pb2">
                         <small onClick={handleShut} className="icon-close pointer f3 hover-red"></small>

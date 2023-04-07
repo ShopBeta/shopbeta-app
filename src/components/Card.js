@@ -15,7 +15,7 @@ const Card = ({ id, name, username, images, heart, description, currency, price,
 
     const [user, setUser] = useState({})
     useEffect(() => {
-        fetch(`http://localhost:3200/users/${username}`, {
+        fetch(`https://shopbeta-api.onrender.com/users/${username}`, {
             method: "GET",
             headers: {
                 'Accept' : 'application/json, text/plain',
@@ -37,7 +37,7 @@ const Card = ({ id, name, username, images, heart, description, currency, price,
                 heart: heart + 1
             }
 
-            await fetch(`https://shopbeta-app.herokuapp.com/products/${id}/hearts`, {
+            await fetch(`https://shopbeta-api.onrender.com/products/${id}/hearts`, {
                 method: "POST",
                 headers: {
                     'Authorization' : 'Bearer ' + token,
@@ -55,7 +55,7 @@ const Card = ({ id, name, username, images, heart, description, currency, price,
 
     const addCart = async event => {
 
-        await fetch(`https://shopbeta-app.herokuapp.com/cart/${me}/product/${id}`, {
+        await fetch(`https://shopbeta-api.onrender.com/cart/${me}/product/${id}`, {
             method: "POST",
             headers: {
                 'Accept' : 'application/json, text/plain',
@@ -96,7 +96,7 @@ const Card = ({ id, name, username, images, heart, description, currency, price,
             <div onClick={handleShow} className="flex w-100 flex-wrap pointer tl bg-white b--black br3 pa3 bw2 shadow-5">
                 <Typography>
                     <div className="tc">
-                        <img src={`http://localhost:3200/products/${id}/images-1`} alt="item" className="br4 pv1 w-100" width="310px" height="230px"></img>
+                        <img src={`https://shopbeta-api.onrender.com/products/${id}/images-1`} alt="item" className="br4 pv1 w-100" width="310px" height="230px"></img>
                     </div>
                     <div className="tr f3 br-pill">
                             <small onClick={heartClick} className="icon-heart pointer ph2 grow"><small className="code black pl1 f5">{heart}</small></small>

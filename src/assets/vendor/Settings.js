@@ -12,7 +12,7 @@ const Settings = ({username, bio, email, password, phonenumber, location, avatar
 const token = localStorage.getItem("token")
     
 const logoutAllClick = async () => {
-            await fetch("https://shopbeta-app.herokuapp.com/users/logoutAll", {
+            await fetch("https://shopbeta-api.onrender.com/users/logoutAll", {
                 method: "POST",
                 headers: {
                     'Authorization' : 'Bearer ' + token,
@@ -26,7 +26,7 @@ const logoutAllClick = async () => {
 }
 
 const deleteClick = async () => {
-        await fetch("https://shopbeta-app.herokuapp.com/users/deleteme", {
+        await fetch("https://shopbeta-api.onrender.com/users/deleteme", {
             method: "DELETE",
             headers: {
                 'Authorization' : 'Bearer ' + token,
@@ -53,7 +53,7 @@ const changes = async () => {
         contactEmail: document.querySelector('.contactEmail').value
     }
 
-    await fetch("https://shopbeta-app.herokuapp.com/users/updateme", {
+    await fetch("https://shopbeta-api.onrender.com/users/updateme", {
         method: "PATCH",
         headers: {
             'Authorization' : 'Bearer ' + token,
@@ -150,11 +150,11 @@ const handleSubmit = e => {
                                     <div className="pv2">
                                         <span className="tc pa2 pv2">
                                             Logout from all devices that you've logged in from before
-                                            <a href="https://shopbetaonline.herokuapp.com/indexes/login.html" className="black link"><p onClick={logoutAllClick} className="bg-transparent hover-bg-mid-gray pa3 pointer tc ba br-pill ph3 ma1 grow b fw6"> Log-out all devices</p></a>
+                                            <a href="https://shopbetaonline.netlify.app/indexes/login.html" className="black link"><p onClick={logoutAllClick} className="bg-transparent hover-bg-mid-gray pa3 pointer tc ba br-pill ph3 ma1 grow b fw6"> Log-out all devices</p></a>
                                         </span>
                                         <span className="tc pa2 pv2">
                                             Delete this account
-                                            <a href="https://shopbetaonline.herokuapp.com/indexes/register.html"  className="black link"><p onClick={deleteClick} className="bg-transparent hover-bg-red hover-bg-mid-gray pa3 pointer tc br-pill ba ph4 ma1 grow b fw6"> Delete Account</p></a>
+                                            <a href="https://shopbetaonline.netlify.app/indexes/register.html"  className="black link"><p onClick={deleteClick} className="bg-transparent hover-bg-red hover-bg-mid-gray pa3 pointer tc br-pill ba ph4 ma1 grow b fw6"> Delete Account</p></a>
                                         </span>
                                         </div>
                                     </div>

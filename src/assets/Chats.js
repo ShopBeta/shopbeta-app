@@ -13,7 +13,7 @@ const Chats = () => {
 
     const [rooms, setRooms] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:3200/chat/${me}`, {
+        fetch(`https://shopbeta-api.onrender.com/chat/${me}`, {
             method: "GET",
             headers: {
                 'Accept' : 'application/json, text/plain',
@@ -29,7 +29,7 @@ const Chats = () => {
 
     const [users, setUsers] = useState([])
     useEffect(() => {
-        fetch("http://localhost:3200/users", {
+        fetch("https://shopbeta-api.onrender.com/users", {
             method: "GET",
             headers: {
                 'Accept' : 'application/json, text/plain',

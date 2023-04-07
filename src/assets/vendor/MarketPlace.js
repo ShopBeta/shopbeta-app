@@ -11,7 +11,7 @@ const Products = () => {
 
     const [product, setProduct] = useState([])
     useEffect(() => {
-        fetch("http://localhost:3200/products", {
+        fetch("https://shopbeta-api.onrender.com/products", {
             method: "GET",
         })
         .then((res) => res.json())

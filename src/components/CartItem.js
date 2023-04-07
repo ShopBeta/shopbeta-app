@@ -18,7 +18,7 @@ const CartItem = ({ id, productId }) => {
 
     const [product, setProduct] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:3200/products/${productId}`, {
+        fetch(`https://shopbeta-api.onrender.com/products/${productId}`, {
             method: "GET",
         })
         .then((res) => res.json())
@@ -32,7 +32,7 @@ const CartItem = ({ id, productId }) => {
 
     const [user, setUser] = useState({})
     useEffect(() => {
-        fetch(`http://localhost:3200/users/${username}`, {
+        fetch(`https://shopbeta-api.onrender.com/users/${username}`, {
             method: "GET",
             headers: {
                 'Accept' : 'application/json, text/plain',
@@ -47,7 +47,7 @@ const CartItem = ({ id, productId }) => {
     }, [username])
 
     const deleteClick = async () => {
-        await fetch(`https://shopbeta-app.herokuapp.com/cart/${id}`, {
+        await fetch(`https://shopbeta-api.onrender.com/cart/${id}`, {
             method: "DELETE",
             headers: {
                 'Authorization' : 'Bearer ' + token,
@@ -72,7 +72,7 @@ const CartItem = ({ id, productId }) => {
                     <div className="flex flex-wrap bg-white b--black br3 pa4 ma1 bw2 shadow-5">
                     <Typography>
                         <div>
-                            <img src={`http://localhost:3200/products/${productId}/images`} alt="product" className="br4 pv2" width="310px" height="230px"></img>
+                            <img src={`https://shopbeta-api.onrender.com/products/${productId}/images`} alt="product" className="br4 pv2" width="310px" height="230px"></img>
                         </div>
                             <div className="tl">
                                 <p><b>{product.name}</b></p>

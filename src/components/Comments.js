@@ -28,7 +28,7 @@ const Comments = ({ handleShut, text, file, owner }) => {
     const [comment, setComment] = useState([])
     useEffect(() => {
         setInterval(function() {
-            fetch(`http://localhost:3200/feed/${path}/comments`, {
+            fetch(`https://shopbeta-api.onrender.com/feed/${path}/comments`, {
                 method: "GET",
                 headers: {
                     'Accept' : 'application/json, text/plain',
@@ -51,7 +51,7 @@ const Comments = ({ handleShut, text, file, owner }) => {
             owner: me
         }
 
-        await fetch(`https://shopbeta-app.herokuapp.com/feed/${path}/comments`, {
+        await fetch(`https://shopbeta-api.onrender.com/feed/${path}/comments`, {
             method: "POST",
             headers: {
                 'Authorization' : 'Bearer ' + token,

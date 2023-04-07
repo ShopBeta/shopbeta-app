@@ -70,7 +70,7 @@ const Messages = () => {
         messageFormInput.value = ''
         messageFormInput.focus()
 
-        await fetch(`https://shopbeta-app.herokuapp.com/chat/${roomId}/message/${me}`, {
+        await fetch(`https://shopbeta-api.onrender.com/chat/${roomId}/message/${me}`, {
            method: "POST",
            headers: {
                'Content-type': "application/json",
@@ -87,7 +87,7 @@ const Messages = () => {
 
     const deleteChatRoom = async () => {
 
-        await fetch(`https://shopbeta-app.herokuapp.com/room/${roomId}/`, {
+        await fetch(`https://shopbeta-api.onrender.com/room/${roomId}/`, {
            method: "DELETE",
            headers: {
                'Content-type': "application/json",

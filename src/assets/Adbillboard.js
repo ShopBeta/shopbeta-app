@@ -12,7 +12,7 @@ const AdbillBoard = () => {
 
     const [feed, setFeed] = useState([])
     useEffect(() => {
-        fetch("http://localhost:3200/feed", {
+        fetch("https://shopbeta-api.onrender.com/feed", {
             method: "GET",
         })
         .then((res) => res.json())
@@ -31,7 +31,7 @@ const AdbillBoard = () => {
                         <div className="pa1 pv5 tc">
                             <h3 className="tl pt5 pa4 code f3 ph4">AdbillBoard</h3>
                                 <div className="dib tc">
-                                    <div className="dtc bg-blue">
+                                    <div className="dtc">
                                             <SideBar />
                                         </div>
                                     <TextPostList feed={feed} />

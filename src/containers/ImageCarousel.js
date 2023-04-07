@@ -9,16 +9,16 @@ function Carousell(props) {
 
     const items = [
         {
-            image: <img src={`https://shopbeta-app.herokuapp.com/products/${path}/images-1`} width="460px" height="300px" className="br3" alt="First slide" />,
+            image: <img src={`https://shopbeta-api.onrender.com/products/${path}/images-1`} width="460px" height="300px" className="br3" alt="First slide" />,
         },
         {
-            image: <img src={`https://shopbeta-app.herokuapp.com/products/${path}/images-2`} width="460px" height="300px" className="br3" alt="Second slide" />,
+            image: <img src={`https://shopbeta-api.onrender.com/products/${path}/images-2`} width="460px" height="300px" className="br3" alt="Second slide" />,
         },
         {
-            image: <img src={`https://shopbeta-app.herokuapp.com/products/${path}/images-3`} width="460px" height="300px" className="br3" alt="Third slide" />,
+            image: <img src={`https://shopbeta-api.onrender.com/products/${path}/images-3`} width="460px" height="300px" className="br3" alt="Third slide" />,
         },
         {
-            image: <img src={`https://shopbeta-app.herokuapp.com/products/${path}/images-4`} width="460px" height="300px" className="br3" alt="Third slide" />,
+            image: <img src={`https://shopbeta-api.onrender.com/products/${path}/images-4`} width="460px" height="300px" className="br3" alt="Third slide" />,
         },
     ]
 

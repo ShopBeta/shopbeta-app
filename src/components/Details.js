@@ -26,7 +26,7 @@ const Details = ({ handleClose }) => {
     
     const [product, setProduct] = useState({})
     useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/products/${path}`, {
+        fetch(`https://shopbeta-api.onrender.com/products/${path}`, {
             method: "GET",
             headers: {
                 'Authorization' : 'Bearer ' + token,

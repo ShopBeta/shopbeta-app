@@ -11,6 +11,8 @@ import Settings from "./assets/vendor/Settings";
 import Welcome from "./assets/Welcome";
 import Messages from "./assets/Messages";
 import Chats from "./assets/Chats";
+import TextPost from "./assets/vendor/ViewPost1"
+import VideoPost from "./assets/vendor/ViewPost2"
 import VideoSpace from "./assets/VideoSpace";
 
 const App = () => {
@@ -29,6 +31,8 @@ const App = () => {
                 <Route exact path="/assets/vendor/User" element={<User />} />
                 <Route exact path="/assets/Welcome" element={<Welcome/>} />
                 <Route exact path="/assets/vendor/Cart" element={<Cart />} />
+                <Route exact path="/assets/vendor/ViewPost1" element={<TextPost />} />
+                <Route exact path="/assets/vendor/ViewPost2" element={<VideoPost />} />
                 <Route exact path="/assets/vendor/Settings" element={<Settings />} />
              </Routes>
             </Router>

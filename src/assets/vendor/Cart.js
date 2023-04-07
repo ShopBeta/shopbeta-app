@@ -9,7 +9,7 @@ const Cart = () => {
 
     const [cart, setCart] = useState([])
     useEffect(() => {
-        fetch("http://localhost:3200/cart", {
+        fetch("https://shopbeta-api.onrender.com/cart", {
             method: "GET",
         })
         .then((res) => res.json())

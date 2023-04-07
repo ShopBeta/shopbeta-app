@@ -12,7 +12,7 @@ const Home = () => {
 
     const [users, setUsers] = useState([])
     useEffect(() => {
-        fetch("http://localhost:3200/users", {
+        fetch("https://shopbeta-api.onrender.com/users", {
             method: "GET",
             headers: {
                 'Accept' : 'application/json, text/plain',
@@ -36,15 +36,15 @@ const Home = () => {
                     <div className="pv6 tc dtc">
                         <div className="tc">
                             <MainCat />
-                        </div>
-                        <p className="pv4 tc code fw6 f4">
-                            Suggestions
-                        </p>
-                        <div className="tj flex flex-wrap">
+                            <p className="pv4 tc code fw6 f4">
+                                Suggestions
+                            </p>
+                            <div className="tj flex flex-wrap">
                                 <div className="tc">
-                                    <FollowCardList users={users} />
-                                </div>
-                            <div>
+                                        <FollowCardList users={users} />
+                                    </div>
+                                <div>
+                            </div>
                         </div>
                     </div>
                 </div>

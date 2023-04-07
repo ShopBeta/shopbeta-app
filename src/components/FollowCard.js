@@ -11,7 +11,7 @@ const FollowCard = ({ id, username, avatar, location, hearts, bio, website, phon
     const buttonClick = async event => {
             event.currentTarget.innerHTML = 'following';
             
-            await fetch(`https://shopbeta-app.herokuapp.com/user/${id}/follow/${me}`, {
+            await fetch(`https://shopbeta-api.onrender.com/user/${id}/follow/${me}`, {
                 method: 'POST',
             })
             .then((res) => res.json())
@@ -29,7 +29,7 @@ const FollowCard = ({ id, username, avatar, location, hearts, bio, website, phon
             hearts: hearts + 1
         }
 
-        await fetch(`https://shopbeta-app.herokuapp.com/users/${id}/hearts`, {
+        await fetch(`https://shopbeta-api.onrender.com/users/${id}/hearts`, {
             method: 'POST',
             headers: {
                 'Authorization' : 'Bearer ' + token,
@@ -51,7 +51,7 @@ const FollowCard = ({ id, username, avatar, location, hearts, bio, website, phon
                     <Link className="link black" to={"/assets/vendor/User"}>
                         <div onClick={() => {window.localStorage.setItem("userId", id)}} className="flex flex-wrap">
                             <span>
-                                <img src={`http://localhost:3200/users/${id}/avatar`} alt="avatar" className="pointer br-100" width="100px" height="100px" />
+                                <img src={`https://shopbeta-api.onrender.com/users/${id}/avatar`} alt="avatar" className="pointer br-100" width="100px" height="100px" />
                             </span>
                             <span className="pointer pa2 fw5 f5">
                                 <p>{username}</p>

@@ -19,7 +19,7 @@ const Payment = ({ handleShut }) => {
     const [data, setData] = useState({})
 
     useEffect(() => {
-        fetch("https://shopbeta-app.herokuapp.com/products/:id")
+        fetch("https://shopbeta-api.onrender.com/products/:id")
         .then(res => res.json())
         .then(data => setData(data))
         .catch((err) => {

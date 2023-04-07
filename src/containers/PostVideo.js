@@ -29,7 +29,7 @@ const PostVideo = ({text, file}) => {
                     <small onClick={handleShut} className="icon-close pointer f3 hover-red"></small>
                 </div>
                 <div className="pv2">
-                    <form action={`https://shopbeta-app.herokuapp.com/video/${me}`} method="post" encType="multipart/form-data" className="tl br3 pa3 ma2">
+                    <form action={`https://shopbeta-api.onrender.com/video/${me}`} method="post" encType="multipart/form-data" className="tl br3 pa3 ma2">
                         <p className="pv1 fw6 code tc f4">
                             Post a Video
                         </p>

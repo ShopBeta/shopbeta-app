@@ -22,7 +22,7 @@ const Welcome = () => {
             password: password
         }
 
-        fetch("https://shopbeta-app.herokuapp.com/users/login", {
+        fetch("https://shopbeta-api.onrender.com/users/login", {
             method: 'POST',
             headers: {
                 'Content-type': "application/json",
@@ -42,7 +42,7 @@ const Welcome = () => {
 
     const [user, setUser] = useState([])
     useEffect(() => {
-        fetch(`https://shopbeta-app.herokuapp.com/users/${me}`, {
+        fetch(`https://shopbeta-api.onrender.com/users/${me}`, {
             method: "GET",
             headers: {
                 'Accept' : 'application/json, text/plain',
@@ -99,7 +99,7 @@ const Welcome = () => {
                         </span>
                     </div>
                 </div>
-                <form action={`https://shopbeta-app.herokuapp.com/users/${user._id}/avatar`} method="post" encType="multipart/form-data" className="tl br3 pa3 ma2">
+                <form action={`https://shopbeta-api.onrender.com/users/${user._id}/avatar`} method="post" encType="multipart/form-data" className="tl br3 pa3 ma2">
                         <p className="pv1 orange fw6 code tc f4">
                             {/* Upload Profile photo */}
                         </p>
