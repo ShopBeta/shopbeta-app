@@ -44,6 +44,7 @@ const Home = () => {
                                         <FollowCardList users={users} />
                                     </div>
                                 <div>
+                                <p className="tc code orange ph2 fw6 f4">Loading...</p>
                             </div>
                         </div>
                     </div>

@@ -94,6 +94,7 @@ const Chats = () => {
                                 </div>
                             </div>
                             <ChatRoomList rooms={rooms}  users={filteredChats}  />
+                            <p className="tc code orange fw6 f4">Loading...</p>
                         </div>
                     </div>                
                 <div>

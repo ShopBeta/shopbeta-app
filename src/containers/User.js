@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import 'tachyons';
+import img2 from '../images/images-1.jpg'
 import { Link } from "react-router-dom";
 
 const User = () => { 
@@ -152,75 +153,76 @@ const User = () => {
         initiateChat()
     }
     return  (
-                <div className="dib w-100 pa2">
-                    <div className="tc b--black br3 pa3">
-                            <div className="br4">
-                                <img src={`https://shopbeta-api.onrender.com/users/${user._id}/avatar`} alt="avatar" className="br-100 b--white" width="250px" height="250px"></img>
-                                <div className="tr">
-                                <h5 className="f3 fw5 tc">
-                                    {user.username}
-                                </h5>
-                                <p className="tc pa2 f6 fw5">
-                                    {user.location}
-                                    <small className="icon-location-pin ph2"></small>
-                                </p>
-                            </div>
-                        </div>
-                    <div>
-                        <p>
-                            <span className="icon-heart ph3 f4 orange">
-                                <small className="ph2 black code">{user.hearts}</small>
-                            </span>
-                            <span className="f3 ph2">
-                                {followers.length}
-                                <small className="ph2">followers</small>
-                                <small className="ph2">.</small>
-                            </span>
-                            <span className="f3">
-                                {following.length}
-                                <small className="ph2">following</small>
-                            </span>
-                        </p>
-                        <p className="pv3 tc f4">
-                            <p className="ph2">
-                                {user.bio}
-                            </p>
-                        </p>
-                        <p className="pv3 fw5 code f4">
-                            <p>
-                                <small className="icon-phone pr2"></small>
-                                {user.phonenumber}
-                            </p>
-                            <p>
-                                <small className="icon-envelope pr2"></small>
-                                {user.contactEmail}
-                            </p>
-                            <p>
-                                <small className="icon-globe pr2"></small>
-                                <a href={user.website} target={user.website} className="link">
-                                    {user.website}
-                                </a>
-                            </p>
-                        </p>
-                    </div>
-                    <div>
-                        <span className="b">
-                            <Link className="link black" to={"/assets/Messages"}>
-                                <button onClick={handleSubmit} className="bg-transparent f6 ba hover-bg-mid-gray pointer pa2 tc br-pill ph5 ma1 grow b fw6">Message</button>
-                            </Link>
-                        </span>
-                        <span className="b">
-                            <button onClick={followClick} className="bg-transparent f6 pointer ba hover-bg-mid-gray pa2 tc br-pill ph5 ma1 grow b fw6">Follow</button>
-                        </span>
-                        <span className="b">
-                            <small onClick={heartClick} title="Recommend" className="icon-heart fw5 pointer br3 f3 hover-bg-light-blue pa2 ph3 grow"></small>
-                        </span>
-                        <span className="b">
-                            <small onClick={unfollowClick} title="Unfollow" className="icon-user-unfollow pointer fw5 hover-bg-light-blue br3 f3 pa2 ph3 grow"></small>
-                        </span>
-                    </div>
-                </div>
-            </div>
+        <div className="flex flex-wrap w-100 pa2">
+        <div style={{width: '360px'}} className="tc b--black br3 pa3">
+              <div className="br4">
+                  <img src={`https://shopbeta-api.onrender.com/users/${userId}/avatar`} alt="avatar" className="br-100 b--white" width="250px" height="250px"></img>
+                  <div className="tr">
+                        <span onClick={heartClick} title="Like profile" className="icon-heart f3 orange ph2 pointer fw6 hover-mid-gray br3 pa2 grow"></span>
+                        <span onClick={unfollowClick} title="Unfollow profile" className="icon-user-unfollow f3 orange ph3 pointer fw6 hover-mid-gray br3 pa2 grow"></span>
+                      <div>
+                          <h5 className="f3 fw5 tc">
+                              {user.username}
+                          </h5>
+                          <p className="tc pa2 f5 fw4">
+                              {user.location}
+                              <small className="icon-location-pin ph2"></small>
+                          </p>
+                      </div>
+                  </div>
+                  <div className="f3">
+                      <span className="icon-heart ph3 f3 fw6 orange">
+                          <small className="ph2 black code">{user.hearts}</small>
+                      </span>
+                      <span className="f3 ph2">
+                          {followers.length}
+                          <small className="pl2">followers</small>
+                      </span>
+                      |
+                      <span className="f3">
+                          {following.length}
+                          <small className="ph2">following</small>
+                      </span>
+                  </div>
+              </div>
+        </div>
+        <div style={{width: '360px'}}>
+              <div className="pv2">
+                  <div className="pv3 f4">
+                      <p>
+                          <small className="icon-phone pr2"></small>
+                          {user.phonenumber}
+                      </p>
+                      <p>
+                          <small className="icon-envelope pr2"></small>
+                          {user.contactEmail}
+                      </p>
+                      <p>
+                          <small className="icon-globe pr2"></small>
+                          <a href={user.website} target={user.website} className="link">
+                              {user.website}
+                          </a>
+                      </p>
+                  </div>
+              </div>
+              <div className="pv3 tc f4">
+                  <p className="ph2">
+                      {user.bio}
+                  </p>
+              </div>
+              <div className="tc">
+                  <img src={img2} alt="profile" className="br3 b--white"></img>
+              </div>
+              <span> 
+                  <Link to={"/assets/Message"}>
+                      <button onClick={handleSubmit} className="index-button f5 pointer ba hover-bg-mid-gray pa3 tc br-pill ph5 ma1 grow b fw6"><small className="icon-bubbles pr2"></small>Message</button>
+                  </Link>
+              </span>
+              <span> 
+                  <button onClick={followClick} className="index-button f5 pointer ba hover-bg-mid-gray pa3 tc br-pill ph5 ma1 grow b fw6">Follow<small className="icon-user-follow pl2"></small></button>
+              </span>
+          </div>
+      </div>
     )
 }
 

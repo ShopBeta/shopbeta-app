@@ -55,6 +55,7 @@ const SearchPage = () => {
                         <div className="tc pl4">
                             <h3 className="orange code fw7 f4 ph3 pb2">Search results</h3>
                             <CardList product={filteredCards} />
+                            <p className="tc code orange fw6 f4">Loading...</p>
                     </div>
                 </div>
             </div>

@@ -1,16 +1,18 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import 'tachyons';
+import img1 from '../images/avatar6.png'
+import img2 from '../images/images-1.jpg'
 import { Link } from "react-router-dom";
 
 const User = () => { 
     
     const token = localStorage.getItem("token")
-    console.log(token)
-  
     const me = localStorage.getItem("meId")
+    console.log(token)
+    console.log(me)
 
-    const [user, setUser] = useState([])
+    const [user, setUser] = useState({})
     useEffect(() => {
         fetch(`https://shopbeta-api.onrender.com/users/${me}`, {
             method: "GET",
@@ -26,7 +28,6 @@ const User = () => {
         })
     }, [me])
 
-    console.log(me)
 
     const [followers, setFollowers] = useState({})
     useEffect(() => {
@@ -62,7 +63,7 @@ const User = () => {
         })
     }, [user._id, token])
 
-    const logout = async () => {
+    const logOut = async () => {
         await fetch("https://shopbeta-api.onrender.com/users/logout", {
             method: 'POST',
             headers: {
@@ -77,73 +78,82 @@ const User = () => {
     }
 
     return (
-        <div className="dib w-100 pa2">
-              <div className="tc b--black br3 pa3">
+        <div className="flex flex-wrap w-100 pa2">
+              <div style={{width: '360px'}} className="tc b--black br3 pa3">
                     <div className="br4">
                         <img src={`https://shopbeta-api.onrender.com/users/${me}/avatar`} alt="avatar" className="br-100 b--white" width="250px" height="250px"></img>
                         <div className="tr">
-                        <Link to={"/assets/Vendor/Settings"} className="link black"><span title="Edit profile" className="icon-settings f4 ph2 pointer fw5 hover-bg-light-blue br3 pa2 grow"></span></Link>
-                        <a href="https://shopbetaonline.netlify.app/indexes/login.html" className="link black"><span title="Logout" onClick={logout} className="icon-logout ph3 fw5 f4 hover-bg-light-blue br3 pa2 pointer grow"></span></a>
-                        <h5 className="f3 fw5 tc">
-                            {user.username}
-                        </h5>
-                        <p className="tc pa2 f6 fw5">
-                            {user.location}
-                            <small className="icon-location-pin ph2"></small>
+                            <Link to={"/assets/indexes/Avatar"} className="link black">
+                                <span title="Change profile photo" className="icon-camera f3 orange ph2 pointer fw6 hover-mid-gray br3 pa2 grow"></span>
+                            </Link>
+                            <Link to={"/assets/vendor/Settings"} className="link black">
+                                <span title="Change profile photo" className="icon-settings f3 orange ph3 pointer fw6 hover-mid-gray br3 pa2 grow"></span>
+                            </Link>
+                            <div>
+                                <h5 className="f3 fw5 tc">
+                                    {user.username}
+                                </h5>
+                                <p className="tc pa2 f5 fw4">
+                                    {user.location}
+                                    <small className="icon-location-pin ph2"></small>
+                                </p>
+                            </div>
+                        </div>
+                        <div className="f3">
+                            <span className="icon-heart ph3 f3 fw6 orange">
+                                <small className="ph2 black code">{user.hearts}</small>
+                            </span>
+                            <span className="f3 ph2">
+                                {followers.length}
+                                <small className="pl2">followers</small>
+                            </span>
+                            |
+                            <span className="f3">
+                                {following.length}
+                                <small className="ph2">following</small>
+                            </span>
+                        </div>
+                    </div>
+              </div>
+              <div style={{width: '360px'}}>
+                    <div className="pv2">
+                        <div className="pv3 f4">
+                            <p>
+                                <small className="icon-phone pr2"></small>
+                                {user.phonenumber}
+                            </p>
+                            <p>
+                                <small className="icon-envelope pr2"></small>
+                                {user.contactEmail}
+                            </p>
+                            <p>
+                                <small className="icon-globe pr2"></small>
+                                <a href={user.website} target={user.website} className="link">
+                                    {user.website}
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div className="pv3 tc f4">
+                        <p className="ph2">
+                            {user.bio}
                         </p>
                     </div>
-                </div>
-            <div className="">
-                <p className="f3">
-                    <span className="icon-heart ph3 f4 orange">
-                        <small className="ph2 black code">{user.hearts}</small>
-                    </span>
-                    <span className="f3 ph2">
-                        {followers.length}
-                        <small className="ph2">followers</small>
-                        <small className="icon-user orange"></small>
-                    </span>
-                    <span className="f3">
-                        {following.length}
-                        <small className="ph2">following</small>
-                        <small className="icon-user orange"></small>
-                    </span>
-                </p>
-                <p className="pv3 tc f4">
-                    <p className="ph2">
-                        {user.bio}
-                    </p>
-                </p>
-                <p className="pv3 fw5 code f4">
-                    <p>
-                        <small className="icon-phone pr2"></small>
-                        {user.phonenumber}
-                    </p>
-                    <p>
-                        <small className="icon-envelope pr2"></small>
-                        {user.contactEmail}
-                    </p>
-                    <p>
-                        <small className="icon-globe pr2"></small>
-                        <a href={user.website} target={user.website} className="link">
-                            {user.website}
-                        </a>
-                    </p>
-                </p>
-            </div>
-            </div>
-            <form action={`https://shopbeta-api.onrender.com/users/${user._id}/avatar`} method="post" encType="multipart/form-data" className="tl br3 pa3 ma2">
-                <p className="fw5">
-                    <small className="f5 code tc fw6 ph2">Change Profile photo</small>
-                        <div className="pv2 pa2 br3 tc bg- ba">
-                            <input type="file" name="avatar" className="avatar pa2 w-100"/>
-                        </div>
-                </p>
                     <div className="tc">
-                        <button type="submit" className="bg-transparent f6 pointer ba hover-bg-mid-gray pa2 tc br-pill ph5 ma1 grow b fw6">Upload</button>
+                        <img src={img2} alt="profile" className="br3 b--white"></img>
                     </div>
-            </form>
-        </div>
+                    <span> 
+                        <Link to={"/assets/vendor/Settings"}>
+                            <button className="index-button f5 pointer ba hover-bg-mid-gray pa3 tc br-pill ph5 ma1 grow b fw6"><small className="icon-settings pr2"></small>Settings</button>
+                        </Link>
+                    </span>
+                    <span> 
+                        <Link to={"/assets/indexes/Login"}>
+                            <button onClick={logOut} className="index-button f5 pointer ba hover-bg-mid-gray pa3 tc br-pill ph5 ma1 grow b fw6">Logout<small className="icon-logout pl2"></small></button>
+                        </Link>
+                    </span>
+                </div>
+            </div>
     )
 }
 

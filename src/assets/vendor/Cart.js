@@ -32,6 +32,7 @@ const Cart = () => {
                 <div className="pa2 tc">
                     <CartList cart={cart} />
                 </div>
+                <p className="tc code orange fw6 f4">Loading...</p>
             </div>
         </div>
     </div>

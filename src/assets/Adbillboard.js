@@ -2,6 +2,7 @@ import { render } from "@testing-library/react";
 import React from "react";
 import { useState, useEffect } from "react";
 import './Home.css';
+import { Link } from "react-router-dom";
 import Navbar from '../components/Navbar';
 import { TextPostList } from '../containers/PostCardList';
 import Preloader from "../components/Preloader";
@@ -29,12 +30,16 @@ const AdbillBoard = () => {
                         <Navbar />
                     <div className="">
                         <div className="pa1 pv5 tc">
-                            <h3 className="tl pt5 pa4 code f3 ph4">AdbillBoard</h3>
+                            <h3 className="tl pt5 pa4 code f3 ph3">
+                                AdbillBoard
+                                <Link to={"../assets/VideoSpace"} title="video space" className="br3 black ph6 hover-bg-light-gray f3 fw5 icon-social-youtube"></Link>
+                            </h3>
                                 <div className="dib tc">
                                     <div className="dtc">
                                             <SideBar />
                                         </div>
                                     <TextPostList feed={feed} />
+                                    <p className="tc code orange fw6 f4">Loading...</p>
                                 </div>
                         </div>
                     </div>

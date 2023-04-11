@@ -34,6 +34,7 @@ const Products = () => {
                         <div className="tc pl4">
                             <CardList product={product} />
                         </div>
+                        <p className="tc code orange fw6 f4">Loading...</p>
                 </div>
             </div>
         </div>

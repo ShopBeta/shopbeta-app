@@ -36,6 +36,7 @@ const VideoSpace = () => {
                                         <SideBar />
                                     </div>
                                     <VideoPostList video={video} />
+                                    <p className="tc code orange fw6 f4">Loading...</p>
                                 </div>
                         </div>
             </div>

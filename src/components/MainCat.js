@@ -27,7 +27,7 @@ const MainCat = () => {
                                 <div>
                                 <Link to={"../assets/vendor/MarketPlace"} className="link black">
                                     <div className="dib">
-                                        <div className="tl br3 bw2 grow bg-transparent b--black ma2 pa2">
+                                        <div className="tl br3 bw2 shadow-4 bg-white b--black ma2 pa2">
                                                 <div className="flex flex-wrap">
                                                     <p className="tc">
                                                         {val.Image}
