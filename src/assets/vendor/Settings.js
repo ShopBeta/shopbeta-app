@@ -87,7 +87,7 @@ const handleSubmit = e => {
                 <Navbar />
                     <div className="dib">
                       <div className="flex flex-wrap pv6">
-                        <div style={{width: '360px'}} className="pv2 dib ma2">
+                        <div style={{width: '360px'}} className="pv2 dib ma1">
                             <h3 className="tr"><small className="icon-settings f4 ph2"></small>Change Settings</h3>
                                 <form onSubmit={handleSubmit}>
                                     <div className="tl pv2">
@@ -139,7 +139,7 @@ const handleSubmit = e => {
                                     </div>
                                 </form>
                         </div>
-                        <div style={{width: '360px'}} className="ma2 pv2 dib">
+                        <div style={{width: '360px'}} className="ma1 pv2 dib">
                             <p className="tr">
                                 <button onClick={handClick} type="submit" className="index-button pointer hover-bg-mid-gray pa2 tc br-pill ba ph4 ma1 grow pv3 b fw6">Save settings</button>
                             </p>
