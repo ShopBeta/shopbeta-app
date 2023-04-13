@@ -14,7 +14,7 @@ const User = () => {
 
     const [user, setUser] = useState({})
     useEffect(() => {
-        fetch(`http://localhost:3000/users/${userId}`, {
+        fetch(`https://shopbeta-api.onrender.com/users/${userId}`, {
             method: 'GET',
         })
         .then((res) => res.json())
