@@ -4,9 +4,10 @@ import 'tachyons';
 import moment from "moment";
 import '../../components/simple-line-icons/css/simple-line-icons.css';
 import { Link } from "react-router-dom";
+import CommentList from "../../containers/CommentList";
 
 
-const TextPost = () => {
+const FeedPost = ({ text, file }) => {
 
     const token = localStorage.getItem("token")
     const me = localStorage.getItem("meId")
@@ -15,7 +16,7 @@ const TextPost = () => {
 
     const [feed, setFeed] = useState({})
     useEffect(() => {
-        fetch(`http://localhost:3000/feed/${feedId}`, {
+        fetch(`https://shopbeta-api.onrender.com/feed/${feedId}`, {
             method: "GET",
             headers: {
                 'Accept' : 'application/json, text/plain',
@@ -33,7 +34,7 @@ const TextPost = () => {
 
     const [user, setUser] = useState({})
     useEffect(() => {
-        fetch(`http://localhost:3000/users/${feed.owner}`, {
+        fetch(`https://shopbeta-api.onrender.com/users/${feed.owner}`, {
             method: "GET",
             headers: {
                 'Accept' : 'application/json, text/plain',
@@ -47,28 +48,56 @@ const TextPost = () => {
         })
     }, [feed.owner])
 
-    const [comment, setComment] = useState({})
+    const [comment, setComment] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:3000/feed/${feedId}/comments`, {
-            method: "GET",
+        setInterval(function() {
+            fetch(`https://shopbeta-api.onrender.com/feed/${feedId}/comments`, {
+                method: "GET",
+                headers: {
+                    'Accept' : 'application/json, text/plain',
+                    'Content-Type' : 'application/json' 
+                },
+            })
+            .then((res) => res.json())
+            .then((data) => setComment(data))
+            .catch((err) => {
+                console.log(err.message)
+            })
+        }, 2000); // every 5 minutes (100000)
+    }, [feedId])
+
+    const addComment = async () => {
+
+        const comment = {
+            text: document.querySelector('#text').value,
+            file: document.querySelector('.file').value,
+            owner: me
+        }
+
+        const commentFormInput = document.querySelector('input')
+        commentFormInput.value = ''
+        commentFormInput.focus()
+
+        await fetch(`https://shopbeta-api.onrender.com/feed/${feedId}/comments`, {
+            method: "POST",
             headers: {
+                'Authorization' : 'Bearer ' + token,
                 'Accept' : 'application/json, text/plain',
                 'Content-Type' : 'application/json'
             },
+            body: JSON.stringify(comment)
         })
-        .then((res) => res.json())
-        .then((data) => setComment(data))
         .catch((err) => {
             console.log(err.message)
         })
-    }, [feedId])
+    }
 
     const buttonClick = async event => {
 
         event.currentTarget.style.fontWeight = 'bold';
         event.currentTarget.innerHTML = 'following';
 
-           await fetch(`https://shopbeta-app.herokuapp.com/user/${user._id}/follow/${me}`, {
+           await fetch(`https://shopbeta-api.onrender.com/user/${user._id}/follow/${me}`, {
                 method: "POST",
                 headers: {
                     'Content-Type' : 'application/json'
@@ -90,7 +119,7 @@ const TextPost = () => {
                 hearts: feed.hearts + 1
             }
 
-            await fetch(`https://shopbeta-app.herokuapp.com/feed/${feedId}/hearts`, {
+            await fetch(`https://shopbeta-api.onrender.com/feed/${feedId}/hearts`, {
                 method: "POST",
                 headers: {
                     'Authorization' : 'Bearer ' + token,
@@ -106,17 +135,21 @@ const TextPost = () => {
             })
     }
 
+    const handleSubmit = e => {
+        e.preventDefault()
+        addComment()
+    }
     
     return(
-        <div style={{width: '360px'}} className="dib">
-            <div className="ma3 pa2 bw2">
+        <div className="tc pv3">
+            <div style={{width: '360px'}} className="ma3 dib pa2 bw2">
                 <div className="tj flex f4 flex-wrap">
-                    <span onClick={() => {window.history.pushState(null, "", feedId)}}>
+                    <span>
                         <Link onClick={() => {window.localStorage.setItem("userId", feed.owner)}} className="link black" to={"/assets/vendor/User"}>
-                            <img src={`http://localhost:3000/users/${feed.owner}/avatar`} alt="avatar" className="br-100" width="55px" height="55px" />
+                            <img src={`https://shopbeta-api.onrender.com/users/${feed.owner}/avatar`} alt="avatar" className="br-100" width="55px" height="55px" />
                         </Link>
                     </span>
-                    <span onClick={() => {window.history.pushState(null, "", feed._id)}} className="pa2 f5 pointer fw5">
+                    <span className="pa2 f5 pointer fw5">
                         <Link onClick={() => {window.localStorage.setItem("userId", feed.owner)}} className="link black" to={"/assets/vendor/User"}>
                             <span>{user.username}</span>
                         </Link>
@@ -138,22 +171,48 @@ const TextPost = () => {
                 </div>
                 </div>
                 <div className="side2">
-                    <img src={`http://localhost:3000/feed/${feedId}/media`} alt="post..." className="br4"  />
+                    <img src={`https://shopbeta-api.onrender.com/feed/${feedId}/media`} alt="post..." className="br4"  />
                     <div className="pa2">
-                        <span onClick={heartClick} className="pa2 fw5 ph2 icon-heart pointer f4 grow">
+                        <span onClick={heartClick} className="pa2 fw5 ph4 icon-heart pointer f4 grow">
                             <small id="increment" className="pa1 code">{feed.hearts}</small>
                         </span>
-                        <span className="pa2 pointer f4 fw5 grow icon-bubble">
+                        <span className="pa2 pointer ph4 f4 fw5 grow icon-bubble">
                             <small className="pa1 code">{comment.length}</small>
-                        </span>
-                        <span>
-                            <input type="text" className="pa3 br-pill b--black-50 ba w-70" placeholder="Comment here..." />
                         </span>
                     </div>
                 </div>
-                </div>
             </div>
+            <div style={{width: '360px'}} className="dib ma3">
+                <div style={{ overflowY: 'auto', height: '650px'}} className="f5 pv3 tj">
+                    <div className="tc pv2">
+                        <p className="f5 b pv2">Comment here to join the conversation</p>
+                    </div>
+                    <div className="tc f5">
+                        <div className="pa4 ph5">
+                            <p className="icon-bubbles mid-gray tc f1"></p>
+                            <p className="pv2 orange f5">"Type to a send a comment"</p>
+                        </div>
+                    </div>  
+                <div>
+                <CommentList comment={comment}/>
+            </div>
+            </div>
+            <div className="tc">
+                <form onSubmit={handleSubmit}>
+                    <span className="pv2">
+                        <input id="text" name="text" value={text} type="text" className="text input pa3 br-pill b--black-50 ba w-75" placeholder="Comment here..." />
+                    </span>
+                    <span className="ph1">
+                        <button type="submit" className="icon-paper-plane bg-transparent b--transparent pointer f3 orange"></button>
+                    </span>
+                    <span className="ph1">
+                        <small type='file' value={file} name="file" className="file icon-camera pointer f3 orange"></small>
+                    </span>
+                </form>
+            </div>
+        </div>
+    </div>
     )
 }
 
-export default TextPost;
+export default FeedPost;

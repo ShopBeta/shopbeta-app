@@ -51,6 +51,10 @@ const Comments = ({ handleShut, text, file, owner }) => {
             owner: me
         }
 
+        const commentFormInput = document.querySelector('input')
+        commentFormInput.value = ''
+        commentFormInput.focus()
+
         await fetch(`https://shopbeta-api.onrender.com/feed/${path}/comments`, {
             method: "POST",
             headers: {
@@ -100,20 +104,20 @@ const Comments = ({ handleShut, text, file, owner }) => {
                                 <div>
                                     <CommentList comment={comment}/>
                                 </div>
-                                    </div>
-                                    <div className="tc">
-                                        <form onSubmit={handleSubmit}>
-                                            <span className="pv2">
-                                                <input id="text" name="text" value={text} type="text" className="text pa3 br-pill b--black-50 ba w-75" placeholder="Comment here..." />
-                                            </span>
-                                            <span onClick={handClickShow} className="ph1">
-                                                <button type="submit" className="icon-paper-plane bg-transparent b--transparent pointer f3 orange"></button>
-                                            </span>
-                                            <span className="ph1">
-                                                <small type='file' value={file} name="file" className="file icon-camera pointer f3 orange"></small>
-                                            </span>
-                                        </form>
-                                    </div>
+                                </div>
+                                <div className="tc">
+                                    <form onSubmit={handleSubmit}>
+                                        <span className="pv2">
+                                            <input id="text" name="text" value={text} type="text" className="text pa3 br-pill b--black-50 ba w-75" placeholder="Comment here..." />
+                                        </span>
+                                        <span onClick={handClickShow} className="ph1">
+                                            <button type="submit" className="icon-paper-plane bg-transparent b--transparent pointer f3 orange"></button>
+                                        </span>
+                                        <span className="ph1">
+                                            <small type='file' value={file} name="file" className="file icon-camera pointer f3 orange"></small>
+                                        </span>
+                                    </form>
+                                </div>
                     </div>
             )
 }

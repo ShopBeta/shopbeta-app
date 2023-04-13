@@ -1,8 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 import React from "react";
-import { useState } from "react";
 import 'tachyons';
-import Dialog from "../containers/Dialog";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -17,26 +15,19 @@ const useStyles = makeStyles(theme => ({
 
 const PostProduct = ({ handleShut, name, images, description, currency, price, oldprice, category }) => {
 
-    const [open, setOpen] = useState(false)
-
-    const handClick = () => {
-        handleShut()
-        setOpen(false)
-    }
-    
-    const handClickShow = () => {
-        setOpen(true)
-    }
-
     const me = localStorage.getItem("meId")
     console.log(me)
+
+    const handClick = (event) => {
+        event.currentTarget.innerHTML = 'Posting...';
+        event.currentTarget.style.fontWeight = 'bold';
+    }
 
     const classes = useStyles()
  
     return(
             <div className={classes.root}>
                 <form action={`https://shopbeta-api.onrender.com/products/${me}`} method="post" encType="multipart/form-data">  
-                    <Dialog open={open} handClick={handClick} />
                     <div className="tr w-100 pb2">
                         <small onClick={handleShut} className="icon-close pointer f3 hover-red"></small>
                     </div>
@@ -84,8 +75,12 @@ const PostProduct = ({ handleShut, name, images, description, currency, price, o
                             </div>
                             <p className="pv2">
                                 <p className="f5 fw5">Add Images</p>
-                                <div className="pv2 br-pill">
-                                    <input type="file" name="images" multiple="multiple" className="images pa3 w-90 ba br3" id="customFile" />
+                                <div className="pv2 bg br3 tc">
+                                    <label>
+                                        <small className="icon-camera hover-mid-gay f3 orange pointer"></small><br/>
+                                        <small className="hover-mid-gay f5 fw5 orange pointer">Select Images</small>
+                                        <input style={{display: 'none'}} type="file" name="images" multiple="multiple" className="images pointer pa3 w-100" id="customFile" />
+                                    </label>
                                 </div>
                             </p>
                             <div>
@@ -106,7 +101,7 @@ const PostProduct = ({ handleShut, name, images, description, currency, price, o
                             </div>
             </div>
                 <div className="pv2 tc grow">
-                    <button type="submit" onClick={handClickShow} variant="contained" className="ph5 pa2 white bg-transparent orange fw5 pointer ba hover-bg-mid-gray br-pill">
+                    <button type="submit" onClick={handClick} variant="contained" className="ph5 pa3 index-button white fw5 pointer ba hover-bg-mid-gray br-pill">
                         Post Product
                     </button>
                 </div>

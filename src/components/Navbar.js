@@ -23,7 +23,7 @@ const Navbar = () => {
             <Typography>
                 <div className="">
                     <span style={{color: '#ee9617', fontSize: '25px', fontWeight: '510',}} className="pa3 pr4">ShopBeta</span>
-                    <span style={{fontSize: '29px'}} className="ph2">
+                    <span style={{fontSize: '29px'}} className="ph3">
                         <Link to={"/"} title="feed" className="ph4 fw5 link black" ></Link>
                         <Link to={"../assets/vendor/SearchPage"} title="feed" className="navbar pv2 f3 hover-bg-light-gray br3 icon-magnifier ph4 fw5 link black" ></Link>
                         <Link style={{justifyContent: 'flex-end'}} to={"/assets/vendor/Profile"} className="navbar pt2 pointer fw5 br3 pa2 ph4 f4">

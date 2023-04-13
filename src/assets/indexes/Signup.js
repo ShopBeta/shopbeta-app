@@ -10,10 +10,10 @@ const Signup = ({username, email, password, phonenumber}) => {
 const newUser = async () => {
 
     const user = {
-        email: email,
-        password: password,
-        username: username,
-        phonenumber: phonenumber
+        username: document.querySelector('.username').value,
+        email: document.querySelector('.email').value,
+        password: document.querySelector('.password').value,
+        phonenumber: document.querySelector('.phonenumber').value,
     }
      await fetch('https://shopbeta-api.onrender.com/users', {
         method: "POST",
@@ -49,13 +49,12 @@ console.log(me)
                       <div style={{width: '360px'}} className="dib pa3 tc">
                         <div className="pv3">
                             <div className='tc code' style={{fontSize: '27px', fontWeight: '500'}}><img src={img} alt="logo" className="tc" width="75px" height="75px" /></div>
-                            {/* <span style={{color: '#ee9617', fontSize: '27px', fontWeight: '510', letterSpacing: '-3px'}} className="pa1 tc">ShopBeta</span> */}
                             <p className="pv2 fw6 tc"><small className="orange f4">Welcome</small><br/> It only takes a <small className="green f4">few seconds</small> to create your account</p>
                                 <form onSubmit={handleSubmit}>
                                     <div className="tl pv2">
                                         <p className="pv1 f5 fw5">Username</p>
                                         <small className="icon-user f4 fw5"></small>
-                                        <input type="text" name="username" value={username} className="username br3 ba pa3 w-100" placeholder="Type in username..." required autoComplete="username" />
+                                        <input type="text" name="username" value={username} className="username br3 ba pa3 w-100" placeholder="Type in username..." required />
                                     </div>
                                     <div className="tl pv2">
                                         <p className="pv1 f5 fw5">Phone Number</p>
@@ -70,7 +69,7 @@ console.log(me)
                                     <div className="tl pv2">
                                         <p className="pv1 f5 fw5">Password</p>
                                         <small className="icon-lock f4 fw5"></small>
-                                        <input type="password" value={password} name="password" className="br3 ba pa3 w-100" placeholder="password..." required autoComplete="current-password" />
+                                        <input type="password" value={password} name="password" className="password br3 ba pa3 w-100" placeholder="password..." required autoComplete="current-password" />
                                     </div>
                                     <div className="tl pv2">
                                         <input name="check" id="exampleCheck" type="checkbox" className="pr2" required /><label for="exampleCheck" className="form-check-label ph2">Accept our <a href="https://shopbetaonline.onrender.com/terms of use.html">Terms and Conditions</a>.</label>

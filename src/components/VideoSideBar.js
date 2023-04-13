@@ -34,7 +34,7 @@ const SideBar = () => {
                         );
                     })}
             </div>
-            <small onClick={handleShow} title="post product" className="f1 fw7 bg-white br-pill grow pa2 tc pointer icon-plus">
+            <small onClick={handleShow} title="post video" className="f1 fw7 bg-white br-pill grow pa2 tc pointer icon-plus">
             </small>
         </div>
     );

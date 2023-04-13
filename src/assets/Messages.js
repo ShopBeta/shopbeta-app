@@ -16,7 +16,7 @@ const Messages = () => {
 
     const [user, setUser] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:3200/chat/${roomId}/users`, {
+        fetch(`https://shopbeta-api.onrender.com/chat/${roomId}/users`, {
             method: "GET",
             headers: {
                 'Accept' : 'application/json, text/plain',
@@ -33,7 +33,7 @@ const Messages = () => {
     const [chats, setChats] = useState([])
     useEffect(() => {    
         setInterval(function() {
-            fetch(`http://localhost:3200/chat/messages/${roomId}`, {
+            fetch(`https://shopbeta-api.onrender.com/chat/messages/${roomId}`, {
                 method: "GET",
                 headers: {
                     'Accept' : 'application/json, text/plain',
@@ -136,7 +136,7 @@ const Messages = () => {
                             <div  className="br3 pa2 w-100">
                                 <Link className="link black" to={"/assets/vendor/User"}>
                                     <div onClick={() => {window.localStorage.setItem("userId", user._id)}} className="pv2 pointer">
-                                        <img src={`http://localhost:3200/users/${user._id}/avatar`} alt="Accessories..." className="br-100" width="65px" height="65px" />
+                                        <img src={`https://shopbeta-api.onrender.com/users/${user._id}/avatar`} alt="Accessories..." className="br-100" width="65px" height="65px" />
                                         <div className="pa2 fw5 f5">
                                             {user.username}
                                             <p className="f6 pa1 code orange fw3"><small className="icon-location-pin pr2"></small>{user.location}</p>

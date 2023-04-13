@@ -78,9 +78,9 @@ const User = () => {
     }
 
     return (
-        <div className="flex flex-wrap w-100 pa2">
-              <div style={{width: '360px'}} className="tc b--black br3 pa3">
-                    <div className="br4">
+        <div className="tc w-100 pa2">
+              <div style={{width: '360px'}} className="pa3 dib">
+                    <div className="">
                         <img src={`https://shopbeta-api.onrender.com/users/${me}/avatar`} alt="avatar" className="br-100 b--white" width="250px" height="250px"></img>
                         <div className="tr">
                             <Link to={"/assets/indexes/Avatar"} className="link black">
@@ -115,9 +115,14 @@ const User = () => {
                         </div>
                     </div>
               </div>
-              <div style={{width: '360px'}}>
+              <div style={{width: '360px'}} className="dib">
+                    <div className="pv3 tc f4">
+                        <p className="ph2">
+                            {user.bio}
+                        </p>
+                    </div>
                     <div className="pv2">
-                        <div className="pv3 f4">
+                        <div className="pv3 f5 fw6">
                             <p>
                                 <small className="icon-phone pr2"></small>
                                 {user.phonenumber}
@@ -134,22 +139,17 @@ const User = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="pv3 tc f4">
-                        <p className="ph2">
-                            {user.bio}
-                        </p>
-                    </div>
                     <div className="tc">
                         <img src={img2} alt="profile" className="br3 b--white"></img>
                     </div>
                     <span> 
                         <Link to={"/assets/vendor/Settings"}>
-                            <button className="index-button f5 pointer ba hover-bg-mid-gray pa3 tc br-pill ph5 ma1 grow b fw6"><small className="icon-settings pr2"></small>Settings</button>
+                            <button className="index-button f5 pointer ba hover-bg-mid-gray pa3 tc br-pill ph4 ma1 grow b fw6"><small className="icon-settings pr2"></small>Settings</button>
                         </Link>
                     </span>
                     <span> 
                         <Link to={"/assets/indexes/Login"}>
-                            <button onClick={logOut} className="index-button f5 pointer ba hover-bg-mid-gray pa3 tc br-pill ph5 ma1 grow b fw6">Logout<small className="icon-logout pl2"></small></button>
+                            <button onClick={logOut} className="index-button f5 pointer ba hover-bg-mid-gray pa3 tc br-pill ph4 ma1 grow b fw6">Logout<small className="icon-logout pl2"></small></button>
                         </Link>
                     </span>
                 </div>

@@ -9,6 +9,16 @@ const ForgotPassword = ({email, password}) => {
 
 const token = localStorage.getItem("token")
 
+const display = () => {
+    const my_div = document.getElementById('hide')
+    my_div.style['display'] = 'contents'
+}
+
+const handleSubmit = e => {
+    e.preventDefault()
+    display()
+}
+
         return(
             <div className="">
                 <Preloader />
@@ -17,7 +27,7 @@ const token = localStorage.getItem("token")
                         <div className="pv3">
                             <div className='tc code' style={{fontSize: '27px', fontWeight: '500'}}><img src={img} alt="logo" className="tc" width="75px" height="75px" /></div>
                             <p className="pv2 fw6 tc"><small className="orange f4">Forgot your password?</small><br/> Use the form below to <small className="green f4">recover</small> your account</p>
-                                <form action={'http://localhost:3000/users/login'} method="post" encType="multipart/form-data">
+                                <form onSubmit={handleSubmit}>
                                     <div className="tl pv2">
                                         <p className="pv1 f5 fw5">Email</p>
                                         <small className="icon-envelope f4 fw5"></small>
@@ -32,11 +42,12 @@ const token = localStorage.getItem("token")
                                     <div>
                                         <div className="pv2">
                                             <div className="pv2">
-                                                <p className="tc code f4">#<small className="ph2">Check the email we sent you for your</small>
-                                                    <Link className="link" to={"/assets/indexes/Signup"}><small className="fw6 green f4 fw4 pointer">New password</small></Link>
+                                                <p id="hide" style={{display: 'none'}} className="tc code f4">
+                                                    #<small className="ph2">Check the email we sent you for your</small>
+                                                    <small className="fw6 green f4 fw4 pointer">New password</small>
                                                 </p>
                                                 <p className="tc">
-                                                    <button type="submit" className="index-button hover-bg-mid-gray pa2 tc br-pill ba pointer ph5 ma1 grow pv3 b fw6">Recover password</button>
+                                                    <button onClick={display} type="submit" className="index-button hover-bg-mid-gray pa2 tc br-pill ba pointer ph5 ma1 grow pv3 b fw6">Recover password</button>
                                                 </p>
                                             </div>
                                         </div>

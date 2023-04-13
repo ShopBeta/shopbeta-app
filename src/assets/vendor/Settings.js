@@ -1,15 +1,16 @@
 import { render } from "@testing-library/react";
 import React from "react";
 import '../Home.css'
+import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar";
-import { useState, useEffect } from "react";
-import Dialog from "../../containers/Dialog";
 import Preloader from "../../components/Preloader";
 
 
 const Settings = ({username, bio, email, password, phonenumber, location, website, contactEmail}) => {
 
 const token = localStorage.getItem("token")
+const me = localStorage.getItem("meId")
+console.log(me)
     
 const logoutAllClick = async () => {
             await fetch("https://shopbeta-api.onrender.com/users/logoutAll", {
@@ -53,7 +54,7 @@ const changes = async () => {
         contactEmail: document.querySelector('.contactEmail').value
     }
 
-    await fetch("https://shopbeta-api.onrender.com/users/updateme", {
+    await fetch(`https://shopbeta-api.onrender.com/users/update/${me}`, {
         method: "PATCH",
         headers: {
             'Authorization' : 'Bearer ' + token,
@@ -69,14 +70,9 @@ const changes = async () => {
     })
 }
 
-const [open, setOpen] = useState(false)
-
-const handClick = () => {
-    setOpen(false)
-}
-
-const handClickShow = () => {
-    setOpen(true)
+const handClick = (event) => {
+    event.currentTarget.innerHTML = 'Saving...';
+    event.currentTarget.style.fontWeight = 'bold';
 }
 
 const handleSubmit = e => {
@@ -86,13 +82,12 @@ const handleSubmit = e => {
 
     render()
         return(
-            <div style={{alignContent: 'center'}} className="">
-                <Dialog open={open} handClick={handClick} />
+            <div className="tc w-100">
                 <Preloader />
                 <Navbar />
-                    <div className="dib tc">
+                    <div className="dib">
                       <div className="flex flex-wrap pv6">
-                        <div style={{width: '360px'}} className="pv2 ma2">
+                        <div style={{width: '360px'}} className="pv2 dib ma2">
                             <h3 className="tr"><small className="icon-settings f4 ph2"></small>Change Settings</h3>
                                 <form onSubmit={handleSubmit}>
                                     <div className="tl pv2">
@@ -144,20 +139,24 @@ const handleSubmit = e => {
                                     </div>
                                 </form>
                         </div>
-                        <div style={{width: '360px'}} className="ma2">
+                        <div style={{width: '360px'}} className="ma2 pv2 dib">
                             <p className="tr">
-                                <button onClick={handClickShow} type="submit" className="index-button pointer hover-bg-mid-gray pa2 tc br-pill ba ph4 ma1 grow pv3 b fw6">Save settings</button>
+                                <button onClick={handClick} type="submit" className="index-button pointer hover-bg-mid-gray pa2 tc br-pill ba ph4 ma1 grow pv3 b fw6">Save settings</button>
                             </p>
                             <div className="pv2">
                                 <div className="pv2">
                                     <span className="tc pa2 pv2">
                                         Logout from all devices that you've logged in from before
-                                        <a href="/assets/indexes/Login" className="black link"><p onClick={logoutAllClick} className="bg-transparent hover-bg-mid-gray pa3 pointer tc ba br-pill ph3 ma1 grow b fw6"> Log-out all devices</p></a>
+                                        <Link className="link black" to={"/assets/indexes/Login"}>
+                                            <p onClick={logoutAllClick} className="bg-transparent hover-bg-mid-gray pa3 pointer tc ba br-pill orange ph3 ma1 grow b fw6"> Log-out all devices</p>
+                                        </Link>
                                     </span>
                                     <p className="pv2 f4 fw7 red tl">Danger Zone</p>
                                     <span className="tc pa2 pv2">
                                         Delete this account
-                                        <a href="/assets/indexes/Signup"  className="black link"><p onClick={deleteClick} className="bg-red hover-bg-red hover-bg-mid-gray pa3 pointer tc br-pill ba ph4 ma1 grow b fw6"> Delete Account</p></a>
+                                        <Link className="link black" to={"/assets/indexes/Signup"}>
+                                            <p onClick={deleteClick} className="bg-red hover-bg-red hover-bg-mid-gray pa3 pointer tc br-pill ba ph4 white ma1 grow b fw6"> Delete Account</p>
+                                        </Link>
                                     </span>
                                 </div>
                             </div>

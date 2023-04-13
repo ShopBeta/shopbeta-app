@@ -6,13 +6,14 @@ import Preloader from "../../components/Preloader";
 
 
 const Login = ({email, password}) => {
-
-const user = {
-    email: email,
-    password: password,
-}
     
 const loginUser = async () => {
+
+            const user = {
+                email: document.querySelector('.email').value,
+                password: document.querySelector('.password').value
+            }
+
             await fetch("https://shopbeta-api.onrender.com/users/login", {
                 method: "POST",
                 headers: {

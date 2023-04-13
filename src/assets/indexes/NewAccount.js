@@ -13,21 +13,17 @@ const me = localStorage.getItem("meId")
 console.log(me)
 
 const changes = async () => {
+
     const update = {
-        username: document.querySelector('.username').value,
         bio: document.querySelector('.bio').value,
-        email: document.querySelector('.email').value,
-        password: document.querySelector('.password').value,
-        phonenumber: document.querySelector('.phonenumber').value,
         location: document.querySelector('.location').value,
         website: document.querySelector('.website').value,
         contactEmail: document.querySelector('.contactEmail').value
     }
 
-    await fetch("https://shopbeta-api.onrender.com/users/updateme", {
+    await fetch(`https://shopbeta-api.onrender.com/users/update/${me}`, {
         method: "PATCH",
         headers: {
-            'Authorization' : 'Bearer ' + token,
             'Accept' : 'application/json, text/plain',
             'Content-Type' : 'application/json'
         },

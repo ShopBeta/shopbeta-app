@@ -14,7 +14,7 @@ const User = () => {
 
     const [user, setUser] = useState({})
     useEffect(() => {
-        fetch(`https://shopbeta-api.onrender.com/users/${userId}`, {
+        fetch(`http://localhost:3000/users/${userId}`, {
             method: 'GET',
         })
         .then((res) => res.json())
@@ -153,9 +153,9 @@ const User = () => {
         initiateChat()
     }
     return  (
-        <div className="flex flex-wrap w-100 pa2">
-        <div style={{width: '360px'}} className="tc b--black br3 pa3">
-              <div className="br4">
+        <div className="tc w-100 pa2">
+        <div style={{width: '360px'}} className="dib pa3">
+              <div className="">
                   <img src={`https://shopbeta-api.onrender.com/users/${userId}/avatar`} alt="avatar" className="br-100 b--white" width="250px" height="250px"></img>
                   <div className="tr">
                         <span onClick={heartClick} title="Like profile" className="icon-heart f3 orange ph2 pointer fw6 hover-mid-gray br3 pa2 grow"></span>
@@ -186,9 +186,14 @@ const User = () => {
                   </div>
               </div>
         </div>
-        <div style={{width: '360px'}}>
+        <div style={{width: '360px'}} className="dib">
+            <div className="pv3 tc f4">
+                  <p className="ph2">
+                      {user.bio}
+                  </p>
+              </div>
               <div className="pv2">
-                  <div className="pv3 f4">
+                  <div className="pv3 f5 fw6">
                       <p>
                           <small className="icon-phone pr2"></small>
                           {user.phonenumber}
@@ -205,21 +210,16 @@ const User = () => {
                       </p>
                   </div>
               </div>
-              <div className="pv3 tc f4">
-                  <p className="ph2">
-                      {user.bio}
-                  </p>
-              </div>
               <div className="tc">
                   <img src={img2} alt="profile" className="br3 b--white"></img>
               </div>
               <span> 
                   <Link to={"/assets/Message"}>
-                      <button onClick={handleSubmit} className="index-button f5 pointer ba hover-bg-mid-gray pa3 tc br-pill ph5 ma1 grow b fw6"><small className="icon-bubbles pr2"></small>Message</button>
+                      <button onClick={handleSubmit} className="index-button f5 pointer ba hover-bg-mid-gray pa3 tc br-pill ph4 ma1 grow b fw6"><small className="icon-bubbles pr2"></small>Message</button>
                   </Link>
               </span>
               <span> 
-                  <button onClick={followClick} className="index-button f5 pointer ba hover-bg-mid-gray pa3 tc br-pill ph5 ma1 grow b fw6">Follow<small className="icon-user-follow pl2"></small></button>
+                  <button onClick={followClick} className="index-button f5 pointer ba hover-bg-mid-gray pa3 tc br-pill ph4 ma1 grow b fw6">Follow<small className="icon-user-follow pl2"></small></button>
               </span>
           </div>
       </div>

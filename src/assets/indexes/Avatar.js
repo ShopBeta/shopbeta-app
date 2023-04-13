@@ -12,6 +12,11 @@ const Avatar = () => {
     const me = localStorage.getItem("meId")
     console.log(me)
 
+    const handClick = (event) => {
+        event.currentTarget.innerHTML = 'Uploading...';
+        event.currentTarget.style.fontWeight = 'bold';
+    }
+
         return(
             <div className="bg-white tc">
                 <div className="pa2 pv5">
@@ -28,13 +33,16 @@ const Avatar = () => {
                                 <form action={`https://shopbeta-api.onrender.com/users/${me}/avatar`} method="post" encType="multipart/form-data">
                                     <div className="pv2 tc">
                                         <div className="pv3 pa2 tc">
-                                            <small className="icon-camera hover-mid-gay f3 orange pointer"></small>
-                                            {/* <input type="file" name="avatar" className="avatar pa2 w-100"/> */}
+                                            <label>
+                                                <small className="icon-camera hover-mid-gay f3 orange pointer"></small><br/>
+                                                <small className="hover-mid-gay f5 fw5 orange pointer">Select Image</small>
+                                                <input style={{display: 'none'}} type="file" name="avatar" className="avatar pointer pa2 w-100"/>
+                                            </label>
                                         </div>
                                         <p> 
-                                            <Link to={"/assets/vendor/Profile"}>
-                                                <button className="index-button pointer ba hover-bg-mid-gray pa3 f4 tc br-pill ph5 ma1 grow b fw6">Upload<small className="icon-cloud-upload f4 pl2"></small></button>
-                                            </Link>
+                                            <button onClick={handClick} type="submit" className="index-button pointer ba hover-bg-mid-gray pa3 f4 tc br-pill ph5 ma1 grow b fw6">
+                                                Upload<small className="icon-cloud-upload f4 pl2"></small>
+                                            </button>
                                         </p>
                                     </div>
                                 </form>

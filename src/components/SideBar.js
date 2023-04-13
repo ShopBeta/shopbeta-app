@@ -17,7 +17,7 @@ const SideBar = () => {
     }
 
     return (
-        <div className="sidebar w-10 fw7 dtc tc f3 pv7">
+        <div className="sidebar w-10 fw7 orange dtc tc f2 pt7">
                <ModalDialog2 handleShow={open} handleShut={handleShut} />
             <ul className="sidebarList">
                 { 
@@ -28,13 +28,13 @@ const SideBar = () => {
                                 
                                 className="pv3 pointer br4 row">
                                     
-                                <div id="Icon">{val.Icon}</div>
+                                <div id="Icon" className="pa1 hover-bg-light-blue br3 orange">{val.Icon}</div>
                                 <div id="Title">{val.Title}</div>
                             </li>
                         );
                     })}
             </ul>
-            <div onClick={handleShow} title="post product" className="f2 pl1 pointer icon-plus">
+            <div onClick={handleShow} title="post product" className="f1 fw7 bg-white br-pill grow pa1 pointer icon-plus">
             </div>
         </div>
     );
