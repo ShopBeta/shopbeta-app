@@ -50,7 +50,7 @@ console.log(me)
                         <div className="pv3">
                             <div className='tc code' style={{fontSize: '27px', fontWeight: '500'}}><img src={img} alt="logo" className="tc" width="75px" height="75px" /></div>
                             <p className="pv2 fw6 tc"><small className="orange f4">Welcome</small><br/> It only takes a <small className="green f4">few seconds</small> to create your account</p>
-                                <form action={"https://shopbeta-api.onrender.com/users"} method="post" encType="multipart/form-data">
+                                <form onSubmit={handleSubmit}>
                                     <div className="tl pv2">
                                         <p className="pv1 f5 fw5">Username</p>
                                         <small className="icon-user f4 fw5"></small>
