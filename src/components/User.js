@@ -15,11 +15,7 @@ const User = () => {
     const [user, setUser] = useState({})
     useEffect(() => {
         fetch(`https://shopbeta-api.onrender.com/users/${me}`, {
-            method: "GET",
-            headers: {
-                'Accept' : 'application/json, text/plain',
-                'Content-Type' : 'application/json'
-            },
+            method: "GET"
         })
         .then((res) => res.json())
         .then((data) => setUser(data))

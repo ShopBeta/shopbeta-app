@@ -8,7 +8,6 @@ import Preloader from "../../components/Preloader";
 
 const NewAccount = () => {
 
-const token = localStorage.getItem("token")
 const me = localStorage.getItem("meId")
 console.log(me)
 
@@ -22,7 +21,7 @@ const changes = async () => {
     }
 
     await fetch(`https://shopbeta-api.onrender.com/users/update/${me}`, {
-        method: "PATCH",
+        method: 'PATCH',
         headers: {
             'Accept' : 'application/json, text/plain',
             'Content-Type' : 'application/json'
@@ -34,22 +33,25 @@ const changes = async () => {
     .catch((err) => {
         console.log(err.message)
     })
+
+    const button_update = document.getElementById('update')
+    button_update.style['display'] = 'none'
+
+    const button_next = document.getElementById('next')
+    button_next.style['display'] = 'contents'
+
 }
 
 const [user, setUser] = useState({})
-    useEffect(() => {
-        fetch(`https://shopbeta-api.onrender.com/users/${me}`, {
-            method: "GET",
-            headers: {
-                'Accept' : 'application/json, text/plain',
-                'Content-Type' : 'application/json'
-            },
-        })
-        .then((res) => res.json())
-        .then((data) => setUser(data))
-        .catch((err) => {
-            console.log(err.message)
-        })
+useEffect(() => {
+    fetch(`https://shopbeta-api.onrender.com/users/${me}`, {
+        method: "GET",
+    })
+    .then((res) => res.json())
+    .then((data) => setUser(data))
+    .catch((err) => {
+        console.log(err.message)
+    })
 }, [me])
 
 
@@ -95,11 +97,19 @@ const handleSubmit = e => {
                                     <div>
                                     <div className="pv2">
                                         <div className="pv2">
-                                            <Link className="link" to={"/assets/indexes/Avatar"}>
-                                                <p className="tr">
-                                                    <button type="submit" className="index-button hover-bg-mid-gray pa2 tc br-pill ba pointer ph5 ma1 grow pv3 b fw6">Next</button>
+                                            <p id="update" className="tr">
+                                                <button type="submit" className="index-button hover-bg-mid-gray pa2 tc br-pill ba pointer ph5 ma1 grow pv3 b fw6">Submit</button>
+                                            </p>
+                                            <div id="next" style={{display: 'none'}} className="tr">
+                                                <p className="tc green fw6 pv3 f4">
+                                                    <small className="ph2 f4 icon-check orange"></small>
+                                                    Data
+                                                    <small className="fw6 orange f4 fw4 pointer"> Saved!</small>
                                                 </p>
-                                            </Link>
+                                                <Link className="link" to={"/assets/indexes/Avatar"}>
+                                                    <button className="index-button hover-bg-mid-gray pa2 tc br-pill ba pointer ph5 ma1 grow pv3 b fw6">Next<small className="icon-arrow-right pl2"></small></button>
+                                                </Link>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

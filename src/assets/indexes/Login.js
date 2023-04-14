@@ -28,6 +28,12 @@ const loginUser = async () => {
                 .catch((err) => {
                     console.log(err.message)
                 })
+
+                const button_login = document.getElementById('login')
+                button_login.style['display'] = 'none'
+    
+                const button_home = document.getElementById('home')
+                button_home.style['display'] = 'contents'
 }
 
 const token = localStorage.getItem("token")
@@ -72,11 +78,19 @@ const handleSubmit = e => {
                                                 <p className="tc"><small className="ph2">Forgot your password?</small>
                                                     <Link className="link" to={"/assets/indexes/ForgotPassword"}><small className="hover-blue orange f5 fw4 pointer">Recover Password</small></Link>
                                                 </p>
-                                                <Link className="link" to={"/assets/Home"}>
-                                                    <p className="tc">
-                                                        <button type="submit" className="index-button hover-bg-mid-gray pa2 tc br-pill ba pointer ph6 ma1 grow pv3 b fw6">Login</button>
+                                                <p id="login" className="tc">
+                                                    <button type="submit" className="index-button hover-bg-mid-gray pa2 tc br-pill ba pointer ph6 ma1 grow pv3 b fw6">Login</button>
+                                                </p>
+                                                <div id="home" style={{display: 'none'}} className="tc">
+                                                    <p className="tc green fw6 pv3 f4">
+                                                        <small className="ph2 f4 icon-check orange"></small>
+                                                        Login
+                                                        <small className="fw6 orange f4 fw4 pointer"> Successful</small>
                                                     </p>
-                                                </Link>
+                                                    <Link className="link" to={"/assets/Home"}>
+                                                        <button className="index-button hover-bg-mid-gray pa2 tc br-pill ba pointer ph5 ma1 grow pv3 b fw6">Home<small className="icon-arrow-right pl2"></small></button>
+                                                    </Link>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

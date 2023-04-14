@@ -29,13 +29,13 @@ const newUser = async () => {
     .catch((err) => {
         console.log(`Couldn't register new user`)
     })
+
+    const button_sign = document.getElementById('sign')
+    button_sign.style['display'] = 'none'
+
+    const button_next = document.getElementById('next')
+    button_next.style['display'] = 'contents'
 }
-
-const token = localStorage.getItem("token")
-const me = localStorage.getItem("meId")
-
-console.log(token)
-console.log(me)
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -80,11 +80,19 @@ console.log(me)
                                     <div>
                                         <div className="pv2">
                                             <div className="pv2">
-                                                <Link className="link" to={"/assets/indexes/NewAccount"}>
-                                                    <p className="tc">
-                                                        <button type="submit" className="index-button hover-bg-mid-gray pa2 tc br-pill ba pointer ph6 ma1 grow pv3 b fw6">Signup</button>
+                                                <p id="sign" className="tc">
+                                                    <button type="submit" className="index-button hover-bg-mid-gray pa2 tc br-pill ba pointer ph6 ma1 grow pv3 b fw6">Signup</button>
+                                                </p>
+                                                <div id="next" style={{display: 'none'}} className="tc">
+                                                    <p className="tc green fw6 pv2 f4">
+                                                        <small className="ph2 f4 icon-check orange"></small>
+                                                        Signup
+                                                        <small className="fw6 orange f4 fw4 pointer"> Successful</small>
                                                     </p>
-                                                </Link>
+                                                    <Link className="link" to={"/assets/indexes/NewAccount"}> 
+                                                        <button className="index-button hover-bg-mid-gray pa2 tc br-pill ba pointer ph6 ma1 grow pv3 b fw6">Next<small className="icon-arrow-right pl2"></small></button>
+                                                    </Link>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
