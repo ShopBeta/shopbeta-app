@@ -18,7 +18,7 @@ const newUser = async () => {
      await fetch('https://shopbeta-api.onrender.com/users', {
         method: "POST",
         headers: {
-            'Content-type': "application/json",
+            'Content-Type': "application/json",
             'Accept' : 'application/json, text/plain',
         },
         body: JSON.stringify(user)       
