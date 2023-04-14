@@ -18,6 +18,7 @@ const newUser = async () => {
      fetch('https://shopbeta-api.onrender.com/users/signup', {
         method: 'POST',
         headers: {
+            'Accept' : 'application/json, text/plain',
             'Content-Type': "application/json",
         },
         body: JSON.stringify(user)       
@@ -49,7 +50,7 @@ console.log(me)
                         <div className="pv3">
                             <div className='tc code' style={{fontSize: '27px', fontWeight: '500'}}><img src={img} alt="logo" className="tc" width="75px" height="75px" /></div>
                             <p className="pv2 fw6 tc"><small className="orange f4">Welcome</small><br/> It only takes a <small className="green f4">few seconds</small> to create your account</p>
-                                <form onSubmit={handleSubmit}>
+                                <form action="https://shopbeta-api.onrender.com/users/signup" method="post" enctype="multipart/form-data">
                                     <div className="tl pv2">
                                         <p className="pv1 f5 fw5">Username</p>
                                         <small className="icon-user f4 fw5"></small>
