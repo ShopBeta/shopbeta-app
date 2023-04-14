@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import Preloader from "../../components/Preloader";
 
 
-const NewAccount = ({bio, location, website, contactEmail}) => {
+const NewAccount = () => {
 
 const token = localStorage.getItem("token")
 const me = localStorage.getItem("meId")
@@ -71,23 +71,23 @@ const handleSubmit = e => {
                                         <p className="pv1 f5 fw5">Bio information</p>
                                         <p className="pv1">
                                             <small className="icon-note f4 fw5"></small>
-                                            <textarea id="myInput" name="bio" value={bio} className="bio br3 ba pa3 w-100 h3" placeholder="Something about your profile..." aria-label="With textarea" required></textarea>
+                                            <textarea id="myInput" name="bio" className="bio br3 ba pa3 w-100 h3" placeholder="Something about your profile..." aria-label="With textarea" required></textarea>
                                         </p>
                                     </div>
                                     <div className="tl pv2">
                                         <p className="pv1 f5 fw5">Location</p>
                                         <small className="icon-location-pin f4 fw5"></small>
-                                        <input id="location" type="text" name="location" value={location} className="location br3 ba pa3 w-100" placeholder="Type in your location..." required />
+                                        <input id="location" type="text" name="location" className="location br3 ba pa3 w-100" placeholder="Type in your location..." required />
                                     </div>
                                     <div className="tl pv2">
                                         <p className="pv1 f5 fw5">Website URL</p>
                                         <small className="icon-globe f4 fw5"></small>
-                                        <input type="url" name="website" value={website} className="website br3 ba pa3 w-100" placeholder="Your website url..." required />
+                                        <input type="url" name="website" className="website br3 ba pa3 w-100" placeholder="Your website url..." required />
                                     </div>
                                     <div className="tl pv2">
                                         <p className="pv1 f5 fw5">Contact Email</p>
                                         <small className="icon-envelope f4 fw5"></small>
-                                        <input type="email" name="contactEmail" value={contactEmail} className="contactEmail br3 ba pa3 w-100" placeholder="Your contact email..." required autoComplete="username" />
+                                        <input type="email" name="contactEmail" className="contactEmail br3 ba pa3 w-100" placeholder="Your contact email..." required autoComplete="username" />
                                     </div>
                                     <div className="tl pv2">
                                         <input name="check" id="exampleCheck" type="checkbox" className="pr2" required /><label for="exampleCheck" className="form-check-label ph2">Accept our <a href="https://shopbetaonline.onrender.com/terms of use.html">Terms and Conditions</a>.</label>

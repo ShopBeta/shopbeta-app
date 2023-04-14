@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Preloader from "../../components/Preloader";
 
 
-const Login = ({email, password}) => {
+const Login = () => {
     
 const loginUser = async () => {
 
@@ -14,10 +14,9 @@ const loginUser = async () => {
                 password: document.querySelector('.password').value
             }
 
-            await fetch("https://shopbeta-api.onrender.com/users/login", {
-                method: "POST",
+            await fetch('https://shopbeta-api.onrender.com/users/login', {
+                method: 'POST',
                 headers: {
-                    'Accept' : 'application/json, text/plain',
                     'Content-Type' : 'application/json'
                     },
                     body: JSON.stringify(user)
@@ -53,12 +52,12 @@ const handleSubmit = e => {
                                     <div className="tl pv2">
                                         <p className="pv1 f5 fw5">Email</p>
                                         <small className="icon-envelope f4 fw5"></small>
-                                        <input type="email" name="email" value={email} className="email br3 ba pa3 w-100" placeholder="Your email..." required autoComplete="email" />
+                                        <input type="email" name="email" className="email br3 ba pa3 w-100" placeholder="Your email..." required autoComplete="email" />
                                     </div>
                                     <div className="tl pv2">
                                         <p className="pv1 f5 fw5">Password</p>
                                         <small className="icon-lock f4 fw5"></small>
-                                        <input type="password" value={password} name="password" className="password br3 ba pa3 w-100" placeholder="password..." required autoComplete="current-password" />
+                                        <input type="password" name="password" className="password br3 ba pa3 w-100" placeholder="password..." required autoComplete="current-password" />
                                     </div>
                                     <div className="tl pv2">
                                         <input name="check" id="exampleCheck" type="checkbox" className="pr2" /><label for="exampleCheck" className="form-check-label ph2">Keep me logged in</label>
