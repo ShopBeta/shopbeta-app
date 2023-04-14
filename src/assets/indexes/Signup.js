@@ -37,17 +37,41 @@ const me = localStorage.getItem("meId")
 console.log(token)
 console.log(me)
 
-    const handleSubmit = e => {
-        e.preventDefault()
-        newUser()
-    }
+const [username, setUsername] = useState('');
+const [email, setEmail] = useState('');
+const [password, setPassword] = useState('');
+const [phoneNumber, setPhoneNumber] = useState('');
+
+const handleSubmit = async (event) => {
+  event.preventDefault();
+
+  const data = { username, email, password, phoneNumber };
+
+  try {
+    const response = await fetch('https://shopbeta-api.onrender.com/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+
+    const result = await response.json();
+    console.log(result);
+    window.localStorage.setItem("token", result.token)
+    window.localStorage.setItem("meId", result._id)
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 
         return(
             <div className="">
                 <Preloader />
                     <div className="tc">
                       <div style={{width: '360px'}} className="dib pa3 tc">
-                        <div className="pv3">
+                        {/* <div className="pv3">
                             <div className='tc code' style={{fontSize: '27px', fontWeight: '500'}}><img src={img} alt="logo" className="tc" width="75px" height="75px" /></div>
                             <p className="pv2 fw6 tc"><small className="orange f4">Welcome</small><br/> It only takes a <small className="green f4">few seconds</small> to create your account</p>
                                 <form onSubmit={handleSubmit}>
@@ -89,7 +113,26 @@ console.log(me)
                                         </div>
                                     </div>
                                 </form>
-                            </div>
+                            </div> */}
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label htmlFor="username">Username:</label>
+        <input type="text" id="username" value={username} onChange={(event) => setUsername(event.target.value)} required />
+      </div>
+      <div>
+        <label htmlFor="email">Email:</label>
+        <input type="email" id="email" value={email} onChange={(event) => setEmail(event.target.value)} required />
+      </div>
+      <div>
+        <label htmlFor="password">Password:</label>
+        <input type="password" id="password" value={password} onChange={(event) => setPassword(event.target.value)} required />
+      </div>
+      <div>
+        <label htmlFor="phoneNumber">Phone number:</label>
+        <input type="tel" id="phoneNumber" value={phoneNumber} onChange={(event) => setPhoneNumber(event.target.value)} required />
+      </div>
+      <button type="submit">Create User</button>
+    </form>
                         </div>
                     </div>
                 </div>
