@@ -15,7 +15,7 @@ const newUser = async () => {
         password: document.querySelector('.password').value,
         phonenumber: document.querySelector('.phonenumber').value,
     }
-     fetch('https://shopbeta-api.onrender.com/users/signup', {
+    await fetch('https://shopbeta-api.onrender.com/users/signup', {
         method: 'POST',
         headers: {
             'Accept' : 'application/json, text/plain',
