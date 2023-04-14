@@ -5,31 +5,31 @@ import { Link } from "react-router-dom";
 import Preloader from "../../components/Preloader";
 
 
-const Signup = ({username, email, password, phonenumber}) => {
+const Signup = () => {
 
-const newUser = async () => {
+// const newUser = async () => {
 
-    const user = {
-        username: document.querySelector('.username').value,
-        email: document.querySelector('.email').value,
-        password: document.querySelector('.password').value,
-        phonenumber: document.querySelector('.phonenumber').value,
-    }
-     await fetch('https://shopbeta-api.onrender.com/users', {
-        method: "POST",
-        headers: {
-            'Content-Type': "application/json",
-            'Accept' : 'application/json, text/plain',
-        },
-        body: JSON.stringify(user)       
-    })
-    .then((res) => res.json())
-    .then((data) => window.localStorage.setItem("token", data.token))
-    .then((data) => window.localStorage.setItem("meId", data.user._id))
-    .catch((err) => {
-        console.log(`Couldn't register new user`)
-    })
-}
+//     const user = {
+//         username: document.querySelector('.username').value,
+//         email: document.querySelector('.email').value,
+//         password: document.querySelector('.password').value,
+//         phonenumber: document.querySelector('.phonenumber').value,
+//     }
+//      await fetch('https://shopbeta-api.onrender.com/users', {
+//         method: "POST",
+//         headers: {
+//             'Content-Type': "application/json",
+//             'Accept' : 'application/json, text/plain',
+//         },
+//         body: JSON.stringify(user)       
+//     })
+//     .then((res) => res.json())
+//     .then((data) => window.localStorage.setItem("token", data.token))
+//     .then((data) => window.localStorage.setItem("meId", data.user._id))
+//     .catch((err) => {
+//         console.log(`Couldn't register new user`)
+//     })
+// }
 
 const token = localStorage.getItem("token")
 const me = localStorage.getItem("meId")
@@ -45,7 +45,7 @@ const [phoneNumber, setPhoneNumber] = useState('');
 const handleSubmit = async (event) => {
   event.preventDefault();
 
-  const data = { username, email, password, phoneNumber };
+  const data = { username, email, password, phonenumber };
 
   try {
     const response = await fetch('https://shopbeta-api.onrender.com/users', {
@@ -129,7 +129,7 @@ const handleSubmit = async (event) => {
       </div>
       <div>
         <label htmlFor="phoneNumber">Phone number:</label>
-        <input type="tel" id="phoneNumber" value={phoneNumber} onChange={(event) => setPhoneNumber(event.target.value)} required />
+        <input type="tel" id="phoneNumber" value={phonenumber} onChange={(event) => setPhoneNumber(event.target.value)} required />
       </div>
       <button type="submit">Create User</button>
     </form>
