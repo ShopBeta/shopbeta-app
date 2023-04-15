@@ -23,11 +23,8 @@ const loginUser = async () => {
                     body: JSON.stringify(user)
                 })
                 .then((res) => res.json())
-                .then((data) => {
-                    window.localStorage.setItem("token", data.token),
-                    window.localStorage.setItem("meId", data.user._id)
-                }                    
-                )
+                .then((data) => window.localStorage.setItem("token", data.token))
+                .then((data) => window.localStorage.setItem("meId", data.user._id))
                 .catch((err) => {
                     console.log(err.message)
                 })
