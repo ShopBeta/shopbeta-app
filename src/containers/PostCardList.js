@@ -1,7 +1,7 @@
 import React from 'react';
 import { VideoPost, TextPost,} from '../components/PostCard';
 
-const VideoPostList = ({ video, id, name, text, media, time }) => {
+const VideoPostList = ({ video, id, name, hearts, views, text, media, time }) => {
     return (
         <div>
             {
@@ -13,6 +13,8 @@ const VideoPostList = ({ video, id, name, text, media, time }) => {
                         name={video.name}
                         owner={video.owner} 
                         text={video.text}
+                        hearts={video.hearts}
+                        views={video.views}
                         media={video.video}
                         time={video.time}
                         />

@@ -23,8 +23,10 @@ const loginUser = async () => {
                     body: JSON.stringify(user)
                 })
                 .then((res) => res.json())
-                .then((data) => window.localStorage.setItem("token", data.token))
-                .then((data) => window.localStorage.setItem("meId", data.user._id))
+                .then((data) => {
+                    window.localStorage.setItem("token", data.token)
+                    window.localStorage.setItem("meId", data.user._id)
+                })
                 .catch((err) => {
                     console.log(err.message)
                 })
@@ -34,6 +36,11 @@ const loginUser = async () => {
     
                 const button_home = document.getElementById('home')
                 button_home.style['display'] = 'contents'
+}
+
+const handClick = (event) => {
+    event.currentTarget.innerHTML = 'Loading...';
+    event.currentTarget.style.fontWeight = 'bold';
 }
 
 const token = localStorage.getItem("token")
@@ -79,7 +86,7 @@ const handleSubmit = e => {
                                                     <Link className="link" to={"/assets/indexes/ForgotPassword"}><small className="hover-blue orange f5 fw4 pointer">Recover Password</small></Link>
                                                 </p>
                                                 <p id="login" className="tc">
-                                                    <button type="submit" className="index-button hover-bg-mid-gray pa2 tc br-pill ba pointer ph6 ma1 grow pv3 b fw6">Login</button>
+                                                    <button onClick={handClick} type="submit" className="index-button hover-bg-mid-gray pa2 tc br-pill ba pointer ph6 ma1 grow pv3 b fw6">Login</button>
                                                 </p>
                                                 <div id="home" style={{display: 'none'}} className="tc">
                                                     <p className="tc green fw6 pv3 f4">

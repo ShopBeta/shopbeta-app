@@ -9,7 +9,9 @@ import Preloader from "../../components/Preloader";
 const NewAccount = () => {
 
 const me = localStorage.getItem("meId")
+const token = localStorage.getItem("token")
 console.log(me)
+console.log(token)
 
 const changes = async () => {
 
@@ -40,6 +42,11 @@ const changes = async () => {
     const button_next = document.getElementById('next')
     button_next.style['display'] = 'contents'
 
+}
+
+const handClick = (event) => {
+    event.currentTarget.innerHTML = 'Loading...';
+    event.currentTarget.style.fontWeight = 'bold';
 }
 
 const [user, setUser] = useState({})
@@ -98,7 +105,7 @@ const handleSubmit = e => {
                                     <div className="pv2">
                                         <div className="pv2">
                                             <p id="update" className="tr">
-                                                <button type="submit" className="index-button hover-bg-mid-gray pa2 tc br-pill ba pointer ph5 ma1 grow pv3 b fw6">Submit</button>
+                                                <button onClick={handClick} type="submit" className="index-button hover-bg-mid-gray pa2 tc br-pill ba pointer ph5 ma1 grow pv3 b fw6">Submit</button>
                                             </p>
                                             <div id="next" style={{display: 'none'}} className="tr">
                                                 <p className="tc green fw6 pv3 f4">

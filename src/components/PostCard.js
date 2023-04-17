@@ -156,7 +156,7 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
     )
 }
 
-const VideoPost = ({ id, owner, media, text, hearts, time}) => {
+const VideoPost = ({ id, owner, media, text, hearts, views, time}) => {
 
     const token = localStorage.getItem("token")
     const me = localStorage.getItem("meId")
@@ -240,12 +240,36 @@ const VideoPost = ({ id, owner, media, text, hearts, time}) => {
                 console.log(err.message)
             })
     }
+
+    const viewClick = async event => {
+        event.currentTarget.style.color = 'orange';
+        event.currentTarget.style.fontWeight = 'bold';
+
+        const count = {
+            views: views + 1
+        }
+
+        await fetch(`https://shopbeta-api.onrender.com/video/${id}/views`, {
+            method: "POST",
+            headers: {
+                'Authorization' : 'Bearer ' + token,
+                'Accept' : 'application/json, text/plain',
+                'Content-Type' : 'application/json'
+            },
+            body: JSON.stringify(count)
+        })
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((err) => {
+            console.log(err.message)
+        })
+}
     
     return(
             <div style={{Height: '580px', width: '360px'}} className="dib">
                     <div className="bg-white b--black br3 ma3 pa2 bw2 shadow-5">
                         <div className="side2">
-                            <video style={{Height: 'auto', width: '100%'}} className="br4" controls>
+                            <video onClick={viewClick} style={{Height: 'auto', width: '100%'}} className="br4" controls>
                                 <source src={`https://shopbeta-api.onrender.com/video/${id}/video`} type="video/mp4"></source>
                             </video>
                             <div className="f4">
@@ -253,7 +277,7 @@ const VideoPost = ({ id, owner, media, text, hearts, time}) => {
                                 <span className="pr6"> 
                                     <small class="opacity-6 code">
                                         <i class=""></i>
-                                        {hearts} | Views
+                                        {views} | Views
                                     </small>
                                 </span>
                                 <span className="f6 pa1 code fw3">
