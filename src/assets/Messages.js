@@ -2,10 +2,10 @@ import React, { useRef } from "react";
 import './Home.css'
 import { useState, useEffect } from "react";
 // import img from '../images/tst-image3.jpg'
-// import img1 from '../images/space scenery.jpg'
 import { Link } from "react-router-dom";
 import Preloader from "../components/Preloader";
 import { MessageList } from "../containers/ChatLists";
+import NetworkError from "./indexes/NetworkError"
 
 
 const Messages = () => {
@@ -41,9 +41,23 @@ const Messages = () => {
                 },
             })
             .then((res) => res.json())
-            .then((data) => setChats(data))
+            .then((data) => {
+                setChats(data)
+
+                const error = document.getElementById('error')
+                error.style['display'] = 'none'
+                
+                const load = document.getElementById('load')
+                load.style['display'] = 'none'
+            })
             .catch((err) => {
                 console.log(err.message)
+
+                const error = document.getElementById('error')
+                error.style['display'] = 'contents'
+    
+                const load = document.getElementById('load')
+                load.style['display'] = 'none'
             })
         }, 2000); // every 5 minutes (100000)
     }, [roomId])
@@ -122,33 +136,36 @@ const Messages = () => {
                     <div className="tc">
                         <div className="pa3 w-100">
                             <div className="tr">
-                                <small title="mute chatroom" className="f3 fw5 hover-orange pointer grow br3 pa2 icon-bell"></small>
                                 <small className="f3 fw5 hover-orange pointer grow br3 pa2 icon-settings ph4"></small>
                                 <Link className="black link" to={"/assets/Chats"}>
                                     <small onClick={deleteChatRoom} title="delete your entire conversation" className="f3 fw5 hover-orange pointer grow br3 icon-trash"></small>
                                 </Link>
                             </div>
-                            <div className="f3 pa2 tl fw6 code">{user.username}<p className="f4 code ph3 icon-phone">{user.phonenumber}</p></div>
+                            <div className="tj flex f4 flex-wrap">
+                                <span>
+                                    <img src={`https://shopbeta-api.onrender.com/users/${user._id}/avatar`} alt="avatar" className="br-100" width="55px" height="55px" />
+                                </span>
+                                <span className="pa2 f5 pointer fw5">
+                                    <span className="f5 fw7">{user.username}</span>
+                                    <p className="f6 fw4">{user.location}.<small className="icon-globe ph1"></small></p>
+                                    <p className="f6 pa1 fw4">{user.phonenumber}</p>
+                                </span>
+                            </div>
                         </div>
                     </div>
                     <div style={{overflowY: 'auto', height: '451px', width: '370px'}} className="dib messages tc">
                         <div className="br3 pa2 b--black">
                             <div  className="br3 pa2 w-100">
-                                <Link className="link black" to={"/assets/vendor/User"}>
-                                    <div onClick={() => {window.localStorage.setItem("userId", user._id)}} className="pv2 pointer">
-                                        <img src={`https://shopbeta-api.onrender.com/users/${user._id}/avatar`} alt="Accessories..." className="br-100" width="65px" height="65px" />
-                                        <div className="pa2 fw5 f5">
-                                            {user.username}
-                                            <p className="f6 pa1 code orange fw3"><small className="icon-location-pin pr2"></small>{user.location}</p>
-                                        </div>
-                                    </div>
-                                </Link>
                                 <div className="pb2">
-                                    <div className="pa3 f6 br4">
+                                    <div className="pa3 f6 orange br4">
                                         Welcome to ShopBeta! <br/>Send a message to start a conversation. We strongly encourage constructive conversations to improve your social shopping experience.
                                     </div>
                                 </div>
                                   <MessageList chats={chats} />
+                                  <p id="load" className="tc code orange ph2 fw6 f4">Loading messages...</p>
+                                  <div id="error" style={{display: 'none'}} className="tc">
+                                        <NetworkError />
+                                    </div>
                                   <div ref={chatEndRef} >
                                         </div>
                                     </div>
@@ -160,8 +177,8 @@ const Messages = () => {
                     <div className="bg-white pv3 tc" style={{position: 'static', width: '100%'}}>
                         <span id="message-form" className="pv2">
                             <input name="message" type="text" className="input pa3 ba f4 br-pill w-80 message" placeholder="Type your message..." required autoComplete="off"/>
-                            <small onClick={handleSubmit} className="button icon-paper-plane hover-orange pointer grow blue f3 pa2"></small>
-                            <small className="icon-picture pointer grow blue f3 pa2"></small>
+                            <small onClick={handleSubmit} className="button icon-paper-plane orange pointer grow hover-blue f3 pa2"></small>
+                            <small className="icon-picture pointer grow hover-blue orange f3 pa2"></small>
                         </span>
                     </div> 
                 </div>

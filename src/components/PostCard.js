@@ -105,7 +105,7 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
     return(
         <div style={{width: '360px'}} className="dib">
             <CommentModal handleShow={show} handleShut={handleShut} />
-            <div className="bg-white b--black br3 ma3 pa2 bw2 shadow-5">
+            <div className="bg-white b--black br3 ma2 pa2 bw2 shadow-5">
                 <div className="tj flex f4 flex-wrap">
                     <span onClick={() => {window.history.pushState(null, "", id)}}>
                         <Link onClick={() => {window.localStorage.setItem("userId", owner)}} className="link black" to={"/assets/vendor/User"}>
@@ -267,7 +267,7 @@ const VideoPost = ({ id, owner, media, text, hearts, views, time}) => {
     
     return(
             <div style={{Height: '580px', width: '360px'}} className="dib">
-                    <div className="bg-white b--black br3 ma3 pa2 bw2 shadow-5">
+                    <div className="bg-white b--black br3 ma2 pa2 bw2 shadow-5">
                         <div className="side2">
                             <video onClick={viewClick} style={{Height: 'auto', width: '100%'}} className="br4" controls>
                                 <source src={`https://shopbeta-api.onrender.com/video/${id}/video`} type="video/mp4"></source>

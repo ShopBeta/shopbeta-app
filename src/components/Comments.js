@@ -98,7 +98,7 @@ const Comments = ({ handleShut, text, file, owner }) => {
                                 <div className="tc f5">
                                     <div className="pa4 ph5">
                                         <p className="icon-bubbles mid-gray tc f1"></p>
-                                        <p className="pv2 orange f5">"Type to a send a comment"</p>
+                                        <p className="pv2 fw5 f5">Type to send a comment</p>
                                     </div>
                                 </div>  
                                 <div>

@@ -32,9 +32,9 @@ const Comment = ({ text, file, owner, time }) => {
                                         </Link>
                                         <div className="pv2">
                                             <small class="opacity-6 code">
-                                                <i class="ph2">{user.username}</i>
+                                                <b class="ph2">{user.username}</b>
                                             </small>
-                                            <div style={{width: '200px'}} className="bg-light-blue pa3 br4">
+                                            <div style={{width: '200px'}} className="bg-light-gray pa3 br4">
                                                 {text}
                                             </div>
                                             <div class="opacity-6 tr code">

@@ -31,16 +31,27 @@ const changes = async () => {
         body: JSON.stringify(update)
     })
     .then((res) => res.json())
-    .then((data) => console.log(data))
+    .then((data) => {
+        console.log(data)
+             
+        const button_update = document.getElementById('update')
+        button_update.style['display'] = 'none'
+
+        const button_next = document.getElementById('next')
+        button_next.style['display'] = 'contents'
+
+        const check = document.getElementById('check')
+        check.style['display'] = 'none'
+
+        const error = document.getElementById('error')
+        error.style['display'] = 'none'
+    })
     .catch((err) => {
         console.log(err.message)
+
+        const error = document.getElementById('error')
+        error.style['display'] = 'contents'
     })
-
-    const button_update = document.getElementById('update')
-    button_update.style['display'] = 'none'
-
-    const button_next = document.getElementById('next')
-    button_next.style['display'] = 'contents'
 
 }
 
@@ -98,7 +109,11 @@ const handleSubmit = e => {
                                         <small className="icon-envelope f4 fw5"></small>
                                         <input type="email" name="contactEmail" className="contactEmail br3 ba pa3 w-100" placeholder="Your contact email..." required autoComplete="username" />
                                     </div>
-                                    <div className="tl pv2">
+                                    <div id="error" style={{display: 'none'}} className="orange fw5 pv3 f5 red">
+                                        <small className="icon-info red f5 ph2"></small>
+                                        Couldn't register new user, try again later!
+                                    </div>
+                                    <div id="check" className="tl pv2">
                                         <input name="check" id="exampleCheck" type="checkbox" className="pr2" required /><label for="exampleCheck" className="form-check-label ph2">Accept our <a href="https://shopbetaonline.onrender.com/terms of use.html">Terms and Conditions</a>.</label>
                                     </div>
                                     <div>

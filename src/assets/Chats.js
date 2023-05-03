@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Preloader from "../components/Preloader";
 import { ChatRoomList } from "../containers/ChatLists"
+import NetworkError from "./indexes/NetworkError"
 
 
 const Chats = () => {
@@ -21,9 +22,29 @@ const Chats = () => {
             },
         })
         .then((res) => res.json())
-        .then((data) => setRooms(data))
+        .then((data) => {
+            setRooms(data)
+            
+            const load = document.getElementById('load')
+            load.style['display'] = 'none'
+
+            const error = document.getElementById('error')
+            error.style['display'] = 'none'
+
+            const contact = document.getElementById('contact')
+            contact.style['display'] = 'contents'
+        })
         .catch((err) => {
             console.log(err.message)
+
+            const error = document.getElementById('error')
+            error.style['display'] = 'contents'
+
+            const load = document.getElementById('load')
+            load.style['display'] = 'none'
+
+            const contact = document.getElementById('contact')
+            contact.style['display'] = 'none'
         })
     }, [me])
 
@@ -69,16 +90,18 @@ const Chats = () => {
                 <div>
                     <Preloader />
                     <Navbar />
-
                     <div className="pt6 tc pa1">
                         <span style={{color: 'black', fontSize: '29px', fontWeight: '500', letterSpacing: '-2px'}} className="tl pr2 tj code">Chats</span>
                         <span className="tc">
                             <input style={{backgroundColor: 'white'}} className="pa2 icon-magnifier ph4 code f4 br-pill ba" type="search" placeholder="Search chats...." searchChange={onSearchChange} onChange={onSearchChange}/>
                         </span>
+                        <div id="error" style={{display: 'none'}} className="tc">
+                        <NetworkError />
+                    </div>
                     </div>
                     <div style={{overflowY: 'auto', height: '770px', width: '360px'}} className="dib tc">
                         <div className="dib tc br3 pa2 w-100 b--black">
-                            <div className="pv2 br3 b-black tj flex flex-wrap">
+                            <div id="contact" className="pv2 br3 b-black tj flex flex-wrap">
                                 <div className="pa2">
                                     <img src={img} alt="Accessories..." className="br-100" width="50px" height="50px" />
                                 </div>
@@ -94,7 +117,7 @@ const Chats = () => {
                                 </div>
                             </div>
                             <ChatRoomList rooms={rooms}  users={filteredChats}  />
-                            <p className="tc code orange fw6 f4">Loading...</p>
+                            <p id="load" className="tc code orange fw6 f4">Loading...</p>
                         </div>
                     </div>                
                 <div>

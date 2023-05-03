@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar';
 import { VideoPostList } from '../containers/PostCardList';
 import Preloader from "../components/Preloader";
 import SideBar from "../components/VideoSideBar";
+import NetworkError from "./indexes/NetworkError"
 
 
 const VideoSpace = () => {
@@ -16,9 +17,23 @@ const VideoSpace = () => {
             method: "GET",
         })
         .then((res) => res.json())
-        .then((data) => setVideo(data))
+        .then((data) => {
+            setVideo(data)
+            
+            const load = document.getElementById('load')
+            load.style['display'] = 'none'
+
+            const error = document.getElementById('error')
+            error.style['display'] = 'none'
+        })
         .catch((err) => {
             console.log(err.message)
+
+            const error = document.getElementById('error')
+            error.style['display'] = 'contents'
+
+            const load = document.getElementById('load')
+            load.style['display'] = 'none'
         })
     }, [])
 
@@ -35,8 +50,11 @@ const VideoSpace = () => {
                                     <div className="dtc bg-blue">
                                         <SideBar />
                                     </div>
+                                    <div id="error" style={{display: 'none'}} className="tc">
+                                        <NetworkError />
+                                    </div>
                                     <VideoPostList video={video} />
-                                    <p className="tc code orange fw6 f4">Loading...</p>
+                                    <p id="load" className="tc code orange fw6 f4">Loading...</p>
                                 </div>
                         </div>
             </div>

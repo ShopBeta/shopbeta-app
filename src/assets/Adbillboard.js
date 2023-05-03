@@ -7,6 +7,7 @@ import Navbar from '../components/Navbar';
 import { TextPostList } from '../containers/PostCardList';
 import Preloader from "../components/Preloader";
 import SideBar from "../components/FeedSideBar";
+import NetworkError from "./indexes/NetworkError"
 
 
 const AdbillBoard = () => {
@@ -17,9 +18,23 @@ const AdbillBoard = () => {
             method: "GET",
         })
         .then((res) => res.json())
-        .then((data) => setFeed(data))
+        .then((data) => {
+            setFeed(data)
+            
+            const load = document.getElementById('load')
+            load.style['display'] = 'none'
+
+            const error = document.getElementById('error')
+            error.style['display'] = 'none'
+        })
         .catch((err) => {
             console.log(err.message)
+
+            const error = document.getElementById('error')
+            error.style['display'] = 'contents'
+
+            const load = document.getElementById('load')
+            load.style['display'] = 'none'
         })
     }, [])
 
@@ -38,8 +53,11 @@ const AdbillBoard = () => {
                                     <div className="dtc">
                                             <SideBar />
                                         </div>
+                                    <div id="error" style={{display: 'none'}} className="tc">
+                                        <NetworkError />
+                                    </div>
                                     <TextPostList feed={feed} />
-                                    <p className="tc code orange fw6 f4">Loading...</p>
+                                    <p id="load" className="tc code orange fw6 f4">Loading...</p>
                                 </div>
                         </div>
                     </div>

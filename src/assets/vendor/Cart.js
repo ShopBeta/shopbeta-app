@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Navbar from '../../components/Navbar';
 import CartList from "../../containers/CartList";
 import Preloader from "../../components/Preloader";
+import NetworkError from "../indexes/NetworkError";
 
 const Cart = () => {
 
@@ -13,9 +14,23 @@ const Cart = () => {
             method: "GET",
         })
         .then((res) => res.json())
-        .then((data) => setCart(data))
+        .then((data) => {
+            setCart(data)
+            
+            const load = document.getElementById('load')
+            load.style['display'] = 'none'
+
+            const error = document.getElementById('error')
+            error.style['display'] = 'none'
+        })
         .catch((err) => {
             console.log(err.message)
+
+            const error = document.getElementById('error')
+            error.style['display'] = 'contents'
+
+            const load = document.getElementById('load')
+            load.style['display'] = 'none'
         })
     }, [])
 
@@ -32,7 +47,10 @@ const Cart = () => {
                 <div className="pa2 tc">
                     <CartList cart={cart} />
                 </div>
-                <p className="tc code orange fw6 f4">Loading...</p>
+                <div id="error" style={{display: 'none'}} className="tc">
+                    <NetworkError />
+                </div>
+                <p id="load" className="tc code orange fw6 f4">Loading...</p>
             </div>
         </div>
     </div>

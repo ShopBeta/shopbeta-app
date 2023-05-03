@@ -96,10 +96,10 @@ const Messages = ({ id, roomid, time, message, user}) => {
                             <img src={`https://shopbeta-api.onrender.com/users/${user}/avatar`} alt="avatar" className="br-100 ph2 pa3" width="55px" height="55px" />
                         </Link>
                         <div className="pv2">
-                            <small class="opacity-6 code">
-                                <i class="ph2">{users.username}</i>
+                            <small class="opacity-6 ph2 fw5 code">
+                                <b>{users.username}</b>
                             </small>
-                            <div style={{width: '260px'}} className="tj bg-light-blue pa3 br4">
+                            <div style={{width: '260px'}} className="tj bg-light-gray pa3 br4">
                                 {message}
                             </div>
                             <div className="tr">

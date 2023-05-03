@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import 'tachyons';
 import img2 from '../images/images-1.jpg'
 import { Link } from "react-router-dom";
+import UserError from "../assets/indexes/UserError";
 
 const User = () => { 
     
@@ -18,9 +19,20 @@ const User = () => {
             method: 'GET',
         })
         .then((res) => res.json())
-        .then((data) => setUser(data))
+        .then((data) => {
+            setUser(data)
+            
+            const error = document.getElementById('error')
+            error.style['display'] = 'none'
+        })
         .catch((err) => {
             console.log(err.message)
+
+            const error = document.getElementById('error')
+            error.style['display'] = 'contents'
+
+            const user = document.getElementById('user')
+            user.style['display'] = 'none'
         })
         
     }, [userId])
@@ -153,8 +165,9 @@ const User = () => {
         initiateChat()
     }
     return  (
-        <div className="tc w-100 pa2">
-        <div style={{width: '360px'}} className="dib pa3">
+       <div>
+         <div id="user" className="tc w-100">
+            <div style={{width: '360px'}} className="dib pa3">
               <div className="">
                   <img src={`https://shopbeta-api.onrender.com/users/${userId}/avatar`} alt="avatar" className="br-100 b--white" width="250px" height="250px"></img>
                   <div className="tr">
@@ -223,6 +236,10 @@ const User = () => {
               </span>
           </div>
       </div>
+      <div id="error" style={{display: 'none'}} className="tc">
+            <UserError />
+        </div>
+    </div>
     )
 }
 

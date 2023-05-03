@@ -6,36 +6,46 @@ import Preloader from "../../components/Preloader";
 
 
 const Login = () => {
-    
+
+
 const loginUser = async () => {
 
-            const user = {
-                email: document.querySelector('.email').value,
-                password: document.querySelector('.password').value
-            }
+    const user = {
+        email: document.querySelector('.email').value,
+        password: document.querySelector('.password').value
+    }
 
-            await fetch('https://shopbeta-api.onrender.com/users/login', {
-                method: 'POST',
-                headers: {
-                    'Accept' : 'application/json, text/plain',
-                    'Content-Type' : 'application/json'
-                    },
-                    body: JSON.stringify(user)
-                })
-                .then((res) => res.json())
-                .then((data) => {
-                    window.localStorage.setItem("token", data.token)
-                    window.localStorage.setItem("meId", data.user._id)
-                })
-                .catch((err) => {
-                    console.log(err.message)
-                })
+    await fetch('https://shopbeta-api.onrender.com/users/login', {
+        method: 'POST',
+        headers: {
+            'Accept' : 'application/json, text/plain',
+            'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify(user)
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            window.localStorage.setItem("token", data.token)
+            window.localStorage.setItem("meId", data.user._id)
 
-                const button_login = document.getElementById('login')
-                button_login.style['display'] = 'none'
-    
-                const button_home = document.getElementById('home')
-                button_home.style['display'] = 'contents'
+            const button_login = document.getElementById('login')
+            button_login.style['display'] = 'none'
+        
+            const button_home = document.getElementById('home')
+            button_home.style['display'] = 'contents'
+
+            const check = document.getElementById('check')
+            check.style['display'] = 'none'
+
+            const error = document.getElementById('error')
+            error.style['display'] = 'none'
+        })
+        .catch((err) => {
+            console.log(err.message)
+
+            const error = document.getElementById('error')
+            error.style['display'] = 'contents'
+        })
 }
 
 const handClick = (event) => {
@@ -73,21 +83,27 @@ const handleSubmit = e => {
                                         <small className="icon-lock f4 fw5"></small>
                                         <input type="password" name="password" className="password br3 ba pa3 w-100" placeholder="password..." required autoComplete="current-password" />
                                     </div>
-                                    <div className="tl pv2">
-                                        <input name="check" id="exampleCheck" type="checkbox" className="pr2" /><label for="exampleCheck" className="form-check-label ph2">Keep me logged in</label>
+                                    <div id="error" style={{display: 'none'}} className="orange fw5 pv3 f5 red">
+                                        <small className="icon-info f5 red ph2"></small>
+                                        wrong email or password!
                                     </div>
-                                    <p className="tr"><small className="ph2">Don't have an account?</small>
-                                        <Link className="link" to={"/assets/indexes/Signup"}><small className="hover-blue orange fw4 f5 pointer">Signup</small></Link>
-                                    </p>
+                                    <div id="check">
+                                        <div className="tl pv2">
+                                            <input name="check" id="exampleCheck" type="checkbox" className="pr2" /><label for="exampleCheck" className="form-check-label ph2">Keep me logged in</label>
+                                        </div>
+                                        <p className="tr"><small className="ph2">Don't have an account?</small>
+                                            <Link className="link" to={"/assets/indexes/Signup"}><small className="hover-blue orange fw4 f5 pointer">Signup</small></Link>
+                                        </p>
+                                    </div>
                                     <div>
                                         <div className="pv2">
                                             <div className="pv2">
-                                                <p className="tc"><small className="ph2">Forgot your password?</small>
+                                                <div id="login" className="tc">
+                                                    <small className="ph2">Forgot your password?</small>
                                                     <Link className="link" to={"/assets/indexes/ForgotPassword"}><small className="hover-blue orange f5 fw4 pointer">Recover Password</small></Link>
-                                                </p>
-                                                <p id="login" className="tc">
+                                                
                                                     <button onClick={handClick} type="submit" className="index-button hover-bg-mid-gray pa2 tc br-pill ba pointer ph6 ma1 grow pv3 b fw6">Login</button>
-                                                </p>
+                                                </div>
                                                 <div id="home" style={{display: 'none'}} className="tc">
                                                     <p className="tc green fw6 pv3 f4">
                                                         <small className="ph2 f4 icon-check orange"></small>

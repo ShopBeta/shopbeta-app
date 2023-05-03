@@ -5,6 +5,8 @@ import moment from "moment";
 import '../../components/simple-line-icons/css/simple-line-icons.css';
 import { Link } from "react-router-dom";
 import CommentList from "../../containers/CommentList";
+import NetworkError from "../indexes/NetworkError";
+import UserError from "../indexes/UserError";
 
 
 const VideoPost = ({ text, file }) => {
@@ -24,9 +26,24 @@ const VideoPost = ({ text, file }) => {
             },
         })
         .then((res) => res.json())
-        .then((data) => setVideo(data))
+        .then((data) => {
+            setVideo(data)
+
+            const load = document.getElementById('load')
+            load.style['display'] = 'none'
+
+            const error = document.getElementById('error')
+            error.style['display'] = 'none'
+        })
         .catch((err) => {
             console.log(err.message)
+
+            
+            const error = document.getElementById('error')
+            error.style['display'] = 'contents'
+
+            const load = document.getElementById('load')
+            load.style['display'] = 'none'
         })
     }, [videoId])
 
@@ -89,6 +106,13 @@ const VideoPost = ({ text, file }) => {
         })
         .catch((err) => {
             console.log(err.message)
+
+            const userError = document.getElementById('user-error')
+            userError.style['display'] = 'contents'
+
+            
+            const networkError = document.getElementById('error')
+            networkError.style['display'] = 'none'
         })
     }
 
@@ -142,7 +166,7 @@ const VideoPost = ({ text, file }) => {
     
     return(
             <div className="tc pv3">
-                <div style={{width: '360px'}} className="ma3 dib pa2 bw2">
+                <div style={{width: '360px'}} className="ma2 dib pa2 bw2">
                     <div className="side2">
                         <video style={{Height: 'auto', width: '100%'}} className="br4" controls>
                             <source src={`https://shopbeta-api.onrender.com/video/${videoId}/video`} type="video/mp4"></source>
@@ -190,7 +214,7 @@ const VideoPost = ({ text, file }) => {
                 </div>
             </div>
         </div>
-        <div style={{width: '360px'}} className="dib ma3">
+        <div style={{width: '360px'}} className="dib ma2">
             <div style={{ overflowY: 'auto', height: '760px'}} className="f5 pv3 tj">
                 <div className="tc pv2">
                     <p className="f5 b pv2">Comment here to join the conversation</p>
@@ -198,11 +222,18 @@ const VideoPost = ({ text, file }) => {
                 <div className="tc f5">
                     <div className="pa4 ph5">
                         <p className="icon-bubbles mid-gray tc f1"></p>
-                        <p className="pv2 orange f5">"Type to a send a comment"</p>
+                        <p className="pv2 fw5 f5">Type to send a comment</p>
                     </div>
                 </div>  
             <div>
             <CommentList comment={comment}/>
+            <div id="error" style={{display: 'none'}} className="tc">
+                <NetworkError />
+            </div>
+            <div id="user-error" style={{display: 'none'}} className="tc">
+                <UserError />
+            </div>
+            <p id="load" className="tc code orange fw6 f4">Loading...</p>
             </div>
             </div>
             <div className="tc">

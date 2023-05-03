@@ -6,6 +6,7 @@ import SideBar from '../../components/SideBar';
 import CardList from '../../containers/CardList';
 import SearchBox from "../../components/SearchBox";
 import Preloader from "../../components/Preloader";
+import NetworkError from "../indexes/NetworkError";
 
 
 const SearchPage = () => {
@@ -16,9 +17,23 @@ const SearchPage = () => {
             method: "GET",
         })
         .then((res) => res.json())
-        .then((data) => setProduct(data))
+        .then((data) => {
+            setProduct(data)
+
+            const load = document.getElementById('load')
+            load.style['display'] = 'none'
+
+            const error = document.getElementById('error')
+            error.style['display'] = 'none'
+        })
         .catch((err) => {
             console.log(err.message)
+
+            const error = document.getElementById('error')
+            error.style['display'] = 'contents'
+
+            const load = document.getElementById('load')
+            load.style['display'] = 'none'
         })
     }, [])
 
@@ -44,18 +59,22 @@ const SearchPage = () => {
         return(
             <div className="">
                 <Preloader />
-                    <div className="flex flex-wrap">
-                        <div style={{color: '#ee9617', fontSize: '23px', fontWeight: '550', letterSpacing: '-1px'}} className="pa4 code">ShopBeta</div>
+                    <div className="">
+                        <span style={{fontSize: '25px', fontWeight: '550', letterSpacing: '-1px'}} className="pa3 code">Search <small className="icon-magnifier f4 fw6 ph2"></small></span>
+                        <span>
                             <SearchBox searchChange={onSearchChange} />
-                        </div>
+                        </span>
+                    </div>
                     <div className="">
                         <div className="dtc">
                             <SideBar  />
                         </div>
                         <div className="tc pl4">
-                            <h3 className="orange code fw7 f4 ph3 pb2">Search results</h3>
                             <CardList product={filteredCards} />
-                            <p className="tc code orange fw6 f4">Loading...</p>
+                            <div id="error" style={{display: 'none'}} className="tc">
+                                <NetworkError />
+                            </div>
+                            <p id="load" className="tc code orange fw6 f4">Loading...</p>
                     </div>
                 </div>
             </div>

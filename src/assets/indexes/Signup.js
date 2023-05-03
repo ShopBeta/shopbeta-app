@@ -27,16 +27,26 @@ const newUser = async () => {
     .then((data) => {
         window.localStorage.setItem("token", data.token)
         window.localStorage.setItem("meId", data.user._id)
+
+        const button_sign = document.getElementById('sign')
+        button_sign.style['display'] = 'none'
+    
+        const button_next = document.getElementById('next')
+        button_next.style['display'] = 'contents'
+
+        const check = document.getElementById('check')
+        check.style['display'] = 'none'
+
+        const error = document.getElementById('error')
+        error.style['display'] = 'none'
     })
     .catch((err) => {
         console.log(`Couldn't register new user`)
+
+        const error = document.getElementById('error')
+        error.style['display'] = 'contents'
     })
 
-    const button_sign = document.getElementById('sign')
-    button_sign.style['display'] = 'none'
-
-    const button_next = document.getElementById('next')
-    button_next.style['display'] = 'contents'
 }
 
 const handClick = (event) => {
@@ -44,10 +54,10 @@ const handClick = (event) => {
     event.currentTarget.style.fontWeight = 'bold';
 }
 
-    const handleSubmit = e => {
-        e.preventDefault()
-        newUser()
-    }
+const handleSubmit = e => {
+    e.preventDefault()
+    newUser()
+}
 
         return(
             <div className="">
@@ -78,12 +88,18 @@ const handClick = (event) => {
                                         <small className="icon-lock f4 fw5"></small>
                                         <input type="password" name="password" className="password br3 ba pa3 w-100" placeholder="password..." required autoComplete="current-password" />
                                     </div>
-                                    <div className="tl pv2">
-                                        <input name="check" id="exampleCheck" type="checkbox" className="pr2" required /><label for="exampleCheck" className="form-check-label ph2">Accept our <a href="https://shopbetaonline.onrender.com/terms of use.html">Terms and Conditions</a>.</label>
+                                    <div id="error" style={{display: 'none'}} className="orange fw5 pv3 f5 red">
+                                        <small className="icon-info red f5 ph2"></small>
+                                        Couldn't register new user, try again later!
                                     </div>
-                                    <p className="tr"><small className="ph2">Already have an account?</small>
-                                        <Link className="link" to={"/assets/indexes/Login"}><small className="hover-blue orange f5 fw4 pointer">Login</small></Link>
-                                    </p>
+                                    <div id="check">
+                                        <div className="tl pv2">
+                                            <input name="check" id="exampleCheck" type="checkbox" className="pr2" required /><label for="exampleCheck" className="form-check-label ph2">Accept our <a href="https://shopbetaonline.onrender.com/terms of use.html">Terms and Conditions</a>.</label>
+                                        </div>
+                                        <p className="tr"><small className="ph2">Already have an account?</small>
+                                            <Link className="link" to={"/assets/indexes/Login"}><small className="hover-blue orange f5 fw4 pointer">Login</small></Link>
+                                        </p>
+                                    </div>
                                     <div>
                                         <div className="pv2">
                                             <div className="pv2">

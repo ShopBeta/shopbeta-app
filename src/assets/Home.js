@@ -20,7 +20,12 @@ const Home = () => {
             },
         })
         .then((res) => res.json())
-        .then((data) => setUsers(data))
+        .then((data) => {
+            setUsers(data)
+            
+            const load = document.getElementById('load')
+            load.style['display'] = 'none'
+        })
         .catch((err) => {
             console.log(err.message)
         })
@@ -44,7 +49,7 @@ const Home = () => {
                                         <FollowCardList users={users} />
                                     </div>
                                 <div>
-                                <p className="tc code orange ph2 fw6 f4">Loading...</p>
+                                <p id="load" className="tc code orange ph2 fw6 f4">Loading...</p>
                             </div>
                         </div>
                     </div>

@@ -19,8 +19,11 @@ import Login from "./assets/indexes/Login"
 import Signup from "./assets/indexes/Signup"
 import NewAccount from "./assets/indexes/NewAccount"
 import ForgotPassword from "./assets/indexes/ForgotPassword"
+import NewPassword from "./assets/indexes/NewPassword"
 import NotFound from "./assets/indexes/404"
 import ServerError from "./assets/indexes/500";
+import NetworkError from "./assets/indexes/NetworkError";
+import UserError from "./assets/indexes/UserError";
 
 const App = () => {
     return (
@@ -42,12 +45,15 @@ const App = () => {
                 <Route exact path="/assets/vendor/VideoPost" element={<VideoPost />} />
                 <Route exact path="/assets/vendor/Settings" element={<Settings />} />
                 <Route exact path="/assets/indexes/ForgotPassword" element={<ForgotPassword />} />
+                <Route exact path="/assets/indexes/NewPassword" element={<NewPassword />} />
                 <Route exact path="/assets/indexes/NewAccount" element={<NewAccount />} />
                 <Route exact path="/assets/indexes/Signup" element={<Signup />} />
                 <Route exact path="/assets/indexes/Login" element={<Login />} />
                 <Route exact path="/assets/indexes/Avatar" element={<Avatar />} />
                 <Route exact path="/assets/indexes/404" element={<NotFound />} />
                 <Route exact path="/assets/indexes/500" element={<ServerError />} />
+                <Route exact path="/assets/indexes/NetworkError" element={<NetworkError />} />
+                <Route exact path="/assets/indexes/UserError" element={<UserError />} />
              </Routes>
             </Router>
         </div>
