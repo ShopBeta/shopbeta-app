@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import '../assets/Home.css';
 import { sidebarData } from "../containers/SidebarData";
-import AdDialog from "../containers/AdDialog";
+import AdModal from "../containers/AdModal";
 
 const SideBar = () => {
 
@@ -18,7 +18,7 @@ const SideBar = () => {
 
     return (
         <div className="sidebar w-10 fw7 orange dtc tc f2 pt7">
-               <AdDialog handleShow={open} handleShut={handleShut} />
+               <AdModal handleShow={open} handleShut={handleShut} />
             <div className="sidebarList">
                 { 
                     sidebarData.map((val, key) => {

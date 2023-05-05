@@ -29,21 +29,14 @@ const VideoPost = ({ text, file }) => {
         .then((data) => {
             setVideo(data)
 
-            const load = document.getElementById('load')
-            load.style['display'] = 'none'
-
             const error = document.getElementById('error')
             error.style['display'] = 'none'
         })
         .catch((err) => {
             console.log(err.message)
-
             
             const error = document.getElementById('error')
             error.style['display'] = 'contents'
-
-            const load = document.getElementById('load')
-            load.style['display'] = 'none'
         })
     }, [videoId])
 
@@ -76,9 +69,17 @@ const VideoPost = ({ text, file }) => {
                 },
             })
             .then((res) => res.json())
-            .then((data) => setComment(data))
+            .then((data) => {
+                setComment(data)
+
+                const load = document.getElementById('load')
+                load.style['display'] = 'none'
+            })
             .catch((err) => {
                 console.log(err.message)
+
+                const load = document.getElementById('load')
+                load.innerHTML = 'Failed to load comments!'
             })
         }, 2000); // every 5 minutes (100000)
     }, [videoId])
@@ -110,9 +111,11 @@ const VideoPost = ({ text, file }) => {
             const userError = document.getElementById('user-error')
             userError.style['display'] = 'contents'
 
-            
             const networkError = document.getElementById('error')
             networkError.style['display'] = 'none'
+
+            const comment = document.getElementById('comment')
+            comment.style['display'] = 'none'
         })
     }
 
@@ -165,8 +168,8 @@ const VideoPost = ({ text, file }) => {
     }
     
     return(
-            <div className="tc pv3">
-                <div style={{width: '360px'}} className="ma2 dib pa2 bw2">
+            <div className="tc w-100 pv3">
+                <div style={{width: '360px'}} className="dib pa2 bw2">
                     <div className="side2">
                         <video style={{Height: 'auto', width: '100%'}} className="br4" controls>
                             <source src={`https://shopbeta-api.onrender.com/video/${videoId}/video`} type="video/mp4"></source>
@@ -214,8 +217,8 @@ const VideoPost = ({ text, file }) => {
                 </div>
             </div>
         </div>
-        <div style={{width: '360px'}} className="dib ma2">
-            <div style={{ overflowY: 'auto', height: '760px'}} className="f5 pv3 tj">
+        <div style={{width: '360px'}} className="dib">
+            <div style={{ overflowY: 'auto', height: '550px'}} className="f5 pv3 tj">
                 <div className="tc pv2">
                     <p className="f5 b pv2">Comment here to join the conversation</p>
                 </div>
@@ -226,14 +229,16 @@ const VideoPost = ({ text, file }) => {
                     </div>
                 </div>  
             <div>
-            <CommentList comment={comment}/>
+            <div id="comment">
+                <CommentList comment={comment}/>
+            </div>
             <div id="error" style={{display: 'none'}} className="tc">
                 <NetworkError />
             </div>
             <div id="user-error" style={{display: 'none'}} className="tc">
                 <UserError />
             </div>
-            <p id="load" className="tc code orange fw6 f4">Loading...</p>
+            <p id="load" className="tc code orange fw6 f4">Loading comments...</p>
             </div>
             </div>
             <div className="tc">

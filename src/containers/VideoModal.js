@@ -1,14 +1,14 @@
 import React from "react";
 import { Dialog } from "@material-ui/core";
-import Comments from "../components/Comments";
+import PostVideo from "./PostVideo";
 
-const CommentModal = ({ handleShow, handleShut}) => {
+const VideoModal = ({ handleShow, handleShut}) => {
     return(
         //Props recieved from app.js
         <Dialog open={handleShow} onClose={handleShut}>
-            <Comments handleShut={handleShut} />
+            <PostVideo handleShut={handleShut} />
         </Dialog>
     )
 }
 
-export default CommentModal;
+export default VideoModal;

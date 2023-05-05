@@ -155,7 +155,7 @@ const Messages = () => {
                     </div>
                     <div style={{overflowY: 'auto', height: '451px', width: '370px'}} className="dib messages tc">
                         <div className="br3 pa2 b--black">
-                            <div  className="br3 pa2 w-100">
+                            <div className="br3 w-100">
                                 <div className="pb2">
                                     <div className="pa3 f6 orange br4">
                                         Welcome to ShopBeta! <br/>Send a message to start a conversation. We strongly encourage constructive conversations to improve your social shopping experience.

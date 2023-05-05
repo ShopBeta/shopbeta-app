@@ -1,8 +1,8 @@
 import React from "react";
 import { Dialog } from "@material-ui/core";
-import PostAd from "../containers/PostAd";
+import PostAd from "./PostAd";
 
-const AdDialog = ({ handleShow, handleShut}) => {
+const AdModal = ({ handleShow, handleShut}) => {
     return(
         //Props recieved from app.js
         <Dialog className="w-100" open={handleShow} onClose={handleShut}>
@@ -11,4 +11,4 @@ const AdDialog = ({ handleShow, handleShut}) => {
     )
 }
 
-export default AdDialog;
+export default AdModal;

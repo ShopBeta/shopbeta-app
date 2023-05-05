@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import '../assets/Home.css';
 import { sidebarData } from "../containers/SidebarData";
-import ModalDialog2 from "../containers/ModalDialog2";
+import ProductModal from "../containers/ProductModal";
 
 const SideBar = () => {
 
@@ -18,7 +18,7 @@ const SideBar = () => {
 
     return (
         <div className="sidebar w-10 fw7 orange dtc tc f2 pt7">
-               <ModalDialog2 handleShow={open} handleShut={handleShut} />
+               <ProductModal handleShow={open} handleShut={handleShut} />
             <ul className="sidebarList">
                 { 
                     sidebarData.map((val, key) => {

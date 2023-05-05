@@ -28,9 +28,6 @@ const FeedPost = ({ text, file }) => {
         .then((res) => res.json())
         .then((data) => {
             setFeed(data)
-        
-            const load = document.getElementById('load')
-            load.style['display'] = 'none'
 
             const error = document.getElementById('error')
             error.style['display'] = 'none'
@@ -40,9 +37,6 @@ const FeedPost = ({ text, file }) => {
 
             const error = document.getElementById('error')
             error.style['display'] = 'contents'
-
-            const load = document.getElementById('load')
-            load.style['display'] = 'none'
         })
     }, [feedId])
 
@@ -75,9 +69,17 @@ const FeedPost = ({ text, file }) => {
                 },
             })
             .then((res) => res.json())
-            .then((data) => setComment(data))
+            .then((data) => {
+                setComment(data)
+                
+                const load = document.getElementById('load')
+                load.style['display'] = 'none'
+            })
             .catch((err) => {
                 console.log(err.message)
+
+                const load = document.getElementById('load')
+                load.innerHTML = 'Failed to load comments!'
             })
         }, 2000); // every 5 minutes (100000)
     }, [feedId])
@@ -109,9 +111,11 @@ const FeedPost = ({ text, file }) => {
             const userError = document.getElementById('user-error')
             userError.style['display'] = 'contents'
 
-            
             const networkError = document.getElementById('error')
             networkError.style['display'] = 'none'
+
+            const comment = document.getElementById('comment')
+            comment.style['display'] = 'none'
         })
     }
 
@@ -164,8 +168,8 @@ const FeedPost = ({ text, file }) => {
     }
     
     return(
-        <div className="tc pv3">
-            <div style={{width: '360px'}} className="ma2 dib pa2 bw2">
+        <div className="tc w-100 pv3">
+            <div style={{width: '360px'}} className="dib pa2 bw2">
                 <div className="tj flex f4 flex-wrap">
                     <span>
                         <Link onClick={() => {window.localStorage.setItem("userId", feed.owner)}} className="link black" to={"/assets/vendor/User"}>
@@ -205,8 +209,8 @@ const FeedPost = ({ text, file }) => {
                     </div>
                 </div>
             </div>
-            <div style={{width: '360px'}} className="dib ma2">
-                <div style={{ overflowY: 'auto', height: '650px'}} className="f5 pv3 tj">
+            <div style={{width: '360px'}} className="dib">
+                <div style={{ overflowY: 'auto', height: '550px'}} className="f5 pv3 tj">
                     <div className="tc pv2">
                         <p className="f5 b pv2">Comment here to join the conversation</p>
                     </div>
@@ -217,14 +221,16 @@ const FeedPost = ({ text, file }) => {
                         </div>
                     </div>  
                 <div>
-                <CommentList comment={comment}/>
+                <div id="comment">
+                    <CommentList comment={comment}/>
+                </div>
                 <div id="error" style={{display: 'none'}} className="tc">
                     <NetworkError />
                 </div>
                 <div id="user-error" style={{display: 'none'}} className="tc">
                     <UserError />
                 </div>
-                <p id="load" className="tc code orange fw6 f4">Loading...</p>
+                <p id="load" className="tc code orange fw6 f4">Loading comments...</p>
             </div>
             </div>
             <div className="tc">

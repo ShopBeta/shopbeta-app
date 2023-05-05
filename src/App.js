@@ -13,6 +13,8 @@ import Messages from "./assets/Messages";
 import Chats from "./assets/Chats";
 import FeedPost from "./assets/vendor/FeedPost"
 import VideoPost from "./assets/vendor/VideoPost"
+import Details from "./components/Details";
+import Purchase from "./components/Purchase";
 import VideoSpace from "./assets/VideoSpace";
 import Avatar from "./assets/indexes/Avatar";
 import Login from "./assets/indexes/Login"
@@ -43,6 +45,8 @@ const App = () => {
                 <Route exact path="/assets/vendor/Cart" element={<Cart />} />
                 <Route exact path="/assets/vendor/FeedPost" element={<FeedPost />} />
                 <Route exact path="/assets/vendor/VideoPost" element={<VideoPost />} />
+                <Route exact path="/components/Details" element={<Details />} />
+                <Route exact path="/components/Purchase" element={<Purchase />} />
                 <Route exact path="/assets/vendor/Settings" element={<Settings />} />
                 <Route exact path="/assets/indexes/ForgotPassword" element={<ForgotPassword />} />
                 <Route exact path="/assets/indexes/NewPassword" element={<NewPassword />} />

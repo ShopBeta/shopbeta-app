@@ -111,7 +111,7 @@ const handleSubmit = e => {
                                     </div>
                                     <div id="error" style={{display: 'none'}} className="orange fw5 pv3 f5 red">
                                         <small className="icon-info red f5 ph2"></small>
-                                        Couldn't register new user, try again later!
+                                        Something went wrong, we couldn't upload your info!
                                     </div>
                                     <div id="check" className="tl pv2">
                                         <input name="check" id="exampleCheck" type="checkbox" className="pr2" required /><label for="exampleCheck" className="form-check-label ph2">Accept our <a href="https://shopbetaonline.onrender.com/terms of use.html">Terms and Conditions</a>.</label>

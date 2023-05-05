@@ -50,7 +50,7 @@ const Cart = () => {
                 <div id="error" style={{display: 'none'}} className="tc">
                     <NetworkError />
                 </div>
-                <p id="load" className="tc code orange fw6 f4">Loading...</p>
+                <p id="load" className="tc code orange fw6 f4">Loading cart...</p>
             </div>
         </div>
     </div>

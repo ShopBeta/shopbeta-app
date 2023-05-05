@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import 'tachyons';
 import moment from "moment";
 import './simple-line-icons/css/simple-line-icons.css';
-import CommentModal from "../containers/CommentModal";
 import { Link } from "react-router-dom";
 
 
@@ -89,30 +88,17 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
                 console.log(err.message)
             })
     }
-
-    const [show, setShow] = useState(false)
-
-    //functon to handle payment modal close
-    const handleShut= () => {
-        setShow(false)
-    }
-
-     //functon to handle payment modal open
-    const handleShow = () => {
-        setShow(true)
-    } 
     
     return(
-        <div style={{width: '360px'}} className="dib">
-            <CommentModal handleShow={show} handleShut={handleShut} />
+        <div style={{width: '360px'}} className="dib pa3">
             <div className="bg-white b--black br3 ma2 pa2 bw2 shadow-5">
                 <div className="tj flex f4 flex-wrap">
-                    <span onClick={() => {window.history.pushState(null, "", id)}}>
+                    <span>
                         <Link onClick={() => {window.localStorage.setItem("userId", owner)}} className="link black" to={"/assets/vendor/User"}>
                             <img src={`https://shopbeta-api.onrender.com/users/${owner}/avatar`} alt="avatar" className="br-100" width="55px" height="55px" />
                         </Link>
                     </span>
-                    <span onClick={() => {window.history.pushState(null, "", id)}} className="pa2 f5 pointer fw5">
+                    <span className="pa2 f5 pointer fw5">
                         <Link onClick={() => {window.localStorage.setItem("userId", owner)}} className="link black" to={"/assets/vendor/User"}>
                             <span>{user.username}</span>
                         </Link>
@@ -143,12 +129,16 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
                         <span onClick={heartClick} className="pa2 fw5 ph2 icon-heart pointer f4 grow">
                             <small id="increment" className="pa1 code">{hearts}</small>
                         </span>
-                        <span onClick={() => {window.history.pushState(null, "", id)}} className="pa2 pointer f4 fw5 grow icon-bubble">
-                            <small onClick={handleShow} className="pa1 code">{comment.length}</small>
-                        </span>
-                        <span onClick={() => {window.history.pushState(null, "", id)}}>
-                            <input onClick={handleShow} type="text" className="pa3 br-pill b--black-50 ba w-70" placeholder="Comment here..." />
-                        </span>
+                        <Link onClick={() => {window.localStorage.setItem("feedId", id)}} className="link black" to={"/assets/vendor/FeedPost"}>
+                            <span className="pa2 pointer f4 fw5 grow icon-bubble">
+                                <small className="pa1 code">{comment.length}</small>
+                            </span>
+                        </Link>
+                        <Link onClick={() => {window.localStorage.setItem("feedId", id)}} className="link black" to={"/assets/vendor/FeedPost"}>
+                            <span>
+                                <input type="text" className="pa3 br-pill b--black-50 ba w-70" placeholder="Comment here..." />
+                            </span>
+                        </Link>
                     </div>
                 </div>
                 </div>
@@ -266,7 +256,7 @@ const VideoPost = ({ id, owner, media, text, hearts, views, time}) => {
 }
     
     return(
-            <div style={{Height: '580px', width: '360px'}} className="dib">
+            <div style={{Height: '580px', width: '360px'}} className="dib pa3">
                     <div className="bg-white b--black br3 ma2 pa2 bw2 shadow-5">
                         <div className="side2">
                             <video onClick={viewClick} style={{Height: 'auto', width: '100%'}} className="br4" controls>

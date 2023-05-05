@@ -49,16 +49,16 @@ const AdbillBoard = () => {
                                 AdbillBoard
                                 <Link to={"../assets/VideoSpace"} title="video space" className="black ph6 hover-orange f3 fw5 icon-social-youtube"></Link>
                             </h3>
-                                <div className="dib tc">
-                                    <div className="dtc">
-                                            <SideBar />
-                                        </div>
-                                    <div id="error" style={{display: 'none'}} className="tc">
-                                        <NetworkError />
-                                    </div>
-                                    <TextPostList feed={feed} />
-                                    <p id="load" className="tc code orange fw6 f4">Loading...</p>
+                            <div className="dib w-100 tc">
+                                <div className="dtc">
+                                    <SideBar />
                                 </div>
+                                <div id="error" style={{display: 'none'}} className="tc">
+                                    <NetworkError />
+                                </div>
+                                <TextPostList feed={feed} />
+                                <p id="load" className="tc code orange fw6 f4">Loading feeds...</p>
+                            </div>
                         </div>
                     </div>
                 </div>

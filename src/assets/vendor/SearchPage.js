@@ -59,8 +59,8 @@ const SearchPage = () => {
         return(
             <div className="">
                 <Preloader />
-                    <div className="">
-                        <span style={{fontSize: '25px', fontWeight: '550', letterSpacing: '-1px'}} className="pa3 code">Search <small className="icon-magnifier f4 fw6 ph2"></small></span>
+                    <div className="pa3">
+                        <span style={{fontSize: '25px', fontWeight: '550', letterSpacing: '-1px'}} className="code">Search <small className="icon-magnifier f4 fw6 ph2"></small></span>
                         <span>
                             <SearchBox searchChange={onSearchChange} />
                         </span>

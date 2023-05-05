@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import 'tachyons';
 import img2 from '../images/images-1.jpg'
 import { Link } from "react-router-dom";
-import UserError from "../assets/indexes/UserError";
+import NetworkError from "../assets/indexes/NetworkError";
 
 const User = () => { 
     
@@ -237,7 +237,7 @@ const User = () => {
           </div>
       </div>
       <div id="error" style={{display: 'none'}} className="tc">
-            <UserError />
+            <NetworkError />
         </div>
     </div>
     )

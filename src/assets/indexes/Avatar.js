@@ -3,7 +3,7 @@ import 'tachyons'
 import '../Home.css'
 import img from '../../images/shopbeta logo.png'
 import img1 from '../../images/avatar6.png'
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Preloader from "../../components/Preloader";
 
 
@@ -29,7 +29,7 @@ const Avatar = () => {
                                 <small className="green f5">Take a few seconds to upload a profile photo or avatar.</small>
                             </p>
                             <div className="">
-                            <div className='tc code' style={{fontSize: '27px', fontWeight: '500'}}><img src={img1} alt="logo" className="tc br-pill" width="200px" height="200px" /></div>
+                            <div className='tc code' style={{fontSize: '27px', fontWeight: '500'}}><img src={img1} alt="avatar" className="tc br-pill" width="200px" height="200px" /></div>
                                 <form action={`https://shopbeta-api.onrender.com/users/${me}/avatar`} method="post" encType="multipart/form-data">
                                     <div className="pv2 tc">
                                         <div className="pv3 pa2 tc">

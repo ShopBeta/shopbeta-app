@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import 'tachyons';
-import img1 from '../images/avatar6.png'
+// import img1 from '../images/avatar6.png'
 import img2 from '../images/images-1.jpg'
 import { Link } from "react-router-dom";
 import UserError from "../assets/indexes/UserError";
@@ -87,7 +87,7 @@ const User = () => {
 
     return (
         <div>
-            <div id="user" className="tc w-100 pa2">
+            <div id="user" className="tc w-100">
                 <div style={{width: '360px'}} className="pa3 dib">
                         <div className="">
                             <img src={`https://shopbeta-api.onrender.com/users/${me}/avatar`} alt="avatar" className="br-100 b--white" width="250px" height="250px"></img>

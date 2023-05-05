@@ -1,19 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Typography } from "@material-ui/core";
-import PurchaseModal from "../containers/PurchaseModal2";
 
 const CartItem = ({ id, productId }) => {
 
-    const [open, setOpen] = useState(false)
-
-    const handleShut= () => {
-        setOpen(false)
-    }
-
-    const handleShow = () => {
-        setOpen(true)
-    }
     const token = localStorage.getItem("token")
 
     const [product, setProduct] = useState([])
@@ -64,7 +55,6 @@ const CartItem = ({ id, productId }) => {
 
     return(
         <div style={{width: '360px'}} className="pv2 dib">
-            <PurchaseModal handleShow={open} handleShut={handleShut} />
             <div className="tr pb2">
                     <small onClick={deleteClick} title="delete" className="icon-close pointer f3 hover-red"></small>
                 </div>
@@ -93,9 +83,11 @@ const CartItem = ({ id, productId }) => {
                                     <span className="pl2 fw6 code f5">{product.rating}</span>
                                 </div>
                                 <div className="tc">
-                                    <span onClick={() => {window.history.pushState(null, "", productId)}} className="monospace ph3">
-                                        <button onClick={handleShow} className="pa3 white br-pill ba ph6 grow bg-orange hover-bg-mid-gray fw6">Purchase</button>
+                                <Link onClick={() => {window.localStorage.setItem("productId", productId)}} className="link black" to={"/components/Purchase"}>
+                                    <span className="monospace ph3">
+                                        <button className="pa3 white br-pill ba ph6 grow bg-orange hover-bg-mid-gray fw6">Purchase</button>
                                     </span>
+                                </Link>
                                 </div>
                              </div>
                         </div>

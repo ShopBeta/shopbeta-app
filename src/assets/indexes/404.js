@@ -22,7 +22,7 @@ const NotFound = () => {
                                 <small className="f5">The page you are looking for does not exist or has been removed.</small>
                             </p>
                             <div className="">
-                                <div className='tc code' style={{fontSize: '27px', fontWeight: '500'}}><img src={img1} alt="logo" className="tc" width="200px" height="200px" /></div>
+                                <div className='tc code' style={{fontSize: '27px', fontWeight: '500'}}><img src={img1} alt="404 error" className="tc" width="200px" height="200px" /></div>
                                 <div className="pv2 tc">
                                 <span> 
                                     <Link to={"/assets/Home"}>

@@ -1,5 +1,6 @@
 import React from "react";
 import '../Home.css'
+import { useState } from "react";
 import img from '../../images/shopbeta logo.png'
 import { Link } from "react-router-dom";
 import Preloader from "../../components/Preloader";
@@ -7,6 +8,7 @@ import Preloader from "../../components/Preloader";
 
 const Signup = () => {
 
+const [errMessage, setErrMessage] = useState(null)
 const newUser = async () => {
 
     const user = {
@@ -42,6 +44,7 @@ const newUser = async () => {
     })
     .catch((err) => {
         console.log(`Couldn't register new user`)
+        setErrMessage(err.message)
 
         const error = document.getElementById('error')
         error.style['display'] = 'contents'
@@ -89,6 +92,7 @@ const handleSubmit = e => {
                                         <input type="password" name="password" className="password br3 ba pa3 w-100" placeholder="password..." required autoComplete="current-password" />
                                     </div>
                                     <div id="error" style={{display: 'none'}} className="orange fw5 pv3 f5 red">
+                                        {errMessage}<br/>
                                         <small className="icon-info red f5 ph2"></small>
                                         Couldn't register new user, try again later!
                                     </div>

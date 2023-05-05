@@ -7,7 +7,7 @@ import Preloader from "../../components/Preloader";
 
 const ForgotPassword = ({email, password}) => {
 
-const token = localStorage.getItem("token")
+// const token = localStorage.getItem("token")
 
 const display = () => {
     const my_div = document.getElementById('hide')

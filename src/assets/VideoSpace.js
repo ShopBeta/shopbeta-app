@@ -54,7 +54,7 @@ const VideoSpace = () => {
                                         <NetworkError />
                                     </div>
                                     <VideoPostList video={video} />
-                                    <p id="load" className="tc code orange fw6 f4">Loading...</p>
+                                    <p id="load" className="tc code orange fw6 f4">Loading videos...</p>
                                 </div>
                         </div>
             </div>

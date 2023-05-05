@@ -22,7 +22,7 @@ const ServerError = () => {
                                 <small className="f5">Something went wrong with our server, please try again later.</small>
                             </p>
                             <div className="">
-                                <div className='tc code' style={{fontSize: '27px', fontWeight: '500'}}><img src={img1} alt="logo" className="tc" width="200px" height="200px" /></div>
+                                <div className='tc code' style={{fontSize: '27px', fontWeight: '500'}}><img src={img1} alt="500 error" className="tc" width="200px" height="200px" /></div>
                                 <div className="pv2 tc">
                                 <span> 
                                     <Link to={"/assets/Home"}>

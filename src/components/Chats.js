@@ -99,7 +99,7 @@ const Messages = ({ id, roomid, time, message, user}) => {
                             <small class="opacity-6 ph2 fw5 code">
                                 <b>{users.username}</b>
                             </small>
-                            <div style={{width: '260px'}} className="tj bg-light-gray pa3 br4">
+                            <div style={{width: '280px'}} className="tj bg-light-gray pa3 br4">
                                 {message}
                             </div>
                             <div className="tr">

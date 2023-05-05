@@ -45,14 +45,14 @@ const Products = () => {
                     <SideBar />
                 </div>
             <div className="pv6 tc">
-                <h3 className="fw6 code fw5 f3 ph3 pb2">Products</h3>
+                <h3 className="fw6 code fw5 f3 ph3 pb2">MarketPlace</h3>
                         <div className="tc pl4">
                             <CardList product={product} />
                         </div>
                         <div id="error" style={{display: 'none'}} className="tc">
                             <NetworkError />
                         </div>
-                        <p id="load" className="tc code orange fw6 f4">Loading...</p>
+                        <p id="load" className="tc code orange fw6 f4">Loading products...</p>
                 </div>
             </div>
         </div>

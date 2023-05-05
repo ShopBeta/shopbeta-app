@@ -1,14 +1,14 @@
 import React from "react";
 import { Dialog } from "@material-ui/core";
-import PostVideo from "../containers/PostVideo";
+import PostProduct from "../components/PostProduct";
 
-const VideoDialog = ({ handleShow, handleShut}) => {
+const ProductModal = ({ handleShow, handleShut}) => {
     return(
         //Props recieved from app.js
         <Dialog open={handleShow} onClose={handleShut}>
-            <PostVideo handleShut={handleShut} />
+            <PostProduct handleShut={handleShut} />
         </Dialog>
     )
 }
 
-export default VideoDialog;
+export default ProductModal;

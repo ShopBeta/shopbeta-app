@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import '../assets/Home.css';
 import { sidebarData } from "../containers/SidebarData";
-import VideoDialog from "../containers/VideoDialog";
+import VideoModal from "../containers/VideoModal";
 
 const SideBar = () => {
 
@@ -18,7 +18,7 @@ const SideBar = () => {
 
     return (
         <div className="sidebar w-10 fw7 orange dtc tc f2 pt7">
-               <VideoDialog handleShow={open} handleShut={handleShut} />
+               <VideoModal handleShow={open} handleShut={handleShut} />
             <div className="sidebarList">
                 { 
                     sidebarData.map((val, key) => {

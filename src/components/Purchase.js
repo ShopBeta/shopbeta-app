@@ -1,33 +1,29 @@
-import { makeStyles } from "@material-ui/core";
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import 'tachyons';
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        padding: theme.spacing(2)
-    }
-}))
+const Purchase = () => {
 
-
-const Purchase = ({ handleShut, id }) => {
-
+    const token = localStorage.getItem("token")
+    const productId = localStorage.getItem("productId")
+   
     const [product, setProduct] = useState({})
-    const pathname = window.location.pathname.split('/')
-    const path = pathname[3]
-
     useEffect(() => {
-        fetch(`https://shopbeta-api.onrender.com/products/${path}`)
-        .then(res => res.json())
-        .then(data => setProduct(data))
+        fetch(`https://shopbeta-api.onrender.com/products/${productId}`, {
+            method: "GET",
+            headers: {
+                'Authorization' : 'Bearer ' + token,
+                'Accept' : 'application/json, text/plain',
+                'Content-Type' : 'application/json'
+            },
+        })
+        .then((res) => res.json())
+        .then((data) => setProduct(data))
         .catch((err) => {
             console.log(err.message)
         })
-    }, [path])
+    }, [productId, token])
 
     const [user, setUser] = useState({})
     useEffect(() => {
@@ -45,53 +41,46 @@ const Purchase = ({ handleShut, id }) => {
         })
     }, [product.owner])
 
-
-    const classes = useStyles()
-    const handleSubmit1 = e => {
-        e.preventDefault()
-        handleShut()
-    }
     return(
-            <div className={classes.root} onSubmit={handleSubmit1}>
+            <div className="tc w-100">
+                <div style={{width: '360px'}} className="dib pa3">
                 <div className="tr pb2">
-                    <small onClick={handleShut} className="icon-close pointer f3 hover-red"></small>
                     <div className="tl f4">
                         <p>
                             <b>{product.name}</b>
                         </p>
                     </div>
                 </div>
-                <div style={{ overflowY: 'scroll', height: '340px'}} className=" pv3 tj">
+                <div className=" pv3 tj">
                     <div>
                         <div className="tl pv2">
-                            <p className="b f5 pv2">Check to see if Product is available</p>
-                            <p className="fw5 f5"></p>
+                            <p className="b f5">Check to see if Product is available</p>
                         </div>
-                            <div className="pv2 pa2">
-                                <div className="br4 b--yellow ba pv2 pa2 mars white">
-                                    <p>
-                                        <p className="tr f4"><small className="icon-check b grow hover-red"></small></p>
+                        <div className="pv2 pa2">
+                            <div className="br4 b--yellow ba pv2 pa2 mars white">
+                                <p>
+                                    <p className="tr f4"><small className="icon-check b grow hover-red"></small></p>
                                         <small className="icon-bubbles pr2 f4"></small>
                                         Message Seller
                                     <p className="tr fw6"><small>Media: Chat interface</small></p>
-                                    </p>
-                                </div>
+                                </p>
                             </div>
-                            <div className="pv2 pa2">
-                                <div className="pv2 br4 pa2 mercury white">
-                                    <p>
-                                        <p className="tr f4"><small className="icon-check b grow hover-red"></small></p>
-                                        <small className="icon-phone pr2 f4"></small>
-                                        {user.phonenumber}
+                        </div>
+                        <div className="pv2 pa2">
+                            <div className="pv2 br4 pa2 mercury white">
+                                <p>
+                                    <p className="tr f4"><small className="icon-check b grow hover-red"></small></p>
+                                    <small className="icon-phone pr2 f4"></small>
+                                    {user.phonenumber}
                                     <p className="tr fw6"><small>Phone number</small></p>
-                                    </p>
-                                </div>
+                                </p>
                             </div>
-                            <div className="pv2">
+                        </div>
+                        <div className="pv2">
                             <div className="pa2 f6">
                                 <h3 className="pv1">
-                                <small className="icon-info pr2 f5 blue"></small>
-                                   Disclaimer
+                                    <small className="icon-info pr2 f5 blue"></small>
+                                    Disclaimer
                                 </h3>
                                 <div className="lh3 f5 fw6 pa2">
                                     <p style={{lineHeight: "20px", fontSize: "13.5px"}} className="fw6">
@@ -104,9 +93,9 @@ const Purchase = ({ handleShut, id }) => {
                         </div>
                     </div>
                 </div>
-                <div className="f4 pv2">
+                <div className="f4 tl pv2">
                     <span className="bg-light-blue ph3 f3 code pa2 br-pill">{product.currency}{product.price}</span> 
-                        <span className="pa2 code line-through">{product.currency}{product.oldprice}</span>
+                    <span className="pa2 code line-through">{product.currency}{product.oldprice}</span>
                 </div>
                 <div className="pv2 tr">
                     <span className="icon-star"></span>
@@ -124,6 +113,7 @@ const Purchase = ({ handleShut, id }) => {
                     </Link>
                 </div>
             </div>
+        </div>
     )
 }
 

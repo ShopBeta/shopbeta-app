@@ -68,6 +68,12 @@ const changes = async () => {
         
         const error = document.getElementById('error')
         error.style['display'] = 'none'
+
+        const button_update = document.getElementById('update')
+        button_update.style['display'] = 'none'
+
+        const button_next = document.getElementById('next')
+        button_next.style['display'] = 'contents'
     })
     .catch((err) => {
         console.log(err.message)
@@ -94,7 +100,7 @@ const handleSubmit = e => {
                 <Navbar />
                     <div className="dib">
                       <div className="flex flex-wrap pv6">
-                        <div style={{width: '360px'}} className="pv2 dib ma2">
+                        <div style={{width: '360px'}} className="pv2 dib pa3">
                                 <form onSubmit={handleSubmit}>
                                     <div className="tl pv2">
                                         <p className="pv1 f5 fw5">Change Username</p>
@@ -137,12 +143,19 @@ const handleSubmit = e => {
                                         <small className="icon-info f5 red ph2"></small>
                                         Something went wrong, Couldn't update new info!
                                     </div>
-                                    <p className="tr">
+                                    <p id="update" className="tr">
                                         <button onClick={handClick} type="submit" className="index-button pointer hover-bg-mid-gray pa2 tc br-pill ba ph4 ma1 grow pv3 b fw6">Save settings</button>
                                     </p>
+                                    <div id="next" style={{display: 'none'}} className="tc">
+                                        <p className="tc green fw6 pv3 f4">
+                                            <small className="ph2 f4 icon-check orange"></small>
+                                            Data
+                                            <small className="fw6 orange f4 fw4 pointer"> Saved!</small>
+                                        </p>
+                                    </div>
                                 </form>
                         </div>
-                        <div style={{width: '360px'}} className="pv2 dib ma2">
+                        <div style={{width: '360px'}} className="pv2 dib">
                             <div className="pv2">
                                 <div className="pv1">
                                     <p className="f4 fw6 orange tl pl3">Change Password</p>
