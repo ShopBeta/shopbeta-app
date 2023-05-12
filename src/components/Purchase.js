@@ -62,7 +62,7 @@ const Purchase = () => {
                                 <small className="icon-bubbles f4 pr2"></small>Message Seller
                                 <div className="tc f4">
                                     <p className=""><img src={`https://shopbeta-api.onrender.com/users/${product.owner}/avatar`} alt="avatar" className="br-100 ph2" width="60px" height="60px" /></p>
-                                    <p className="fw6"><small>{user.username} Ronel Michael</small></p>
+                                    <p className="fw6"><small>{user.username}</small></p>
                                 </div>
                             </div>
                         </div>

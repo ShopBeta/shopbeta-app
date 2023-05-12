@@ -58,15 +58,17 @@ const SearchPage = () => {
         return(
             <div className="">
                 <Preloader />
+                  <div>
                     <h3 className="tl pt3 pa3 code f3 ph3">
                         SearchPage
                     </h3>
                     <div style={{position: 'fixed', width: '100%', borderBottom: '1px thin black'}} className="tc ph1 flex flex-wrap">
-                        <span style={{fontSize: '23px', fontWeight: '800', letterSpacing: '-1px'}} className="icon-magnifier pl3 pt3"></span>
+                        <span style={{fontSize: '23px', fontWeight: '800', letterSpacing: '-1px'}} className="icon-magnifier pl2 pt3"></span>
                         <span>
                             <SearchBox searchChange={onSearchChange} />
                         </span>
                     </div>
+                  </div>
                     <div className="tc">
                         <div className="tc">
                             <CardList product={filteredCards} />
