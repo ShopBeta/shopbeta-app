@@ -58,11 +58,11 @@ const SearchPage = () => {
         return(
             <div className="">
                 <Preloader />
-                  <div>
+                  <div style={{position: 'fixed', width: '100%', borderBottom: '1px thin black'}} className="bg-white">
                     <h3 className="tl pt3 pa3 code f3 ph3">
                         SearchPage
                     </h3>
-                    <div style={{position: 'fixed', width: '100%', borderBottom: '1px thin black'}} className="tc ph1 flex flex-wrap">
+                    <div className="tc ph1 flex flex-wrap">
                         <span style={{fontSize: '23px', fontWeight: '800', letterSpacing: '-1px'}} className="icon-magnifier pl2 pt3"></span>
                         <span>
                             <SearchBox searchChange={onSearchChange} />
