@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+// import img from '../images/tst-image3.jpg'
 import 'tachyons';
 
 const Purchase = () => {
@@ -42,33 +43,32 @@ const Purchase = () => {
     }, [product.owner])
 
     return(
-            <div className="tc w-100">
+            <div className="tc w-100 pv2">
                 <div style={{width: '360px'}} className="dib pa3">
-                <div className="tr pb2">
+                <div className="">
                     <div className="tl f4">
                         <p>
                             <b>{product.name}</b>
                         </p>
                     </div>
                 </div>
-                <div className=" pv3 tj">
+                <div className="pv3 tj">
                     <div>
                         <div className="tl pv2">
-                            <p className="b f5">Check to see if Product is available</p>
+                            <p className="fw5 f5">Check to see if product is available</p>
                         </div>
                         <div className="pv2 pa2">
-                            <div className="br4 b--yellow ba pv2 pa2 mars white">
-                                <p>
-                                    <p className="tr f4"><small className="icon-check b grow hover-red"></small></p>
-                                        <small className="icon-bubbles pr2 f4"></small>
-                                        Message Seller
-                                    <p className="tr fw6"><small>Media: Chat interface</small></p>
-                                </p>
+                            <div className="br4 b--yellow ba pa2 mars white">
+                                <small className="icon-bubbles f4 pr2"></small>Message Seller
+                                <div className="tc f4">
+                                    <p className=""><img src={`https://shopbeta-api.onrender.com/users/${product.owner}/avatar`} alt="avatar" className="br-100 ph2" width="60px" height="60px" /></p>
+                                    <p className="fw6"><small>{user.username} Ronel Michael</small></p>
+                                </div>
                             </div>
                         </div>
                         <div className="pv2 pa2">
                             <div className="pv2 br4 pa2 mercury white">
-                                <p>
+                                <p className="f4">
                                     <p className="tr f4"><small className="icon-check b grow hover-red"></small></p>
                                     <small className="icon-phone pr2 f4"></small>
                                     {user.phonenumber}

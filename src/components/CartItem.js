@@ -2,12 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Typography } from "@material-ui/core";
+// import img from '../images/images-1.jpg'
 
 const CartItem = ({ id, productId }) => {
 
     const token = localStorage.getItem("token")
 
-    const [product, setProduct] = useState([])
+    const [product, setProduct] = useState({})
     useEffect(() => {
         fetch(`https://shopbeta-api.onrender.com/products/${productId}`, {
             method: "GET",
@@ -54,66 +55,54 @@ const CartItem = ({ id, productId }) => {
     }
 
     return(
-        <div style={{width: '360px'}} className="pv2 dib">
-            <div className="tr pb2">
-                    <small onClick={deleteClick} title="delete" className="icon-close pointer f3 hover-red"></small>
-                </div>
-                <div className="flex flex-wrap">
-                    <div className="flex flex-wrap bg-white b--black br3 pa4 ma1 bw2 shadow-5">
-                    <Typography>
-                        <div>
-                            <img src={`https://shopbeta-api.onrender.com/products/${productId}/images`} alt="product" className="br4 pv2" width="310px" height="230px"></img>
-                        </div>
+            <div className="dib tl pv2 ma1 pa2-l">
+                <div className="">
+                    <div className="pointer tl bg-white b--black br3 bw2 shadow-5">
+                        <Link onClick={() => {window.localStorage.setItem("productId", productId)}} className="link black" to={"/components/Details"}>
+                            <div className="tc">
+                                <img src={`https://shopbeta-api.onrender.com/products/${productId}/images-1`} alt="item" className="br3 w-100" width="310px" height="240px"></img>
+                            </div>
+                        </Link>
+                        <Typography className="pa3">
+                            <div className="tr f3 br-pill">
+                            <small className="icon-heart pointer ph2 grow"><small className="code black pl1 f5">{product.heart}</small></small>
+                            </div>
                             <div className="tl">
-                                <p><b>{product.name}</b></p>
-                                    <p className="code f4">
-                                        <small>by {user.username}</small>
+                                <span className="">
+                                    <b>{product.name}</b>
+                                </span>
+                                <Link onClick={() => {window.localStorage.setItem("userId", user._id)}} className="link black" to={"/assets/vendor/User"}>
+                                    <p className="pv1 code f5">
+                                        by {user.username}
                                     </p>
-                                <div>
-                            <div className="f4 pt4 code">
+                                </Link>
+                            <div>
+                            <div className="f4 pt1 code">
                                 <small className="bg-light-blue ph3 f3 pa2 br-pill">{product.currency}{product.price}</small> 
                                 <small className="pa2 line-through">{product.currency}{product.oldprice}</small>
                             </div>
-                                <div className="pv2 tr">
-                                    <span className="icon-star"></span>
-                                    <span className="icon-star grow"></span>
-                                    <span className="icon-star grow"></span>
-                                    <span className="icon-star grow"></span>
-                                    <span className="icon-star grow"></span>
-                                    <span className="pl2 fw6 code f5">{product.rating}</span>
-                                </div>
-                                <div className="tc">
-                                <Link onClick={() => {window.localStorage.setItem("productId", productId)}} className="link black" to={"/components/Purchase"}>
-                                    <span className="monospace ph3">
-                                        <button className="pa3 white br-pill ba ph6 grow bg-orange hover-bg-mid-gray fw6">Purchase</button>
-                                    </span>
-                                </Link>
-                                </div>
-                             </div>
-                        </div>
-                    </Typography>
-                    <div className="">
-                    <div style={{ overflowY: 'auto', height: '500px'}} className="pa1 pv3 tj">
-                        <h3 className="pv2 fw5">Description</h3>
-                            <p>
-                                {product.description}
-                            </p>
-                            <div className="pa3 f6">
-                                <h3 className="pv2">
-                                    <small className="icon-info pr2 f5 blue"></small>
-                                    Shop Policy Review
-                                </h3>
-                                <p style={{lineHeight: "20px", fontSize: "13.5px"}} className="fw5">
-                                    No returns allowed on any FINAL SALE items, except for if flaws in products are found in the event
-                                    that you are not 100% satisfied with any item you purchase, we accept returns on any item (other than FINAL). This implies that any product shipped or delivered with defects or material. Please contact us at info@shopbetaonline.com to approve your return.
-                                    We reserve the right to deny any refund to sender without prior return approval. Only warn out items will be accepted for returns/exchange within 30 days at when item was delivered to you.
-                                </p>
+                            <div className="pv2 tr">
+                                <span className="icon-star"></span>
+                                <span className="icon-star"></span>
+                                <span className="icon-star"></span>
+                                <span className="icon-star"></span>
+                                <span className="icon-star"></span>
+                                <span className="pl2 code fw6 f5">{product.rating}</span>
+                            </div>
+                            <div className="tc">
+                            <span className="monospace">
+                                    <Link onClick={() => {window.localStorage.setItem("productId", id)}} className="link black" to={"/components/Purchase"}>
+                                        <button className="pa3 br-pill f6 white pointer ph4 ba grow bg-orange hover-bg-mid-gray fw6"><small className="icon-handbag f6 pr2"></small>Buy it now</button>
+                                    </Link>
+                                    <button onClick={deleteClick} className="pa3 br-pill pointer f6 white ph4 grow ba bg-orange hover-bg-mid-gray fw6">Delete item<small className="icon-trash f6 pl2"></small></button>
+                                </span>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>   
+                </Typography>
+            </div>
         </div>
+    </div>
     )
 }
 

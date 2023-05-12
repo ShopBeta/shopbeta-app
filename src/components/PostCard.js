@@ -90,7 +90,7 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
     }
     
     return(
-        <div style={{width: '360px'}} className="dib pa3">
+        <div style={{width: '360px'}} className="dib pa2">
             <div className="bg-white b--black br3 ma2 pa2 bw2 shadow-5">
                 <div className="tj flex f4 flex-wrap">
                     <span>
@@ -256,7 +256,7 @@ const VideoPost = ({ id, owner, media, text, hearts, views, time}) => {
 }
     
     return(
-            <div style={{Height: '580px', width: '360px'}} className="dib pa3">
+            <div style={{Height: '580px', width: '360px'}} className="dib pa2">
                     <div className="bg-white b--black br3 ma2 pa2 bw2 shadow-5">
                         <div className="side2">
                             <video onClick={viewClick} style={{Height: 'auto', width: '100%'}} className="br4" controls>

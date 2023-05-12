@@ -19,7 +19,6 @@ const NetworkError = () => {
                             </p>
                             <div className="">
                                 <div className='tc code' style={{fontSize: '27px', fontWeight: '500'}}><img src={img1} alt="logo" className="tc" width="200px" height="200px" /></div>
-                                
                                 <small className="f5 ph4">Something went wrong, please check your internet connection and try again.</small>
                         </div>
                     </div>

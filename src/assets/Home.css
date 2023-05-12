@@ -49,7 +49,7 @@ body {
 }
 
 .navbar #active {
-    background-color: lightgray;
+    border-bottom: 1px thin #ee9617;
 }
 
 .row #Icon {

@@ -47,7 +47,6 @@ const AdbillBoard = () => {
                         <div className="pa1 pv5 tc">
                             <h3 className="tl pt5 pa4 code f3 ph3">
                                 AdbillBoard
-                                <Link to={"../assets/VideoSpace"} title="video space" className="black ph6 hover-orange f3 fw5 icon-social-youtube"></Link>
                             </h3>
                             <div className="dib w-100 tc">
                                 <div className="dtc">

@@ -101,7 +101,6 @@ const handleSubmit = e => {
                                                 <div id="login" className="tc">
                                                     <small className="ph2">Forgot your password?</small>
                                                     <Link className="link" to={"/assets/indexes/ForgotPassword"}><small className="hover-blue orange f5 fw4 pointer">Recover Password</small></Link>
-                                                
                                                     <button onClick={handClick} type="submit" className="index-button hover-bg-mid-gray pa2 tc br-pill ba pointer ph6 ma1 grow pv3 b fw6">Login</button>
                                                 </div>
                                                 <div id="home" style={{display: 'none'}} className="tc">

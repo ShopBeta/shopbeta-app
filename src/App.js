@@ -26,6 +26,9 @@ import NotFound from "./assets/indexes/404"
 import ServerError from "./assets/indexes/500";
 import NetworkError from "./assets/indexes/NetworkError";
 import UserError from "./assets/indexes/UserError";
+import PostAd from "./containers/PostAd";
+import PostVideo from "./containers/PostVideo";
+import PostProduct from "./components/PostProduct";
 
 const App = () => {
     return (
@@ -58,6 +61,9 @@ const App = () => {
                 <Route exact path="/assets/indexes/500" element={<ServerError />} />
                 <Route exact path="/assets/indexes/NetworkError" element={<NetworkError />} />
                 <Route exact path="/assets/indexes/UserError" element={<UserError />} />
+                <Route exact path="/container/PostAd" element={<PostAd />} />
+                <Route exact path="/container/PostVideo" element={<PostVideo />} />
+                <Route exact path="/components/PostProduct" element={<PostProduct />} />
              </Routes>
             </Router>
         </div>

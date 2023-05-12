@@ -85,7 +85,7 @@ const Welcome = () => {
                                </p>
                                 <div className="pv2 tc">
                                 <span> 
-                                    <Link to={"/assets/Home"}>
+                                    <Link to={"/assets/AdbillBoard"}>
                                         <button className="index-button f6 pointer ba hover-bg-mid-gray pa3 tc br-pill ph5 ma1 grow b fw6">Home<small className="icon-arrow-right pl2"></small></button>
                                     </Link>
                                 </span>

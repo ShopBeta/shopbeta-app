@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import './Home.css'
 import { useState, useEffect } from "react";
-// import img from '../images/tst-image3.jpg'
+import img from '../images/tst-image3.jpg'
 import { Link } from "react-router-dom";
 import Preloader from "../components/Preloader";
 import { MessageList } from "../containers/ChatLists";
@@ -136,7 +136,7 @@ const Messages = () => {
                     <div className="tc">
                         <div className="pa3 w-100">
                             <div className="tr">
-                                <small className="f3 fw5 hover-orange pointer grow br3 pa2 icon-settings ph4"></small>
+                                <small className="f3 fw5 hover-orange pointer grow br3 icon-settings ph4"></small>
                                 <Link className="black link" to={"/assets/Chats"}>
                                     <small onClick={deleteChatRoom} title="delete your entire conversation" className="f3 fw5 hover-orange pointer grow br3 icon-trash"></small>
                                 </Link>
@@ -153,7 +153,7 @@ const Messages = () => {
                             </div>
                         </div>
                     </div>
-                    <div style={{overflowY: 'auto', height: '451px', width: '370px'}} className="dib messages tc">
+                    <div style={{overflowY: 'auto', height: '490px', width: '370px'}} className="dib messages tc">
                         <div className="br3 pa2 b--black">
                             <div className="br3 w-100">
                                 <div className="pb2">
@@ -176,7 +176,7 @@ const Messages = () => {
                     </div>
                     <div className="bg-white pv3 tc" style={{position: 'static', width: '100%'}}>
                         <span id="message-form" className="pv2">
-                            <input name="message" type="text" className="input pa3 ba f4 br-pill w-80 message" placeholder="Type your message..." required autoComplete="off"/>
+                            <input name="message" type="text" className="input pa3 ba br-pill w-80 message" placeholder="Type your message..." required autoComplete="off"/>
                             <small onClick={handleSubmit} className="button icon-paper-plane orange pointer grow hover-blue f3 pa2"></small>
                             <small className="icon-picture pointer grow hover-blue orange f3 pa2"></small>
                         </span>

@@ -2,7 +2,6 @@ import { render } from "@testing-library/react";
 import React from "react";
 import { useState, useEffect } from "react";
 import '../Home.css';
-import SideBar from '../../components/SideBar';
 import CardList from '../../containers/CardList';
 import SearchBox from "../../components/SearchBox";
 import Preloader from "../../components/Preloader";
@@ -59,23 +58,23 @@ const SearchPage = () => {
         return(
             <div className="">
                 <Preloader />
-                    <div className="pa3">
-                        <span style={{fontSize: '25px', fontWeight: '550', letterSpacing: '-1px'}} className="code">Search <small className="icon-magnifier f4 fw6 ph2"></small></span>
+                    <h3 className="tl pt3 pa3 code f3 ph3">
+                        SearchPage
+                    </h3>
+                    <div style={{position: 'fixed', width: '100%', borderBottom: '1px thin black'}} className="tc ph1 flex flex-wrap">
+                        <span style={{fontSize: '23px', fontWeight: '800', letterSpacing: '-1px'}} className="icon-magnifier pl3 pt3"></span>
                         <span>
                             <SearchBox searchChange={onSearchChange} />
                         </span>
                     </div>
-                    <div className="">
-                        <div className="dtc">
-                            <SideBar  />
-                        </div>
-                        <div className="tc pl4">
+                    <div className="tc">
+                        <div className="tc">
                             <CardList product={filteredCards} />
-                            <div id="error" style={{display: 'none'}} className="tc">
-                                <NetworkError />
-                            </div>
-                            <p id="load" className="tc code orange fw6 f4">Loading...</p>
-                    </div>
+                        </div>
+                        <div id="error" style={{display: 'none'}} className="tc">
+                            <NetworkError />
+                        </div>
+                        <p id="load" className="tc code orange fw6 f4">Loading...</p>
                 </div>
             </div>
         );
