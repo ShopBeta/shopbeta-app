@@ -84,7 +84,7 @@ const Chats = () => {
                 <div>
                     <Preloader />
                     <Navbar />
-                    <div style={{position: 'fixed', width: '100%', borderBottom: '1px thin black'}} className="pt6 tc pa1">
+                    <div className="pt6 tc pa1">
                         <span style={{color: 'black', fontSize: '29px', fontWeight: '500', letterSpacing: '-2px'}} className="tl pr2 tj code">Chats</span>
                         <span className="tc">
                             <input style={{backgroundColor: 'white'}} className="pa2 icon-magnifier ph4 code f4 br-pill ba" type="search" placeholder="Search chats...." searchChange={onSearchChange} onChange={onSearchChange}/>
