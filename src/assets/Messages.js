@@ -1,7 +1,8 @@
 import React, { useRef } from "react";
 import './Home.css'
 import { useState, useEffect } from "react";
-import img from '../images/tst-image3.jpg'
+// import img from '../images/tst-image3.jpg'
+import moment from "moment";
 import { Link } from "react-router-dom";
 import Preloader from "../components/Preloader";
 import { MessageList } from "../containers/ChatLists";
@@ -74,6 +75,11 @@ const Messages = () => {
             messageText : document.querySelector('.message').value
         }
 
+        if (message.messageText.trim() === "") {
+
+            return false
+        }
+
         const messageForm = document.querySelector('#message-form')
         const messageFormInput = document.querySelector('input')
         const messageFormButton = document.querySelector('button')
@@ -115,6 +121,20 @@ const Messages = () => {
        })
     }
 
+    if(chats.length === 0 ) {
+        const message = document.getElementById('no-message')
+        message.style['display'] = 'contents'
+
+        const date = document.getElementById('date-chat')
+        date.style['display'] = 'none'
+    } else {
+        const date = document.getElementById('date-chat')
+        date.style['display'] = 'contents'
+
+        const message = document.getElementById('no-message')
+        message.style['display'] = 'none'
+    }
+
     const chatEndRef = useRef(null)
 
     const scrollToBottom = () => {
@@ -124,7 +144,7 @@ const Messages = () => {
     useEffect(() => {
         scrollToBottom()
     })
-
+      
     const handleSubmit = () => {
         postMessage()
     }
@@ -153,7 +173,7 @@ const Messages = () => {
                             </div>
                         </div>
                     </div>
-                    <div style={{overflowY: 'auto', height: '490px', width: '370px'}} className="dib messages tc">
+                    <div style={{overflowY: 'auto', height: '530px', width: '360px'}} className="dib messages tc">
                         <div className="br3 pa2 b--black">
                             <div className="br3 w-100">
                                 <div className="pb2">
@@ -161,12 +181,21 @@ const Messages = () => {
                                         Welcome to ShopBeta! <br/>Send a message to start a conversation. We strongly encourage constructive conversations to improve your social shopping experience.
                                     </div>
                                 </div>
-                                  <MessageList chats={chats} />
-                                  <p id="load" className="tc code orange ph2 fw6 f4">Loading messages...</p>
-                                  <div id="error" style={{display: 'none'}} className="tc">
-                                        <NetworkError />
+                                <div className="tc">
+                                    <div style={{display: "none"}} id="date-chat" className="tc code fw5 f5">
+                                        {moment(Date(chats.time).toString()).format("LL")}
                                     </div>
-                                  <div ref={chatEndRef} >
+                                </div> 
+                                <div style={{display: "none"}} id="no-message" className="tc">
+                                    <p style={{color: '#ee9617', fontSize: '100px', fontWeight: '510'}} className="icon-bubbles pt6 mid-gray"></p>
+                                    <p className="pv2 tc fw6 orange f5">No messages <br/>Send a message to start a conversation.</p>
+                                </div>
+                                <MessageList chats={chats} />
+                                <p id="load" className="tc code orange ph2 fw6 f4">Loading messages...</p>
+                                <div id="error" style={{display: 'none'}} className="tc">
+                                    <NetworkError />
+                                </div>
+                                <div ref={chatEndRef} >
                                         </div>
                                     </div>
                                 </div>                
@@ -174,7 +203,7 @@ const Messages = () => {
                         </div>
                     </div>
                     </div>
-                    <div className="bg-white pv3 tc" style={{position: 'static', width: '100%'}}>
+                    <div className="bg-white pv1 tc" style={{position: 'fixed', width: '100%'}}>
                         <span id="message-form" className="pv2">
                             <input name="message" type="text" className="input pa3 ba br-pill w-80 message" placeholder="Type your message..." required autoComplete="off"/>
                             <small onClick={handleSubmit} className="button icon-paper-plane orange pointer grow hover-blue f3 pa2"></small>

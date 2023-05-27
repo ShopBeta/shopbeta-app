@@ -5,6 +5,7 @@ import Navbar from '../../components/Navbar';
 import SideBar from '../../components/SideBar';
 import CardList from '../../containers/CardList';
 import Preloader from "../../components/Preloader";
+import BlankPage from "../indexes/BlankPage";
 import NetworkError from "../indexes/NetworkError";
 
 
@@ -36,6 +37,31 @@ const Products = () => {
         })
     }, [])
 
+    const category = localStorage.getItem("category")
+    console.log(category)
+
+    const catProducts = product.filter(
+        product => {
+            return (
+                product
+                .category
+                .toLowerCase()
+                .includes(category.toLowerCase())
+            )
+        }
+    )
+    console.log(catProducts)
+
+    if(catProducts.length === 0 ) {
+        const blank = document.getElementById('blank')
+        blank.style['display'] = 'contents'
+
+    } else {
+        const blank = document.getElementById('blank')
+        blank.style['display'] = 'none'
+    }
+
+
     return(
         <div className="">
             <Preloader />
@@ -47,7 +73,15 @@ const Products = () => {
             <div className="pv6 tc">
                 <h3 className="fw6 code fw5 f3 ph3 pb2">MarketPlace</h3>
                         <div className="tc pl4">
-                            <CardList product={product} />
+                            <CardList product={catProducts} />
+                        </div>
+                        <div id="blank" style={{display: 'none'}} className="tc">
+                            <BlankPage />
+                            <div className="tc">
+                                <p className="pv4 fw6 ph5">
+                                    <small className="green f4">Post products about your services</small>
+                                </p>
+                            </div>
                         </div>
                         <div id="error" style={{display: 'none'}} className="tc">
                             <NetworkError />

@@ -13,32 +13,32 @@ import '../components/simple-line-icons/css/simple-line-icons.css';
 
 export const catData = [
     {
-        Title: <p className="fw5">Women Fashion</p>,
+        Title:  "Women Fashion",
         Image:  <div style={{width: '300px' }} className="tc"><img src={img} alt="women fashion" className="br4 pv1 w-100" width="310px" height="230px"></img></div>,
         Link: '/assets/vendor/MarketPlace'
     },
     {
-        Title: <p className="fw5">Men Clothing</p>,
+        Title: "Men Clothing",
         Image:  <div style={{width: '300px' }} className="tc"><img src={img1} alt="men clothing" className="br4 pv1 w-100" width="310px" height="230px"></img></div>,
         Link: '/assets/vendor/MarketPlace'
     },
     {
-        Title: <p className="fw5">Phone and Accessories</p>,
+        Title: "Phone and Accessories",
         Image:  <div style={{width: '300px' }} className="tc"><img src={img2} alt="phone and accessories" className="br4 pv1 w-100" width="20px" height="230px"></img></div>,
         Link: '/assets/vendor/MarketPlace'
     },
     {
-        Title: <p className="fw5">Consumer Electronics</p>,
+        Title: "Consumer Electronics",
         Image:  <div style={{width: '300px' }} className="tc"><img src={img3} alt="consumer electronics" className="br4 pv1 w-100" width="310px" height="230px"></img></div>,
         Link: '/assets/vendor/MarketPlace'
     },
     {
-        Title: <p className="fw5">Home and Garden</p>,
+        Title: "Home and Garden",
         Image:  <div style={{width: '300px' }} className="tc"><img src={img7} alt="home and garden" className="br4 pv1 w-100" width="310px" height="230px"></img></div>,
         Link: '/assets/vendor/MarketPlace'
     },
     {
-        Title: <p className="fw5">Beauty and Health</p>,
+        Title: "Beauty and Health",
         Image:  <div style={{width: '300px' }} className="tc"><img src={img4} alt="beauty and health" className="br4 pv1 w-100" width="310px" height="230px"></img></div>,
         Link: '/assets/vendor/MarketPlace'
     },
@@ -48,12 +48,12 @@ export const catData = [
         Link: '/assets/vendor/MarketPlace'
     },
     {
-        Title: <p className="fw5">Sports </p>,
+        Title: "Sports",
         Image:  <div style={{width: '300px' }} className="tc"><img src={img8} alt="sport and entertainment" className="br4 pv1 w-100" width="310px" height="230px"></img></div>,
         Link: '/assets/vendor/MarketPlace'
     },
     {
-        Title: <p className="fw5">Bonus Bundles</p>,
+        Title: "Bonus Bundles",
         Image:  <div style={{width: '300px' }} className="tc"><img src={img5} alt="bonus bondles" className="br4 tc pv1 w-100" width="310px" height="230px"></img></div>,
         Link: 'assets/vendor/MarketPlace'
     }

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import 'tachyons';
 import { catData } from "../containers/CatData";
 
-const MainCat = () => {
+const MainCat = (val) => {
 
     const [product, setProduct] = useState([])
     useEffect(() => {
@@ -18,6 +18,19 @@ const MainCat = () => {
         })
     }, [])
 
+    // const category = val.Title
+    // const catProducts = product.filter(
+    //     product => {
+    //         return (
+    //             product
+    //             .category
+    //             .toLowerCase()
+    //             .includes(category.toLowerCase())
+    //         )
+    //     }
+    // )
+    // console.log(catProducts)
+
     return (
         <div className="dtc bg-white tc">
             {
@@ -27,17 +40,18 @@ const MainCat = () => {
                                 <div>
                                 <Link to={"../assets/vendor/MarketPlace"} className="link black">
                                     <div className="dib">
-                                        <div className="tl br3 bw2 shadow-4 bg-white b--black ma2 pa2">
+                                        <div onClick={() => {window.localStorage.setItem("category", val.Title)}} className="tl br3 bw2 shadow-4 bg-white b--black ma2 pa2">
                                                 <div className="flex flex-wrap">
                                                     <p className="tc">
                                                         {val.Image}
                                                     </p>
                                                 </div>   
                                                 <div className="tc">
-                                                    <p>{val.Title}</p>
+                                                    <p className="fw5">{val.Title}</p>
                                                     {/* <small className="icon-heart pointer ph4 f4"></small> */}
                                                     <button disabled className="bg-transparent b--black-10 pa1 tc br-pill ph6 pa2 ma3 f6 b fw6">
                                                         {product.length} listings
+                                                        {/* {catProducts.length} listings */}
                                                     </button>
                                                 </div>    
                                             </div>

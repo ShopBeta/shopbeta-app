@@ -5,6 +5,7 @@ import '../Home.css';
 import CardList from '../../containers/CardList';
 import SearchBox from "../../components/SearchBox";
 import Preloader from "../../components/Preloader";
+import BlankPage from "../indexes/BlankPage";
 import NetworkError from "../indexes/NetworkError";
 
 
@@ -35,6 +36,15 @@ const SearchPage = () => {
             load.style['display'] = 'none'
         })
     }, [])
+
+    if(product.length === 0 ) {
+        const blank = document.getElementById('blank')
+        blank.style['display'] = 'contents'
+
+    } else {
+        const blank = document.getElementById('blank')
+        blank.style['display'] = 'none'
+    }
 
     const [searchField, setSearchField] = useState("")
 
@@ -69,9 +79,17 @@ const SearchPage = () => {
                         </span>
                     </div>
                   </div>
-                    <div className="tc">
+                    <div className="tc pt5">
                         <div className="tc">
                             <CardList product={filteredCards} />
+                        </div>
+                        <div id="blank" style={{display: 'none'}} className="tc">
+                            <BlankPage />
+                            <div className="tc">
+                                <p className="pv4 fw6 ph5">
+                                    <small className="green f4">Post products about your services on MarketPlace</small>
+                                </p>
+                            </div>
                         </div>
                         <div id="error" style={{display: 'none'}} className="tc">
                             <NetworkError />

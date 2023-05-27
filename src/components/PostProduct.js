@@ -1,17 +1,6 @@
-// import { makeStyles } from "@material-ui/core";
 import React from "react";
 import 'tachyons';
 // import img from '../images/tst-image3.jpg'
-
-// const useStyles = makeStyles(theme => ({
-//     root: {
-//         display: 'flex',
-//         flexDirection: 'column',
-//         justifyContent: 'center',
-//         padding: theme.spacing(2)
-//     }
-// }))
-
 
 
 const PostProduct = ({ name, images, description, currency, price, oldprice, category }) => {
@@ -23,8 +12,6 @@ const PostProduct = ({ name, images, description, currency, price, oldprice, cat
         event.currentTarget.innerHTML = 'Posting...';
         event.currentTarget.style.fontWeight = 'bold';
     }
-
-    // const classes = useStyles()
  
     return(
             <div className="tc w-100">
@@ -81,7 +68,7 @@ const PostProduct = ({ name, images, description, currency, price, oldprice, cat
                                     <label>
                                         <small className="icon-camera hover-mid-gay f3 orange pointer"></small><br/>
                                         <small className="hover-mid-gay f5 fw5 orange pointer">Select Images</small>
-                                        <input style={{display: 'none'}} type="file" name="images" multiple="multiple" className="images pointer pa3 w-100" id="customFile" />
+                                        <input style={{display: 'none'}} type="file" name="images" multiple="multiple" className="images pointer pa3 w-100" id="customFile" required/>
                                     </label>
                                 </div>
                             </p>

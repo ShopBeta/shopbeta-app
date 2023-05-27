@@ -2,11 +2,11 @@ import { render } from "@testing-library/react";
 import React from "react";
 import { useState, useEffect } from "react";
 import './Home.css';
-import { Link } from "react-router-dom";
 import Navbar from '../components/Navbar';
 import { TextPostList } from '../containers/PostCardList';
 import Preloader from "../components/Preloader";
 import SideBar from "../components/FeedSideBar";
+import BlankPage from "./indexes/BlankPage";
 import NetworkError from "./indexes/NetworkError"
 
 
@@ -31,12 +31,21 @@ const AdbillBoard = () => {
             console.log(err.message)
 
             const error = document.getElementById('error')
-            error.style['display'] = 'contents'
+            error.style['display'] = 'none'
 
             const load = document.getElementById('load')
             load.style['display'] = 'none'
         })
     }, [])
+
+    if(feed.length === 0 ) {
+        const blank = document.getElementById('blank')
+        blank.style['display'] = 'contents'
+
+    } else {
+        const blank = document.getElementById('blank')
+        blank.style['display'] = 'none'
+    }
 
     render()
         return(
@@ -51,6 +60,14 @@ const AdbillBoard = () => {
                             <div className="dib w-100 tc">
                                 <div className="dtc">
                                     <SideBar />
+                                </div>
+                                <div id="blank" style={{display: 'none'}} className="tc">
+                                    <BlankPage />
+                                    <div className="tc">
+                                        <p className="pv4 fw6 ph5">
+                                            <small className="green f4">Post Ads about your services or products</small>
+                                        </p>
+                                    </div>
                                 </div>
                                 <div id="error" style={{display: 'none'}} className="tc">
                                     <NetworkError />

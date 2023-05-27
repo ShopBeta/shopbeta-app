@@ -17,6 +17,7 @@ const newUser = async () => {
         password: document.querySelector('.password').value,
         phonenumber: document.querySelector('.phonenumber').value,
     }
+    
     await fetch('https://shopbeta-api.onrender.com/users/signup', {
         method: 'POST',
         headers: {
@@ -74,12 +75,12 @@ const handleSubmit = e => {
                                     <div className="tl pv2">
                                         <p className="pv1 f5 fw5">Username</p>
                                         <small className="icon-user f4 fw5"></small>
-                                        <input type="text" name="username" className="username br3 ba pa3 w-100" placeholder="Type in username..." required />
+                                        <input type="text" name="username" className="username br3 ba pa3 w-100" placeholder="Type in username..." required autoComplete="username" />
                                     </div>
                                     <div className="tl pv2">
                                         <p className="pv1 f5 fw5">Phone Number</p>
                                         <small className="icon-phone f4 fw5"></small>
-                                        <input type="tel" name="phonenumber" className="phonenumber br3 ba pa3 w-100" placeholder="Input phone number..." required />
+                                        <input type="tel" name="phonenumber" className="phonenumber br3 ba pa3 w-100" placeholder="Input phone number..." required autoComplete="phonenumber" />
                                     </div>
                                     <div className="tl pv2">
                                         <p className="pv1 f5 fw5">Email</p>
@@ -89,7 +90,7 @@ const handleSubmit = e => {
                                     <div className="tl pv2">
                                         <p className="pv1 f5 fw5">Password</p>
                                         <small className="icon-lock f4 fw5"></small>
-                                        <input type="password" name="password" className="password br3 ba pa3 w-100" placeholder="password..." required autoComplete="current-password" />
+                                        <input type="password" name="password" className="password br3 ba pa3 w-100" placeholder="password..." required />
                                     </div>
                                     <div id="error" style={{display: 'none'}} className="orange fw5 pv3 f5 red">
                                         {errMessage}<br/>

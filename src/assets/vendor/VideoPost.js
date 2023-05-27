@@ -92,6 +92,11 @@ const VideoPost = ({ text, file }) => {
             owner: me
         }
 
+        if (comment.text.trim() === "") {
+
+            return false
+        }
+
         const commentFormInput = document.querySelector('input')
         commentFormInput.value = ''
         commentFormInput.focus()
@@ -117,6 +122,14 @@ const VideoPost = ({ text, file }) => {
             const comment = document.getElementById('comment')
             comment.style['display'] = 'none'
         })
+    }
+
+    if(comment.length === 0 ) {
+        const message = document.getElementById('no-message')
+        message.style['display'] = 'contents'
+    } else {
+        const message = document.getElementById('no-message')
+        message.style['display'] = 'none'
     }
 
     const buttonClick = async event => {
@@ -222,29 +235,25 @@ const VideoPost = ({ text, file }) => {
                 <div className="tc pv2">
                     <p className="f5 b pv2">Comment here to join the conversation</p>
                 </div>
-                <div className="tc f5">
-                    <div className="pa4 ph5">
-                        <p className="icon-bubbles mid-gray tc f1"></p>
-                        <p className="pv2 fw5 f5">Type to send a comment</p>
-                    </div>
-                </div>  
-            <div>
-            <div id="comment">
-                <CommentList comment={comment}/>
-            </div>
-            <div id="error" style={{display: 'none'}} className="tc">
-                <NetworkError />
-            </div>
-            <div id="user-error" style={{display: 'none'}} className="tc">
-                <UserError />
-            </div>
-            <p id="load" className="tc code orange fw6 f4">Loading comments...</p>
-            </div>
+                <div style={{display: "none"}} id="no-message" className="tc">
+                    <p style={{color: '#ee9617', fontSize: '100px', fontWeight: '510'}} className="icon-bubbles pt6 mid-gray"></p>
+                    <p className="pv2 tc fw6 orange f5">No comments yets <br/>Be the first to drop a comment.</p>
+                </div>
+                <div id="comment">
+                    <CommentList comment={comment}/>
+                </div>
+                <div id="error" style={{display: 'none'}} className="tc">
+                    <NetworkError />
+                </div>
+                <div id="user-error" style={{display: 'none'}} className="tc">
+                    <UserError />
+                </div>
+                <p id="load" className="tc code orange fw6 f4">Loading comments...</p>
             </div>
             <div className="tc">
                 <form onSubmit={handleSubmit}>
                     <span className="pv2">
-                        <input id="text" name="text" value={text} type="text" className="text input pa3 br-pill b--black-50 ba w-75" placeholder="Comment here..." />
+                        <input id="text" name="text" value={text} type="text" className="text input pa3 br-pill b--black-50 ba w-80" placeholder="Comment here..." />
                     </span>
                     <span className="ph1">
                         <button type="submit" className="icon-paper-plane bg-transparent b--transparent pointer f3 orange"></button>

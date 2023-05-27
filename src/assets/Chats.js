@@ -30,9 +30,6 @@ const Chats = () => {
 
             const error = document.getElementById('error')
             error.style['display'] = 'none'
-
-            const contact = document.getElementById('contact')
-            contact.style['display'] = 'contents'
         })
         .catch((err) => {
             console.log(err.message)
@@ -42,9 +39,6 @@ const Chats = () => {
 
             const load = document.getElementById('load')
             load.style['display'] = 'none'
-
-            const contact = document.getElementById('contact')
-            contact.style['display'] = 'none'
         })
     }, [me])
 
@@ -95,20 +89,17 @@ const Chats = () => {
                         <span className="tc">
                             <input style={{backgroundColor: 'white'}} className="pa2 icon-magnifier ph4 code f4 br-pill ba" type="search" placeholder="Search chats...." searchChange={onSearchChange} onChange={onSearchChange}/>
                         </span>
-                        <div id="error" style={{display: 'none'}} className="tc">
-                        <NetworkError />
-                    </div>
                     </div>
                     <div style={{overflowY: 'auto', height: '770px', width: '360px'}} className="dib tc">
                         <div className="dib tc br3 pa2 w-100 b--black">
-                            <div id="contact" className="pv2 br3 b-black tj flex flex-wrap">
+                            <div className="pv2 br3 b-black tj flex flex-wrap">
                                 <div className="pa2">
                                     <img src={img} alt="Accessories..." className="br-100" width="50px" height="50px" />
                                 </div>
                                 <div className="">
                                     <div className="pa1 br4">
-                                        <p className="orange fw6 code">ShopBeta, Inc</p>
-                                        <p className="pt2">Support at shopbeta22@gmail.com</p>
+                                        <p className="orange fw6">ShopBeta Team</p>
+                                        <p className="pt2">Contact us at shopbeta22@gmail.com</p>
                                     </div>
                                     <small class="opacity-6 pl5 code">
                                         <i class="pl6 icon-location-pin"></i>
@@ -116,8 +107,11 @@ const Chats = () => {
                                     </small>
                                 </div>
                             </div>
+                            <div id="error" style={{display: 'none'}} className="tc">
+                                <NetworkError />
+                            </div>
                             <ChatRoomList rooms={rooms}  users={filteredChats}  />
-                            <p id="load" className="tc code orange fw6 f4">Loading...</p>
+                            <p id="load" className="tc code orange fw6 f4">Loading chats...</p>
                         </div>
                     </div>                
                 <div>

@@ -9,16 +9,16 @@ const FollowCard = ({ id, username, avatar, location, hearts, bio, website, phon
     console.log(me)
 
     const buttonClick = async event => {
-            event.currentTarget.innerHTML = 'following';
+        event.currentTarget.innerHTML = 'following';
             
-            await fetch(`https://shopbeta-api.onrender.com/user/${id}/follow/${me}`, {
-                method: 'POST',
-            })
-            .then((res) => res.json())
-            .then((data) => console.log(data))
-            .catch((err) => {
-                console.log(err.message)
-            })
+        await fetch(`https://shopbeta-api.onrender.com/user/${id}/follow/${me}`, {
+            method: 'POST',
+        })
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((err) => {
+            console.log(err.message)
+        })
     }
 
     const heartClick = async event => {

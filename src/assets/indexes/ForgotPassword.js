@@ -5,18 +5,59 @@ import { Link } from "react-router-dom";
 import Preloader from "../../components/Preloader";
 
 
-const ForgotPassword = ({email, password}) => {
+const ForgotPassword = ({ email }) => {
 
-// const token = localStorage.getItem("token")
+const token = localStorage.getItem("token") 
+console.log(token)
 
-const display = () => {
-    const my_div = document.getElementById('hide')
-    my_div.style['display'] = 'contents'
+const forgotPassword = async () => {
+
+    const email = {
+        email: document.querySelector('.email').value,
+    }
+    
+    await fetch(`https://shopbeta-api.onrender.com/users/forgotPassword`, {
+        method: "POST",
+        headers: {
+            'Authorization' : 'Bearer ' + token,
+            'Accept' : 'application/json, text/plain',
+            'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify(email)
+    })
+    .then((res) => res.json())
+    .then((data) => {
+        console.log(data)
+        window.localStorage.setItem("meId", data._id)
+
+        const email = document.getElementById('email')
+        email.style['display'] = 'contents'
+
+        const button = document.getElementById('button')
+        button.style['display'] = 'none'
+
+        const error = document.getElementById('error')
+        error.style['display'] = 'none'
+    })
+    .catch((err) => {
+        console.log(err.message)
+
+        const error = document.getElementById('error')
+        error.style['display'] = 'contents'
+        
+        const email = document.getElementById('email')
+        email.style['display'] = 'none'
+    })
+}
+
+const handClick = (event) => {
+    event.currentTarget.innerHTML = 'Loading...';
+    event.currentTarget.style.fontWeight = 'bold';
 }
 
 const handleSubmit = e => {
     e.preventDefault()
-    display()
+    forgotPassword()
 }
 
         return(
@@ -31,7 +72,11 @@ const handleSubmit = e => {
                                     <div className="tl pv2">
                                         <p className="pv1 f5 fw5">Email</p>
                                         <small className="icon-envelope f4 fw5"></small>
-                                        <input type="email" name="email" value={email} className="email br3 ba pa3 w-100" placeholder="Your email..." required autoComplete="username" />
+                                        <input type="email" name="email" value={email} className="email br3 ba pa3 w-100" placeholder="Your email..." required autoComplete="email" />
+                                    </div>
+                                    <div id="error" style={{display: 'none'}} className="orange fw5 pv3 f5 red">
+                                        <small className="icon-info red f5 ph2"></small>
+                                        Something went wrong, try again later!
                                     </div>
                                     <div className="tl pv2">
                                         <input name="check" id="exampleCheck" type="checkbox" className="pr2" /><label for="exampleCheck" className="form-check-label ph2">Subscribe to our newsletters</label>
@@ -42,12 +87,12 @@ const handleSubmit = e => {
                                     <div>
                                         <div className="pv2">
                                             <div className="pv2">
-                                                <p id="hide" style={{display: 'none'}} className="tc code f4">
-                                                    #<small className="ph2">Check the email we sent you for your</small>
-                                                    <small className="fw6 green f4 fw4 pointer">New password</small>
+                                                <p id="email" style={{display: 'none'}} className="tc code f4">
+                                                    #<small className="ph2">Check the email we sent you to reset your</small>
+                                                    <small className="fw6 green f4 fw4 pointer">password</small>
                                                 </p>
-                                                <p className="tc">
-                                                    <button onClick={display} type="submit" className="index-button hover-bg-mid-gray pa2 tc br-pill ba pointer ph5 ma1 grow pv3 b fw6">Recover password</button>
+                                                <p id="button" className="tc">
+                                                    <button type="submit" onClick={handClick} className="index-button hover-bg-mid-gray pa2 tc br-pill ba pointer ph5 ma1 grow pv3 b fw6">Recover password</button>
                                                 </p>
                                             </div>
                                         </div>

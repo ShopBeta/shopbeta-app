@@ -101,6 +101,9 @@ const handleSubmit = e => {
                     <div className="dib">
                       <div className="flex flex-wrap pv6">
                         <div style={{width: '360px'}} className="pv2 dib pa3">
+                            <h3 className="tl pv1 code f3">
+                                    Settings
+                                </h3>
                                 <form onSubmit={handleSubmit}>
                                     <div className="tl pv2">
                                         <p className="pv1 f5 fw5">Change Username</p>

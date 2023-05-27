@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Preloader from "../../components/Preloader";
 
 
-const NewPassword = () => {
+const ResetPassword = () => {
 
 const token = localStorage.getItem("token")
 const me = localStorage.getItem("meId")
@@ -13,14 +13,13 @@ const me = localStorage.getItem("meId")
 console.log(token)
 console.log(me)
     
-const newPassword = async () => {
+const resetPassword = async () => {
 
     const password = {
-        oldPassword: document.querySelector('.old-password').value,
-        newPassword: document.querySelector('.new-password').value,
+        password: document.querySelector('.password').value,
     }
     
-    await fetch(`https://shopbeta-api.onrender.com/users/changePassword/${me}`, {
+    await fetch(`https://shopbeta-api.onrender.com/users/resetPassword/${me}`, {
         method: "POST",
         headers: {
             'Authorization' : 'Bearer ' + token,
@@ -58,7 +57,7 @@ const handClick = (event) => {
 
 const handleSubmit = e => {
     e.preventDefault()
-    newPassword()
+    resetPassword()
 }
 
         return(
@@ -68,21 +67,21 @@ const handleSubmit = e => {
                       <div style={{width: '360px'}} className="dib pa3 tc pt5">
                         <div className="pv3">
                             <div className='tc code' style={{fontSize: '27px', fontWeight: '500'}}><img src={img} alt="logo" className="tc" width="75px" height="75px" /></div>
-                            <p className="pv2 fw6 tc"><small className="orange f4">Change Password</small><br/> input your new<small className="green f4"> password</small> using the form below</p>
+                            <p className="pv2 fw6 tc"><small className="orange f4">Reset your password</small><br/> reset your<small className="green f4"> password</small> using the form below</p>
                                 <form onSubmit={handleSubmit}>
-                                    <div className="tl pv2">
-                                        <p className="pv1 f5 fw5">Old password</p>
-                                        <small className="icon-lock f4 fw5"></small>
-                                        <input type="password" name="old-password" className="old-password br3 ba pa3 w-100" placeholder="Input old password..." required autoComplete="current-password" />
+                                    <div className="tc pv2">
+                                        <p className="tc">
+                                            <img src={`https://shopbeta-api.onrender.com/users/${me}/avatar`} alt="avatar" className="br-100 ph2" width="60px" height="60px" />
+                                        </p>
                                     </div>
                                     <div className="tl pv2">
                                         <p className="pv1 f5 fw5">New password</p>
                                         <small className="icon-lock f4 fw5"></small>
-                                        <input type="password" name="new-password" className="new-password br3 ba pa3 w-100" placeholder="Input new password..." required />
+                                        <input type="password" name="password" className="password br3 ba pa3 w-100" placeholder="Input new password..." required />
                                     </div>
                                     <div id="error" style={{display: 'none'}} className="orange fw5 pv3 f5 red">
                                         <small className="icon-info red f5 ph2"></small>
-                                        Couldn't set new password, try again later!
+                                        Couldn't reset password, try again later!
                                     </div>
                                     <div className="tl pv2">
                                         <input name="check" id="exampleCheck" type="checkbox" className="pr2" /><label for="exampleCheck" className="form-check-label ph2">Remember password</label>
@@ -91,14 +90,17 @@ const handleSubmit = e => {
                                         <div className="pv2">
                                             <div className="pv2">
                                                 <p id="password" className="tc">
-                                                    <button onClick={handClick} type="submit" className="index-button hover-bg-mid-gray pa2 tc br-pill ba pointer ph5 ma1 grow pv3 b fw6">Update Password</button>
+                                                    <button onClick={handClick} type="submit" className="index-button hover-bg-mid-gray pa2 tc br-pill ba pointer ph5 ma1 grow pv3 b fw6">Reset Password</button>
                                                 </p>
                                                 <div id="login" style={{display: 'none'}} className="tc">
                                                     <p className="tc green fw6 pv3 f4">
                                                         <small className="ph2 f4 icon-check orange"></small>
-                                                        New password saved <br/>
+                                                        Password saved
                                                         <small className="fw6 orange f4 fw4 pointer"> successfully</small>
                                                     </p>
+                                                    <Link className="link" to={"/assets/indexes/Login"}>
+                                                        <button className="index-button hover-bg-mid-gray pa2 tc br-pill ba pointer ph5 ma1 grow pv3 b fw6">Login<small className="icon-arrow-right pl2"></small></button>
+                                                    </Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -111,4 +113,4 @@ const handleSubmit = e => {
     );
 }
 
-export default NewPassword;
+export default ResetPassword;
