@@ -52,16 +52,6 @@ const Products = () => {
     )
     console.log(catProducts)
 
-    if(catProducts.length === 0 ) {
-        const blank = document.getElementById('blank')
-        blank.style['display'] = 'contents'
-
-    } else {
-        const blank = document.getElementById('blank')
-        blank.style['display'] = 'none'
-    }
-
-
     return(
         <div className="">
             <Preloader />
@@ -75,17 +65,17 @@ const Products = () => {
                         <div className="tc pl4">
                             <CardList product={catProducts} />
                         </div>
-                        <div id="blank" style={{display: 'none'}} className="tc">
-                            <BlankPage />
-                            <div className="tc">
-                                <p className="pv4 fw6 ph5">
-                                    <small className="green f4">Post products about your services</small>
-                                </p>
-                            </div>
-                        </div>
                         <div id="error" style={{display: 'none'}} className="tc">
                             <NetworkError />
                         </div>
+                        {catProducts.length === 0 &&  <div id="blank" className="tc">
+                            <BlankPage />
+                            <div className="tc">
+                                <p className="pv4 fw6 ph5">
+                                    <small className="green f4">Post Ads about your services or products</small>
+                                </p>
+                            </div>
+                        </div>}
                         <p id="load" className="tc code orange fw6 f4">Loading products...</p>
                 </div>
             </div>

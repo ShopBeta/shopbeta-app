@@ -124,13 +124,6 @@ const VideoPost = ({ text, file }) => {
         })
     }
 
-    if(comment.length === 0 ) {
-        const message = document.getElementById('no-message')
-        message.style['display'] = 'contents'
-    } else {
-        const message = document.getElementById('no-message')
-        message.style['display'] = 'none'
-    }
 
     const buttonClick = async event => {
 
@@ -235,10 +228,10 @@ const VideoPost = ({ text, file }) => {
                 <div className="tc pv2">
                     <p className="f5 b pv2">Comment here to join the conversation</p>
                 </div>
-                <div style={{display: "none"}} id="no-message" className="tc">
+                {comment.length === 0 && <div id="no-message" className="tc">
                     <p style={{color: '#ee9617', fontSize: '100px', fontWeight: '510'}} className="icon-bubbles pt6 mid-gray"></p>
                     <p className="pv2 tc fw6 orange f5">No comments yets <br/>Be the first to drop a comment.</p>
-                </div>
+                </div>}
                 <div id="comment">
                     <CommentList comment={comment}/>
                 </div>

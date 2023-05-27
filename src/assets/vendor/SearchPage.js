@@ -37,15 +37,6 @@ const SearchPage = () => {
         })
     }, [])
 
-    if(product.length === 0 ) {
-        const blank = document.getElementById('blank')
-        blank.style['display'] = 'contents'
-
-    } else {
-        const blank = document.getElementById('blank')
-        blank.style['display'] = 'none'
-    }
-
     const [searchField, setSearchField] = useState("")
 
     const onSearchChange = e => {
@@ -83,14 +74,14 @@ const SearchPage = () => {
                         <div className="tc">
                             <CardList product={filteredCards} />
                         </div>
-                        <div id="blank" style={{display: 'none'}} className="tc">
+                        {product.length === 0 &&  <div id="blank" className="tc">
                             <BlankPage />
                             <div className="tc">
                                 <p className="pv4 fw6 ph5">
-                                    <small className="green f4">Post products about your services on MarketPlace</small>
+                                    <small className="green f4">Post Ads about your services or products</small>
                                 </p>
                             </div>
-                        </div>
+                        </div>}
                         <div id="error" style={{display: 'none'}} className="tc">
                             <NetworkError />
                         </div>

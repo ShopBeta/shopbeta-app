@@ -121,20 +121,6 @@ const Messages = () => {
        })
     }
 
-    if(chats.length === 0 ) {
-        const message = document.getElementById('no-message')
-        message.style['display'] = 'contents'
-
-        const date = document.getElementById('date-chat')
-        date.style['display'] = 'none'
-    } else {
-        const date = document.getElementById('date-chat')
-        date.style['display'] = 'contents'
-
-        const message = document.getElementById('no-message')
-        message.style['display'] = 'none'
-    }
-
     const chatEndRef = useRef(null)
 
     const scrollToBottom = () => {
@@ -181,15 +167,17 @@ const Messages = () => {
                                         Welcome to ShopBeta! <br/>Send a message to start a conversation. We strongly encourage constructive conversations to improve your social shopping experience.
                                     </div>
                                 </div>
+                                {chats.length === 0 && <div>
+                                    <div id="no-message" className="tc">
+                                        <p style={{color: '#ee9617', fontSize: '100px', fontWeight: '510'}} className="icon-bubbles pt6 mid-gray"></p>
+                                        <p className="pv2 tc fw6 orange f5">No messages <br/>Send a message to start a conversation.</p>
+                                    </div>
+                                </div>}
                                 <div className="tc">
-                                    <div style={{display: "none"}} id="date-chat" className="tc code fw5 f5">
+                                    <div id="date-chat" className="tc code fw5 f5">
                                         {moment(Date(chats.time).toString()).format("LL")}
                                     </div>
                                 </div> 
-                                <div style={{display: "none"}} id="no-message" className="tc">
-                                    <p style={{color: '#ee9617', fontSize: '100px', fontWeight: '510'}} className="icon-bubbles pt6 mid-gray"></p>
-                                    <p className="pv2 tc fw6 orange f5">No messages <br/>Send a message to start a conversation.</p>
-                                </div>
                                 <MessageList chats={chats} />
                                 <p id="load" className="tc code orange ph2 fw6 f4">Loading messages...</p>
                                 <div id="error" style={{display: 'none'}} className="tc">

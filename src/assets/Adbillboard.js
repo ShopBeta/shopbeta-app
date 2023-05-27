@@ -31,21 +31,12 @@ const AdbillBoard = () => {
             console.log(err.message)
 
             const error = document.getElementById('error')
-            error.style['display'] = 'none'
+            error.style['display'] = 'contents'
 
             const load = document.getElementById('load')
             load.style['display'] = 'none'
         })
     }, [])
-
-    if(feed.length === 0 ) {
-        const blank = document.getElementById('blank')
-        blank.style['display'] = 'contents'
-
-    } else {
-        const blank = document.getElementById('blank')
-        blank.style['display'] = 'none'
-    }
 
     render()
         return(
@@ -61,17 +52,17 @@ const AdbillBoard = () => {
                                 <div className="dtc">
                                     <SideBar />
                                 </div>
-                                <div id="blank" style={{display: 'none'}} className="tc">
+                                <div id="error" style={{display: 'none'}} className="tc">
+                                    <NetworkError />
+                                </div>
+                              {feed.length === 0 &&  <div id="blank" className="tc">
                                     <BlankPage />
                                     <div className="tc">
                                         <p className="pv4 fw6 ph5">
                                             <small className="green f4">Post Ads about your services or products</small>
                                         </p>
                                     </div>
-                                </div>
-                                <div id="error" style={{display: 'none'}} className="tc">
-                                    <NetworkError />
-                                </div>
+                                </div>}
                                 <TextPostList feed={feed} />
                                 <p id="load" className="tc code orange fw6 f4">Loading feeds...</p>
                             </div>
