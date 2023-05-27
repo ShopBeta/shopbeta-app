@@ -70,7 +70,7 @@ const SearchPage = () => {
                         </span>
                     </div>
                   </div>
-                    <div className="tc pt5">
+                    <div className="tc pt6">
                         <div className="tc">
                             <CardList product={filteredCards} />
                         </div>
@@ -78,7 +78,7 @@ const SearchPage = () => {
                             <BlankPage />
                             <div className="tc">
                                 <p className="pv4 fw6 ph5">
-                                    <small className="green f4">Post Ads about your services or products</small>
+                                    <small className="green f4">Post your services or products on MarketPlace</small>
                                 </p>
                             </div>
                         </div>}

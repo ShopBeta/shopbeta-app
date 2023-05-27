@@ -175,7 +175,7 @@ const Messages = () => {
                                 </div>}
                                 <div className="tc">
                                     <div id="date-chat" className="tc code fw5 f5">
-                                        {moment(Date(chats.time).toString()).format("LL")}
+                                        {moment(Date().toString()).format("LL")}
                                     </div>
                                 </div> 
                                 <MessageList chats={chats} />

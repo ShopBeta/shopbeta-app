@@ -62,7 +62,7 @@ const Cart = () => {
                     <BlankPage />
                     <div className="tc">
                         <p className="pv4 fw6 ph5">
-                            <small className="green f4">Post Ads about your services or products</small>
+                            <small className="green f4">Save products from MarketPlace to cart</small>
                         </p>
                     </div>
                 </div>}
