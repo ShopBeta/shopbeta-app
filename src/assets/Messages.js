@@ -6,7 +6,7 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 import Preloader from "../components/Preloader";
 import { MessageList } from "../containers/ChatLists";
-import NetworkError from "./indexes/NetworkError"
+import { NetworkError } from "./indexes/ErrorPages"
 
 
 const Messages = () => {
@@ -59,6 +59,9 @@ const Messages = () => {
     
                 const load = document.getElementById('load')
                 load.style['display'] = 'none'
+
+                const blank = document.getElementById('blank')
+                blank.style['display'] = 'none'
             })
         }, 2000); // every 5 minutes (100000)
     }, [roomId])
@@ -137,7 +140,6 @@ const Messages = () => {
     
           return(
                <div className="tc">
-                <div>
                     <Preloader />
                     <div className="tc">
                         <div className="pa3 w-100">
@@ -168,9 +170,9 @@ const Messages = () => {
                                     </div>
                                 </div>
                                 {chats.length === 0 && <div>
-                                    <div id="no-message" className="tc">
-                                        <p style={{color: '#ee9617', fontSize: '100px', fontWeight: '510'}} className="icon-bubbles pt6 mid-gray"></p>
-                                        <p className="pv2 tc fw6 orange f5">No messages <br/>Send a message to start a conversation.</p>
+                                    <div id="blank" className="tc">
+                                        <p style={{fontSize: '100px', fontWeight: '510'}} className="icon-bubbles pt6 mid-gray"></p>
+                                        <p className="pv2 tc fw6 f5">No messages <br/>Send a message to start a conversation.</p>
                                     </div>
                                 </div>}
                                 <div className="tc">
@@ -189,7 +191,6 @@ const Messages = () => {
                                 </div>                
                             <div>
                         </div>
-                    </div>
                     </div>
                     <div className="bg-white pv1 tc" style={{position: 'fixed', width: '100%'}}>
                         <span id="message-form" className="pv2">

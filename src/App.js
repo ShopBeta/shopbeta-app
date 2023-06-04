@@ -24,10 +24,7 @@ import ForgotPassword from "./assets/indexes/ForgotPassword"
 import NewPassword from "./assets/indexes/NewPassword"
 import ResetPassword from "./assets/indexes/ResetPassword"
 import NotFound from "./assets/indexes/404"
-import BlankPage from "./assets/indexes/BlankPage"
 import ServerError from "./assets/indexes/500";
-import NetworkError from "./assets/indexes/NetworkError";
-import UserError from "./assets/indexes/UserError";
 import PostAd from "./containers/PostAd";
 import PostVideo from "./containers/PostVideo";
 import PostProduct from "./components/PostProduct";
@@ -60,11 +57,8 @@ const App = () => {
                 <Route exact path="/assets/indexes/Signup" element={<Signup />} />
                 <Route exact path="/assets/indexes/Login" element={<Login />} />
                 <Route exact path="/assets/indexes/Avatar" element={<Avatar />} />
-                <Route exact path="/assets/indexes/BlankPage" element={<BlankPage />} />
                 <Route exact path="/assets/indexes/404" element={<NotFound />} />
                 <Route exact path="/assets/indexes/500" element={<ServerError />} />
-                <Route exact path="/assets/indexes/NetworkError" element={<NetworkError />} />
-                <Route exact path="/assets/indexes/UserError" element={<UserError />} />
                 <Route exact path="/container/PostAd" element={<PostAd />} />
                 <Route exact path="/container/PostVideo" element={<PostVideo />} />
                 <Route exact path="/components/PostProduct" element={<PostProduct />} />

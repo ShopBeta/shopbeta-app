@@ -5,7 +5,7 @@ import Navbar from '../../components/Navbar';
 import CartList from "../../containers/CartList";
 import Preloader from "../../components/Preloader";
 import BlankPage from "../indexes/BlankPage";
-import NetworkError from "../indexes/NetworkError";
+import { NetworkError }from "../indexes/ErrorPages";
 
 const Cart = () => {
 
@@ -35,8 +35,11 @@ const Cart = () => {
 
             const load = document.getElementById('load')
             load.style['display'] = 'none'
+
+            const blank = document.getElementById('blank')
+            blank.style['display'] = 'none'
         })
-    }, [])
+    }, [me])
 
 
     return(

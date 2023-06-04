@@ -1,23 +1,10 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core";
 import { Typography } from "@material-ui/core";
 import '../assets/Home.css'
 import './simple-line-icons/css/simple-line-icons.css';
 import { Link } from "react-router-dom";
 
-const useStyles = makeStyles(theme=> ({
-    menuButton: {
-        marginRight: theme.spacing(2),
-    },
-    title: {
-        flexGrow: 1,
-    },
-}));
-
-
 const Navbar = () => {
-
-    const classes = useStyles();
 
     return(
         <nav className="bg-white fw5 navbar tc pv2 shadow-2" style={{position: 'fixed', width: '100%', borderBottom: '1px thin black'}}>

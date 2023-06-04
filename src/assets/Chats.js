@@ -4,8 +4,9 @@ import img from '../images/shopbeta logo.png'
 import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Preloader from "../components/Preloader";
+import BlankPage from "./indexes/BlankPage";
 import { ChatRoomList } from "../containers/ChatLists"
-import NetworkError from "./indexes/NetworkError"
+import { NetworkError } from "./indexes/ErrorPages"
 
 
 const Chats = () => {
@@ -39,6 +40,9 @@ const Chats = () => {
 
             const load = document.getElementById('load')
             load.style['display'] = 'none'
+
+            const blank = document.getElementById('blank')
+            blank.style['display'] = 'none'
         })
     }, [me])
 
@@ -110,6 +114,14 @@ const Chats = () => {
                             <div id="error" style={{display: 'none'}} className="tc">
                                 <NetworkError />
                             </div>
+                            {rooms.length === 0 &&  <div id="blank" className="tc">
+                                <BlankPage />
+                                <div className="tc">
+                                    <p className="pv4 fw6 ph5">
+                                        <small className="green f4">You don't have any chats yet</small>
+                                    </p>
+                                </div>
+                            </div>}
                             <ChatRoomList rooms={rooms}  users={filteredChats}  />
                             <p id="load" className="tc code orange fw6 f4">Loading chats...</p>
                         </div>

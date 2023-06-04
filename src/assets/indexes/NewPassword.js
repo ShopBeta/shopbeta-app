@@ -1,7 +1,6 @@
 import React from "react";
 import '../Home.css'
 import img from '../../images/shopbeta logo.png'
-import { Link } from "react-router-dom";
 import Preloader from "../../components/Preloader";
 
 

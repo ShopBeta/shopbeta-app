@@ -5,8 +5,7 @@ import moment from "moment";
 import '../../components/simple-line-icons/css/simple-line-icons.css';
 import { Link } from "react-router-dom";
 import CommentList from "../../containers/CommentList";
-import NetworkError from "../indexes/NetworkError";
-import UserError from "../indexes/UserError";
+import { UserError, NetworkError } from "../indexes/ErrorPages";
 
 
 const FeedPost = ({ text, file }) => {
@@ -80,6 +79,9 @@ const FeedPost = ({ text, file }) => {
 
                 const load = document.getElementById('load')
                 load.innerHTML = 'Failed to load comments!'
+
+                const blank = document.getElementById('blank')
+                blank.style['display'] = 'none'
             })
         }, 2000); // every 5 minutes (100000)
     }, [feedId])
@@ -220,9 +222,9 @@ const FeedPost = ({ text, file }) => {
                     <div className="tc pv2">
                         <p className="f5 b pv2">Comment here to join the conversation</p>
                     </div>
-                   {comment.length === 0 && <div id="no-message" className="tc">
-                        <p style={{color: '#ee9617', fontSize: '100px', fontWeight: '510'}} className="icon-bubbles pt6 mid-gray"></p>
-                        <p className="pv2 tc fw6 orange f5">No comments yet <br/>Be the first to drop a comment.</p>
+                   {comment.length === 0 && <div id="blank" className="tc">
+                        <p style={{fontSize: '100px', fontWeight: '510'}} className="icon-bubbles pt6 mid-gray"></p>
+                        <p className="pv2 tc fw6 f5">No comments yet <br/>Be the first to drop a comment.</p>
                     </div>}
                     <div id="comment">
                         <CommentList comment={comment}/>

@@ -28,7 +28,7 @@ const PostProduct = ({ name, images, description, currency, price, oldprice, cat
                             <div className="tl pv2">
                                 <p className="pv1 f5 fw5">Description</p>
                                 <p className="pv2">
-                                    <textarea id="myInput" name="description" className="description br3 ba pa3 w-100 h4" required placeholder="Write a short description about yout product or service" aria-label="With textarea"></textarea>
+                                    <textarea id="myInput" name="description" className="description br3 ba pa3 w-100 h4" required placeholder="Write a short description about your product or service" aria-label="With textarea"></textarea>
                                 </p>
                             </div>
                             <p className="f5 fw5 pv2" for="Category">Category</p>

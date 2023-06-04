@@ -5,9 +5,9 @@ import './Home.css';
 import Navbar from '../components/Navbar';
 import { TextPostList } from '../containers/PostCardList';
 import Preloader from "../components/Preloader";
-import SideBar from "../components/FeedSideBar";
+import { FeedSideBar } from "../components/SideBars";
 import BlankPage from "./indexes/BlankPage";
-import NetworkError from "./indexes/NetworkError"
+import { NetworkError }from "./indexes/ErrorPages"
 
 
 const AdbillBoard = () => {
@@ -35,6 +35,9 @@ const AdbillBoard = () => {
 
             const load = document.getElementById('load')
             load.style['display'] = 'none'
+
+            const blank = document.getElementById('blank')
+            blank.style['display'] = 'none'
         })
     }, [])
 
@@ -50,12 +53,12 @@ const AdbillBoard = () => {
                             </h3>
                             <div className="dib w-100 tc">
                                 <div className="dtc">
-                                    <SideBar />
+                                    <FeedSideBar />
                                 </div>
                                 <div id="error" style={{display: 'none'}} className="tc">
                                     <NetworkError />
                                 </div>
-                              {feed.length === 0 &&  <div id="blank" className="tc">
+                                {feed.length === 0 &&  <div id="blank" className="tc">
                                     <BlankPage />
                                     <div className="tc">
                                         <p className="pv4 fw6 ph5">

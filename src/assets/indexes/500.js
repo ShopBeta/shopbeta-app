@@ -25,7 +25,7 @@ const ServerError = () => {
                                 <div className='tc code' style={{fontSize: '27px', fontWeight: '500'}}><img src={img1} alt="500 error" className="tc" width="200px" height="200px" /></div>
                                 <div className="pv2 tc">
                                 <span> 
-                                    <Link to={"/assets/Home"}>
+                                    <Link to={"/assets/AdbillBoard"}>
                                         <button className="index-button f6 pointer ba hover-bg-mid-gray pa3 tc br-pill ph5 ma1 grow b fw6">Go to Home<small className="icon-arrow-right pl2"></small></button>
                                     </Link>
                                 </span>

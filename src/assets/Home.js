@@ -39,8 +39,8 @@ const Home = () => {
                 <Preloader />
                         <Navbar />
                     <div className="pv6 tc dtc">
-                        <h3 className="tl pv2 code f3 ph3">
-                            MarketPlace
+                        <h3 className="tc pv2 code f3 ph3">
+                            Explore MarketPlace
                         </h3>
                         <div className="tc">
                             <MainCat />

@@ -1,7 +1,7 @@
 import React from "react";
 import 'tachyons'
 import '../Home.css'
-import img1 from '../../images/network-error-1.png'
+import img1 from '../../images/e-commerce-online.jpg'
 import Preloader from "../../components/Preloader";
 
 

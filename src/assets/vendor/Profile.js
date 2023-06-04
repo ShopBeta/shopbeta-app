@@ -7,6 +7,7 @@ import Preloader from "../../components/Preloader";
 
 
 
+
 const Profile = () => {
     render()
         return(
@@ -21,5 +22,7 @@ const Profile = () => {
             </div>
         );
 }
+
+
 
 export default Profile;

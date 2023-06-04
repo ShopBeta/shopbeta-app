@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import 'tachyons';
 import img2 from '../images/images-1.jpg'
 import { Link } from "react-router-dom";
-import NetworkError from "../assets/indexes/NetworkError";
+import { NetworkError } from "../assets/indexes/ErrorPages";
 
 const User = () => { 
     

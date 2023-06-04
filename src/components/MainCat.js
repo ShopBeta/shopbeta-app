@@ -1,35 +1,9 @@
 import React from "react";
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import 'tachyons';
 import { catData } from "../containers/CatData";
 
 const MainCat = (val) => {
-
-    const [product, setProduct] = useState([])
-    useEffect(() => {
-        fetch("https://shopbeta-api.onrender.com/products", {
-            method: "GET",
-        })
-        .then((res) => res.json())
-        .then((data) => setProduct(data))
-        .catch((err) => {
-            console.log(err.message)
-        })
-    }, [])
-
-    // const category = val.Title
-    // const catProducts = product.filter(
-    //     product => {
-    //         return (
-    //             product
-    //             .category
-    //             .toLowerCase()
-    //             .includes(category.toLowerCase())
-    //         )
-    //     }
-    // )
-    // console.log(catProducts)
 
     return (
         <div className="dtc bg-white tc">
@@ -40,7 +14,7 @@ const MainCat = (val) => {
                                 <div>
                                 <Link to={"../assets/vendor/MarketPlace"} className="link black">
                                     <div className="dib">
-                                        <div onClick={() => {window.localStorage.setItem("category", val.Title)}} className="tl br3 bw2 shadow-4 bg-white b--black ma2 pa2">
+                                        <div onClick={() => {window.localStorage.setItem("category", val.Title)}} className="tl br3 bw2 b--black ma2 pa2">
                                                 <div className="flex flex-wrap">
                                                     <p className="tc">
                                                         {val.Image}
@@ -48,10 +22,9 @@ const MainCat = (val) => {
                                                 </div>   
                                                 <div className="tc">
                                                     <p className="fw5">{val.Title}</p>
-                                                    {/* <small className="icon-heart pointer ph4 f4"></small> */}
-                                                    <button disabled className="bg-transparent b--black-10 pa1 tc br-pill ph6 pa2 ma3 f6 b fw6">
-                                                        {product.length} listings
-                                                        {/* {catProducts.length} listings */}
+                                                    <button disabled className="bg-transparent b--black-10 orange pointer tc br-pill ph5 pa3 ma3">
+                                                        <small className="icon-heart pointer ph2 f5"></small>
+                                                        <small className="f5 fw6">View listings</small>
                                                     </button>
                                                 </div>    
                                             </div>

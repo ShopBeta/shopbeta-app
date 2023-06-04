@@ -4,7 +4,7 @@ import 'tachyons';
 // import img1 from '../images/avatar6.png'
 import img2 from '../images/images-1.jpg'
 import { Link } from "react-router-dom";
-import UserError from "../assets/indexes/UserError";
+import { UserError } from "../assets/indexes/ErrorPages";
 
 const User = () => { 
     
