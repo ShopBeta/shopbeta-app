@@ -72,7 +72,7 @@ const AdbillBoard = () => {
                             </div>
                         </div>
                     </div>
-                    <Navbar />
+                    <footer><Navbar /></footer>
                 </div>
     );
 }
