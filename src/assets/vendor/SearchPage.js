@@ -85,7 +85,7 @@ const SearchPage = () => {
                             </div>
                         </div>
                     </div>
-                    <div style={{overflowY: 'auto', height: '460px'}} className="tc pt5">
+                    <div className="tc pt5">
                         <div style={{display: 'none'}} id="results" className="tc">
                             <CardList product={filteredCards} />
                         </div>

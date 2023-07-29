@@ -40,7 +40,7 @@ const Home = () => {
             <div className="">
                 <Preloader />
                     <Header />
-                    <div style={{overflowY: 'auto', height: '570px'}} className="pa1 pv5">
+                    <div className="pa1 pv5">
                         <div className="tr pv2">
                             <nav className="fw5 bg-white navbar tr pa2" style={{position: 'fixed', width: '100%', borderBottom: '1px thin black'}}>
                                 <span><Link to={"../assets/vendor/SearchPage"} title="search" className="navbar pv2 f3 hover-bg-light-gray br3 icon-magnifier ph4 fw6 link black" ></Link></span>

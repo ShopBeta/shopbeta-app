@@ -60,7 +60,7 @@ const Products = () => {
         <div className="">
             <Preloader />
                 <Header />
-            <div style={{overflowY: 'auto', height: '570px'}} className="">
+            <div className="">
                 <div className="pa1 pv5 tc">
                         <div className="dib tc">
                             <h3 className="pa4 tl code f3 ph3">

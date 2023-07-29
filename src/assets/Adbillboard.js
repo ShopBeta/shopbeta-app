@@ -47,7 +47,7 @@ const AdbillBoard = () => {
             <div className="">
                 <Preloader />
                     <Header />
-                    <div style={{overflowY: 'auto', height: '670px', width: '360px'}} className="">
+                    <div className="">
                         <div className="pa1 pv5 tc">
                             <div className="dib tc">
                                 <h3 className="pa4 tl code f3 ph3">
@@ -72,7 +72,7 @@ const AdbillBoard = () => {
                             </div>
                         </div>
                     </div>
-                    <footer><Navbar /></footer>
+                    <Navbar />
                 </div>
     );
 }

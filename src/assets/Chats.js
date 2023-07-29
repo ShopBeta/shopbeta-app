@@ -100,7 +100,7 @@ const Chats = () => {
                                 </span>
                             </div>
                         </div>
-                        <div style={{overflowY: 'auto', height: '462px', width: '360px'}} className="dib tc">
+                        <div className="dib tc">
                             <div className="dib tc br3 pa2 w-100 b--black">
                                 <div className="pv2 br3 b-black tj flex flex-wrap">
                                     <div className="pa2">

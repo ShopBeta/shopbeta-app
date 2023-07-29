@@ -48,7 +48,7 @@ const VideoSpace = () => {
             <div className="">
                 <Preloader />
                 <Header />
-                    <div style={{overflowY: 'auto', height: '570px'}} className="">
+                    <div className="">
                         <div className="pa1 pv5 tc">
                                 <div className="dib tc">
                                     <h3 className="tl pa4 code f3 ph4">VideoSpace</h3>
