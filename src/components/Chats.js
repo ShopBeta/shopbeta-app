@@ -70,7 +70,7 @@ const Chatrooms = ({ roomId, userId, createdAt }) => {
         );
 }
 
-const Messages = ({ id, roomid, time, message, user}) => {
+const Messages = ({ id, roomId, time, message, seen, user}) => {
 
     const [users, setUsers] = useState({})
     useEffect(() => {
@@ -93,19 +93,21 @@ const Messages = ({ id, roomid, time, message, user}) => {
                 <div>
                     <div id="messages" className="pv2 pointer tj flex flex-wrap">
                         <Link onClick={() => {window.localStorage.setItem("userId", user)}} className="link black" to={"/assets/vendor/User"}>
-                            <img src={`https://shopbeta-api.onrender.com/users/${user}/avatar`} alt="avatar" className="br-100 ph2 pa3" width="55px" height="55px" />
+                            <img src={`https://shopbeta-api.onrender.com/users/${user}/avatar`} alt="avatar" className="br-100 ph2 pa3" width="50px" height="50px" />
                         </Link>
                         <div className="pv2">
                             <small class="opacity-6 ph2 fw5 code">
                                 <b>{users.username}</b>
                             </small>
-                            <div style={{width: '280px'}} className="tj bg-light-gray pa3 br4">
+                            <div style={{width: '270px'}} className="tj bg-light-gray pa3 br4">
                                 {message}
                             </div>
                             <div className="tr">
                                 <small class="opacity-6 code">
-                                    {moment(time).fromNow()}
+                                    {/* {moment(time).fromNow()} */}
                                     <i class="ph2">{moment(time).format('h:mm a')}</i>
+                                    <i class="icon-check fw6"></i>
+                                    {seen.length !== 0 && <i class="icon-eye fw6 ph2"></i>}
                                 </small>
                             </div>
                         </div>

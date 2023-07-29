@@ -2,6 +2,7 @@ import React from "react";
 import '../Home.css';
 import { useState, useEffect } from "react";
 import Navbar from '../../components/Navbar';
+import Header from '../../components/Header'
 import CartList from "../../containers/CartList";
 import Preloader from "../../components/Preloader";
 import BlankPage from "../indexes/BlankPage";
@@ -45,13 +46,14 @@ const Cart = () => {
     return(
         <div className="">
             <Preloader />
-            <Navbar />
+            <Header />
             <div className="">
-                <div className="dib pv6 tc">
-                    <h3 className="tl pv1 code f3 ph3">
-                        Saved products
-                    </h3>
-                    <h3 className="code fw7 pt2 f3 orange ph3">
+                <div className="pv4 pa1 tc">
+                    <div className="dib pt3 tc">
+                        <h3 className="pa4 tl code f3 ph3">
+                            Saved products
+                        </h3>
+                    <h3 className="code fw7 f3 orange ph3">
                         <small className="icon-basket ph2 f3"></small>
                         <small className="ph3 code">{cart.length} items</small>
                     </h3>
@@ -71,7 +73,9 @@ const Cart = () => {
                 </div>}
                 <p id="load" className="tc code orange fw6 f4">Loading cart...</p>
             </div>
+            </div>
         </div>
+        <Navbar />
     </div>
     )
 }

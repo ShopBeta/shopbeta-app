@@ -41,7 +41,7 @@ const Comment = ({ text, file, owner, time }) => {
                                             <div class="opacity-6 tr code">
                                                 <small>
                                                     <i class="ph2"></i>
-                                                    {moment(time).fromNow()}
+                                                    {moment(time).from()}
                                                 </small>
                                             </div>
                                         </div>

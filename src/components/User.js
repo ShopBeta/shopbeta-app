@@ -72,6 +72,10 @@ const User = () => {
     }, [user._id, token])
 
     const logOut = async () => {
+
+        localStorage.clear("token")
+        localStorage.clear("meId")
+
         await fetch("https://shopbeta-api.onrender.com/users/logout", {
             method: 'POST',
             headers: {

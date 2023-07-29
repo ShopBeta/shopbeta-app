@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import '../Home.css';
 import { useState } from "react";
 import Navbar from '../../components/Navbar';
+import Header from '../../components/Header';
 import { SideBar } from "../../components/SideBars";
 import CardList from '../../containers/CardList';
 import Preloader from "../../components/Preloader";
@@ -58,30 +59,35 @@ const Products = () => {
     return(
         <div className="">
             <Preloader />
-                <Navbar />
-            <div className="">
-                <div className="dtc">
-                    <SideBar />
-                </div>
-            <div className="pv6 tc">
-                <h3 className="fw6 code fw5 f3 ph3 pb2">MarketPlace</h3>
-                    <div className="tc pl4">
-                        <CardList product={catProducts} />
-                    </div>
-                    <div id="error" style={{display: 'none'}} className="tc">
-                        <NetworkError />
-                    </div>
-                    {catProducts.length === 0 &&  <div id="blank" className="tc">
-                        <BlankPage />
-                        <div className="tc">
-                            <p className="pv4 fw6 ph5">
-                                <small className="green f4">Post your services or products on MarketPlace</small>
-                            </p>
+                <Header />
+            <div style={{overflowY: 'auto', height: '570px'}} className="">
+                <div className="pa1 pv5 tc">
+                        <div className="dib tc">
+                            <h3 className="pa4 tl code f3 ph3">
+                                MarketPlace
+                            </h3>
+                        <div className="dtc">
+                            <SideBar />
                         </div>
-                    </div>}
-                    <p id="load" className="tc code orange fw6 f4">Loading products...</p>
+                        <div className="tc pl4">
+                            <CardList product={catProducts} />
+                        </div>
+                        <div id="error" style={{display: 'none'}} className="tc">
+                            <NetworkError />
+                        </div>
+                        {catProducts.length === 0 &&  <div id="blank" className="tc">
+                            <BlankPage />
+                            <div className="tc">
+                                <p className="pv4 fw6 ph5">
+                                    <small className="green f4">Post your services or products on MarketPlace</small>
+                                </p>
+                            </div>
+                        </div>}
+                        <p id="load" className="tc code orange fw6 f4">Loading products...</p>
+                    </div>
                 </div>
             </div>
+            <Navbar />
         </div>
     )
 }

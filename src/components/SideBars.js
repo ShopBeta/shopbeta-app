@@ -11,19 +11,19 @@ const SideBar = () => {
                 { 
                     sidebarData.map((val, key) => {
                         return (
-                            <li key={key}
+                            <p key={key}
                                 id={window.location.pathname === val.Link ? "active" : ""  } 
                                 
-                                className="pt6 pointer br4 row">
+                                className="pt4 pointer row">
                                     
                                 <div id="Icon" className="pa1 grow br3 orange">{val.Icon}</div>
                                 <div id="Title">{val.Title}</div>
-                            </li>
+                            </p>
                         );
                     })}
             </ul>
             <Link className="link orange" to={"/components/PostProduct"}>
-                <small title="post product" className="f1 fw7 bg-white br-pill grow pa1 pointer icon-plus shadow-5"></small>
+                <small title="post product" className="f1 fw7 bg-white br-pill grow pa1 pointer icon-plus"></small>
             </Link>
         </div>
     );
@@ -40,7 +40,7 @@ const FeedSideBar = () => {
                             <p key={key}
                                 id={window.location.pathname === val.Link ? "active" : ""  } 
                                 
-                                className="pt5 pointer">
+                                className="pt4 pointer">
                                     
                                 <small id="Icon" className="pa2 grow br3 orange">{val.Icon}</small>
                                 <small id="Title">{val.Title}</small>
@@ -49,7 +49,7 @@ const FeedSideBar = () => {
                     })}
             </div>
             <Link className="link orange" to={"/container/PostAd"}>
-                <small title="post feed" className="f1 fw7 bg-white br-pill grow pa2 pointer icon-plus shadow-5"></small>
+                <small title="post feed" className="f1 fw6 bg-white br-pill grow pa2 pointer icon-plus"></small>
             </Link>
         </div>
     );
@@ -66,7 +66,7 @@ const VideoSideBar = () => {
                             <p key={key}
                                 id={window.location.pathname === val.Link ? "active" : ""  } 
                                 
-                                className="pt5 pointer">
+                                className="pt4 pointer">
                                     
                                 <small id="Icon" className="pa2 grow br3 orange">{val.Icon}</small>
                                 <small id="Title">{val.Title}</small>
@@ -75,7 +75,7 @@ const VideoSideBar = () => {
                     })}
             </div>
             <Link className="link orange" to={"/container/PostVideo"}>
-                <small title="post video" className="f1 fw7 bg-white br-pill grow pa2 tc pointer icon-plus shadow-5"></small>
+                <small title="post video" className="f1 fw7 bg-white br-pill grow pa2 tc pointer icon-plus"></small>
             </Link>
         </div>
     );

@@ -68,6 +68,7 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
     const heartClick = async event => {
             event.currentTarget.style.color = 'orange';
             event.currentTarget.style.fontWeight = 'bold';
+            // event.currentTarget.innerHTML = 'liked';
 
             const count = {
                 hearts: hearts + 1
@@ -95,7 +96,7 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
                 <div className="tj flex f4 flex-wrap">
                     <span>
                         <Link onClick={() => {window.localStorage.setItem("userId", owner)}} className="link black" to={"/assets/vendor/User"}>
-                            <img src={`https://shopbeta-api.onrender.com/users/${owner}/avatar`} alt="avatar" className="br-100" width="55px" height="55px" />
+                            <img src={`https://shopbeta-api.onrender.com/users/${owner}/avatar`} alt="avatar" className="br-100" width="50px" height="50px" />
                         </Link>
                     </span>
                     <span className="pa2 f5 pointer fw5">
@@ -125,24 +126,34 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
                     <Link onClick={() => {window.localStorage.setItem("feedId", id)}} className="link black" to={"/assets/vendor/FeedPost"}>
                         <img src={`https://shopbeta-api.onrender.com/feed/${id}/media`} alt="post..." className="br4"  />
                     </Link>
-                    <div className="pa2">
-                        <span onClick={heartClick} className="pa2 fw5 ph2 icon-heart pointer f4 grow">
-                            <small id="increment" className="pa1 code">{hearts}</small>
+                    <div className="tl pv3">
+                        <span className="pa2 fw5 ph2 pointer">
+                            {hearts}
+                            <small id="increment" className="pa1 code">hearts</small>
                         </span>
-                        <Link onClick={() => {window.localStorage.setItem("feedId", id)}} className="link black" to={"/assets/vendor/FeedPost"}>
+                        <span className="pa2 fw5 ph2 pointer">
+                            {comment.length}
+                            <small className="pa1 code">comments</small>
+                        </span>
+                    </div>
+                    <div className="pa3">
+                        <span onClick={heartClick} className="pa2 fw5 ph2 icon-heart pointer f4 grow">
+                            <small id="increment" className="pa1 code">like</small>
+                        </span>
+                        <Link onClick={() => {window.localStorage.setItem("feedId", id)}} className="link ph4 black" to={"/assets/vendor/FeedPost"}>
                             <span className="pa2 pointer f4 fw5 grow icon-bubble">
-                                <small className="pa1 code">{comment.length}</small>
+                                <small className="pa1 code">comment</small>
                             </span>
                         </Link>
-                        <Link onClick={() => {window.localStorage.setItem("feedId", id)}} className="link black" to={"/assets/vendor/FeedPost"}>
-                            <span>
-                                <input type="text" className="pa3 br-pill b--black-50 ba w-70" placeholder="Comment here..." />
+                        <Link className="link black" to={"#"}>
+                            <span className="pa2 pointer f4 fw5 grow icon-share-alt">
+                                <small className="pa1 code">share</small>
                             </span>
                         </Link>
                     </div>
                 </div>
-                </div>
             </div>
+        </div>
     )
 }
 
@@ -186,30 +197,10 @@ const VideoPost = ({ id, owner, media, text, hearts, views, time}) => {
         })
     }, [id])
 
-    const buttonClick = async event => {
-
-        event.currentTarget.style.backgroundColor = 'transparent';
-        event.currentTarget.style.color = 'orange';
-        event.currentTarget.style.fontWeight = 'bold';
-        event.currentTarget.innerHTML = 'following';
-
-           await fetch(`https://shopbeta-api.onrender.com/user/${user._id}/follow/${me}`, {
-                method: "POST",
-                headers: {
-                    'Content-Type' : 'application/json'
-                },
-            })
-            .then((res) => res.json())
-            .then((data) => console.log(data))
-            .catch((err) => {
-                console.log(err.message)
-            })
-
-    }
-
     const heartClick = async event => {
             event.currentTarget.style.color = 'orange';
             event.currentTarget.style.fontWeight = 'bold';
+            // event.currentTarget.innerHTML = 'liked';
 
             const count = {
                 hearts: hearts + 1
@@ -253,7 +244,7 @@ const VideoPost = ({ id, owner, media, text, hearts, views, time}) => {
         .catch((err) => {
             console.log(err.message)
         })
-}
+    }
     
     return(
             <div style={{Height: '580px', width: '360px'}} className="dib pa2">
@@ -262,49 +253,62 @@ const VideoPost = ({ id, owner, media, text, hearts, views, time}) => {
                             <video onClick={viewClick} style={{Height: 'auto', width: '100%'}} className="br4" controls>
                                 <source src={`https://shopbeta-api.onrender.com/video/${id}/video`} type="video/mp4"></source>
                             </video>
-                            <div className="f4">
-                                <span className="icon-eye pr2"></span>
-                                <span className="pr6"> 
-                                    <small class="opacity-6 code">
-                                        <i class=""></i>
-                                        {views} | Views
-                                    </small>
+                            <div className="tl pv2">
+                                <span className="icon-eye pl2 f6"></span>
+                                <span className="pa2 fw5 ph2 pointer">
+                                    {views}
+                                    <small id="increment" className="pa1 code">views</small>
                                 </span>
-                                <span className="f6 pa1 code fw3">
-                                    {moment(time).from()}
-                                    {/* <span class="ph2">{moment(time).format('h:mm a')}</span> */}
+                                <span className="pa2 fw5 ph2 pointer">
+                                    {hearts}
+                                    <small id="increment" className="pa1 code">hearts</small>
+                                </span>
+                                <span className="pa2 fw5 ph2 pointer">
+                                    {comment.length}
+                                    <small className="pa1 code">comments</small>
                                 </span>
                             </div>
-                          <div className="">
+                            <div className="tr ph2">
+                                <small>
+                                    {moment(time).from()}:
+                                    <span class="ph1">{moment(time).format('h:mm a')}</span>
+                                </small>
+                            </div>
+                            <div className="">
                             <div className="pa2">
                                 <div style={{ height: 'auto', textAlign: 'justify'}} className="pa2">
-                                    <Link onClick={() => {window.localStorage.setItem("videoId", id)}} className="link black" to={"/assets/vendor/VideoPost"}>
-                                        <div style={{lineHeight: "18px"}} className="f6">
-                                            {text}
-                                        </div>
-                                    </Link>
-                                    <div className="pa2 tr">
-                                            <p onClick={heartClick} className="pa2 fw5 pointer icon-heart pointer f3">
-                                                <small id="increment" className="pa1 code">{hearts}</small>
-                                            </p>
-                                            <Link onClick={() => {window.localStorage.setItem("videoId", id)}} className="link black" to={"/assets/vendor/VideoPost"}>
-                                                <p className="pa2 pointer f3 fw5 icon-bubble">
-                                                    <small className="pa1 f5 code">{comment.length}</small>
-                                                </p>
+                                    <div className="pa2 tj flex f4 flex-wrap">
+                                        <span className="">
+                                            <Link onClick={() => {window.localStorage.setItem("userId", owner)}} className="link black" to={"/assets/vendor/User"}>
+                                                <img src={`https://shopbeta-api.onrender.com/users/${owner}/avatar`} alt="avatar" className="br-100 pointer" width="50px" height="50px" />
                                             </Link>
-                                            <p className="tr">  
-                                                <Link onClick={() => {window.localStorage.setItem("userId", owner)}} className="link black" to={"/assets/vendor/User"}>
-                                                    <img src={`https://shopbeta-api.onrender.com/users/${owner}/avatar`} alt="avatar" className="br-100 pointer" width="55px" height="55px" />
-                                                </Link>
-                                                <Link onClick={() => {window.localStorage.setItem("userId", owner)}} className="link black" to={"/assets/vendor/User"}>
-                                                    <p className="pa2 pointer fw5">
-                                                        <p>{user.username}</p>
-                                                    </p>
-                                                </Link>
-                                                <p onClick={buttonClick} className="f5 pointer hover-orange tr hover-mid-gray orange ph2 b fw6">
-                                                    Follow
-                                                </p>
-                                            </p>
+                                        </span>
+                                        <span className="ph2">
+                                            <Link onClick={() => {window.localStorage.setItem("userId", owner)}} className="link f5 black" to={"/assets/vendor/User"}>
+                                                <span className="orange">
+                                                    {user.username}
+                                                </span>
+                                            </Link>
+                                            <Link onClick={() => {window.localStorage.setItem("videoId", id)}} className="link black" to={"/assets/vendor/VideoPost"}>
+                                                <div style={{lineHeight: "18px"}} className="f5 pa1">
+                                                    {text}
+                                                </div>
+                                            </Link>
+                                        </span>
+                                        <div className="pt4">
+                                            <span onClick={heartClick} className="pa2 fw5 ph2 icon-heart pointer f4 grow">
+                                                <small id="increment" className="pa1 code">like</small>
+                                            </span>
+                                            <Link onClick={() => {window.localStorage.setItem("videoId", id)}} className="link ph4 black" to={"/assets/vendor/VideoPost"}>
+                                                <span className="pa2 pointer f4 fw5 grow icon-bubble">
+                                                    <small className="pa1 code">comment</small>
+                                                </span>
+                                            </Link>
+                                            <Link className="link black" to={"#"}>
+                                                <span className="pa2 pointer f4 fw5 grow icon-share-alt">
+                                                    <small className="pa1 code">share</small>
+                                                </span>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
@@ -312,6 +316,7 @@ const VideoPost = ({ id, owner, media, text, hearts, views, time}) => {
                         </div>
                     </div>
                 </div>
+            </div>
     )
 }
 

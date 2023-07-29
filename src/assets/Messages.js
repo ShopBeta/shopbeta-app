@@ -31,7 +31,7 @@ const Messages = () => {
         })
     }, [roomId])
 
-    const [chats, setChats] = useState([])
+    const [messages, setMessages] = useState([])
     useEffect(() => {    
         setInterval(function() {
             fetch(`https://shopbeta-api.onrender.com/chat/messages/${roomId}`, {
@@ -43,7 +43,7 @@ const Messages = () => {
             })
             .then((res) => res.json())
             .then((data) => {
-                setChats(data)
+                setMessages(data)
 
                 const error = document.getElementById('error')
                 error.style['display'] = 'none'
@@ -66,7 +66,7 @@ const Messages = () => {
         }, 2000); // every 5 minutes (100000)
     }, [roomId])
 
-    console.log(chats)
+    console.log(messages)
     console.log(user)
     console.log(me)
     console.log(token)
@@ -79,7 +79,6 @@ const Messages = () => {
         }
 
         if (message.messageText.trim() === "") {
-
             return false
         }
 
@@ -144,7 +143,7 @@ const Messages = () => {
                     <div className="tc">
                         <div className="pa3 w-100">
                             <div className="tr">
-                                <small className="f3 fw5 hover-orange pointer grow br3 icon-settings ph4"></small>
+                                <small className="f3 fw5 hover-orange pointer grow br3 icon-refresh ph4"></small>
                                 <Link className="black link" to={"/assets/Chats"}>
                                     <small onClick={deleteChatRoom} title="delete your entire conversation" className="f3 fw5 hover-orange pointer grow br3 icon-trash"></small>
                                 </Link>
@@ -169,7 +168,7 @@ const Messages = () => {
                                         Welcome to ShopBeta! <br/>Send a message to start a conversation. We strongly encourage constructive conversations to improve your social shopping experience.
                                     </div>
                                 </div>
-                                {chats.length === 0 && <div>
+                                {messages.length === 0 && <div>
                                     <div id="blank" className="tc">
                                         <p style={{fontSize: '100px', fontWeight: '510'}} className="icon-bubbles pt6 mid-gray"></p>
                                         <p className="pv2 tc fw6 f5">No messages <br/>Send a message to start a conversation.</p>
@@ -180,7 +179,7 @@ const Messages = () => {
                                         {moment(Date().toString()).format("LL")}
                                     </div>
                                 </div> 
-                                <MessageList chats={chats} />
+                                <MessageList messages={messages} />
                                 <p id="load" className="tc code orange ph2 fw6 f4">Loading messages...</p>
                                 <div id="error" style={{display: 'none'}} className="tc">
                                     <NetworkError />

@@ -53,7 +53,7 @@ export const catData = [
         Link: '/assets/vendor/MarketPlace'
     },
     {
-        Title: "Bonus Bundles",
+        Title: "Miscellaneous",
         Image:  <div style={{width: '300px' }} className="tc"><img src={img5} alt="bonus bondles" className="br4 tc pv1 w-100" width="310px" height="230px"></img></div>,
         Link: 'assets/vendor/MarketPlace'
     }

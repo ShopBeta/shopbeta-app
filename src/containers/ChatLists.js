@@ -21,19 +21,20 @@ const ChatRoomList = ({ rooms, roomId, userId, createdAt }) => {
 }
 
 
-const MessageList = ({ chats, message, user, id, time, roomid }) => {
+const MessageList = ({ messages, message, user, id, seen, time, roomId }) => {
     return (
         <div>
             {
-                chats.map((chats, i) => {
+                messages.map((messages, i) => {
                     return (
                         <Messages
                         key={i} 
-                        id={chats._id} 
-                        user={chats.postedByUser} 
-                        message={chats.message.messageText}
-                        roomid={chats.chatRoomId}
-                        time={chats.time}
+                        id={messages._id} 
+                        user={messages.postedByUser} 
+                        message={messages.message.messageText}
+                        roomId={messages.chatRoomId}
+                        seen={messages.readByRecipients}
+                        time={messages.time}
                         />
                     )
                 })

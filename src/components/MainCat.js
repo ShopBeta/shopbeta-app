@@ -10,7 +10,7 @@ const MainCat = (val) => {
             {
                     catData.map((val, key) => {
                         return (
-                                <div className="dib tc" key={key}>                      
+                                <div className="dib tc shadow-5 br3 ma2" key={key}>                      
                                 <div>
                                 <Link to={"../assets/vendor/MarketPlace"} className="link black">
                                     <div className="dib">

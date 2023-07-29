@@ -3,6 +3,7 @@ import React from "react";
 import '../Home.css'
 import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar";
+import Header from '../../components/Header'
 import Preloader from "../../components/Preloader";
 
 
@@ -13,6 +14,10 @@ const me = localStorage.getItem("meId")
 console.log(me)
     
 const logoutAllClick = async () => {
+
+            localStorage.clear("token")
+            localStorage.clear("meId")
+            
             await fetch("https://shopbeta-api.onrender.com/users/logoutAll", {
                 method: "POST",
                 headers: {
@@ -97,9 +102,9 @@ const handleSubmit = e => {
         return(
             <div className="tc w-100">
                 <Preloader />
-                <Navbar />
+                    <Header />
                     <div className="dib">
-                      <div className="flex flex-wrap pv6">
+                      <div className="flex flex-wrap pv5">
                         <div style={{width: '360px'}} className="pv2 dib pa3">
                             <h3 className="tl pv1 code f3">
                                     Settings
@@ -185,6 +190,7 @@ const handleSubmit = e => {
                         </div>
                     </div>
                 </div>
+                <Navbar />
             </div>
     );
 }

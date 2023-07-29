@@ -2,6 +2,8 @@ import { render } from "@testing-library/react";
 import React from "react";
 import { useState, useEffect } from "react";
 import '../Home.css';
+import Navbar from "../../components/Navbar";
+import Header from "../../components/Header";
 import img from '../../images/network-error-1.png'
 import CardList from '../../containers/CardList';
 import SearchBox from "../../components/SearchBox";
@@ -70,20 +72,20 @@ const SearchPage = () => {
     )
 
         return(
-            <div className="">
+            <div className="tc">
                 <Preloader />
-                  <div style={{position: 'fixed', width: '100%', borderBottom: '1px thin black'}} className="bg-white">
-                    <h3 className="tl pt3 pa3 code f3 ph3">
-                        SearchPage
-                    </h3>
-                    <div className="tc ph1 flex flex-wrap">
-                        <span style={{fontSize: '23px', fontWeight: '800', letterSpacing: '-1px'}} className="icon-magnifier pl2 pt3"></span>
-                        <span>
-                            <SearchBox searchChange={onSearchChange} />
-                        </span>
+                <Header />
+                  <div className="bg-white pv2 dib tc">
+                        <div className="pt5 tc pa1">
+                            <div className="pt3 flex flex-wrap">
+                                <span style={{color: 'black', fontSize: '23px', fontWeight: '500', letterSpacing: '-2px'}} className="pr2 icon-magnifier pt2"></span>
+                                <span className="">
+                                    <SearchBox searchChange={onSearchChange} />
+                                </span>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                    <div className="tc pt6">
+                    <div style={{overflowY: 'auto', height: '460px'}} className="tc pt5">
                         <div style={{display: 'none'}} id="results" className="tc">
                             <CardList product={filteredCards} />
                         </div>
@@ -110,6 +112,7 @@ const SearchPage = () => {
                         </div>
                         <p id="load" className="tc code orange fw6 f4">Loading...</p>
                 </div>
+                <Navbar />
             </div>
         );
 }

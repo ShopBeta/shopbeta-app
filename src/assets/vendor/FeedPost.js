@@ -207,13 +207,30 @@ const FeedPost = ({ text, file }) => {
                 </div>
                 <div className="side2">
                     <img src={`https://shopbeta-api.onrender.com/feed/${feedId}/media`} alt="post..." className="br4"  />
-                    <div className="pa2">
-                        <span onClick={heartClick} className="pa2 fw5 ph4 icon-heart pointer f4 grow">
-                            <small id="increment" className="pa1 code">{feed.hearts}</small>
+                   <div className="tl pv3">
+                        <span className="pa2 fw5 ph2 pointer">
+                            {feed.hearts}
+                            <small id="increment" className="pa1 code">hearts</small>
                         </span>
-                        <span className="pa2 pointer ph4 f4 fw5 grow icon-bubble">
-                            <small className="pa1 code">{comment.length}</small>
+                        <span className="pa2 fw5 ph2 pointer">
+                            {comment.length}
+                            <small className="pa1 code">comments</small>
                         </span>
+                    </div>
+                    <div className="pa3">
+                        <span onClick={heartClick} className="pa2 fw5 ph2 icon-heart pointer f4 grow">
+                            <small id="increment" className="pa1 code">like</small>
+                        </span>
+                        <Link onClick={() => {window.localStorage.setItem("feedId", feedId)}} className="link ph4 black" to={"/assets/vendor/FeedPost"}>
+                            <span className="pa2 pointer f4 fw5 grow icon-bubble">
+                                <small className="pa1 code">comment</small>
+                            </span>
+                        </Link>
+                        <Link className="link black" to={"#"}>
+                            <span className="pa2 pointer f4 fw5 grow icon-share-alt">
+                                <small className="pa1 code">share</small>
+                            </span>
+                        </Link>
                     </div>
                 </div>
             </div>

@@ -3,6 +3,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import './Home.css';
 import Navbar from '../components/Navbar';
+import Header from '../components/Header'
 import { VideoPostList } from '../containers/PostCardList';
 import Preloader from "../components/Preloader";
 import { VideoSideBar } from "../components/SideBars";
@@ -46,11 +47,11 @@ const VideoSpace = () => {
         return(
             <div className="">
                 <Preloader />
-                    <Navbar />
-                    <div className="">
+                <Header />
+                    <div style={{overflowY: 'auto', height: '570px'}} className="">
                         <div className="pa1 pv5 tc">
-                            <h3 className="tl pt5 pa4 code f3 ph4">VideoSpace</h3>
                                 <div className="dib tc">
+                                    <h3 className="tl pa4 code f3 ph4">VideoSpace</h3>
                                     <div className="dtc bg-blue">
                                         <VideoSideBar />
                                     </div>
@@ -69,7 +70,8 @@ const VideoSpace = () => {
                                     <p id="load" className="tc code orange fw6 f4">Loading videos...</p>
                                 </div>
                         </div>
-            </div>
+                </div>
+            <Navbar />
         </div>
     );
 }

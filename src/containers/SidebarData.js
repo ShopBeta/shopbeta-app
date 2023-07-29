@@ -9,7 +9,7 @@ export const sidebarData = [
         Link: '/assets/vendor/Cart'
     },
     {
-        Icon: <Link style={{fontSize: '21px'}} to={"../assets/Vendor/Cart"} title="saved items" className="black link icon-heart pv2"></Link>,
+        Icon: <Link style={{fontSize: '21px'}} to={"#"} title="saved items" className="black link pv2"></Link>,
         Link: '/assets'
     }
 ]

@@ -88,8 +88,7 @@ const User = () => {
             },
             body: JSON.stringify({
                 userIds,
-                type,
-                chatInitiator
+                type
             })       
         })
         .then((res) => res.json())

@@ -33,14 +33,16 @@ const PostProduct = ({ name, images, description, currency, price, oldprice, cat
                             </div>
                             <p className="f5 fw5 pv2" for="Category">Category</p>
                             <select className="category f5 pa3 br3 w-100" name="category" id="Category">
-                                <option id="Women Fashion" name="Women Fashion">Women Fashion</option>
-                                <option id="Men Clothing" name="Men Clothing">Men Clothing</option>
-                                <option id="Phone and Accessories" name="Phone and Accessories">Phone and Accessories</option>
-                                <option id="Consumer Electronics" name="Consumer Electronics">Consumer Electronics</option>
-                                <option id="Home and Garden" name="Home and Garden">Home and Garden</option>
-                                <option id="Beauty and Health" name="Beauty and Health">Beauty and Health</option>
-                                <option id="Sports" name="Sports">Sports</option>
-                                <option id="Shoes" name="Shoes">Shoes</option>
+                                <option id="Clothing & accessories" name="Clothing & accessories">Clothing & accessories</option>
+                                <option id="Electronics" name="Electronics">Electronics</option>
+                                <option id="Home & garden" name="Home & garden">Home & garden</option>
+                                <option id="Health & beauty" name="Health & beauty">Health & beauty</option>
+                                <option id="Entertainment" name="Entertainment">Entertainment</option>
+                                <option id="Sports & outdoors" name="Sports & outdoors">Sports & outdoors</option>
+                                <option id="Antique & collectibles" name="Antique & collectibles">Antique & collectibles</option>
+                                <option id="Vehicles" name="Vehicles">Vehicles</option>
+                                <option id="Housing" name="Housing">Housing</option>
+                                <option id="Classifieds" name="Classifieds">Classifieds</option>
                             </select>
                             <div className="tl pv2">
                             <p className="pv1 f5 fw5">Price</p>

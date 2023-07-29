@@ -3,6 +3,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import './Home.css';
 import Navbar from '../components/Navbar';
+import Header from '../components/Header'
 import { TextPostList } from '../containers/PostCardList';
 import Preloader from "../components/Preloader";
 import { FeedSideBar } from "../components/SideBars";
@@ -45,13 +46,13 @@ const AdbillBoard = () => {
         return(
             <div className="">
                 <Preloader />
-                        <Navbar />
-                    <div className="">
+                    <Header />
+                    <div style={{overflowY: 'auto', height: '570px'}} className="">
                         <div className="pa1 pv5 tc">
-                            <h3 className="tl pt5 pa4 code f3 ph3">
-                                AdbillBoard
-                            </h3>
-                            <div className="dib w-100 tc">
+                            <div className="dib tc">
+                                <h3 className="pa4 tl code f3 ph3">
+                                    AdbillBoard
+                                </h3>
                                 <div className="dtc">
                                     <FeedSideBar />
                                 </div>
@@ -71,6 +72,7 @@ const AdbillBoard = () => {
                             </div>
                         </div>
                     </div>
+                    <Navbar />
                 </div>
     );
 }

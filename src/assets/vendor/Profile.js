@@ -2,6 +2,7 @@ import { render } from "@testing-library/react";
 import React from "react";
 import '../Home.css'
 import Navbar from "../../components/Navbar";
+import Header from '../../components/Header'
 import User from "../../components/User";
 import Preloader from "../../components/Preloader";
 
@@ -13,12 +14,13 @@ const Profile = () => {
         return(
             <div className="">
                 <Preloader />
-                        <Navbar />
+                    <Header />
                     <div className="">
                        <div className="tc pv6">
-                        <User />
+                            <User />
                        </div>
-                </div>
+                    </div>
+                <Navbar />
             </div>
         );
 }
