@@ -47,7 +47,7 @@ const Cart = () => {
         <div className="">
             <Preloader />
             <Header />
-            <div className="">
+            <div style={{overflowY: 'auto', height: '570px', width: '360px'}} className="">
                 <div className="pv4 pa1 tc">
                     <div className="dib pt3 tc">
                         <h3 className="pa4 tl code f3 ph3">
