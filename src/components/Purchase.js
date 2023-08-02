@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-// import img from '../images/tst-image3.jpg'
+import img from '../images/online-shopping-checkout.jpg'
 import 'tachyons';
 
 const Purchase = () => {
@@ -26,22 +26,6 @@ const Purchase = () => {
         })
     }, [productId, token])
 
-    const [user, setUser] = useState({})
-    useEffect(() => {
-        fetch(`https://shopbeta-api.onrender.com/users/${product.owner}`, {
-            method: "GET",
-            headers: {
-                'Accept' : 'application/json, text/plain',
-                'Content-Type' : 'application/json'
-            },
-        })
-        .then((res) => res.json())
-        .then((data) => setUser(data))
-        .catch((err) => {
-            console.log(err.message)
-        })
-    }, [product.owner])
-
     return(
             <div className="tc w-100 pv2">
                 <div style={{width: '360px'}} className="dib pa3">
@@ -54,27 +38,8 @@ const Purchase = () => {
                 </div>
                 <div className="pv3 tj">
                     <div>
-                        <div className="tl pv2">
-                            <p className="fw5 f5">Check to see if product is available</p>
-                        </div>
                         <div className="pv2 pa2">
-                            <div className="br4 b--yellow ba pa2 mars white">
-                                <small className="icon-bubbles f4 pr2"></small>Message Seller
-                                <div className="tc f4">
-                                    <p className=""><img src={`https://shopbeta-api.onrender.com/users/${product.owner}/avatar`} alt="avatar" className="br-100 ph2" width="60px" height="60px" /></p>
-                                    <p className="fw6"><small>{user.username}</small></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="pv2 pa2">
-                            <div className="pv2 br4 pa2 mercury white">
-                                <p className="f4">
-                                    <p className="tr f4"><small className="icon-check b grow hover-red"></small></p>
-                                    <small className="icon-phone pr2 f4"></small>
-                                    {user.phonenumber}
-                                    <p className="tr fw6"><small>Phone number</small></p>
-                                </p>
-                            </div>
+                            <img src={img} className="br4" alt="online-shopping-checkout" />
                         </div>
                         <div className="pv2">
                             <div className="pa2 f6">
@@ -84,9 +49,13 @@ const Purchase = () => {
                                 </h3>
                                 <div className="lh3 f5 fw6 pa2">
                                     <p style={{lineHeight: "20px", fontSize: "13.5px"}} className="fw6">
-                                        No returns allowed on any FINAL SALE items, except for if flaws in products are found in the event
-                                        that you are not 100% satisfied with any item you purchase, we accept returns on any item (other than FINAL). This implies that any product shipped or delivered with defects or material. Please contact us at info@shopbetaonline.com to approve your return.
-                                        We reserve the right to deny any refund to sender without prior return approval. Only warn out items will be accepted for returns/exchange within 30 days at when item was delivered to you.
+                                        <p className="">
+                                            No returns allowed on any FINAL SALE items, except for if flaws in products are found in the event
+                                            that you are not 100% satisfied with any item you purchase. 
+                                        </p>
+                                        <p className="pv1">This implies that any product shipped or delivered by us (ShopBeta couriers) with defects or material. Please contact us at <small className="orange f5">info@shopbetaonline.com</small> to approve your return.</p>
+                                        <p className="">We reserve the right to deny any refund to sender without prior return approval. </p>
+                                        <p className="pv1">Only worn out items will be accepted for returns/exchange within 30 days at when item was delivered to you.</p>
                                     </p>
                                 </div>
                             </div>

@@ -37,17 +37,16 @@ const Details = () => {
                                 <Item />
                             </Carousell>
                         </div>
-                        <div className="tl pv2">
+                        <div className="f4 pv2">
                             <h3>{product.name}</h3>
                         </div>
-                        <p className="pv2 fw7">Description</p>
-                        <p>
+                        <div style={{lineHeight: "20px", fontSize: "13.5px"}} className="">
                             {product.description}
-                        </p>
+                        </div>
                         <div className="pa2 f6">
                             <h3 className="pv2">
                                 <small className="icon-info pr2 f5 blue"></small>
-                                    Item Review
+                                Item Review
                             </h3>
                             <div style={{lineHeight: "20px", fontSize: "13.5px"}} className="fw5">
                                 <p className="pa2">Check the quality of item(s) and make sure it meets your expectations before making payment.</p>

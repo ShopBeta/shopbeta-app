@@ -176,7 +176,7 @@ const FeedPost = ({ text, file }) => {
     }
     
     return(
-        <div className="tc w-100 pv3">
+        <div className="tc pv3">
             <div style={{width: '360px'}} className="dib pa2 bw2">
                 <div className="tj flex f4 flex-wrap">
                     <span>
@@ -233,12 +233,8 @@ const FeedPost = ({ text, file }) => {
                         </Link>
                     </div>
                 </div>
-            </div>
-            <div style={{width: '360px'}} className="dib">
-                <div style={{ overflowY: 'auto', height: '550px'}} className="f5 pv3 tj">
-                    <div className="tc pv2">
-                        <p className="f5 b pv2">Comment here to join the conversation</p>
-                    </div>
+                <div className="">
+                   <div className="f5 pv2 tj">
                    {comment.length === 0 && <div id="blank" className="tc">
                         <p style={{fontSize: '100px', fontWeight: '510'}} className="icon-bubbles pt6 mid-gray"></p>
                         <p className="pv2 tc fw6 f5">No comments yet <br/>Be the first to drop a comment.</p>
@@ -253,20 +249,21 @@ const FeedPost = ({ text, file }) => {
                         <UserError />
                     </div>
                     <p id="load" className="tc code orange fw6 f4">Loading comments...</p>
+                    </div>
                 </div>
-                <div className="tc">
-                    <form onSubmit={handleSubmit}>
-                        <span className="pv2">
-                            <input id="text" name="text" value={text} type="text" className="text input pa3 br-pill b--black-50 ba w-80" placeholder="Comment here..." />
-                        </span>
-                        <span className="ph1">
-                            <button type="submit" className="icon-paper-plane bg-transparent b--transparent pointer f3 orange"></button>
-                        </span>
-                        <span className="ph1">
-                            <small type='file' value={file} name="file" className="file icon-camera pointer f3 orange"></small>
-                        </span>
-                    </form>
-                </div>
+            </div>
+            <div style={{position: 'fixed', width: '100%', backgroundColor: '#ffffff', bottom: '0', left: '0', marginTop: '1rem', padding: '1rem'}} className="tc">
+                <form onSubmit={handleSubmit}>
+                    <span className="pv2">
+                        <input id="text" name="text" value={text} type="text" className="text input pa3 br-pill b--black-50 ba w-80" placeholder="Comment here..." />
+                    </span>
+                    <span className="ph1">
+                        <button type="file" className="icon-picture bg-transparent b--transparent pointer f3 orange"></button>
+                    </span>
+                    <span className="ph1">
+                        <button type="submit" className="icon-paper-plane bg-transparent b--transparent pointer f3 orange"></button>
+                    </span>
+                </form>
             </div>
         </div>
     )

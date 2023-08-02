@@ -89,6 +89,11 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
                 console.log(err.message)
             })
     }
+
+    const heartText = async event => {
+        event.currentTarget.style.color = 'orange';
+        event.currentTarget.innerHTML = 'liked';
+    }
     
     return(
         <div style={{width: '360px'}} className="dib pa2">
@@ -138,7 +143,7 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
                     </div>
                     <div className="pa3">
                         <span onClick={heartClick} className="pa2 fw5 ph2 icon-heart pointer f4 grow">
-                            <small id="increment" className="pa1 code">like</small>
+                            <small onClick={heartText} id="increment" className="pa1 code">like</small>
                         </span>
                         <Link onClick={() => {window.localStorage.setItem("feedId", id)}} className="link ph4 black" to={"/assets/vendor/FeedPost"}>
                             <span className="pa2 pointer f4 fw5 grow icon-bubble">
@@ -222,6 +227,11 @@ const VideoPost = ({ id, owner, media, text, hearts, views, time}) => {
             })
     }
 
+    const heartText = async event => {
+        event.currentTarget.style.color = 'orange';
+        event.currentTarget.innerHTML = 'liked';
+    }
+
     const viewClick = async event => {
         event.currentTarget.style.color = 'orange';
         event.currentTarget.style.fontWeight = 'bold';
@@ -297,7 +307,7 @@ const VideoPost = ({ id, owner, media, text, hearts, views, time}) => {
                                         </span>
                                         <div className="pt4">
                                             <span onClick={heartClick} className="pa2 fw5 ph2 icon-heart pointer f4 grow">
-                                                <small id="increment" className="pa1 code">like</small>
+                                                <small onClick={heartText} id="increment" className="pa1 code">like</small>
                                             </span>
                                             <Link onClick={() => {window.localStorage.setItem("videoId", id)}} className="link ph4 black" to={"/assets/vendor/VideoPost"}>
                                                 <span className="pa2 pointer f4 fw5 grow icon-bubble">

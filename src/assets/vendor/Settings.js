@@ -104,7 +104,7 @@ const handleSubmit = e => {
                 <Preloader />
                     <Header />
                     <div className="dib">
-                      <div className="flex flex-wrap pv5">
+                      <div className="pv5">
                         <div style={{width: '360px'}} className="pv2 dib pa3">
                             <h3 className="tl pv1 code f3">
                                     Settings
@@ -162,14 +162,12 @@ const handleSubmit = e => {
                                         </p>
                                     </div>
                                 </form>
-                        </div>
-                        <div style={{width: '360px'}} className="pv2 dib">
                             <div className="pv2">
                                 <div className="pv1">
                                     <p className="f4 fw6 orange tl pl3">Change Password</p>
                                     <div className="pv2">
                                         <Link className="link" to={"/assets/indexes/NewPassword"}>
-                                            <button className="earth white hover-bg-mid-gray pa2 tc br-pill ba pointer ph5 ma1 grow pv3 b fw6"><small className="icon-lock f5 pr2"></small>Change Password<small className="icon-arrow-right f6 pl4"></small></button>
+                                            <button className="index-button white hover-bg-mid-gray pa2 tc br-pill ba pointer ph5 ma1 grow pv3 b fw6"><small className="icon-lock f5 pr2"></small>Change Password<small className="icon-arrow-right f6 pl4"></small></button>
                                         </Link>
                                     </div>
                                     <p className="pv2 f4 fw7 red tl pl3">Danger Zone</p>

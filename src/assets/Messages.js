@@ -160,7 +160,7 @@ const Messages = () => {
                             </div>
                         </div>
                     </div>
-                    <div style={{overflowY: 'auto', height: '530px', width: '360px'}} className="dib messages tc">
+                    <div style={{width: '360px'}} className="dib messages tc">
                         <div className="br3 pa2 b--black">
                             <div className="br3 w-100">
                                 <div className="pb2">
@@ -191,11 +191,11 @@ const Messages = () => {
                             <div>
                         </div>
                     </div>
-                    <div className="bg-white pv1 tc" style={{position: 'fixed', width: '100%'}}>
+                    <div className="bg-white pv1 tc" style={{position: 'fixed', width: '100%', backgroundColor: '#ffffff', borderBottom: '1px thin black', bottom: '0', left: '0', marginTop: '1rem', padding: '1rem'}}>
                         <span id="message-form" className="pv2">
                             <input name="message" type="text" className="input pa3 ba br-pill w-80 message" placeholder="Type your message..." required autoComplete="off"/>
-                            <small onClick={handleSubmit} className="button icon-paper-plane orange pointer grow hover-blue f3 pa2"></small>
                             <small className="icon-picture pointer grow hover-blue orange f3 pa2"></small>
+                            <small onClick={handleSubmit} className="button icon-paper-plane orange pointer grow hover-blue f3 pa2"></small>
                         </span>
                     </div> 
                 </div>

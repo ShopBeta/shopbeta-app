@@ -101,7 +101,7 @@ const Chats = () => {
                             </div>
                         </div>
                         <div className="dib tc">
-                            <div className="dib tc br3 pa2 w-100 b--black">
+                            <div className="br3 pa2 w-100 b--black">
                                 <div className="pv2 br3 b-black tj flex flex-wrap">
                                     <div className="pa2">
                                         <img src={img} alt="Accessories..." className="br-100" width="50px" height="50px" />

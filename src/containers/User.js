@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import 'tachyons';
-import img2 from '../images/images-1.jpg'
+import img1 from '../images/avatar6.png'
 import { Link } from "react-router-dom";
 import { NetworkError } from "../assets/indexes/ErrorPages";
 
@@ -54,23 +54,6 @@ const User = () => {
         })
     }, [userId, token])
 
-    const [following, setFollowing] = useState({})
-    useEffect(() => {
-        fetch(`https://shopbeta-api.onrender.com/users/${userId}/following`, {
-            method: "GET",
-            headers: {
-                'Authorization' : 'Bearer ' + token,
-                'Accept' : 'application/json, text/plain',
-                'Content-Type' : 'application/json'
-            },
-        })
-        .then((res) => res.json())
-        .then((data) => setFollowing(data))
-        .catch((err) => {
-            console.log(err.message)
-        })
-    }, [userId, token])
-
     const initiateChat = async () => {
 
         const chatInitiator = me
@@ -118,23 +101,23 @@ const User = () => {
         })
     }
 
-    const unfollowClick = async event => {
-        event.currentTarget.style.color = 'orange';
-        event.currentTarget.style.fontWeight = 'bold';
+    // const unfollowClick = async event => {
+    //     event.currentTarget.style.color = 'orange';
+    //     event.currentTarget.style.fontWeight = 'bold';
 
-        await fetch(`https://shopbeta-api.onrender.com/user/${user._id}/unfollow/${me}`, {
-            method: 'POST',
-            headers: {
-                'Accept' : 'application/json, text/plain',
-                'Content-Type' : 'application/json'
-            },
-        })
-        .then(res => res.json())
-        .then(data => console.log(data))
-        .catch((err) => {
-            console.log(err.message)
-        })
-    }
+    //     await fetch(`https://shopbeta-api.onrender.com/user/${user._id}/unfollow/${me}`, {
+    //         method: 'POST',
+    //         headers: {
+    //             'Accept' : 'application/json, text/plain',
+    //             'Content-Type' : 'application/json'
+    //         },
+    //     })
+    //     .then(res => res.json())
+    //     .then(data => console.log(data))
+    //     .catch((err) => {
+    //         console.log(err.message)
+    //     })
+    // }
 
     const heartClick = async event => {
         event.currentTarget.style.color = 'orange';
@@ -160,85 +143,76 @@ const User = () => {
         })
     }
 
+    const heartText = async event => {
+        event.currentTarget.style.color = 'orange';
+        event.currentTarget.innerHTML = 'liked';
+    }
+
     const handleSubmit = () => {
         initiateChat()
     }
     return  (
        <div>
-         <div id="user" className="tc w-100">
-            <div style={{width: '360px'}} className="dib pa3">
-              <div className="">
-                  <img src={`https://shopbeta-api.onrender.com/users/${userId}/avatar`} alt="avatar" className="br-100 b--white" width="250px" height="250px"></img>
-                  <div className="tr">
-                        <span onClick={heartClick} title="Like profile" className="icon-heart f3 orange ph2 pointer fw6 hover-mid-gray br3 pa2 grow"></span>
-                        <span onClick={unfollowClick} title="Unfollow profile" className="icon-user-unfollow f3 orange ph3 pointer fw6 hover-mid-gray br3 pa2 grow"></span>
-                      <div>
-                          <h5 className="f3 fw5 tc">
-                              {user.username}
-                          </h5>
-                          <p className="tc pa2 f5 fw4">
-                              {user.location}
-                              <small className="icon-location-pin ph2"></small>
-                          </p>
-                      </div>
-                  </div>
-                  <div className="f3">
-                      <span className="icon-heart ph3 f3 fw6 orange">
-                          <small className="ph2 black code">{user.hearts}</small>
-                      </span>
-                      <span className="f3 ph2">
-                          {followers.length}
-                          <small className="pl2">followers</small>
-                      </span>
-                      |
-                      <span className="f3">
-                          {following.length}
-                          <small className="ph2">following</small>
-                      </span>
-                  </div>
-              </div>
+            <div id="user" className="tc w-100">
+                <div className="dib pa2">
+                    <div className="tr fw5 bg-white navbar pa2 pt4">
+                        <span>
+                            <Link to={"/assets/Chats"} className="link black">
+                                <button onClick={handleSubmit} className="bg-white f5 pointer ba hover-bg-mid-gray pa2 tc br-pill grow ph4 ma1 fw6"><small className="icon-bubbles f6 pr2"></small>Message</button>
+                            </Link>
+                        </span>
+                        </div>
+                    <div className="tj flex flex-wrap">
+                        <span>
+                            <img src={`https://shopbeta-api.onrender.com/users/${userId}/avatar`} alt="avatar" className="br-100" width="115px" height="115px" />
+                        </span>
+                        <span className="pa2 f4 fw5">
+                            <p>{user.username}</p>
+                            <p className="f6 pv1 fw4">
+                                {user.location}
+                                <small className="icon-globe ph1"></small>
+                            </p>
+                            <div className="pa1 pl2">
+                                <p className="">
+                                    <small className="f6">{user.phonenumber}</small>
+                                </p>
+                                <p className="">
+                                    <small className="f6">{user.contactEmail}</small>
+                                </p>
+                            </div>
+                            <p className="f5 code pv1 tl">
+                                <strong className="icon-heart pa2"><small className="ph2 f6 fw4">{user.hearts}</small></strong>
+                                {followers.length}
+                                <small className="pl2 fw4">followers</small> 
+                            </p>
+                        </span>
+                    </div> 
+                    <div className="pv2">
+                        <button onClick={followClick} className="bg-white f5 pointer ba hover-bg-mid-gray pa2 tc br4 grow w-70 ma1 fw6"><small className="icon-user-follow f6 pr2"></small>Follow</button>
+                        <button className="bg-white f5 pointer ba hover-bg-mid-gray pa2 tc br-pill grow ph3 ma1 fw6">
+                            <span onClick={heartClick} className="pa2 fw5 ph2 icon-heart pointer grow">
+                                <small onClick={heartText} id="increment" className="pa1 code">like</small>
+                            </span>
+                        </button>
+                    </div>
+                    <div className="tr">
+                        <span>
+                            <a href={user.website} target={user.website} className="link hover-blue pointer f6">
+                                {user.website}
+                            </a>
+                        </span>
+                    </div>    
+                    <div className="pv2">
+                        <small className="tj f4 fw3 pa2">
+                            {user.bio}
+                        </small>
+                    </div>   
+                </div>
+            </div>
+            <div id="error" style={{display: 'none'}} className="tc">
+                <NetworkError />
+            </div>
         </div>
-        <div style={{width: '360px'}} className="dib">
-            <div className="pv3 tc f4">
-                  <p className="ph2">
-                      {user.bio}
-                  </p>
-              </div>
-              <div className="pv2">
-                  <div className="pv3 f5 fw6">
-                      <p>
-                          <small className="icon-phone pr2"></small>
-                          {user.phonenumber}
-                      </p>
-                      <p>
-                          <small className="icon-envelope pr2"></small>
-                          {user.contactEmail}
-                      </p>
-                      <p>
-                          <small className="icon-globe pr2"></small>
-                          <a href={user.website} target={user.website} className="link">
-                              {user.website}
-                          </a>
-                      </p>
-                  </div>
-              </div>
-              <div className="tc">
-                  <img src={img2} alt="profile" className="br3 b--white"></img>
-              </div>
-              <span> 
-                  <Link to={"/assets/Message"}>
-                      <button onClick={handleSubmit} className="index-button f5 pointer ba hover-bg-mid-gray pa3 tc br-pill ph4 ma1 grow b fw6"><small className="icon-bubbles pr2"></small>Message</button>
-                  </Link>
-              </span>
-              <span> 
-                  <button onClick={followClick} className="index-button f5 pointer ba hover-bg-mid-gray pa3 tc br-pill ph4 ma1 grow b fw6">Follow<small className="icon-user-follow pl2"></small></button>
-              </span>
-          </div>
-      </div>
-      <div id="error" style={{display: 'none'}} className="tc">
-            <NetworkError />
-        </div>
-    </div>
     )
 }
 
