@@ -73,13 +73,6 @@ body {
   background: #ee9617;
 }
 
-
-.cover {
-    background-image: url("./images/banner_img.png");
-    background-repeat: round;
-    opacity: 80%,
-}
-
  /*---------------------------------------
        PRE LOADER              
   -----------------------------------------*/
@@ -128,26 +121,25 @@ body {
     to {transform: rotate(360deg);}
   }
 
-    /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-      .column1, .column2 {
-        width: 100%;
-      }
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+.column1, .column2 {
+  width: 100%;
+}
 
-  /* Left and right column */
-  .column1 {
-    width: 50%;
-  }
+/* Left and right column */
+.column1 {
+  width: 50%;
+}
   
-  /* Middle column */
-  .column2 {
-    width: 50%;
-  }
-
+/* Middle column */
+.column2 {
+  width: 50%;
+}
   
-    /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-    .side1, .side2 {
-      width: 100%;
-    }
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+.side1, .side2 {
+  width: 100%;
+}
 
 /* Left and right column */
 .side1 {
@@ -159,16 +151,19 @@ body {
   width: 60%;
 }
 
-  .button-bg {
-    background-color: #ee9617;
-  }
+.button-bg {
+  background-color: #ee9617;
+}
 
-  .shop {
-    color: #ee9617;
-  }
+.shop {
+  color: #ee9617;
+}
 
-  .index-button {
-    background-color: #ee9617;
-    color: white;
-  }
+.index-button {
+  background-color: #ee9617;
+  color: white;
+}
 
+.nav-link {
+  color: orange;
+}

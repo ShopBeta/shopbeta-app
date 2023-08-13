@@ -56,11 +56,11 @@ const Chatrooms = ({ roomId, userId, createdAt }) => {
                                 <div onClick={markread} className="grow">
                                     <div className="pa3 br4">
                                         <p className="orange">{user.username}</p>
-                                        <p className="pt2">Click to view recent conversations.....</p>
+                                        <p className="pt2">Click to view recent conversation.....</p>
                                     </div>
                                     <small class="opacity-6 pl5 code">
-                                        <i class="pl6 pr3">last seen</i>
-                                        {moment(createdAt).format('h:mm a')}
+                                        <i class="icon-pin pointer grow ph2 fw6"></i>
+                                        <i class="icon-star pointer grow fw6"></i>
                                     </small>
                                 </div>
                             </Link>
@@ -104,9 +104,7 @@ const Messages = ({ id, roomId, time, message, seen, user}) => {
                             </div>
                             <div className="tr">
                                 <small class="opacity-6 code">
-                                    {/* {moment(time).fromNow()} */}
                                     <i class="ph2">{moment(time).format('h:mm a')}</i>
-                                    <i class="icon-check fw6"></i>
                                     {seen.length !== 0 && <i class="icon-eye fw6 ph2"></i>}
                                 </small>
                             </div>

@@ -8,7 +8,7 @@ import img from '../../images/network-error-1.png'
 import CardList from '../../containers/CardList';
 import SearchBox from "../../components/SearchBox";
 import Preloader from "../../components/Preloader";
-import BlankPage from "../indexes/BlankPage";
+import { SearchBlank } from "../indexes/BlankPage";
 import { NetworkError } from "../indexes/ErrorPages";
 
 
@@ -90,9 +90,9 @@ const SearchPage = () => {
                             <CardList product={filteredCards} />
                         </div>
                         <div id="search" className="tc">
-                            <BlankPage />
+                            <SearchBlank />
                             <div className="tc">
-                                <p className="pv4 fw6 ph5">
+                                <p className="fw6 ph5">
                                     <small className="green f4">Type to search your favorite products</small>
                                 </p>
                             </div>

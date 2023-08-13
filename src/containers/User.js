@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import 'tachyons';
-import img1 from '../images/avatar6.png'
+// import img1 from '../images/avatar6.png'
 import { Link } from "react-router-dom";
 import { NetworkError } from "../assets/indexes/ErrorPages";
 
@@ -155,16 +155,16 @@ const User = () => {
        <div>
             <div id="user" className="tc w-100">
                 <div className="dib pa2">
-                    <div className="tr fw5 bg-white navbar pa2 pt4">
+                    <div className="tr fw5 bg-white navbar pa2">
                         <span>
                             <Link to={"/assets/Chats"} className="link black">
                                 <button onClick={handleSubmit} className="bg-white f5 pointer ba hover-bg-mid-gray pa2 tc br-pill grow ph4 ma1 fw6"><small className="icon-bubbles f6 pr2"></small>Message</button>
                             </Link>
                         </span>
                         </div>
-                    <div className="tj flex flex-wrap">
+                    <div className="tj flex flex-wrap pt3">
                         <span>
-                            <img src={`https://shopbeta-api.onrender.com/users/${userId}/avatar`} alt="avatar" className="br-100" width="115px" height="115px" />
+                            <img src={`https://shopbeta-api.onrender.com/users/${userId}/avatar`} alt="avatar" className="br-100" width="125px" height="125px" />
                         </span>
                         <span className="pa2 f4 fw5">
                             <p>{user.username}</p>

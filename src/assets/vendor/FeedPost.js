@@ -86,11 +86,10 @@ const FeedPost = ({ text, file }) => {
         }, 2000); // every 5 minutes (100000)
     }, [feedId])
 
-
     const addComment = async () => {
 
         const comment = {
-            text: document.querySelector('#text').value,
+            text: document.querySelector('.text').value,
             file: document.querySelector('.file').value,
             owner: me
         }
@@ -177,7 +176,7 @@ const FeedPost = ({ text, file }) => {
     
     return(
         <div className="tc pv3">
-            <div style={{width: '360px'}} className="dib pa2 bw2">
+            <div style={{width: '360px'}} className="dib pa2 pb2 bw2">
                 <div className="tj flex f4 flex-wrap">
                     <span>
                         <Link onClick={() => {window.localStorage.setItem("userId", feed.owner)}} className="link black" to={"/assets/vendor/User"}>

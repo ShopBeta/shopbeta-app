@@ -5,7 +5,7 @@ import Navbar from '../../components/Navbar';
 import Header from '../../components/Header'
 import CartList from "../../containers/CartList";
 import Preloader from "../../components/Preloader";
-import BlankPage from "../indexes/BlankPage";
+import { CartBlank } from "../indexes/BlankPage";
 import { NetworkError }from "../indexes/ErrorPages";
 
 const Cart = () => {
@@ -57,22 +57,22 @@ const Cart = () => {
                         <small className="icon-basket ph2 f3"></small>
                         <small className="ph3 code">{cart.length} items</small>
                     </h3>
-                <div className="pa2 tc">
-                    <CartList cart={cart} />
-                </div>
-                <div id="error" style={{display: 'none'}} className="tc">
-                    <NetworkError />
-                </div>
-                {cart.length === 0 &&  <div id="blank" className="tc">
-                    <BlankPage />
-                    <div className="tc">
-                        <p className="pv4 fw6 ph5">
-                            <small className="green f4">Save products from MarketPlace to cart</small>
-                        </p>
+                    <div className="pa2 tc">
+                        <CartList cart={cart} />
                     </div>
-                </div>}
-                <p id="load" className="tc code orange fw6 f4">Loading cart...</p>
-            </div>
+                    <div id="error" style={{display: 'none'}} className="tc">
+                        <NetworkError />
+                    </div>
+                    {cart.length === 0 &&  <div id="blank" className="tc">
+                        <CartBlank />
+                    </div>}
+                    <div id="load" className="tc">
+                        <div className="spinner">
+                            <span className="spinner-rotate">
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <Navbar />

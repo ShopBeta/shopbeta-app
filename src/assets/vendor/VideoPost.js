@@ -89,7 +89,7 @@ const VideoPost = ({ text, file }) => {
     const addComment = async () => {
 
         const comment = {
-            text: document.querySelector('#text').value,
+            text: document.querySelector('.text').value,
             file: document.querySelector('.file').value,
             owner: me
         }
@@ -157,7 +157,7 @@ const VideoPost = ({ text, file }) => {
     
     return(
             <div className="tc w-100 pv3">
-                <div style={{width: '360px'}} className="dib pa2 bw2">
+                <div style={{width: '360px'}} className="dib pa2 pb2 bw2">
                     <div className="side2">
                         <video style={{Height: 'auto', width: '100%'}} className="br4" controls>
                             <source src={`https://shopbeta-api.onrender.com/video/${videoId}/video`} type="video/mp4"></source>

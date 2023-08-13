@@ -12,11 +12,16 @@ const Avatar = () => {
     const me = localStorage.getItem("meId")
     console.log(me)
 
+    const fileInput = () => {
+        document.querySelector('#file-upload').onchange = function() {
+            document.querySelector('#file-name').textContent = this.files[0].name
+        }
+    }
+
     const handClick = (event) => {
         event.currentTarget.innerHTML = 'Uploading...';
         event.currentTarget.style.fontWeight = 'bold';
     }
-
         return(
             <div className="bg-white tc">
                 <div className="pa2 pv5">
@@ -35,8 +40,8 @@ const Avatar = () => {
                                         <div className="pv3 pa2 tc">
                                             <label>
                                                 <small className="icon-camera hover-mid-gay f3 orange pointer"></small><br/>
-                                                <small className="hover-mid-gay f5 fw5 orange pointer">Select Image</small>
-                                                <input style={{display: 'none'}} type="file" name="avatar" className="avatar pointer pa2 w-100"/>
+                                                <small id="file-name" className="hover-mid-gay f5 fw5 orange pointer">Select Image</small>
+                                                <input style={{display: 'none'}} onClick={fileInput} id="file-upload" type="file" name="avatar" className="avatar pointer pa2 w-100"/>
                                             </label>
                                         </div>
                                         <p> 

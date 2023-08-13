@@ -1,24 +1,49 @@
 import React from "react";
-import { Typography } from "@material-ui/core";
 import '../assets/Home.css'
+import { useLocation } from "react-router-dom";
 import './simple-line-icons/css/simple-line-icons.css';
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
 
+    const location = useLocation()
+    const currentRoute = location.pathname.toLowerCase()
+    console.log(currentRoute)
+
     return(
-        <div className="fw5 navbar tc" style={{position: 'fixed', width: '100%', backgroundColor: '#ffffff', borderBottom: '1px thin black', bottom: '0', left: '0', marginTop: '1rem', padding: '1rem'}}>
-            <Typography>
-                <div className="">
-                    <span style={{fontSize: '35px'}} className="ph2">
-                        <Link to={"../assets/AdbillBoard"} title="adbillboard" className="navbar pr4 br3 black link hover-bg-light-gray f3 fw6 icon-home pv2"></Link>
-                        <Link to={"../assets/Home"} title="home" className="navbar pv2 f3 hover-bg-light-gray br3 icon-handbag link ph4 fw6 black"></Link>
-                        <Link to={"../assets/Chats"} title="chats" className="navbar pv2 f3 hover-bg-light-gray br3 icon-bubbles link fw6 black ph4"></Link>
-                        <Link className="navbar f3 black ph4 fw6 icon-social-youtube pointer hover-bg-light-gray br3 pa2" to={"/assets/VideoSpace"} title="videospace"></Link>
-                        <Link title="profile" to={"/assets/vendor/Profile"} className="navbar pv2 f3 hover-bg-light-gray br3 icon-user link fw6 black pl4"></Link>
-                    </span>
-                </div>
-            </Typography>
+        <div className="fw5 tc" style={{position: 'fixed', width: '100%', backgroundColor: '#ffffff', borderBottom: '1px thin black', bottom: '0', left: '0', marginTop: '1rem', padding: '1rem'}}>
+            <div style={{fontSize: '35px'}} className="ph2 tc">
+                <Link 
+                    to={"../assets/AdbillBoard"} title="adbillboard"
+                    className={currentRoute.includes("adbillboard") ? "nav-link link active" : "link black"}>
+                    <small className="pv2 f3 hover-bg-light-gray br3 icon-home pr4 fw6"></small>  
+                </Link>
+
+                <Link 
+                    to={"../assets/Home"} title="home"
+                
+                    className={currentRoute.includes("home") ? "nav-link link active" : "link black"}>
+                    <small className="pv2 f3 hover-bg-light-gray br3 icon-handbag ph4 fw6 "></small> 
+                </Link>
+
+                <Link 
+                    to={"../assets/Chats"} title="chats"
+                    className={currentRoute.includes("chats") ? "nav-link link active" : "link black"}>
+                    <small className="pv2 f3 hover-bg-light-gray br3 icon-bubbles ph4 fw6"></small>  
+                </Link>
+
+                <Link 
+                    to={"../assets/VideoSpace"} title="videospace"
+                    className={currentRoute.includes("videospace") ? "nav-link active" : "black"}>
+                    <small className="pv2 f3 hover-bg-light-gray br3 icon-social-youtube ph4 fw6"></small>  
+                </Link>
+
+                <Link 
+                    to={"../assets/vendor/Profile"} title="profile"
+                    className={currentRoute.includes("profile") ? "nav-link link active" : "link black"}>
+                    <small className="pv2 f3 hover-bg-light-gray br3 icon-user pl4 fw6"></small>  
+                </Link>
+            </div>
         </div>
     );
 };

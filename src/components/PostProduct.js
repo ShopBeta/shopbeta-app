@@ -8,6 +8,18 @@ const PostProduct = ({ name, images, description, currency, price, oldprice, cat
     const me = localStorage.getItem("meId")
     console.log(me)
 
+    const fileInput = () => {
+        document.querySelector('#file-upload').onchange = function() {
+           const input = document.querySelector('#file-upload')
+           const list = document.querySelector('#file-name')
+           list.innerHTML = '<ul>'
+                for (var i = 0; i < input.files.length; ++i ) {
+                    list.innerHTML += '<li>' + input.files.item(i).name + '</li>';
+                }
+           list.innerHTML += '</ul>'
+        }
+    }
+
     const handClick = (event) => {
         event.currentTarget.innerHTML = 'Posting...';
         event.currentTarget.style.fontWeight = 'bold';
@@ -42,7 +54,7 @@ const PostProduct = ({ name, images, description, currency, price, oldprice, cat
                                 <option id="Antique & collectibles" name="Antique & collectibles">Antique & collectibles</option>
                                 <option id="Vehicles" name="Vehicles">Vehicles</option>
                                 <option id="Housing" name="Housing">Housing</option>
-                                <option id="Classifieds" name="Classifieds">Classifieds</option>
+                                <option id="Miscellaneous" name="Miscellaneous">Miscellaneous</option>
                             </select>
                             <div className="tl pv2">
                             <p className="pv1 f5 fw5">Price</p>
@@ -69,8 +81,8 @@ const PostProduct = ({ name, images, description, currency, price, oldprice, cat
                                 <div className="pv2 bg br3 tc">
                                     <label>
                                         <small className="icon-camera hover-mid-gay f3 orange pointer"></small><br/>
-                                        <small className="hover-mid-gay f5 fw5 orange pointer">Select Images</small>
-                                        <input style={{display: 'none'}} type="file" name="images" multiple="multiple" className="images pointer pa3 w-100" id="customFile" required/>
+                                        <div id="file-name" className="hover-mid-gay f5 fw5 orange pointer">Select Images</div>
+                                        <input style={{display: 'none'}} onClick={fileInput} id="file-upload" type="file" name="images" multiple="multiple" className="images pointer pa3 w-100" required/>
                                     </label>
                                 </div>
                             </p>

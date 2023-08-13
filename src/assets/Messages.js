@@ -2,10 +2,10 @@ import React, { useRef } from "react";
 import './Home.css'
 import { useState, useEffect } from "react";
 // import img from '../images/tst-image3.jpg'
-import moment from "moment";
 import { Link } from "react-router-dom";
 import Preloader from "../components/Preloader";
 import { MessageList } from "../containers/ChatLists";
+import { MessagesBlank } from "./indexes/BlankPage";
 import { NetworkError } from "./indexes/ErrorPages"
 
 
@@ -82,9 +82,7 @@ const Messages = () => {
             return false
         }
 
-        const messageForm = document.querySelector('#message-form')
         const messageFormInput = document.querySelector('input')
-        const messageFormButton = document.querySelector('button')
 
         // messageFormButton.setAttribute('disabled', 'disabled')
 
@@ -168,19 +166,16 @@ const Messages = () => {
                                         Welcome to ShopBeta! <br/>Send a message to start a conversation. We strongly encourage constructive conversations to improve your social shopping experience.
                                     </div>
                                 </div>
-                                {messages.length === 0 && <div>
-                                    <div id="blank" className="tc">
-                                        <p style={{fontSize: '100px', fontWeight: '510'}} className="icon-bubbles pt6 mid-gray"></p>
-                                        <p className="pv2 tc fw6 f5">No messages <br/>Send a message to start a conversation.</p>
-                                    </div>
+                                {messages.length === 0 && <div id="blank" className="tc">
+                                    <MessagesBlank />
                                 </div>}
-                                <div className="tc">
-                                    <div id="date-chat" className="tc code fw5 f5">
-                                        {moment(Date().toString()).format("LL")}
-                                    </div>
-                                </div> 
                                 <MessageList messages={messages} />
-                                <p id="load" className="tc code orange ph2 fw6 f4">Loading messages...</p>
+                                <div id="load" className="tc">
+                                    <div className="spinner">
+                                        <span className="spinner-rotate">
+                                        </span>
+                                    </div>
+                                </div>
                                 <div id="error" style={{display: 'none'}} className="tc">
                                     <NetworkError />
                                 </div>

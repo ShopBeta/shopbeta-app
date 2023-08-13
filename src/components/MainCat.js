@@ -23,8 +23,8 @@ const MainCat = (val) => {
                                                 <div className="tc">
                                                     <p className="fw5">{val.Title}</p>
                                                     <button disabled className="bg-transparent b--black-10 orange pointer tc br-pill ph5 pa3 ma3">
-                                                        <small className="icon-heart pointer ph2 f5"></small>
-                                                        <small className="f5 fw6">View listings</small>
+                                                        <small className="icon-diamond pointer ph2 f5"></small>
+                                                        <small className="f5 fw6">view listings</small>
                                                     </button>
                                                 </div>    
                                             </div>

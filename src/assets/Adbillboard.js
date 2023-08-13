@@ -7,7 +7,7 @@ import Header from '../components/Header'
 import { TextPostList } from '../containers/PostCardList';
 import Preloader from "../components/Preloader";
 import { FeedSideBar } from "../components/SideBars";
-import BlankPage from "./indexes/BlankPage";
+import { AdBlank } from "./indexes/BlankPage";
 import { NetworkError }from "./indexes/ErrorPages"
 
 
@@ -60,15 +60,15 @@ const AdbillBoard = () => {
                                     <NetworkError />
                                 </div>
                                 {feed.length === 0 &&  <div id="blank" className="tc">
-                                    <BlankPage />
-                                    <div className="tc">
-                                        <p className="pv4 fw6 ph5">
-                                            <small className="green f4">Post Ads about your services or products</small>
-                                        </p>
-                                    </div>
+                                    <AdBlank />
                                 </div>}
                                 <TextPostList feed={feed} />
-                                <p id="load" className="tc code orange fw6 f4">Loading feeds...</p>
+                                <div id="load" className="tc">
+                                    <div className="spinner">
+                                        <span className="spinner-rotate">
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

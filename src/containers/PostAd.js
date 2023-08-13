@@ -6,6 +6,12 @@ const PostAd = ({ text, file }) => {
 
     const me = localStorage.getItem("meId")
     console.log(me)
+    
+    const fileInput = () => {
+        document.querySelector('#file-upload').onchange = function() {
+            document.querySelector('#file-name').textContent = this.files[0].name
+        }
+    }
 
     const handClick = (event) => {
         event.currentTarget.innerHTML = 'Posting...';
@@ -25,8 +31,8 @@ const PostAd = ({ text, file }) => {
                                 <div className="pv2 pa2 br3 tc bg">
                                     <label>
                                         <small className="icon-camera hover-mid-gay f3 orange pointer"></small><br/>
-                                        <small className="hover-mid-gay f5 fw5 orange pointer">Select Image</small>
-                                        <input style={{display: 'none'}} type="file" value={file} name="media" className="media pointer pa3 w-100" id="customFile" />
+                                        <small id="file-name" className="hover-mid-gay f5 fw5 orange pointer">Select Image</small>
+                                        <input style={{display: 'none'}} onClick={fileInput} id="file-upload" type="file" value={file} name="media" className="media pointer pa3 w-100" />
                                     </label>
                                 </div>
                             </p>

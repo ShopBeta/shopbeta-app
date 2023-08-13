@@ -6,8 +6,8 @@ import Header from '../../components/Header';
 import { SideBar } from "../../components/SideBars";
 import CardList from '../../containers/CardList';
 import Preloader from "../../components/Preloader";
-import BlankPage from "../indexes/BlankPage";
 import { NetworkError } from "../indexes/ErrorPages";
+import { MarketBlank } from "../indexes/BlankPage";
 
 
 const Products = () => {
@@ -76,14 +76,14 @@ const Products = () => {
                             <NetworkError />
                         </div>
                         {catProducts.length === 0 &&  <div id="blank" className="tc">
-                            <BlankPage />
-                            <div className="tc">
-                                <p className="pv4 fw6 ph5">
-                                    <small className="green f4">Post your services or products on MarketPlace</small>
-                                </p>
-                            </div>
+                            <MarketBlank />
                         </div>}
-                        <p id="load" className="tc code orange fw6 f4">Loading products...</p>
+                        <div id="load" className="tc">
+                            <div className="spinner">
+                                <span className="spinner-rotate">
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

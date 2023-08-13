@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Header from '../components/Header'
 import Preloader from "../components/Preloader";
-import BlankPage from "./indexes/BlankPage";
+import { ChatsBlank } from "./indexes/BlankPage";
 import { ChatRoomList } from "../containers/ChatLists"
 import { NetworkError } from "./indexes/ErrorPages"
 
@@ -121,15 +121,15 @@ const Chats = () => {
                                     <NetworkError />
                                 </div>
                                 {rooms.length === 0 &&  <div id="blank" className="tc">
-                                    <BlankPage />
-                                    <div className="tc">
-                                        <p className="pv4 fw6 ph5">
-                                            <small className="green f4">You don't have any chats yet</small>
-                                        </p>
-                                    </div>
+                                    <ChatsBlank/>
                                 </div>}
                                 <ChatRoomList rooms={rooms}  users={filteredChats}  />
-                                <p id="load" className="tc code orange fw6 f4">Loading chats...</p>
+                                <div id="load" className="tc">
+                                    <div className="spinner">
+                                        <span className="spinner-rotate">
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div> 
