@@ -21,7 +21,7 @@ const ChatRoomList = ({ rooms, roomId, userId, createdAt }) => {
 }
 
 
-const MessageList = ({ messages, message, user, id, seen, time, roomId }) => {
+const MessageList = ({ messages, message, user, id, time, roomId }) => {
     return (
         <div>
             {
@@ -33,7 +33,6 @@ const MessageList = ({ messages, message, user, id, seen, time, roomId }) => {
                         user={messages.postedByUser} 
                         message={messages.message.messageText}
                         roomId={messages.chatRoomId}
-                        seen={messages.readByRecipients}
                         time={messages.time}
                         />
                     )

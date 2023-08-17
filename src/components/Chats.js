@@ -29,22 +29,6 @@ const Chatrooms = ({ roomId, userId, createdAt }) => {
     console.log(me)
     console.log(token)
 
-    const markread = async () => {
-
-        await fetch(`https://shopbeta-api.onrender.com/chat/${roomId}/mark-read/${me}`, {
-           method: "PUT",
-           headers: {
-               'Content-type': "application/json",
-               'Accept' : 'application/json, text/plain'
-           },     
-       })
-       .then((res) => res.json())
-       .then((data) => console.log(data))
-       .catch((err) => {
-           console.log(`Couldn't mark your message as read`)
-       })
-    }
-
         return(
                <div className="tc">
                     <div className="dib tc w-100 b--black">
@@ -52,16 +36,17 @@ const Chatrooms = ({ roomId, userId, createdAt }) => {
                             <div className="pa2">
                                 <img src={`https://shopbeta-api.onrender.com/users/${userId}/avatar`} alt="avatar" className="br-100" width="50px" height="50px" />
                             </div>
-                            <Link className="link black" to={"/assets/Messages"}>
-                                <div onClick={markread} className="grow">
+                            <Link onClick={window.localStorage.setItem("room-user", userId)} className="link black" to={"/assets/Messages"}>
+                                <div className="grow">
                                     <div className="pa3 br4">
                                         <p className="orange">{user.username}</p>
-                                        <p className="pt2">Click to view recent conversation.....</p>
+                                        <p className="pt2">click to view recent messages
+                                        <small class="opacity-6 ph2 code">
+                                            <i class="icon-pin pointer grow ph3 fw6"></i>
+                                            <i class="icon-star pointer grow fw6"></i>
+                                        </small>
+                                        </p>
                                     </div>
-                                    <small class="opacity-6 pl5 code">
-                                        <i class="icon-pin pointer grow ph2 fw6"></i>
-                                        <i class="icon-star pointer grow fw6"></i>
-                                    </small>
                                 </div>
                             </Link>
                         </div>
@@ -70,7 +55,7 @@ const Chatrooms = ({ roomId, userId, createdAt }) => {
         );
 }
 
-const Messages = ({ id, roomId, time, message, seen, user}) => {
+const Messages = ({ id, roomId, time, message, user}) => {
 
     const [users, setUsers] = useState({})
     useEffect(() => {
@@ -104,8 +89,9 @@ const Messages = ({ id, roomId, time, message, seen, user}) => {
                             </div>
                             <div className="tr">
                                 <small class="opacity-6 code">
-                                    <i class="ph2">{moment(time).format('h:mm a')}</i>
-                                    {seen.length !== 0 && <i class="icon-eye fw6 ph2"></i>}
+                                    {moment(time).format('dd-mm-yy')}
+                                    |
+                                    {moment(time).format('h:mm a')}
                                 </small>
                             </div>
                         </div>

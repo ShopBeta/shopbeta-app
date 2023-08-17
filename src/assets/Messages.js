@@ -13,15 +13,16 @@ const Messages = () => {
     
     const roomId = localStorage.getItem("chatroom")
     const token = localStorage.getItem("token")
+    const userId = localStorage.getItem("room-user")
     const me = localStorage.getItem("meId")
 
-    const [user, setUser] = useState([])
+    const [user, setUser] = useState({})
     useEffect(() => {
-        fetch(`https://shopbeta-api.onrender.com/chat/${roomId}/users`, {
+        fetch(`https://shopbeta-api.onrender.com/users/${userId}`, {
             method: "GET",
             headers: {
                 'Accept' : 'application/json, text/plain',
-                'Content-Type' : 'application/json' 
+                'Content-Type' : 'application/json'
             },
         })
         .then((res) => res.json())
@@ -29,7 +30,7 @@ const Messages = () => {
         .catch((err) => {
             console.log(err.message)
         })
-    }, [roomId])
+    }, [userId])
 
     const [messages, setMessages] = useState([])
     useEffect(() => {    
@@ -148,7 +149,7 @@ const Messages = () => {
                             </div>
                             <div className="tj flex f4 flex-wrap">
                                 <span>
-                                    <img src={`https://shopbeta-api.onrender.com/users/${user._id}/avatar`} alt="avatar" className="br-100" width="55px" height="55px" />
+                                    <img src={`https://shopbeta-api.onrender.com/users/${userId}/avatar`} alt="avatar" className="br-100" width="55px" height="55px" />
                                 </span>
                                 <span className="pa2 f5 pointer fw5">
                                     <span className="f5 fw7">{user.username}</span>
