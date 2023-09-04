@@ -27,6 +27,14 @@ const Details = () => {
         })
     }, [productId, token])
 
+    
+    const price = product.price
+    const oldprice = product.oldprice 
+
+    // calculate the percentage of income that we spent
+    const newPrice = oldprice - price  
+    const percentage = Math.round((newPrice / oldprice) * 100);
+
 
     return(
            <div className="tc w-100 pv3">
@@ -60,12 +68,7 @@ const Details = () => {
                         <span className="pa2 code line-through">{product.currency}{product.oldprice}</span>
                     </div>
                     <div className="pv2 tr">
-                        <span className="icon-star"></span>
-                        <span className="icon-star grow"></span>
-                        <span className="icon-star grow"></span>
-                        <span className="icon-star grow"></span>
-                        <span className="icon-star grow"></span>
-                        <span className="pl2 code fw6 f5">{product.rating}</span>
+                        <p className="ph2 code f4 fw6 red">-{percentage}%</p>
                     </div>
                     <div className="pv1 tc grow">
                         <Link onClick={() => {window.localStorage.setItem("productId", productId)}} className="link" to={"/components/Purchase"}>
