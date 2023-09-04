@@ -8,7 +8,7 @@ import CommentList from "../../containers/CommentList";
 import { NetworkError, UserError } from "../indexes/ErrorPages";
 
 
-const VideoPost = ({ text, file }) => {
+const VideoPost = ({ text }) => {
 
     const token = localStorage.getItem("token")
     const me = localStorage.getItem("meId")
@@ -58,39 +58,40 @@ const VideoPost = ({ text, file }) => {
     }, [video.owner])
 
     const [comment, setComment] = useState([])
-    useEffect(() => {
-        setInterval(function() {
-            fetch(`https://shopbeta-api.onrender.com/video/${videoId}/comments`, {
-                method: "GET",
-                headers: {
-                    'Accept' : 'application/json, text/plain',
-                    'Content-Type' : 'application/json' 
+    const getComments = () => {
+        fetch(`https://shopbeta-api.onrender.com/video/${videoId}/comments`, {
+            method: "GET",
+            headers: {
+                'Accept' : 'application/json, text/plain',
+                'Content-Type' : 'application/json' 
                 },
             })
             .then((res) => res.json())
             .then((data) => {
                 setComment(data)
-
+    
                 const load = document.getElementById('load')
                 load.style['display'] = 'none'
             })
             .catch((err) => {
                 console.log(err.message)
-
+    
                 const load = document.getElementById('load')
                 load.innerHTML = 'Failed to load comments!'
-
+    
                 const blank = document.getElementById('blank')
                 blank.style['display'] = 'none'
             })
-        }, 2000); // every 5 minutes (100000)
-    }, [videoId])
+    }
+
+    window.onclick = () => {
+        getComments();
+    }
 
     const addComment = async () => {
 
         const comment = {
             text: document.querySelector('.text').value,
-            file: document.querySelector('.file').value,
             owner: me
         }
 
@@ -124,6 +125,8 @@ const VideoPost = ({ text, file }) => {
             const comment = document.getElementById('comment')
             comment.style['display'] = 'none'
         })
+
+        getComments();
     }
 
     const heartClick = async event => {

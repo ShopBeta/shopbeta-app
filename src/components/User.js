@@ -71,9 +71,24 @@ const User = () => {
         })
     }
 
+     // format represention of heart & followers
+     let newNum = Math.abs(followers.length);
+     
+     let oldNum = Math.abs(user.hearts);
+
+     let intFollowers = newNum;
+     if(intFollowers.length > 3) {
+        intFollowers = intFollowers.substr(0, intFollowers.length - 3) + ',' + intFollowers.substr(intFollowers.length - 3, 3); // input 2310, output 2,310
+     }
+
+     let intHearts = oldNum;
+     if(intHearts.length > 3) {
+        intHearts = intHearts.substr(0, intHearts.length - 3) + ',' + intHearts.substr(intHearts.length - 3, 3); // input 2310, output 2,310
+     }
+
     return (
-        <div>
-            <div id="user" className="">
+        <div className="">
+            <div id="user" className="w-100">
                 <div className="dib pa2">
                     <div className="tr fw5 bg-white navbar pa2">
                         <span>
@@ -86,49 +101,80 @@ const User = () => {
                                 <button className="bg-white f5 pointer ba hover-bg-mid-gray pa2 tc br-pill grow ph4 ma1 fw6"><small className="icon-camera f6 pr2"></small>Photo</button>
                             </Link>
                         </span>
-                        <span>
-                            <Link to={"/assets/indexes/Login"} className="link black">
-                                <button onClick={logOut} className="bg-white f5 pointer ba hover-bg-mid-gray pa2 tc br-pill grow ph3 ma1 fw6"><strong className="icon-logout pr2"></strong></button>
-                            </Link>
-                        </span>
                     </div>
-                    <div className="tj flex flex-wrap pt3">
+                    <div className="tj flex flex-wrap pt3 ph2">
                         <span>
                             <img src={`https://shopbeta-api.onrender.com/users/${user._id}/avatar`} alt="avatar" className="br-100" width="125px" height="125px" />
                         </span>
                         <span className="pa2 f4 fw5">
-                            <p>{user.username}</p>
-                            <p className="f6 pv1 fw4">
+                            <p className="pa1 pl2">{user.username}</p>
+                            <p className="f6 pv1 pa1 pl2 fw4">
                                 {user.location}
                                 <small className="icon-globe ph1"></small>
                             </p>
-                            <div className="pa1 pl2">
-                                <p className="">
-                                    <small className="f6">{user.phonenumber}</small>
-                                </p>
-                                <p className="">
-                                    <small className="f6">{user.contactEmail}</small>
-                                </p>
-                            </div>
-                            <p className="f4 code pv1 tl">
-                                <strong className="icon-heart pa2"><small className="ph2 f6 fw4">{user.hearts}</small></strong>
-                                {followers.length}
+                            <p className="f4 code pt3 pl2 tl">
+                                {intFollowers}
                                 <small className="pl2 fw4">followers</small>
                             </p>
                         </span>
                     </div> 
                     <div className="tr">
-                        <span>
-                            <a href={user.website} target={user.website} className="link hover-blue pointer f6">
-                                {user.website}
-                            </a>
-                        </span>
+                        <strong className="icon-heart f4 pa2"><small className="ph2 f4 fw4">{intHearts}</small></strong>
                     </div>    
-                    <div className="pv2">
-                        <small className="tj f4 fw3 pa2">
+                    <div className="pv3 tl">
+                        <p className="fw6 f4 ph3">About</p>
+                        <p className="f5 fw3 pa3">
                             {user.bio}
-                        </small>
-                    </div>   
+                        </p>
+                    </div>  
+                    <div style={{fontSize: '35px'}} className="ph2 pv2 fw6 tc">
+                        <div className="br3 bw2 shadow-4 bg-white b--black pa2">
+                            <Link className="link black" to={"/assets/vendor/User"}>
+                                <div className="flex flex-wrap">
+                                    <span className="icon-link f2">
+                                    </span>
+                                    <span className="pointer pl3 pa2 fw5 f5">
+                                        <a href={user.website} target={user.website} className="link hover-blue pointer f5">
+                                            {user.website}
+                                        </a>
+                                    </span>
+                                </div>
+                            </Link>       
+                        </div>
+                    </div>
+                    <div style={{fontSize: '35px'}} className="ph2 pv2 fw6 tc">
+                        <div className="br3 bw2 shadow-4 bg-white b--black pa2">
+                            <Link className="link black" to={"/assets/vendor/User"}>
+                                <div className="flex flex-wrap">
+                                    <span className="icon-phone f2">
+                                    </span>
+                                    <span className="pointer pl3 pa2 fw5 f5">
+                                        {user.phonenumber}
+                                    </span>
+                                </div>
+                            </Link>       
+                        </div>
+                    </div>
+                    <div style={{fontSize: '35px'}} className="ph2 pv2 fw6 tc">
+                        <div className="br3 bw2 shadow-4 bg-white b--black pa2">
+                            <Link className="link black" to={"/assets/vendor/User"}>
+                                <div className="flex flex-wrap">
+                                    <span className="icon-envelope f2">
+                                    </span>
+                                    <span className="pointer pl3 pa2 fw5 f5">
+                                        <a href={user.contactEmail} target={user.contactEmail} className="link hover-blue pointer f5">
+                                            {user.contactEmail}
+                                        </a>
+                                    </span>
+                                </div>
+                            </Link>       
+                        </div>
+                    </div>
+                    <div className="tc pv3">
+                        <Link to={"/assets/indexes/Login"} className="link black">
+                            <button onClick={logOut} className="bg-orange f5 pointer w-100 ba hover-bg-mid-gray pa3 white tc br-pill ma1 fw6">Logout<strong className="icon-logout ph2"></strong></button>
+                        </Link>
+                    </div> 
                 </div>
             </div>
             <div id="error" style={{display: 'none'}} className="tc">

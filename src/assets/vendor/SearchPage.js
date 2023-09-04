@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import '../Home.css';
 import Navbar from "../../components/Navbar";
 import Header from "../../components/Header";
-import img from '../../images/network-error-1.png'
+import img from '../../images/modern-flat-design-concept-no-result-found-empty-results-popup-design_637684-88.avif'
 import CardList from '../../containers/CardList';
 import SearchBox from "../../components/SearchBox";
 import Preloader from "../../components/Preloader";
@@ -91,29 +91,26 @@ const SearchPage = () => {
                         </div>
                         <div id="search" className="tc">
                             <SearchBlank />
-                            <div className="tc">
-                                <p className="fw6 ph5">
-                                    <small className="green f4">Type to search your favorite products</small>
-                                </p>
-                            </div>
                         </div>
                         {filteredCards.length === 0 &&  <div id="blank" className="tc">
                             <div className="tc pa2">
-                                <div className='tc code' style={{fontSize: '27px', fontWeight: '500'}}><img src={img} alt="logo" className="tc" width="200px" height="200px" /></div>
-                            </div>
-                            <div className="tc">
-                                <p className="pv4 fw6 ph5">
-                                    <small className="green f4">Sorry no items found</small>
-                                </p>
+                                <div className='tc code' style={{fontSize: '27px', fontWeight: '500'}}>
+                                    <img src={img} alt="result not found" className="tc" />
+                                </div>
                             </div>
                         </div>}
                         <div id="error" style={{display: 'none'}} className="tc">
                             <NetworkError />
                         </div>
-                        <p id="load" className="tc code orange fw6 f4">Loading...</p>
+                        <div id="load" className="tc">
+                            <div className="spinner">
+                                <span className="spinner-rotate">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <Navbar />
                 </div>
-                <Navbar />
-            </div>
         );
 }
 

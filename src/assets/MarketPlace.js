@@ -10,7 +10,7 @@ import FollowCardList from "../containers/FollowCardList";
 import Header from "../components/Header";
 
 
-const Home = () => {
+const MarketPlace = () => {
 
     const [users, setUsers] = useState([])
     useEffect(() => {
@@ -72,4 +72,4 @@ const Home = () => {
     );
 }
 
-export default Home;
+export default MarketPlace;

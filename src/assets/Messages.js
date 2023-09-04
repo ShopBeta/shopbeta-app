@@ -12,6 +12,7 @@ import { NetworkError } from "./indexes/ErrorPages"
 const Messages = () => {
     
     const roomId = localStorage.getItem("chatroom")
+    console.log(roomId)
     const token = localStorage.getItem("token")
     const userId = localStorage.getItem("room-user")
     const me = localStorage.getItem("meId")
@@ -33,39 +34,41 @@ const Messages = () => {
     }, [userId])
 
     const [messages, setMessages] = useState([])
-    useEffect(() => {    
-        setInterval(function() {
-            fetch(`https://shopbeta-api.onrender.com/chat/messages/${roomId}`, {
-                method: "GET",
-                headers: {
-                    'Accept' : 'application/json, text/plain',
-                    'Content-Type' : 'application/json' 
-                },
-            })
-            .then((res) => res.json())
-            .then((data) => {
-                setMessages(data)
-
-                const error = document.getElementById('error')
-                error.style['display'] = 'none'
-                
-                const load = document.getElementById('load')
-                load.style['display'] = 'none'
-            })
-            .catch((err) => {
-                console.log(err.message)
-
-                const error = document.getElementById('error')
-                error.style['display'] = 'contents'
+    const getMessages = () => {
+        fetch(`https://shopbeta-api.onrender.com/chat/messages/${roomId}`, {
+            method: "GET",
+            headers: {
+                'Accept' : 'application/json, text/plain',
+                'Content-Type' : 'application/json' 
+            },
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            setMessages(data)
     
-                const load = document.getElementById('load')
-                load.style['display'] = 'none'
+            const error = document.getElementById('error')
+            error.style['display'] = 'none'
+                    
+            const load = document.getElementById('load')
+            load.style['display'] = 'none'
+        })
+        .catch((err) => {
+            console.log(err.message)
+    
+            const error = document.getElementById('error')
+            error.style['display'] = 'contents'
+        
+            const load = document.getElementById('load')
+            load.style['display'] = 'none'
+    
+            const blank = document.getElementById('blank')
+            blank.style['display'] = 'none'
+        })
+    }
 
-                const blank = document.getElementById('blank')
-                blank.style['display'] = 'none'
-            })
-        }, 2000); // every 5 minutes (100000)
-    }, [roomId])
+    window.onclick = () => {
+        getMessages();
+    }
 
     console.log(messages)
     console.log(user)
@@ -74,7 +77,7 @@ const Messages = () => {
     console.log(roomId)
 
     const postMessage = async () => {
-
+   
         const message = {
             messageText : document.querySelector('.message').value
         }
@@ -104,6 +107,8 @@ const Messages = () => {
        .catch((err) => {
            console.log(`Couldn't post your message`)
        })
+
+       getMessages();
     }
 
     const deleteChatRoom = async () => {
@@ -169,8 +174,11 @@ const Messages = () => {
                                 </div>
                                 {messages.length === 0 && <div id="blank" className="tc">
                                     <MessagesBlank />
+                                    <button onClick={getMessages} className="pa3 br-pill pointer f6 white ph4 grow ba bg-orange hover-bg-mid-gray fw6">view messages<small className="icon-eye f6 pl2"></small></button>
                                 </div>}
-                                <MessageList messages={messages} />
+                                <div className="pb5">
+                                    <MessageList messages={messages} />
+                                </div>
                                 <div id="load" className="tc">
                                     <div className="spinner">
                                         <span className="spinner-rotate">

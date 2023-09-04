@@ -6,7 +6,7 @@ import blank_img2 from '../../images/illustration-content-marketing-flat-vector_
 import blank_img3 from '../../images/messenger-concept-illustration_114360-860.avif'
 import blank_img4 from '../../images/online-wishes-list-concept-illustration_114360-3900.avif'
 import blank_img5 from '../../images/ecommerce-web-page-concept-illustration_114360-8204.avif'
-import blank_img6 from '../../images/e-commerce-online.jpg'
+import blank_img6 from '../../images/browsing-online-concept-illustration_114360-4684.jpg'
 import blank_img7 from '../../images/messages-concept-illustration_114360-583.avif'
 
 

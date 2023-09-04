@@ -100,9 +100,9 @@ const handleSubmit = e => {
                                         <input id="location" type="text" name="location" className="location br3 ba pa3 w-100" placeholder="Type in your location..." required />
                                     </div>
                                     <div className="tl pv2">
-                                        <p className="pv1 f5 fw5">Website URL</p>
+                                        <p className="pv1 f5 fw5">Link</p>
                                         <small className="icon-globe f4 fw5"></small>
-                                        <input type="url" name="website" className="website br3 ba pa3 w-100" placeholder="Your website url..." required />
+                                        <input type="url" name="website" className="website br3 ba pa3 w-100" placeholder="Any social profile link..." required />
                                     </div>
                                     <div className="tl pv2">
                                         <p className="pv1 f5 fw5">Contact Email</p>

@@ -1,11 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./assets/Home";
 import AdbillBoard from "./assets/Adbillboard";
 import SearchPage from "./assets/vendor/SearchPage";
 import Profile from "./assets/vendor/Profile";
 import User from "./assets/vendor/User";
-import MarketPlace from "./assets/vendor/MarketPlace";
+import Products from "./assets/vendor/Products";
 import Cart from "./assets/vendor/Cart";
 import Settings from "./assets/vendor/Settings";
 import Welcome from "./assets/Welcome";
@@ -28,6 +27,7 @@ import ServerError from "./assets/indexes/500";
 import PostAd from "./containers/PostAd";
 import PostVideo from "./containers/PostVideo";
 import PostProduct from "./components/PostProduct";
+import MarketPlace from "./assets/MarketPlace";
 
 const App = () => {
     return (
@@ -35,13 +35,13 @@ const App = () => {
             <Router>
              <Routes>
                 <Route index element={<Welcome/>} />
-                <Route exact path="/assets/Home" element={<Home />} />
                 <Route exact path="/assets/Adbillboard" element={<AdbillBoard />} />
                 <Route exact path="/assets/VideoSpace" element={<VideoSpace />} />
                 <Route exact path="/assets/Messages" element={<Messages />} />
                 <Route exact path="/assets/Chats" element={<Chats />} />
                 <Route exact path="/assets/vendor/SearchPage" element={<SearchPage />} />
-                <Route exact path="/assets/vendor/MarketPlace" element={<MarketPlace />} />
+                <Route exact path="/assets/vendor/Products" element={<Products />} />
+                <Route exact path="/assets/MarketPlace" element={<MarketPlace />} />
                 <Route exact path="/assets/vendor/Profile" element={<Profile />} />
                 <Route exact path="/assets/vendor/User" element={<User />} />
                 <Route exact path="/assets/vendor/Cart" element={<Cart />} />

@@ -54,6 +54,35 @@ const CartItem = ({ id, productId }) => {
             })
     }
 
+     const price = product.price
+     const oldprice = product.oldprice 
+
+     // calculate the percentage of income that we spent
+     const newPrice = oldprice - price  
+     const percentage = Math.round((newPrice / oldprice) * 100);
+     
+
+    // format represention of product prices
+     let newNum = Math.abs(price);
+     const num1 = newNum.toFixed(2);
+     
+     let oldNum = Math.abs(oldprice);
+     console.log(oldNum)
+     const num2 = oldNum.toFixed(2);
+
+     const newSplit = num1.split('.');
+     const oldSplit = num2.split('.');
+
+     let intNew = newSplit[0];
+     if(intNew.length > 3) {
+         intNew = intNew.substr(0, intNew.length - 3) + ',' + intNew.substr(intNew.length - 3, 3); // input 2310, output 2,310
+     }
+
+     let intOld = oldSplit[0];
+     if(intOld.length > 3) {
+         intOld = intOld.substr(0, intOld.length - 3) + ',' + intOld.substr(intOld.length - 3, 3); // input 2310, output 2,310
+     }
+
     return(
             <div className="dib tl pv2 ma1 pa2-l">
                 <div className="">
@@ -78,16 +107,11 @@ const CartItem = ({ id, productId }) => {
                                 </Link>
                             <div>
                             <div className="f4 pt1 code">
-                                <small className="bg-light-blue ph3 f3 pa2 br-pill">{product.currency}{product.price}</small> 
-                                <small className="pa2 line-through">{product.currency}{product.oldprice}</small>
+                                <small className="bg-light-blue ph3 f3 pa2 br-pill">{product.currency}{intNew}</small> 
+                                <small className="pa2 line-through">{product.currency}{intOld}</small>
                             </div>
                             <div className="pv2 tr">
-                                <span className="icon-star"></span>
-                                <span className="icon-star"></span>
-                                <span className="icon-star"></span>
-                                <span className="icon-star"></span>
-                                <span className="icon-star"></span>
-                                <span className="pl2 code fw6 f5">{product.rating}</span>
+                                <p className="ph2 code f4 fw6 red">-{percentage}%</p>
                             </div>
                             <div className="tc">
                             <span className="monospace">

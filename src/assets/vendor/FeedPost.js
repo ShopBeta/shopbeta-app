@@ -8,10 +8,11 @@ import CommentList from "../../containers/CommentList";
 import { UserError, NetworkError } from "../indexes/ErrorPages";
 
 
-const FeedPost = ({ text, file }) => {
+const FeedPost = ({ text }) => {
 
     const token = localStorage.getItem("token")
     const me = localStorage.getItem("meId")
+    console.log(me)
     const feedId = localStorage.getItem('feedId')
     console.log(feedId)
 
@@ -58,44 +59,44 @@ const FeedPost = ({ text, file }) => {
     }, [feed.owner])
 
     const [comment, setComment] = useState([])
-    useEffect(() => {
-        setInterval(function() {
-            fetch(`https://shopbeta-api.onrender.com/feed/${feedId}/comments`, {
-                method: "GET",
-                headers: {
-                    'Accept' : 'application/json, text/plain',
-                    'Content-Type' : 'application/json' 
+    const getComments = () => {
+        fetch(`https://shopbeta-api.onrender.com/feed/${feedId}/comments`, {
+            method: "GET",
+            headers: {
+                'Accept' : 'application/json, text/plain',
+                'Content-Type' : 'application/json' 
                 },
             })
             .then((res) => res.json())
             .then((data) => {
                 setComment(data)
-                
+                    
                 const load = document.getElementById('load')
                 load.style['display'] = 'none'
             })
             .catch((err) => {
                 console.log(err.message)
-
+    
                 const load = document.getElementById('load')
                 load.innerHTML = 'Failed to load comments!'
-
+    
                 const blank = document.getElementById('blank')
                 blank.style['display'] = 'none'
             })
-        }, 2000); // every 5 minutes (100000)
-    }, [feedId])
+    }
+
+    window.onclick = () => {
+        getComments();
+    }
 
     const addComment = async () => {
 
         const comment = {
             text: document.querySelector('.text').value,
-            file: document.querySelector('.file').value,
             owner: me
         }
 
         if (comment.text.trim() === "") {
-
             return false
         }
     
@@ -124,6 +125,8 @@ const FeedPost = ({ text, file }) => {
             const comment = document.getElementById('comment')
             comment.style['display'] = 'none'
         })
+
+        getComments();
     }
 
     const buttonClick = async event => {

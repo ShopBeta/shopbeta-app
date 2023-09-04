@@ -68,7 +68,6 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
     const heartClick = async event => {
             event.currentTarget.style.color = 'orange';
             event.currentTarget.style.fontWeight = 'bold';
-            // event.currentTarget.innerHTML = 'liked';
 
             const count = {
                 hearts: hearts + 1
@@ -205,7 +204,6 @@ const VideoPost = ({ id, owner, media, text, hearts, views, time}) => {
     const heartClick = async event => {
             event.currentTarget.style.color = 'orange';
             event.currentTarget.style.fontWeight = 'bold';
-            // event.currentTarget.innerHTML = 'liked';
 
             const count = {
                 hearts: hearts + 1

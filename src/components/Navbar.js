@@ -20,9 +20,9 @@ const Navbar = () => {
                 </Link>
 
                 <Link 
-                    to={"../assets/Home"} title="home"
+                    to={"../assets/MarketPlace"} title="marketplace"
                 
-                    className={currentRoute.includes("home") ? "nav-link link active" : "link black"}>
+                    className={currentRoute.includes("marketplace") ? "nav-link link active" : "link black"}>
                     <small className="pv2 f3 hover-bg-light-gray br3 icon-handbag ph4 fw6 "></small> 
                 </Link>
 

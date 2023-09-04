@@ -13,9 +13,9 @@ const Profile = () => {
         return(
             <div className="">
                 <Preloader />
-                        <Header />
+                <Header />
                     <div className="">
-                       <div className="tc pv6">
+                       <div className="tc pv5">
                             <User />
                        </div>
                     </div>
