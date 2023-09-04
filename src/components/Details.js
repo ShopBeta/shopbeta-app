@@ -35,7 +35,27 @@ const Details = () => {
     const newPrice = oldprice - price  
     const percentage = Math.round((newPrice / oldprice) * 100);
 
+    // format represention of product prices
+     let newNum = Math.abs(price);
+     const num1 = newNum.toFixed(2);
+     
+     let oldNum = Math.abs(oldprice);
+     console.log(oldNum)
+     const num2 = oldNum.toFixed(2);
 
+     const newSplit = num1.split('.');
+     const oldSplit = num2.split('.');
+
+     let intNew = newSplit[0];
+     if(intNew.length > 3) {
+         intNew = intNew.substr(0, intNew.length - 3) + ',' + intNew.substr(intNew.length - 3, 3); // input 2310, output 2,310
+     }
+
+     let intOld = oldSplit[0];
+     if(intOld.length > 3) {
+         intOld = intOld.substr(0, intOld.length - 3) + ',' + intOld.substr(intOld.length - 3, 3); // input 2310, output 2,310
+     }
+     
     return(
            <div className="tc w-100 pv3">
                 <div style={{width: '360px'}} className="dib pa3">
@@ -64,8 +84,8 @@ const Details = () => {
                         </div> 
                     </div>
                     <div className="f4 pv3 tl code">
-                        <span className="bg-light-blue ph3 f3 pa2 br-pill">{product.currency}{product.price}</span> 
-                        <span className="pa2 code line-through">{product.currency}{product.oldprice}</span>
+                        <span className="bg-light-blue ph3 f3 pa2 br-pill">{product.currency}{intNew}</span> 
+                        <span className="pa2 code line-through">{product.currency}{intOld}</span>
                     </div>
                     <div className="pv2 tr">
                         <p className="ph2 code f4 fw6 red">-{percentage}%</p>
