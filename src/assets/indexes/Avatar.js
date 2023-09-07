@@ -3,7 +3,7 @@ import 'tachyons'
 import '../Home.css'
 import img from '../../images/shopbeta logo.png'
 import img1 from '../../images/avatar6.png'
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Preloader from "../../components/Preloader";
 
 
