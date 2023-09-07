@@ -55,8 +55,8 @@ const Avatar = () => {
                         </div>
                     </div>
                     <Link className="link" to={"/assets/vendor/Profile"}>
-                        <div className="tr hover-blue orange fw4 f4 pt3 pointer">
-                            Skip
+                        <div className="tr hover-blue orange fw5 f4 pt3 pointer">
+                            <p>Skip</p>
                         </div>
                     </Link>
                  </div>

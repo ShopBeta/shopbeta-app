@@ -88,7 +88,6 @@ const Chats = () => {
 
         return(
                <div className="tc">
-                <div className="tc">
                     <Preloader />
                     <Header />
                     <div>
@@ -137,7 +136,6 @@ const Chats = () => {
                 <div>
             </div>
         </div>
-    </div>
     );
 }
 
