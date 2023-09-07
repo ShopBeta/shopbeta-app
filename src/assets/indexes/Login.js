@@ -111,7 +111,7 @@ const handleSubmit = e => {
                                                         Login
                                                         <small className="fw6 orange f4 fw4 pointer"> Successful</small>
                                                     </p>
-                                                    <Link className="link" to={"/assets/Home"}>
+                                                    <Link className="link" to={"/assets/Adbillboard"}>
                                                         <button className="index-button hover-bg-mid-gray pa2 tc br-pill ba pointer ph5 ma1 grow pv3 b fw6">Home<small className="icon-arrow-right pl2"></small></button>
                                                     </Link>
                                                 </div>
