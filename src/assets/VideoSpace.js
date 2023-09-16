@@ -16,9 +16,6 @@ const VideoSpace = () => {
     const me = localStorage.getItem("meId")
     console.log(me)
 
-    const user = document.getElementById('user')
-    me === "" ?  user.style['display'] = 'none' : user.style['display'] = 'contents'
-
     const [video, setVideo] = useState([])
     useEffect(() => {
         fetch("https://shopbeta-api.onrender.com/video", {
@@ -62,11 +59,11 @@ const VideoSpace = () => {
                             <span className="navbar-brand">
                                 <h3 className="code">VideoSpace</h3>
                             </span>
-                            <span id="user" className="navbar-brand">
+                            {me === '' || <span className="navbar-brand">
                                 <Link to={"../assets/vendor/Profile"} title="profile">
                                     <img src={`https://shopbeta-api.onrender.com/users/${me}/avatar`} alt="user" className="br4 pointer" width="45px" height="45px" />
                                 </Link>
-                            </span>
+                            </span>}
                             {me === '' &&  <span className="navbar-brand">
                                 <Link to={"../assets/indexes/Login"} className="pointer">
                                     <small className="f3 orange hover-blue">Login</small>

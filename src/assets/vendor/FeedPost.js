@@ -235,8 +235,8 @@ const FeedPost = ({ text }) => {
                         </Link>
                     </div>
                 </div>
-                <div className="">
-                   <div className="f5 pv2 tj">
+                <div className="pv3">
+                   <div className="f5 tj">
                    {comment.length === 0 && <div id="blank" className="tc">
                         <p style={{fontSize: '100px', fontWeight: '510'}} className="icon-bubbles pt6 mid-gray"></p>
                         <p className="pv2 tc fw6 f5">No comments yet <br/>Be the first to drop a comment.</p>

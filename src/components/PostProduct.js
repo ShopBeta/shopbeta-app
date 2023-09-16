@@ -9,9 +9,6 @@ const PostProduct = ({ name, images, description, currency, price, oldprice, cat
     const me = localStorage.getItem("meId")
     console.log(me)
 
-    const user = document.getElementById('user')
-    me === "" ?  user.style['display'] = 'none' : user.style['display'] = 'contents'
-
     const fileInput = () => {
         document.querySelector('#file-upload').onchange = function() {
            const input = document.querySelector('#file-upload')
@@ -54,11 +51,11 @@ const PostProduct = ({ name, images, description, currency, price, oldprice, cat
                                     <p className="code f3 hover-orange">video</p>
                                 </Link>
                             </span>
-                            <span id="user" className="navbar-brand">
+                            {me === '' || <span className="navbar-brand">
                                 <Link to={"../assets/vendor/Profile"} title="profile">
                                     <img src={`https://shopbeta-api.onrender.com/users/${me}/avatar`} alt="user" className="br4 pointer" width="45px" height="45px" />
                                 </Link>
-                            </span>
+                            </span>}
                             {me === '' &&  <span className="navbar-brand">
                                 <Link to={"../assets/indexes/Login"} className="pointer">
                                     <small className="f3 orange hover-blue">Login</small>
