@@ -42,8 +42,9 @@ const Chatrooms = ({ roomId, userId, createdAt }) => {
                                         <p className="orange">{user.username}</p>
                                         <p className="pt2">click to view recent messages
                                         <small class="opacity-6 ph2 code">
-                                            <i class="icon-pin pointer grow ph3 fw6"></i>
-                                            <i class="icon-star pointer grow fw6"></i>
+                                        <i class="icon-star pointer ph3 f5 grow fw6"></i>
+                                            <i class="icon-pin pointer f5 grow fw6"></i>
+                                            
                                         </small>
                                         </p>
                                     </div>

@@ -18,7 +18,7 @@ const NetworkError = () => {
                                 <small className="green f4">Check your internet connection</small>
                             </p>
                             <div className="">
-                                <img src={img} alt="logo" className="tc" />
+                                <img src={img} alt="network-error" width="400px" height="400px" className="tc" />
                         </div>
                     </div>
                 </div>
@@ -37,7 +37,7 @@ const UserError = () => {
                         <small className="f3 orange">You're not logged in!<br/></small>
                         <small className="green f4">login your account or signup if you don't have an account.</small>
                     </p>
-                    <img src={img1} alt="error" className="tc"/>
+                    <img src={img1} alt="error" width="400px" height="400px" className="tc"/>
                         <div className="pt3 tc">
                            <span> 
                                 <Link to={"/assets/indexes/Login"}>

@@ -3,9 +3,9 @@ import React from "react";
 import { useState, useEffect } from "react";
 import '../Home.css';
 import Navbar from "../../components/Navbar";
-import Header from "../../components/Header";
 import img from '../../images/modern-flat-design-concept-no-result-found-empty-results-popup-design_637684-88.avif'
 import CardList from '../../containers/CardList';
+import logo from '../../images/shopbeta logo.png'
 import SearchBox from "../../components/SearchBox";
 import Preloader from "../../components/Preloader";
 import { SearchBlank } from "../indexes/BlankPage";
@@ -23,9 +23,6 @@ const SearchPage = () => {
         .then((data) => {
             setProduct(data)
 
-            const load = document.getElementById('load')
-            load.style['display'] = 'none'
-
             const error = document.getElementById('error')
             error.style['display'] = 'none'
         })
@@ -34,9 +31,6 @@ const SearchPage = () => {
 
             const error = document.getElementById('error')
             error.style['display'] = 'contents'
-
-            const load = document.getElementById('load')
-            load.style['display'] = 'none'
 
             const blank = document.getElementById('blank')
             blank.style['display'] = 'none'
@@ -74,44 +68,42 @@ const SearchPage = () => {
         return(
             <div className="tc">
                 <Preloader />
-                <Header />
-                  <div className="bg-white pv2 dib tc">
-                        <div className="pt5 tc pa1">
-                            <div className="pt3 flex flex-wrap">
-                                <span style={{color: 'black', fontSize: '23px', fontWeight: '500', letterSpacing: '-2px'}} className="pr2 icon-magnifier pt2"></span>
-                                <span className="">
-                                    <SearchBox searchChange={onSearchChange} />
-                                </span>
-                            </div>
+                <div>
+                    <nav className="bg-white fw5 navbar navbar-expand-lg tc pv1" style={{position: 'fixed', width: '100%', borderBottom: '1px thin black'}}>
+                        <div style={{fontSize: '29px'}} className="ph2 container">
+                            <span className='navbar-brand' style={{fontSize: '12px', fontWeight: '500'}}>
+                                <img src={logo} alt="logo" className="" width="50px" height="50px" />
+                            </span>  
+                            <span className="navbar-brand w-70">
+                                <SearchBox searchChange={onSearchChange} />
+                            </span>
+                            <span className="pointer">
+                                <small className="icon-microphone f2"></small>
+                            </span>
                         </div>
-                    </div>
-                    <div className="tc pt5">
-                        <div style={{display: 'none'}} id="results" className="tc">
-                            <CardList product={filteredCards} />
-                        </div>
-                        <div id="search" className="tc">
-                            <SearchBlank />
-                        </div>
-                        {filteredCards.length === 0 &&  <div id="blank" className="tc">
-                            <div className="tc pa2">
-                                <div className='tc code' style={{fontSize: '27px', fontWeight: '500'}}>
-                                    <img src={img} alt="result not found" className="tc" />
-                                </div>
-                            </div>
-                        </div>}
-                        <div id="error" style={{display: 'none'}} className="tc">
-                            <NetworkError />
-                        </div>
-                        <div id="load" className="tc">
-                            <div className="spinner">
-                                <span className="spinner-rotate">
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <Navbar />
+                    </nav>
                 </div>
-        );
+                <div className="tc pt5">
+                    <div style={{display: 'none'}} id="results" className="tc">
+                        <CardList product={filteredCards} />
+                    </div>
+                    <div id="search" className="tc">
+                        <SearchBlank />
+                    </div>
+                    {filteredCards.length === 0 &&  <div id="blank" className="tc">
+                    <div className="tc pa2">
+                        <div className='tc code' style={{fontSize: '27px', fontWeight: '500'}}>
+                            <img src={img} alt="result not found" className="tc" />
+                        </div>
+                    </div>
+                </div>}
+                <div id="error" style={{display: 'none'}} className="tc">
+                    <NetworkError />
+                </div>
+            </div>
+            <Navbar />
+        </div>
+    );
 }
 
 export default SearchPage;

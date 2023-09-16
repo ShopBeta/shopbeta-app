@@ -147,7 +147,7 @@ const Messages = () => {
                     <div className="tc">
                         <div className="pa3 w-100">
                             <div className="tr">
-                                <small className="f3 fw5 hover-orange pointer grow br3 icon-refresh ph4"></small>
+                                <small className="f3 fw5 hover-orange pointer grow br3 icon-phone ph4"></small>
                                 <Link className="black link" to={"/assets/Chats"}>
                                     <small onClick={deleteChatRoom} title="delete your entire conversation" className="f3 fw5 hover-orange pointer grow br3 icon-trash"></small>
                                 </Link>

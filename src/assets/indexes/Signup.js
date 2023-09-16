@@ -14,7 +14,6 @@ const newUser = async () => {
     const user = {
         username: document.querySelector('.username').value,
         email: document.querySelector('.email').value,
-        password: document.querySelector('.password').value,
         phonenumber: document.querySelector('.phonenumber').value,
     }
     
@@ -76,11 +75,6 @@ const handleSubmit = e => {
                                         <p className="pv1 f5 fw5">Username</p>
                                         <small className="icon-user f4 fw5"></small>
                                         <input type="text" name="username" className="username br3 ba pa3 w-100" placeholder="Type in username..." required autoComplete="username" />
-                                    </div>
-                                    <div className="tl pv2">
-                                        <p className="pv1 f5 fw5">Phone Number</p>
-                                        <small className="icon-phone f4 fw5"></small>
-                                        <input type="tel" name="phonenumber" className="phonenumber br3 ba pa3 w-100" placeholder="Input phone number..." required autoComplete="phonenumber" />
                                     </div>
                                     <div className="tl pv2">
                                         <p className="pv1 f5 fw5">Email</p>

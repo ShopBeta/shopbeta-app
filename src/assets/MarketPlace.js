@@ -42,9 +42,9 @@ const MarketPlace = () => {
                     <Header />
                     <div className="pa1 pv5">
                         <div className="tr pv2">
-                            <nav className="fw5 bg-white navbar tr pa2" style={{position: 'fixed', width: '100%', borderBottom: '1px thin black'}}>
-                                <span><Link to={"../assets/vendor/SearchPage"} title="search" className="navbar pv2 f3 hover-bg-light-gray br3 icon-magnifier ph4 fw6 link black" ></Link></span>
-                                <span><Link to={"../assets/Vendor/Cart"} title="cart" className="navbar ph4 f3 black hover-bg-light-gray br3 fw6 link icon-basket pv2"></Link></span>
+                            <nav className="fw5 bg-white tr pa2" style={{position: 'fixed', width: '100%', borderBottom: '1px thin black'}}>
+                                <span><Link to={"../assets/vendor/SearchPage"} title="search" className="pv2 f3 hover-bg-light-gray br3 icon-magnifier ph4 fw6 link black" ></Link></span>
+                                <span><Link to={"../assets/Vendor/Cart"} title="cart" className="ph4 f3 black hover-bg-light-gray br3 fw6 link icon-basket pv2"></Link></span>
                             </nav>
                         </div>
                         <h3 style={{position: 'fixed'}} className="pa4 tl code f3 ph3">

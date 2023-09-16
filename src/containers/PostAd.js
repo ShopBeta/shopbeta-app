@@ -1,11 +1,16 @@
 import React from "react";
 import 'tachyons';
+import { Link } from "react-router-dom";
+import Navbar from '../components/Navbar';
 // import img from '../images/tst-image3.jpg'
 
 const PostAd = ({ text, file }) => {
 
     const me = localStorage.getItem("meId")
     console.log(me)
+
+    const user = document.getElementById('user')
+    me === "" ?  user.style['display'] = 'none' : user.style['display'] = 'contents'
     
     const fileInput = () => {
         document.querySelector('#file-upload').onchange = function() {
@@ -20,12 +25,45 @@ const PostAd = ({ text, file }) => {
     
 
     return(
-            <div className="pv5 tc w-100">
-                <p className="">
-                    <img src={`https://shopbeta-api.onrender.com/users/${me}/avatar`} alt="avatar" className="br-100 ph2" width="60px" height="60px" />
-                </p>
-                <div style={{width: '360px'}} className="dib">
-                    <form action={`https://shopbeta-api.onrender.com/feed/${me}`} method="post" encType="multipart/form-data" className="tl br3 pa3 ma2">
+            <div className="tc w-100">
+                <div>
+                    <nav className="bg-white fw5 navbar navbar-expand-lg tc pv1" style={{position: 'fixed', width: '100%', borderBottom: '1px thin black'}}>
+                        <div style={{fontSize: '35px'}} className="ph2 pa2 fw6 container">
+                            <span className='navbar-brand pl1'>
+                                <Link to={"../assets/AdbillBoard"} className="black link">
+                                    <p className="icon-arrow-left f4"></p>
+                                </Link>
+                            </span>
+                            <span className='navbar-brand'>
+                                <Link to={"../container/PostAd"} title="post ad" className="orange">
+                                    <p className="code f3">ad</p>
+                                </Link>
+                            </span>  
+                            <span className="navbar-brand">
+                                <Link to={"../components/PostProduct"} title="post product" className="black">
+                                    <p className="code f3 hover-orange">product</p>
+                                </Link>
+                            </span>
+                            <span className="navbar-brand">
+                                <Link to={"../container/PostVideo"} title="post video" className="black">
+                                    <p className="code f3 hover-orange">video</p>
+                                </Link>
+                            </span>
+                            <span id="user" className="navbar-brand">
+                                <Link to={"../assets/vendor/Profile"} title="profile">
+                                    <img src={`https://shopbeta-api.onrender.com/users/${me}/avatar`} alt="user" className="br4 pointer" width="45px" height="45px" />
+                                </Link>
+                            </span>
+                            {me === '' &&  <span className="navbar-brand">
+                                <Link to={"../assets/indexes/Login"} className="pointer">
+                                    <small className="f3 orange hover-blue">Login</small>
+                                </Link>
+                            </span>}
+                        </div>
+                    </nav>
+                </div>
+                <div style={{width: '360px'}} className="dib pv6">
+                    <form action={`https://shopbeta-api.onrender.com/feed/${me}`} method="post" encType="multipart/form-data" className="tl pa2 ma2">
                         <p className="fw5">
                             <small className="f5 tc fw6 ph2">Choose photo</small>
                                 <div className="pv2 pa2 br3 tc bg">
@@ -60,11 +98,12 @@ const PostAd = ({ text, file }) => {
                             </div>
                             <div className="tc">
                                 <button onClick={handClick} variant="contained" type="submit" className="pa3 w-50 pointer br-pill ba grow index-button hover-bg-mid-gray">
-                                    <small className="fw7 f5">Post Ad</small>
+                                    <small className="fw7 f5">Post</small>
                                 </button>
                             </div>
                         </form>
                     </div>
+                    <Navbar />
                 <div>
             </div>
         </div>

@@ -87,12 +87,10 @@ const handleSubmit = e => {
                             <div className='tc code' style={{fontSize: '27px', fontWeight: '500'}}><img src={img} alt="logo" className="tc" width="75px" height="75px" /></div>
                             <p className="pv2 fw6 tl ph3"><small className="f3 orange">{user.username} </small><small className="f5">We'd like to know more <small className="green f4">information</small> about you.</small> Let's take a <small className="green f4">few seconds</small> to finish setting up your account</p>
                                 <form onSubmit={handleSubmit}>
-                                    <div className="tl pv1">
-                                        <p className="pv1 f5 fw5">Bio information</p>
-                                        <p className="pv1">
-                                            <small className="icon-note f4 fw5"></small>
-                                            <textarea id="myInput" name="bio" className="bio br3 ba pa3 w-100 h3" placeholder="Something about your profile..." aria-label="With textarea" required></textarea>
-                                        </p>
+                                    <div className="tl pv2">
+                                        <p className="pv1 f5 fw5">Phone Number</p>
+                                        <small className="icon-phone f4 fw5"></small>
+                                        <input type="tel" name="phonenumber" className="phonenumber br3 ba pa3 w-100" placeholder="Input phone number..." required autoComplete="phonenumber" />
                                     </div>
                                     <div className="tl pv2">
                                         <p className="pv1 f5 fw5">Location</p>
@@ -104,10 +102,12 @@ const handleSubmit = e => {
                                         <small className="icon-globe f4 fw5"></small>
                                         <input type="url" name="website" className="website br3 ba pa3 w-100" placeholder="Any social profile link..." required />
                                     </div>
-                                    <div className="tl pv2">
-                                        <p className="pv1 f5 fw5">Contact Email</p>
-                                        <small className="icon-envelope f4 fw5"></small>
-                                        <input type="email" name="contactEmail" className="contactEmail br3 ba pa3 w-100" placeholder="Your contact email..." required autoComplete="username" />
+                                    <div className="tl pv1">
+                                        <p className="pv1 f5 fw5">Bio information</p>
+                                        <p className="pv1">
+                                            <small className="icon-note f4 fw5"></small>
+                                            <textarea id="myInput" name="bio" className="bio br3 ba pa3 w-100 h3" placeholder="Something about your profile..." aria-label="With textarea" required></textarea>
+                                        </p>
                                     </div>
                                     <div id="error" style={{display: 'none'}} className="orange fw5 pv3 f5 red">
                                         <small className="icon-info red f5 ph2"></small>

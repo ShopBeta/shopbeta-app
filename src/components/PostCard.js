@@ -14,6 +14,8 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
     console.log(owner)
     console.log(time)
 
+    const truncText = text.substring(0, 500) + "..."
+
     const [user, setUser] = useState({})
     useEffect(() => {
         fetch(`https://shopbeta-api.onrender.com/users/${owner}`, {
@@ -121,7 +123,7 @@ const TextPost = ({ name, id, owner, media, text, hearts, time}) => {
                 <div style={{ height: 'auto', textAlign: 'justify'}} className="pa2">
                     <Link onClick={() => {window.localStorage.setItem("feedId", id)}} className="link black" to={"/assets/vendor/FeedPost"}>
                         <p style={{lineHeight: "20px"}} className="f5">
-                            {text}
+                            {truncText}
                         </p>
                     </Link>
                 </div>
@@ -168,6 +170,8 @@ const VideoPost = ({ id, owner, media, text, hearts, views, time}) => {
     console.log(me)
     console.log(owner)
     console.log(time)
+
+    // const truncText = text.substring(0, 50) + "..."
 
     const [user, setUser] = useState({})
     useEffect(() => {

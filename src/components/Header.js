@@ -7,7 +7,7 @@ import './simple-line-icons/css/simple-line-icons.css';
 const Header = () => {
 
     return(
-        <nav className="bg-white fw5 navbar tc pv1" style={{position: 'fixed', width: '100%', borderBottom: '1px thin black'}}>
+        <nav className="bg-white fw5 tc pv1" style={{position: 'fixed', width: '100%', borderBottom: '1px thin black'}}>
             <Typography>
                 <div style={{fontSize: '29px'}} className="ph2">
                     <span className='tc code' style={{fontSize: '12px', fontWeight: '500'}}>

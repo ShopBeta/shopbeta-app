@@ -2,7 +2,9 @@ import React from "react";
 import '../Home.css';
 import { useState, useEffect } from "react";
 import Navbar from '../../components/Navbar';
-import Header from '../../components/Header'
+import { Link } from "react-router-dom";
+import logo from '../../images/shopbeta logo.png'
+// import img2 from '../../images/tst-image3.jpg'
 import CartList from "../../containers/CartList";
 import Preloader from "../../components/Preloader";
 import { CartBlank } from "../indexes/BlankPage";
@@ -12,6 +14,9 @@ const Cart = () => {
 
     const me = localStorage.getItem("meId")
     console.log(me) 
+
+    const user = document.getElementById('user')
+    me === "" ?  user.style['display'] = 'none' : user.style['display'] = 'contents'
 
     const [cart, setCart] = useState([])
     useEffect(() => {
@@ -46,35 +51,54 @@ const Cart = () => {
     return(
         <div className="">
             <Preloader />
-            <Header />
+            <div>
+                <nav className="bg-white fw5 navbar navbar-expand-lg tc pv1" style={{position: 'fixed', width: '100%', borderBottom: '1px thin black'}}>
+                    <div style={{fontSize: '29px'}} className="ph2 container">
+                        <span className='navbar-brand' style={{fontSize: '12px', fontWeight: '500'}}>
+                            <img src={logo} alt="logo" className="" width="50px" height="50px" />
+                        </span>  
+                        <span className="navbar-brand">
+                            <h3 className="code">Saved items</h3>
+                        </span>
+                        <span id="user" className="navbar-brand">
+                            <Link to={"../assets/vendor/Profile"} title="profile">
+                                <img src={`https://shopbeta-api.onrender.com/users/${me}/avatar`} alt="user" className="br4 pointer" width="45px" height="45px" />
+                            </Link>
+                        </span>
+                        {me === '' &&  <span className="navbar-brand">
+                            <Link to={"../assets/indexes/Login"} className="pointer">
+                                <small className="f3 orange hover-blue">Login</small>
+                            </Link>
+                        </span>}
+                    </div>
+                </nav>
+            </div>
             <div className="">
                 <div className="pv4 pa1 tc">
                     <div className="dib pt3 tc">
-                        <h3 className="pa4 tl code f3 ph3">
-                            Saved products
+                        <h3 className="code fw7 f3 orange ph3">
+                            <small className="icon-basket ph2 f3"></small>
+                            <small className="ph3 code">{cart.length} items</small>
                         </h3>
-                    <h3 className="code fw7 f3 orange ph3">
-                        <small className="icon-basket ph2 f3"></small>
-                        <small className="ph3 code">{cart.length} items</small>
-                    </h3>
-                    <div className="pa2 tc">
-                        <CartList cart={cart} />
-                    </div>
-                    <div id="error" style={{display: 'none'}} className="tc">
-                        <NetworkError />
-                    </div>
-                    {cart.length === 0 &&  <div id="blank" className="tc">
-                        <CartBlank />
-                    </div>}
-                    <div id="load" className="tc">
-                        <div className="spinner">
-                            <span className="spinner-rotate">
-                            </span>
+                        <div id="error" style={{display: 'none'}} className="tc">
+                            <NetworkError />
+                        </div>
+                        {cart.length === 0 &&  <div id="blank" className="tc">
+                            <CartBlank />
+                            Add products from marketplace
+                        </div>}
+                        <div className="pv4 tc">
+                            <CartList cart={cart} />
+                        </div>
+                        <div id="load" className="tc pv7">
+                            <div className="spinner">
+                                <span className="spinner-rotate">
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         <Navbar />
     </div>
     )

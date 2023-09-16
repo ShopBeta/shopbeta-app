@@ -2,15 +2,21 @@ import React, { useEffect } from "react";
 import '../Home.css';
 import { useState } from "react";
 import Navbar from '../../components/Navbar';
-import Header from '../../components/Header';
-import { SideBar } from "../../components/SideBars";
+import { Link } from "react-router-dom";
+import logo from '../../images/shopbeta logo.png'
+// import img2 from '../../images/tst-image3.jpg'
 import CardList from '../../containers/CardList';
 import Preloader from "../../components/Preloader";
 import { NetworkError } from "../indexes/ErrorPages";
-import { MarketBlank } from "../indexes/BlankPage";
 
 
 const Products = () => {
+    
+    const me = localStorage.getItem("meId")
+    console.log(me)
+
+    const user = document.getElementById('user')
+    me === "" ?  user.style['display'] = 'none' : user.style['display'] = 'contents'
 
     const [product, setProduct] = useState([])
     useEffect(() => {
@@ -35,9 +41,6 @@ const Products = () => {
 
             const load = document.getElementById('load')
             load.style['display'] = 'none'
-
-            const blank = document.getElementById('blank')
-            blank.style['display'] = 'none'
         })
     }, [])
 
@@ -57,36 +60,44 @@ const Products = () => {
     console.log(catProducts)
 
     return(
-        <div className="">
-            <Preloader />
-                <Header />
             <div className="">
+                <Preloader />
+                <div>
+                    <nav className="bg-white fw5 navbar navbar-expand-lg tc pv1" style={{position: 'fixed', width: '100%', borderBottom: '1px thin black'}}>
+                        <div style={{fontSize: '29px'}} className="ph2 container">
+                            <span className='navbar-brand' style={{fontSize: '12px', fontWeight: '500'}}>
+                                <img src={logo} alt="logo" className="" width="50px" height="50px" />
+                            </span>  
+                            <span className="navbar-brand">
+                                <h3 className="code">MarketPlace</h3>
+                            </span>
+                            <span id="user" className="navbar-brand">
+                                <Link to={"../assets/vendor/Profile"} title="profile">
+                                    <img src={`https://shopbeta-api.onrender.com/users/${me}/avatar`} alt="user" className="br4 pointer" width="45px" height="45px" />
+                                </Link>
+                            </span>
+                            {me === '' &&  <span className="navbar-brand">
+                                <Link to={"../assets/indexes/Login"} className="pointer">
+                                    <small className="f3 orange hover-blue">Login</small>
+                                </Link>
+                            </span>}
+                        </div>
+                    </nav>
+                </div>
                 <div className="pa1 pv5 tc">
-                        <div className="dib tc">
-                            <h3 className="pa4 tl code f3 ph3">
-                                MarketPlace
-                            </h3>
-                        <div className="dtc">
-                            <SideBar />
-                        </div>
-                        <div className="tc pl4">
-                            <CardList product={catProducts} />
-                        </div>
-                        <div id="error" style={{display: 'none'}} className="tc">
-                            <NetworkError />
-                        </div>
-                        {catProducts.length === 0 &&  <div id="blank" className="tc">
-                            <MarketBlank />
-                        </div>}
-                        <div id="load" className="tc">
-                            <div className="spinner">
-                                <span className="spinner-rotate">
-                                </span>
-                            </div>
+                    <div id="error" style={{display: 'none'}} className="tc">
+                        <NetworkError />
+                    </div>
+                    <div className="pv4 tc">
+                        <CardList product={catProducts} />
+                    </div>
+                    <div id="load" className="tc pv7">
+                        <div className="spinner">
+                            <span className="spinner-rotate">
+                            </span>
                         </div>
                     </div>
                 </div>
-            </div>
             <Navbar />
         </div>
     )

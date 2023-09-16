@@ -1,12 +1,16 @@
 import React from "react";
 import 'tachyons';
-// import img from '../images/tst-image3.jpg'
+import { Link } from "react-router-dom";
+import Navbar from '../components/Navbar';
 
 
 const PostProduct = ({ name, images, description, currency, price, oldprice, category }) => {
 
     const me = localStorage.getItem("meId")
     console.log(me)
+
+    const user = document.getElementById('user')
+    me === "" ?  user.style['display'] = 'none' : user.style['display'] = 'contents'
 
     const fileInput = () => {
         document.querySelector('#file-upload').onchange = function() {
@@ -27,12 +31,45 @@ const PostProduct = ({ name, images, description, currency, price, oldprice, cat
  
     return(
             <div className="tc w-100">
-                <div style={{width: '360px'}} className="dib tc pa2">
-                    <p className="tc">
-                        <img src={`https://shopbeta-api.onrender.com/users/${me}/avatar`} alt="avatar" className="br-100 ph2" width="60px" height="60px" />
-                    </p>
+                 <div>
+                    <nav className="bg-white fw5 navbar navbar-expand-lg tc pv1" style={{position: 'fixed', width: '100%', borderBottom: '1px thin black'}}>
+                        <div style={{fontSize: '35px'}} className="ph2 pa2 fw6 container">
+                            <span className='navbar-brand pl1'>
+                                <Link to={"../assets/AdbillBoard"} className="black link">
+                                    <p className="icon-arrow-left f4"></p>
+                                </Link>
+                            </span>
+                            <span className='navbar-brand'>
+                                <Link to={"../container/PostAd"} title="post ad" className="black">
+                                    <p className="code f3 hover-orange">ad</p>
+                                </Link>
+                            </span>  
+                            <span className="navbar-brand">
+                                <Link to={"../components/PostProduct"} title="post product" className="orange">
+                                    <p className="code f3">product</p>
+                                </Link>
+                            </span>
+                            <span className="navbar-brand">
+                                <Link to={"../container/PostVideo"} title="post video" className="black">
+                                    <p className="code f3 hover-orange">video</p>
+                                </Link>
+                            </span>
+                            <span id="user" className="navbar-brand">
+                                <Link to={"../assets/vendor/Profile"} title="profile">
+                                    <img src={`https://shopbeta-api.onrender.com/users/${me}/avatar`} alt="user" className="br4 pointer" width="45px" height="45px" />
+                                </Link>
+                            </span>
+                            {me === '' &&  <span className="navbar-brand">
+                                <Link to={"../assets/indexes/Login"} className="pointer">
+                                    <small className="f3 orange hover-blue">Login</small>
+                                </Link>
+                            </span>}
+                        </div>
+                    </nav>
+                </div>
+                <div style={{width: '360px'}} className="dib tc pv5 pa2">
                     <form action={`https://shopbeta-api.onrender.com/products/${me}`} method="post" encType="multipart/form-data">  
-                        <div style={{ overflowY: 'scroll'}} className="pa1 code pv3 tj">
+                        <div style={{ overflowY: 'scroll'}} className="pa1 code tj">
                             <div className="tl pv2">
                                 <p className="pv1 f5 fw5">Product's name</p>
                                 <input type="text" name="name" className="name br3 ba pa3 w-100" required placeholder="Product's name" />
@@ -94,7 +131,7 @@ const PostProduct = ({ name, images, description, currency, price, oldprice, cat
                                             Some tips
                                         </h3>
                                         <div className="pa2 mid-gray fw6">
-                                            <p>Give much detail and description about your product or service</p>
+                                            <p className="">Give much detail and description about your product or service</p>
                                             <p className="pv2">Ensure to upload 4 high quality images</p>
                                             <p className="pv2">Each image file size shouldn't exceed 5MB</p>
                                         </div>
@@ -102,14 +139,15 @@ const PostProduct = ({ name, images, description, currency, price, oldprice, cat
                                 </div>
                             </div>
                         </div>
-                            <div className="pv2 tc grow">
+                            <div className="pb4 tc grow">
                                 <button type="submit" onClick={handClick} variant="contained" className="ph5 pa3 index-button white fw5 pointer ba hover-bg-mid-gray br-pill">
-                                    Post Product
+                                    Post
                                 </button>
                             </div>
                     </form>
                 </div>
-            </div>
+            <Navbar />
+        </div>
     )
 }
 

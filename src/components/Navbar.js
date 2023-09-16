@@ -27,6 +27,12 @@ const Navbar = () => {
                 </Link>
 
                 <Link 
+                    to={"../container/PostAd"} title="post"
+                    className={currentRoute.includes("post") ? "nav-link link active" : "link black"}>
+                    <small className="pv2 f2 hover-bg-light-gray br3 icon-plus ph4 fw6"></small>  
+                </Link>
+
+                <Link 
                     to={"../assets/Chats"} title="chats"
                     className={currentRoute.includes("chats") ? "nav-link link active" : "link black"}>
                     <small className="pv2 f3 hover-bg-light-gray br3 icon-bubbles ph4 fw6"></small>  
@@ -35,13 +41,7 @@ const Navbar = () => {
                 <Link 
                     to={"../assets/VideoSpace"} title="videospace"
                     className={currentRoute.includes("videospace") ? "nav-link active" : "black"}>
-                    <small className="pv2 f3 hover-bg-light-gray br3 icon-social-youtube ph4 fw6"></small>  
-                </Link>
-
-                <Link 
-                    to={"../assets/vendor/Profile"} title="profile"
-                    className={currentRoute.includes("profile") ? "nav-link link active" : "link black"}>
-                    <small className="pv2 f3 hover-bg-light-gray br3 icon-user pl4 fw6"></small>  
+                    <small className="pv2 f3 hover-bg-light-gray br3 icon-social-youtube pl4 fw6"></small>  
                 </Link>
             </div>
         </div>

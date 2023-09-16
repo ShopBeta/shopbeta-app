@@ -128,14 +128,14 @@ const User = () => {
                         </p>
                     </div>  
                     <div style={{fontSize: '35px'}} className="ph2 pv2 fw6 tc">
-                        <div className="br3 bw2 shadow-4 bg-white b--black pa2">
+                        <div className="bw2 b--black pa2">
                             <Link className="link black" to={"/assets/vendor/User"}>
                                 <div className="flex flex-wrap">
-                                    <span className="icon-link f2">
+                                    <span style={{fontSize: '25px'}} className="icon-link f2">
                                     </span>
                                     <span className="pointer pl3 pa2 fw5 f5">
-                                        <a href={user.website} target={user.website} className="link hover-blue pointer f5">
-                                            {user.website}
+                                        <a href={user.link} target={user.link} className="link hover-blue pointer f5">
+                                            {user.link}
                                         </a>
                                     </span>
                                 </div>
@@ -143,10 +143,10 @@ const User = () => {
                         </div>
                     </div>
                     <div style={{fontSize: '35px'}} className="ph2 pv2 fw6 tc">
-                        <div className="br3 bw2 shadow-4 bg-white b--black pa2">
+                        <div className="bw2 b--black pa2">
                             <Link className="link black" to={"/assets/vendor/User"}>
                                 <div className="flex flex-wrap">
-                                    <span className="icon-phone f2">
+                                    <span style={{fontSize: '25px'}} className="icon-phone f2">
                                     </span>
                                     <span className="pointer pl3 pa2 fw5 f5">
                                         {user.phonenumber}
@@ -156,14 +156,14 @@ const User = () => {
                         </div>
                     </div>
                     <div style={{fontSize: '35px'}} className="ph2 pv2 fw6 tc">
-                        <div className="br3 bw2 shadow-4 bg-white b--black pa2">
+                        <div className="bw2 b--black pa2">
                             <Link className="link black" to={"/assets/vendor/User"}>
                                 <div className="flex flex-wrap">
-                                    <span className="icon-envelope f2">
+                                    <span style={{fontSize: '25px'}} className="icon-envelope f2">
                                     </span>
                                     <span className="pointer pl3 pa2 fw5 f5">
-                                        <a href={user.contactEmail} target={user.contactEmail} className="link hover-blue pointer f5">
-                                            {user.contactEmail}
+                                        <a href={user.email} target={user.email} className="link hover-blue pointer f5">
+                                            {user.email}
                                         </a>
                                     </span>
                                 </div>
