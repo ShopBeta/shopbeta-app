@@ -68,12 +68,12 @@ const Products = () => {
                             <span className="navbar-brand">
                                 <h3 className="code">MarketPlace</h3>
                             </span>
-                            {me === '' || <span className="navbar-brand">
+                            {!me || <span className="navbar-brand">
                                 <Link to={"../assets/vendor/Profile"} title="profile">
                                     <img src={`https://shopbeta-api.onrender.com/users/${me}/avatar`} alt="user" className="br4 pointer" width="45px" height="45px" />
                                 </Link>
                             </span>}
-                            {me === '' &&  <span className="navbar-brand">
+                            {!me &&  <span className="navbar-brand">
                                 <Link to={"../assets/indexes/Login"} className="pointer">
                                     <small className="f3 orange hover-blue">Login</small>
                                 </Link>

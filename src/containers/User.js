@@ -192,7 +192,7 @@ const User = () => {
                              {intFollowers}
                              <small className="pl2 fw4">followers</small>
                          </p>
-                         <div className="pl2">
+                         <div className="">
                             <span><strong className="icon-heart f4 pa2"><small className="ph2 f4 fw4">{intHearts}</small></strong></span>
                         </div> 
                      </span>

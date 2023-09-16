@@ -177,7 +177,7 @@ const User = () => {
                     </div> 
                 </div>
             </div>
-            <div id="error" style={{display: 'none'}} className="tc">
+            <div id="error" style={{display: 'none'}} className="tc pt4">
                 <UserError />
             </div>
         </div>

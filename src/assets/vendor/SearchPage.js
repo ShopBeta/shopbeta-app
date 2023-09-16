@@ -74,11 +74,11 @@ const SearchPage = () => {
                             <span className='navbar-brand' style={{fontSize: '12px', fontWeight: '500'}}>
                                 <img src={logo} alt="logo" className="" width="50px" height="50px" />
                             </span>  
-                            <span className="navbar-brand w-60">
+                            <span className="navbar-brand w-70">
                                 <SearchBox searchChange={onSearchChange} />
                             </span>
                             <span className="pointer">
-                                <small className="icon-microphone f2"></small>
+                                <small className="icon-microphone f3"></small>
                             </span>
                         </div>
                     </nav>
