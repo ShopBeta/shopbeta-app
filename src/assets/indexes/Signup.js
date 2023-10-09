@@ -9,12 +9,13 @@ import Preloader from "../../components/Preloader";
 const Signup = () => {
 
 const [errMessage, setErrMessage] = useState(null)
+
 const newUser = async () => {
 
     const user = {
         username: document.querySelector('.username').value,
         email: document.querySelector('.email').value,
-        phonenumber: document.querySelector('.phonenumber').value,
+        password: document.querySelector('.password').value,
     }
     
     await fetch('https://shopbeta-api.onrender.com/users/signup', {
@@ -102,9 +103,9 @@ const handleSubmit = e => {
                                     <div>
                                         <div className="pv2">
                                             <div className="pv2">
-                                                <p id="sign" className="tc">
+                                                <div id="sign" className="tc">
                                                     <button onClick={handClick} type="submit" className="index-button hover-bg-mid-gray pa2 tc br-pill ba pointer ph6 ma1 grow pv3 b fw6">Signup</button>
-                                                </p>
+                                                </div>
                                                 <div id="next" style={{display: 'none'}} className="tc">
                                                     <p className="tc green fw6 pv2 f4">
                                                         <small className="ph2 f4 icon-check orange"></small>
