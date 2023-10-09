@@ -90,7 +90,7 @@ const User = () => {
         <div className="">
             <div id="user" className="w-100">
                 <div className="dib pa2">
-                    <div className="tr fw5 bg-white navbar pa2">
+                    <div className="tr fw5 bg-white navbar">
                         <span>
                             <Link to={"/assets/vendor/Settings"} className="link black">
                                 <button className="bg-white f5 pointer ba hover-bg-mid-gray pa2 tc br-pill grow ph4 ma1 fw6"><small className="icon-pencil f6 pr2"></small>Edit</button>
