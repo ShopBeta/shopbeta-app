@@ -27,11 +27,11 @@ const User = () => {
         .catch((err) => {
             console.log(err.message)
 
-            const error = document.getElementById('error')
-            error.style['display'] = 'contents'
+            // const error = document.getElementById('error')
+            // error.style['display'] = 'contents'
 
-            const user = document.getElementById('user')
-            user.style['display'] = 'none'
+            // const user = document.getElementById('user')
+            // user.style['display'] = 'none'
         })
     }, [me])
 
@@ -99,6 +99,11 @@ const User = () => {
                         <span>
                             <Link to={"/assets/indexes/Avatar"} className="link black">
                                 <button className="bg-white f5 pointer ba hover-bg-mid-gray pa2 tc br-pill grow ph4 ma1 fw6"><small className="icon-camera f6 pr2"></small>Photo</button>
+                            </Link>
+                        </span>
+                        <span>
+                            <Link to={"/assets/vendor/Cart"} className="link black">
+                                <button className="bg-white f5 pointer ba hover-bg-mid-gray pa2 tc br-pill grow ph4 ma1 fw6"><small className="icon-basket f6 pr2"></small>Saved</button>
                             </Link>
                         </span>
                     </div>

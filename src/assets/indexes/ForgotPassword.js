@@ -66,12 +66,11 @@ const handleSubmit = e => {
                     <div className="tc">
                       <div style={{width: '360px'}} className="dib pa3 tc pt5">
                         <div className="pv3">
-                            <div className='tc code' style={{fontSize: '27px', fontWeight: '500'}}><img src={img} alt="logo" className="tc" width="75px" height="75px" /></div>
+                            <div className='tc code' style={{fontSize: '27px', fontWeight: '500'}}><img src={img} alt="logo" className="tc" width="60px" height="60px" /></div>
                             <p className="pv2 fw6 tc"><small className="orange f4">Forgot your password?</small><br/> Use the form below to <small className="green f4">recover</small> your account</p>
                                 <form onSubmit={handleSubmit}>
                                     <div className="tl pv2">
-                                        <p className="pv1 f5 fw5">Email</p>
-                                        <small className="icon-envelope f4 fw5"></small>
+                                        <p className="pv1 icon-envelope f4 fw5"><small className="ph2 fw5">Email</small></p>
                                         <input type="email" name="email" value={email} className="email br3 ba pa3 w-100" placeholder="Your email..." required autoComplete="email" />
                                     </div>
                                     <div id="error" style={{display: 'none'}} className="orange fw5 pv3 f5 red">

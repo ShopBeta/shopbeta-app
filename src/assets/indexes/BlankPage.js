@@ -19,6 +19,7 @@ const ChatsBlank = () => {
                     <div className="pa2">
                         <div className="">
                             <img src={blank_img3} alt="blank img" className="tc" />
+                            <p className="f4 fw5 pv2">You don't have any chats yet</p>
                     </div>
                 </div>
             </div>
@@ -36,6 +37,7 @@ const CartBlank = () => {
                     <div className="pa2">
                         <div className="">
                             <img src={blank_img4} alt="blank img" className="tc" />
+                            <p className="f4 fw5 pv2">No saved items <br/> Save products from marketplace</p>
                     </div>
                 </div>
             </div>
@@ -70,6 +72,7 @@ const MessagesBlank = () => {
                     <div className="pa2">
                         <div className="">
                             <img src={blank_img7} alt="blank img" className="tc" />
+                            <p className="f4 fw5 pv2">No messages <br/> Send a message to start a conversion</p>
                     </div>
                 </div>
             </div>

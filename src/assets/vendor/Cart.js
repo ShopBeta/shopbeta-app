@@ -82,7 +82,6 @@ const Cart = () => {
                             </div>
                             {cart.length === 0 &&  <div id="blank" className="tc">
                                 <CartBlank />
-                                Add products from marketplace
                             </div>}
                             <div className="pv4 tc">
                                 <CartList cart={cart} />

@@ -26,7 +26,7 @@ const Avatar = () => {
                 <Preloader />
                     <div className="tc">
                         <div className="pa2">
-                            <div className='tc code' style={{fontSize: '27px', fontWeight: '500'}}><img src={img} alt="logo" className="tc" width="75px" height="75px" /></div>
+                            <div className='tc code' style={{fontSize: '27px', fontWeight: '500'}}><img src={img} alt="logo" className="tc" width="60px" height="60px" /></div>
                             <p className="pv4 fw6 tc ph3">
                                 <small className="f4 orange">Upload profile photo<br/></small>
                                 <small className="green f5">Take a few seconds to upload a profile photo or avatar.</small>

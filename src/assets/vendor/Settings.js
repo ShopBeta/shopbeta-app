@@ -2,16 +2,31 @@ import { render } from "@testing-library/react";
 import React from "react";
 import '../Home.css'
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Navbar from "../../components/Navbar";
 import Header from '../../components/Header'
 import Preloader from "../../components/Preloader";
 
 
-const Settings = ({username, bio, email, phonenumber, location, website, contactEmail}) => {
+const Settings = ({username, bio, email, phonenumber, location, link}) => {
 
 const token = localStorage.getItem("token")
 const me = localStorage.getItem("meId")
 console.log(me)
+
+const [user, setUser] = useState({})
+useEffect(() => {
+    fetch(`https://shopbeta-api.onrender.com/users/${me}`, {
+        method: "GET"
+    })
+    .then((res) => res.json())
+    .then((data) => {
+        setUser(data)
+    })
+    .catch((err) => {
+        console.log(err.message)
+    })
+}, [me])
     
 const logoutAllClick = async () => {
 
@@ -54,8 +69,7 @@ const changes = async () => {
         email: document.querySelector('.email').value,
         phonenumber: document.querySelector('.phonenumber').value,
         location: document.querySelector('.location').value,
-        website: document.querySelector('.website').value,
-        contactEmail: document.querySelector('.contactEmail').value
+        link: document.querySelector('.link').value,
     }
 
     await fetch(`https://shopbeta-api.onrender.com/users/update/${me}`, {
@@ -111,41 +125,30 @@ const handleSubmit = e => {
                                 </h3>
                                 <form onSubmit={handleSubmit}>
                                     <div className="tl pv2">
-                                        <p className="pv1 f5 fw5">Change Username</p>
-                                        <small className="icon-user f4 fw5"></small>
-                                        <input type="text" name="username" value={username} className="username br3 ba pa3 w-100" placeholder="Type in new username..." />
+                                        <p className="pv1 icon-user f4 fw5"><small className="ph2 fw5">Username</small></p>
+                                        <input type="text" name="username" value={username} className="username br3 ba pa3 w-100" placeholder={user.username} />
                                     </div>
                                     <div className="tl pv1">
-                                        <p className="pv1 f5 fw5">Change Bio</p>
+                                        <p className="pv1 icon-note f4 fw5"><small className="ph2 fw5">Bio</small></p>
                                         <p className="pv1">
-                                            <small className="icon-note f4 fw5"></small>
-                                            <textarea id="myInput" name="bio" value={bio} className="bio br3 ba pa3 w-100 h3" placeholder="Something about your profile..." aria-label="With textarea"></textarea>
+                                            <textarea id="myInput" name="bio" value={bio} className="bio br3 ba pa3 w-100 h3" placeholder={user.bio} aria-label="With textarea"></textarea>
                                         </p>
                                     </div>
                                     <div className="tl pv2">
-                                        <p className="pv1 f5 fw5">Add Location</p>
-                                        <small className="icon-location-pin f4 fw5"></small>
-                                        <input id="location" type="text" name="location" value={location} className="location br3 ba pa3 w-100" placeholder="Type in your location..." />
+                                        <p className="pv1 icon-location-pin f4 fw5"><small className="ph2 fw5">Location</small></p>
+                                        <input id="location" type="text" name="location" value={location} className="location br3 ba pa3 w-100" placeholder={user.location} />
                                     </div>
                                     <div className="tl pv2">
-                                        <p className="pv1 f5 fw5">Add Phone Number</p>
-                                        <small className="icon-phone f4 fw5"></small>
-                                        <input type="tel" name="phonenumber" value={phonenumber} className="phonenumber br3 ba pa3 w-100" placeholder="Input phone number..." />
+                                        <p className="pv1 icon-phone f4 fw5"><small className="ph2 fw5">Phone number</small></p>
+                                        <input type="tel" name="phonenumber" value={phonenumber} className="phonenumber br3 ba pa3 w-100" placeholder={user.phonenumber} />
                                     </div>
                                     <div className="tl pv2">
-                                        <p className="pv1 f5 fw5">Set new Email</p>
-                                        <small className="icon-envelope f4 fw5"></small>
-                                        <input type="email" name="email" value={email} className="email br3 ba pa3 w-100" placeholder="Your email..." />
+                                        <p className="pv1 icon-envelope f4 fw5"><small className="ph2 fw5">Email</small></p>
+                                        <input type="email" name="email" value={email} className="email br3 ba pa3 w-100" placeholder={user.email} />
                                     </div>
                                     <div className="tl pv2">
-                                        <p className="pv1 f5 fw5">Add Website URL</p>
-                                        <small className="icon-globe f4 fw5"></small>
-                                        <input type="url" name="website" value={website} className="website br3 ba pa3 w-100" placeholder="Your website url..." />
-                                    </div>
-                                    <div className="tl pv2">
-                                        <p className="pv1 f5 fw5">Set contact Email</p>
-                                        <small className="icon-envelope f4 fw5"></small>
-                                        <input type="email" name="contactEmail" value={contactEmail} className="contactEmail br3 ba pa3 w-100" placeholder="Your contact email..." />
+                                        <p className="pv1 icon-link f4 fw5"><small className="ph2 fw5">Link</small></p>
+                                        <input type="url" name="link" value={link} className="link br3 ba pa3 w-100" placeholder={user.link} />
                                     </div>
                                     <div id="error" style={{display: 'none'}} className="orange fw5 pv3 f5 red">
                                         <small className="icon-info f5 red ph2"></small>
@@ -164,21 +167,40 @@ const handleSubmit = e => {
                                 </form>
                             <div className="pv2">
                                 <div className="pv1">
-                                    <p className="f4 fw6 orange tl pl3">Change Password</p>
-                                    <div className="pv2">
-                                        <Link className="link" to={"/assets/indexes/NewPassword"}>
-                                            <button className="index-button white hover-bg-mid-gray pa2 tc br-pill ba pointer ph5 ma1 grow pv3 b fw6"><small className="icon-lock f5 pr2"></small>Change Password<small className="icon-arrow-right f6 pl4"></small></button>
-                                        </Link>
+                                    <div style={{fontSize: '35px'}} className="pv2 fw6 tc">
+                                        <div className="bw2 b--black pa2">
+                                            <Link className="link black" to={"/assets/indexes/NewPassword"}>
+                                                <div className="flex flex-wrap">
+                                                    <span style={{fontSize: '25px'}} className="icon-lock f2">
+                                                    </span>
+                                                    <span className="pointer ph4 pa2 fw5">
+                                                        <p className="hover-blue pointer f4">
+                                                        Change Password 
+                                                        <small className="icon-arrow-right f6 pl5"></small>
+                                                        </p>
+                                                    </span>
+                                                </div>
+                                            </Link>       
+                                        </div>
                                     </div>
-                                    <p className="pv2 f4 fw7 red tl pl3">Danger Zone</p>
-                                    <div className="tc pa2 fw6 pv2">
-                                        <p>Logout from all devices that you've logged in from before</p>
-                                        <Link className="link black" to={"/assets/indexes/Login"}>
-                                            <button onClick={logoutAllClick} className="bg-transparent hover-bg-mid-gray pa3 pointer w-80 tc ba br-pill orange ph3 ma1 grow b fw6"> Log-out all devices</button>
-                                        </Link>
+                                    <div style={{fontSize: '35px'}} className="pv2 fw6 tc">
+                                        <div className="bw2 b--black pa2">
+                                            <Link className="link black" to={"/assets/indexes/Login"}>
+                                                <div className="flex flex-wrap">
+                                                    <span style={{fontSize: '25px'}} className="icon-logout f2">
+                                                    </span>
+                                                    <span className="pointer ph4 pa2 fw5">
+                                                        <p onClick={logoutAllClick}  className="hover-blue pointer f4">
+                                                        Logout all devices
+                                                        <small className="icon-arrow-right f6 pl5"></small>
+                                                        </p>
+                                                    </span>
+                                                </div>
+                                            </Link>       
+                                        </div>
                                     </div>
+                                    <div className="pv3 f4 fw7 red tl">Danger Zone</div>
                                     <div className="tc pa2 fw6 pv2">
-                                        <p>Delete this account</p>
                                         <Link className="link black" to={"/assets/indexes/Signup"}>
                                             <button onClick={deleteClick} className="bg-red hover-bg-red hover-bg-mid-gray pa3 w-80 pointer tc br-pill ba ph4 white ma1 grow b fw6"> Delete Account</button>
                                         </Link>
