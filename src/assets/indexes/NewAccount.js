@@ -17,9 +17,9 @@ const changes = async () => {
 
     const update = {
         bio: document.querySelector('.bio').value,
+        phonenumber: document.querySelector('.phonenumber').value,
         location: document.querySelector('.location').value,
-        website: document.querySelector('.website').value,
-        contactEmail: document.querySelector('.contactEmail').value
+        link: document.querySelector('.link').value,
     }
 
     await fetch(`https://shopbeta-api.onrender.com/users/update/${me}`, {
@@ -100,7 +100,7 @@ const handleSubmit = e => {
                                     <div className="tl pv2">
                                         <p className="pv1 f5 fw5">Link</p>
                                         <small className="icon-globe f4 fw5"></small>
-                                        <input type="url" name="website" className="website br3 ba pa3 w-100" placeholder="Any social profile link..." required />
+                                        <input type="url" name="link" className="link br3 ba pa3 w-100" placeholder="Any social profile link..." required />
                                     </div>
                                     <div className="tl pv1">
                                         <p className="pv1 f5 fw5">Bio information</p>
