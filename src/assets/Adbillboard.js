@@ -2,6 +2,7 @@ import { render } from "@testing-library/react";
 import React from "react";
 import { useState, useEffect } from "react";
 import './Home.css';
+import { useLocation } from "react-router-dom";
 import Navbar from '../components/Navbar';
 import { Link } from "react-router-dom";
 import logo from '../images/shopbeta logo.png'
@@ -17,7 +18,7 @@ const AdbillBoard = () => {
 
     const [feed, setFeed] = useState([])
     useEffect(() => {
-        fetch("https://shopbeta-api.onrender.com/feed", {
+        fetch("http://localhost:3000/feed", {
             method: "GET",
         })
         .then((res) => res.json())
@@ -33,20 +34,24 @@ const AdbillBoard = () => {
         .catch((err) => {
             console.log(err.message)
 
-            const error = document.getElementById('error')
-            error.style['display'] = 'contents'
+            // const error = document.getElementById('error')
+            // error.style['display'] = 'contents'
 
-            const load = document.getElementById('load')
-            load.style['display'] = 'none'
+            // const load = document.getElementById('load')
+            // load.style['display'] = 'none'
         })
     }, [])
+
+    const location = useLocation()
+    const currentRoute = location.pathname.toLowerCase()
+    console.log(currentRoute)
 
     render()
         return(
             <div className="">
                 <Preloader />
                     <div>
-                        <nav className="bg-white fw5 navbar navbar-expand-lg tc pv1" style={{position: 'fixed', width: '100%', borderBottom: '1px thin black'}}>
+                        <nav className="shadow-5 navbar navbar-expand-lg tc pv1" style={{position: 'fixed', width: '100%', backgroundColor: 'white', borderBottom: '1px thin black'}}>
                             <div style={{fontSize: '29px'}} className="ph2 container">
                                 <span className='navbar-brand' style={{fontSize: '12px', fontWeight: '500'}}>
                                     <img src={logo} alt="logo" className="" width="50px" height="50px" />
@@ -83,7 +88,9 @@ const AdbillBoard = () => {
                             </div>
                         </div>
                     </div>
-                <Navbar />
+                <div>
+                    <Navbar />
+                </div>
             </div>
         );
     }

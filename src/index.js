@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './maple/assets/icons/uicons-regular-straight/css/uicons-regular-straight.css';
+import './maple/assets/css/simple-line-icons/css/simple-line-icons.css';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import App from './App';

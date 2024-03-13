@@ -1,5 +1,23 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import "./maple/assets/fonts/Poppins/Poppins-Black.ttf"
+import "./maple/assets/fonts/Poppins/Poppins-BlackItalic.ttf"
+import "./maple/assets/fonts/Poppins/Poppins-Bold.ttf"
+import "./maple/assets/fonts/Poppins/Poppins-BoldItalic.ttf"
+import "./maple/assets/fonts/Poppins/Poppins-ExtraBold.ttf"
+import "./maple/assets/fonts/Poppins/Poppins-ExtraBoldItalic.ttf"
+import "./maple/assets/fonts/Poppins/Poppins-ExtraLight.ttf"
+import "./maple/assets/fonts/Poppins/Poppins-ExtraLightItalic.ttf"
+import "./maple/assets/fonts/Poppins/Poppins-Italic.ttf"
+import "./maple/assets/fonts/Poppins/Poppins-Light.ttf"
+import "./maple/assets/fonts/Poppins/Poppins-LightItalic.ttf"
+import "./maple/assets/fonts/Poppins/Poppins-Medium.ttf"
+import "./maple/assets/fonts/Poppins/Poppins-MediumItalic.ttf"
+import "./maple/assets/fonts/Poppins/Poppins-Regular.ttf"
+import "./maple/assets/fonts/Poppins/Poppins-SemiBold.ttf"
+import "./maple/assets/fonts/Poppins/Poppins-SemiBoldItalic.ttf"
+import "./maple/assets/fonts/Poppins/Poppins-Thin.ttf"
+import "./maple/assets/fonts/Poppins/Poppins-ThinItalic.ttf"
 import AdbillBoard from "./assets/Adbillboard";
 import SearchPage from "./assets/vendor/SearchPage";
 import Profile from "./assets/vendor/Profile";
@@ -28,6 +46,22 @@ import PostAd from "./containers/PostAd";
 import PostVideo from "./containers/PostVideo";
 import PostProduct from "./components/PostProduct";
 import MarketPlace from "./assets/MarketPlace";
+
+import Home from "./maple/pages/Home";
+import GetStarted from "./maple/pages/GetStarted";
+import OnboardingScreen1 from "./maple/pages/OnboardingScreen1";
+import OnboardingScreen2 from "./maple/pages/OnboardingScreen2";
+import OnboardingScreen3 from "./maple/pages/OnboardingScreen3";
+import SignUp from "./maple/pages/SignUp";
+import SignIn from "./maple/pages/SignIn";
+import VerifyCode from "./maple/pages/VerifyCode";
+import NewPassword1 from "./maple/pages/NewPassword1";
+import CompleteProfile from "./maple/pages/CompleteProfile";
+import Location from "./maple/pages/Location";
+import EnableNotification from "./maple/pages/EnableNotification";
+import EnterLocation from "./maple/pages/EnterLocation";
+import ForgotPassword1 from "./maple/pages/ForgotPassword1";
+import ViewProduct from "./maple/pages/ViewProduct";
 
 const App = () => {
     return (
@@ -62,6 +96,22 @@ const App = () => {
                 <Route exact path="/container/PostAd" element={<PostAd />} />
                 <Route exact path="/container/PostVideo" element={<PostVideo />} />
                 <Route exact path="/components/PostProduct" element={<PostProduct />} />
+
+                <Route exact path="/maple/pages/home" element={<Home />} />
+                <Route exact path="/maple/pages/getstarted" element={<GetStarted />} />
+                <Route exact path="/maple/pages/onboardingscreen1" element={<OnboardingScreen1 />} />
+                <Route exact path="/maple/pages/onboardingscreen2" element={<OnboardingScreen2 />} />
+                <Route exact path="/maple/pages/onboardingscreen3" element={<OnboardingScreen3 />} />
+                <Route exact path="/maple/pages/signup" element={<SignUp />} />
+                <Route exact path="/maple/pages/signin" element={<SignIn />} />
+                <Route exact path="/maple/pages/verifycode" element={<VerifyCode />} />
+                <Route exact path="/maple/pages/newpassword" element={<NewPassword1 />} />
+                <Route exact path="/maple/pages/forgotpassword" element={<ForgotPassword1 />} />
+                <Route exact path="/maple/pages/completeprofile" element={<CompleteProfile />} />
+                <Route exact path="/maple/pages/location" element={<Location />} />
+                <Route exact path="/maple/pages/enablenotification" element={<EnableNotification />} />
+                <Route exact path="/maple/pages/enterlocation" element={<EnterLocation />} />
+                <Route exact path="/maple/pages/viewproduct" element={<ViewProduct />} />
              </Routes>
             </Router>
         </div>
