@@ -70,7 +70,7 @@ const handleSubmit = e => {
                             <p className="f3 pv3">Create Account</p>
                             <p className="f5">Fill your information below or register with <br /> with your social account</p>
                         </div>
-                        <form onSubmit={handleSubmit} className="ph2 container" style={{width: '360px'}}>
+                        <form onSubmit={handleSubmit} className="pa3 container" style={{width: '360px'}}>
                             <div className="tl pv2">
                                 <p className="pv2 f5">Name</p>
                                 <input type="text" name="name" className="name b--transparent ba field-color br3 pa3 w-100" placeholder="Ex. John Doe" required autoComplete="name" />
@@ -103,7 +103,7 @@ const handleSubmit = e => {
                             </div>
                             <div className="pv3 tc">
                                 <div id="signup" className="">
-                                    <button onClick={handClick} type="submit" className="button-bg bg-red white pa2 tc br-pill ba pointer w-100 pv3">
+                                    <button onClick={handClick} type="submit" className="button-bg bg-red b--transparent white pa2 tc br-pill ba pointer w-100 pv3">
                                         Sign Up
                                     </button>
                                 </div>
@@ -136,11 +136,11 @@ const handleSubmit = e => {
                         </div>
                         
                         <div id="footer">
-                            {/* <div className="tc container">
+                            <div className="tc container">
                                 <small className="f6">Or sign up with</small>
-                            </div> */}
+                            </div>
                             <nav className="navbar navbar-expand-lg tc">
-                                <div style={{fontSize: '29px', width: '360px'}} className="pb3 container">
+                                <div style={{fontSize: '29px', width: '360px'}} className="pb2 container">
                                     <small className="tc">
                                         <Link 
                                             to={"../pages/shop"} className="link black">

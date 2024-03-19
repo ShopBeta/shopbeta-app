@@ -91,7 +91,7 @@ const handleSubmit = e => {
                             <p className="f5">Don't worry only you can see your personal<br /> data. No one else will be able to see it</p>
                         </div>
                        
-                        <form onSubmit={handleSubmit} className="ph2 container" style={{width: '360px'}}>
+                        <form onSubmit={handleSubmit} className="pa3 container" style={{width: '360px'}}>
                             <div className="tc">
                                 <div className="tc pv5 container">
                                     <p className="pointer">
@@ -123,16 +123,19 @@ const handleSubmit = e => {
                             </div>
                             <div className="tl pv2">
                                 <p className="pv2 f5">Gender</p>
-                                <select name="gender" className="gender b--transparent ba field-color br3 pa3 w-100" placeholder="Enter Phone Number" required >
+                                <select name="gender" className="gender b--transparent ba field-color br3 pa3 w-100" required >
                                     <option>Male</option>
                                     <option>Female</option>
                                 </select>
                             </div>
                             <div className="pv3 tc">
                                 <div id="profile" className="">
-                                    <button onClick={handClick} type="submit" className="button-bg bg-red white pa2 tc br-pill ba pointer w-100 pv3">
-                                        Complete Profile
-                                    </button>
+                                    <Link 
+                                        to={"../maple/pages/home"} className="link black pointer">
+                                        <button onClick={handClick} type="submit" className="button-bg bg-red b--transparent white pa2 tc br-pill ba pointer w-100 pv3">
+                                            Complete Profile
+                                        </button>
+                                    </Link>
                                 </div>
                             </div>
                         </form>

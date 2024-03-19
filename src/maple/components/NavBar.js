@@ -33,10 +33,10 @@ const NavBar = () => {
 
                 <span className="navbar-brand">
                     <Link 
-                        to={"../maple/pages/favorite"} title="favorite"
-                            className={currentRoute.includes("favorite") ? "navbar-link link active" : "link black"}>
+                        to={"../maple/pages/wishlist"} title="wishlist"
+                            className={currentRoute.includes("wishlist") ? "navbar-link link active" : "link black"}>
                             <i className="f3 hover-light-blue br3 fi fi-rs-heart"></i> 
-                            <p className="f5">Favorite</p> 
+                            <p className="f5">Wishlist</p> 
                     </Link>
                 </span>
 

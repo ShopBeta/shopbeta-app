@@ -36,7 +36,7 @@ const handleSubmit = e => {
                             </section>  
                             <div className="pv3 tc">
                                 <div className="pv2">
-                                    <button type="submit" className="button-bg bg-red white pa2 tc br-pill ba pointer w-100 pv3">
+                                    <button type="submit" className="button-bg bg-red b--transparent white pa2 tc br-pill ba pointer w-100 pv3">
                                         Allow Notification
                                     </button>
                                 </div>

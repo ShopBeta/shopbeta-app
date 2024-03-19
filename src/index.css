@@ -107,6 +107,23 @@ body {
   background-color: #ffffff;
 }
 
+progress {
+  width: 100px;
+  height: 12px;
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+}
+
+::-webkit-progress-bar {
+  background-color: #f6f6f6;
+  border-radius: 10px;
+}
+
+::-webkit-progress-value {
+  background-color: red;
+  border-radius: 10px;
+}
+
 
 .line-through {
   text-decoration: line-through;
@@ -118,7 +135,7 @@ body {
 } */
 
 ::-webkit-scrollbar{
-  width: 7px;
+  width: 5px;
   height: 8px;
 }
 

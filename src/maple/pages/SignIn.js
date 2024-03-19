@@ -71,7 +71,7 @@ const SignIn = () => {
                             <p className="f3 pv3">Sign In</p>
                             <p className="f5">Hi! Welcome Back, you've been missed</p>
                         </div>
-                        <form onSubmit={handleSubmit} className="ph2 container" style={{width: '360px'}}>
+                        <form onSubmit={handleSubmit} className="pa3 container" style={{width: '360px'}}>
                             <div className="tl pv2">
                                 <p className="pv2 f5">Email</p>
                                 <input type="email" name="email" className="email b--transparent ba field-color br3 pa3 w-100" placeholder="example@gmail.com" required autoComplete="email" />
@@ -105,7 +105,7 @@ const SignIn = () => {
                             </div>
                             <div className="pv4 tc">
                                 <div id="signin" className="tc">
-                                    <button  onClick={handClick} type="submit" className="button-bg bg-red white pa2 tc br-pill ba w-100 pointer pv3">
+                                    <button  onClick={handClick} type="submit" className="button-bg bg-red b--transparent white pa2 tc br-pill ba w-100 pointer pv3">
                                         Sign In
                                     </button>
                                 </div>

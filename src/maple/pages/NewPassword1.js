@@ -88,7 +88,7 @@ const NewPassword1 = () => {
                             <p className="f3 pv3">New Password</p>
                             <p className="f5">Your new password must be different<br /> from previously used passwords</p>
                         </div>
-                        <form onSubmit={handleSubmit} className="ph2 container" style={{width: '360px'}}>
+                        <form onSubmit={handleSubmit} className="pa3 container" style={{width: '360px'}}>
                             <div className="tl pv2">
                                 <p className="pv2 f5">Password</p>
                                 <div className="br4 field-color bw2">
@@ -120,7 +120,7 @@ const NewPassword1 = () => {
                             </div>
                             <div className="pv4 tc">
                                 <div id="new-password" className="">
-                                    <button onClick={handClick} type="submit" className="button-bg bg-red white pa2 tc br-pill ba pointer w-100 pv3">
+                                    <button onClick={handClick} type="submit" className="button-bg bg-red b--transparent white pa2 tc br-pill ba pointer w-100 pv3">
                                         Create New Password
                                     </button>
                                 </div>

@@ -67,7 +67,7 @@ const ForgotPassword1 = () => {
                         <div style={{fontSize: '29px'}} className="pv3 container">
                             <span className="pointer">
                                 <Link 
-                                    to={"../maple/pages/signup"} className="link black pointer">
+                                    to={"../maple/pages/signin"} className="link black pointer">
                                     <small style={{fontSize: '35px'}} className="icon-arrow-left-circle"></small>
                                 </Link>
                             </span>
@@ -88,7 +88,7 @@ const ForgotPassword1 = () => {
                             <p className="f3 pv3">Forgot Password</p>
                             <p className="f5">Forgot your password?<br/> Use the form below to recover your account</p>
                         </div>
-                        <form onSubmit={handleSubmit} className="ph2 container" style={{width: '360px'}}>
+                        <form onSubmit={handleSubmit} className="pa3 container" style={{width: '360px'}}>
                             <div className="tl pv2">
                                 <p className="pv2 f5">Email</p>
                                 <input type="email" name="email" className="email b--transparent ba field-color br3 pa3 w-100" placeholder="example@gmail.com" required autoComplete="email" />
@@ -100,7 +100,7 @@ const ForgotPassword1 = () => {
                             </div>
                             <div className="pv4 tc">
                                 <div id="new-password" className="">
-                                    <button onClick={handClick} type="submit" className="button-bg bg-red white pa2 tc br-pill ba pointer w-100 pv3">
+                                    <button onClick={handClick} type="submit" className="button-bg b--transparent bg-red white pa2 tc br-pill ba pointer w-100 pv3">
                                         Recover Password
                                     </button>
                                 </div>

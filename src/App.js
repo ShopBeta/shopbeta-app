@@ -48,6 +48,7 @@ import PostProduct from "./components/PostProduct";
 import MarketPlace from "./assets/MarketPlace";
 
 import Home from "./maple/pages/Home";
+import Feeds from "./maple/pages/Feeds";
 import GetStarted from "./maple/pages/GetStarted";
 import OnboardingScreen1 from "./maple/pages/OnboardingScreen1";
 import OnboardingScreen2 from "./maple/pages/OnboardingScreen2";
@@ -59,9 +60,16 @@ import NewPassword1 from "./maple/pages/NewPassword1";
 import CompleteProfile from "./maple/pages/CompleteProfile";
 import Location from "./maple/pages/Location";
 import EnableNotification from "./maple/pages/EnableNotification";
-import EnterLocation from "./maple/pages/EnterLocation";
+import SelectLocation from "./maple/pages/SelectLocation";
 import ForgotPassword1 from "./maple/pages/ForgotPassword1";
 import ViewProduct from "./maple/pages/ViewProduct";
+import Reviews from "./maple/pages/Reviews";
+import WriteReview from "./maple/pages/WriteReview";
+import Category from "./maple/pages/Category";
+import VisualSearch from "./maple/pages/VisualSearch";
+import SpecialOffers from "./maple/pages/SpecialOffers";
+import Recommendation from "./maple/pages/Recommendation";
+import Wishlist from "./maple/pages/Wishlist";
 
 const App = () => {
     return (
@@ -98,6 +106,7 @@ const App = () => {
                 <Route exact path="/components/PostProduct" element={<PostProduct />} />
 
                 <Route exact path="/maple/pages/home" element={<Home />} />
+                <Route exact path="/maple/pages/feeds" element={<Feeds />} />
                 <Route exact path="/maple/pages/getstarted" element={<GetStarted />} />
                 <Route exact path="/maple/pages/onboardingscreen1" element={<OnboardingScreen1 />} />
                 <Route exact path="/maple/pages/onboardingscreen2" element={<OnboardingScreen2 />} />
@@ -110,8 +119,15 @@ const App = () => {
                 <Route exact path="/maple/pages/completeprofile" element={<CompleteProfile />} />
                 <Route exact path="/maple/pages/location" element={<Location />} />
                 <Route exact path="/maple/pages/enablenotification" element={<EnableNotification />} />
-                <Route exact path="/maple/pages/enterlocation" element={<EnterLocation />} />
+                <Route exact path="/maple/pages/selectlocation" element={<SelectLocation />} />
                 <Route exact path="/maple/pages/viewproduct" element={<ViewProduct />} />
+                <Route exact path="/maple/pages/reviews" element={<Reviews />} />
+                <Route exact path="/maple/pages/writereview" element={<WriteReview />} />
+                <Route exact path="/maple/pages/category" element={<Category />} />
+                <Route exact path="/maple/pages/visualsearch" element={<VisualSearch />} />
+                <Route exact path="/maple/pages/specialoffers" element={<SpecialOffers />} />
+                <Route exact path="/maple/pages/recommendation" element={<Recommendation />} />
+                <Route exact path="/maple/pages/wishlist" element={<Wishlist />} />
              </Routes>
             </Router>
         </div>

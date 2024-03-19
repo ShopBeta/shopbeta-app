@@ -45,7 +45,7 @@ const VerifyCode = () => {
                             <p className="f3 pv3">Verify Code</p>
                             <p className="f5">Please enter the code we just sent to your email <br /> <small className="f5 red">example@gmail.com</small></p>
                         </div>
-                        <form onSubmit={handleSubmit} className="ph2 container" style={{width: '360px'}}>
+                        <form onSubmit={handleSubmit} className="pa3 container" style={{width: '360px'}}>
                             <div className="tc">
                                 <div className="navbar navbar-expand-lg tc">
                                     <div style={{fontSize: '29px'}} className="pv3 container">
@@ -67,7 +67,7 @@ const VerifyCode = () => {
                             <div className="tc pv4">
                                 <p>Didn't receive OTP?</p>
                                 <Link 
-                                    to={"#"} className="black pointer">
+                                    to={"#"} className="red pointer">
                                     <p className="pv2">
                                         Resend code
                                     </p>
@@ -75,7 +75,7 @@ const VerifyCode = () => {
                             </div>
                             <div className="tc">
                                 <div id="verifycode" className="">
-                                    <button onClick={handClick} type="submit" className="button-bg bg-red white pa2 tc br-pill ba pointer w-100 pv3">
+                                    <button onClick={handClick} type="submit" className="button-bg bg-red b--transparent white pa2 tc br-pill ba pointer w-100 pv3">
                                        Verify
                                     </button>
                                 </div>

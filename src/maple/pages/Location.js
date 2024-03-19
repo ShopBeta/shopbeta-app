@@ -42,7 +42,7 @@ const handleSubmit = e => {
                                 </div>
                                 <div className="pv2">
                                     <Link 
-                                        to={"../maple/pages/enterlocation"} className="link black">
+                                        to={"../maple/pages/selectlocation"} className="link black">
                                         <button className="bg-transparent b--transparent red pa2 tc br-pill ba pointer w-100 pv3">
                                             Enter Location Manually
                                         </button>

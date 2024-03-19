@@ -15,7 +15,7 @@ const HomeHeader = () => {
                 {!me || <div style={{fontSize: '29px'}} className="pa2 ph2 container">
                     <span className="navbar-brand pointer">
                         <div className="">
-                            <Link className="link tj flex flex-wrap black" to={"../maple/pages/userprofile"}>
+                            <Link className="link tj flex flex-wrap black" to={"../maple/pages/yourprofile"}>
                                 <span>
                                     <img src={img} alt="avatar" className="br4 pointer" width="50px" height="50px" />
                                 </span>
@@ -66,45 +66,20 @@ const HomeHeader = () => {
 const CategoryHeader = () => {
 
     return(
-        <div className="pb4">
-            <nav className="navbar navbar-expand-lg pv1" style={{position: 'fixed', width: '100%', backgroundColor: '#ffffff', borderBottom: '1px thin black'}}>
-                <div style={{fontSize: '29px'}} className="pa3 container">
-                    <span className="navbar-brand pointer">
-                        <Link 
-                            to={"../pages/home"} className="link black"  title="home">
-                            <small style={{fontSize: '25px'}} className="icon-arrow-left-circle"></small>
-                        </Link>
-                    </span>
-                    <span className="navbar-brand pointer">
-                        <h3 className="ph2 f4 pointer">Categories</h3>
-                    </span>
-                    <span className="pointer">
-                        <small style={{fontSize: '25px'}} className="icon-magnifier"></small> 
-                    </span>
-                </div>
-            </nav>
-        </div>
-    );
-};
-
-
-const ViewProductHeader = () => {
-
-    return(
-        <div className="pt3 pb4">
+        <div className="pv3">
             <nav className="navbar navbar-expand-lg pv1" style={{position: 'fixed', width: '100%', backgroundColor: '#ffffff', borderBottom: '1px thin black'}}>
                 <div style={{fontSize: '29px'}} className="ph3 container">
                     <span className="navbar-brand pointer">
                         <Link 
-                            to={"../pages/home"} className="link black">
-                            <i style={{fontSize: '35px'}} className="fi fi-rs-arrow-circle-left"></i>
+                            to={"../pages/home"} className="link black"  title="home">
+                            <small style={{fontSize: '35px'}} className="icon-arrow-left-circle"></small>
                         </Link>
                     </span>
                     <span className="navbar-brand">
-                        <h3 className="ph2 f4">Product Details</h3>
+                        <h3 className="ph2 f3">Category</h3>
                     </span>
                     <span className="pointer">
-                        <i style={{fontSize: '35px'}} className="fi fi-rs-share"></i> 
+                        <i style={{fontSize: '28px'}} className=""></i> 
                     </span>
                 </div>
             </nav>
@@ -137,10 +112,100 @@ const OnboardingHeader = () => {
     );
 };
 
+const ReviewHeader = () => {
+
+    return(
+        <div className="pv3">
+             <nav className="navbar navbar-expand-lg pv1" style={{position: 'fixed', width: '100%', backgroundColor: '#ffffff', borderBottom: '1px thin black'}}>
+                <div style={{fontSize: '29px'}} className="ph3 container">
+                    <span className="navbar-brand pointer">
+                        <Link 
+                            to={"../maple/pages/viewproduct"} className="link black"  title="home">
+                            <small style={{fontSize: '35px'}} className="icon-arrow-left-circle"></small>
+                        </Link>
+                    </span>
+                    <span className="navbar-brand">
+                        <h3 className="ph2 f3">Ratings & Review</h3>
+                    </span>
+                    <span className="pointer">
+                        <small style={{fontSize: '30px'}} className=""></small> 
+                    </span>
+                </div>
+            </nav>
+        </div>
+    );
+};
+
+const WriteReviewHeader = () => {
+
+    return(
+        <div className="pv3">
+             <nav className="navbar navbar-expand-lg pv1" style={{position: 'fixed', width: '100%', backgroundColor: '#ffffff', borderBottom: '1px thin black'}}>
+                <div style={{fontSize: '29px'}} className="ph3 container">
+                    <span className="navbar-brand pointer">
+                        <Link 
+                            to={"../maple/pages/reviews"} className="link black"  title="home">
+                            <small style={{fontSize: '35px'}} className="icon-arrow-left-circle"></small>
+                        </Link>
+                    </span>
+                    <span className="navbar-brand">
+                        <h3 className="ph2 f3">Leave Review</h3>
+                    </span>
+                    <span className="pointer">
+                        <small style={{fontSize: '30px'}} className=""></small> 
+                    </span>
+                </div>
+            </nav>
+        </div>
+    );
+};
+
+const WishlistHeader = () => {
+
+    return(
+        <div className="pv3" style={{position: 'fixed', width: '100%', backgroundColor: '#ffffff', borderBottom: '1px thin black'}}>
+             <nav className="navbar navbar-expand-lg pv1">
+                <div style={{fontSize: '29px'}} className="ph3 container">
+                    <span className="navbar-brand pointer">
+                        <Link 
+                            to={"../maple/pages/viewproduct"} className="link black"  title="home">
+                            <small style={{fontSize: '35px'}} className="icon-arrow-left-circle"></small>
+                        </Link>
+                    </span>
+                    <span className="navbar-brand">
+                        <h3 className="ph2 f3">Wishlist</h3>
+                    </span>
+                    <span className="pointer">
+                        <small style={{fontSize: '30px'}} className=""></small> 
+                    </span>
+                </div>
+            </nav>
+            <div className="navbar navbar-expand-lg pt3 tc">
+                <div style={{fontSize: '30px', fontWeight: '500'}} className="container">
+                    <span className="navbar-brand hover-white pointer">
+                        <small className="f5 button-bg br-pill b--transparent field-color ph3 pa2">All</small>
+                    </span>
+                    <span className="navbar-brand hover-blue pointer">
+                        <small className="f5 br-pill bg-red b--transparent white ph3 pa2">Shoes</small>
+                    </span>
+                    <span className="navbar-brand hover-white pointer">
+                        <small className="f5 button-bg br-pill b--transparent field-color ph3 pa2">Clothes</small>
+                    </span>
+                    <span className="navbar-brand hover-white pointer">
+                        <small className="f5 button-bg br-pill b--transparent field-color ph3 pa2">Electronics</small>
+                    </span>
+                </div>
+            </div>
+        </div>
+    );
+};
+
 
 export {
     HomeHeader,
     CategoryHeader,
-    ViewProductHeader,
-    OnboardingHeader
+    OnboardingHeader,
+    ReviewHeader,
+    WriteReviewHeader,
+    WishlistHeader
 }
