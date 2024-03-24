@@ -15,41 +15,12 @@ const Home = () => {
         return(
                 <div className="">
                     <div>
-                        <HomeHeader />
+                        <header>
+                            <HomeHeader />
+                        </header>
                         
-                        <main>
-                            <div className="pt5 navbar navbar-expand-lg tc ph2">
-                                <div className="pointer pv2 br4 container" style={{fontSize: '30px', fontWeight: '500', backgroundColor: '#f6f6f6'}}>
-                                    <Link 
-                                        to={"../pages/search"} className="link black" title="search">
-                                        <span className="navbar-brand">
-                                            <i className="fi fi-rs-search f3 ph2"></i> 
-                                            <small className="f5 gray ph3">Search</small>
-                                        </span>
-                                    </Link>
-                                    <Link 
-                                        to={"../pages/visualsearch"} className="link black" title="camera">
-                                        <span className="">
-                                            <i className="fi fi-rs-camera f3 ph2"></i>  
-                                        </span>
-                                    </Link>
-                                </div>
-                            </div>
-
-                            <div className="pt3 pb2">
-                                <div className="navbar navbar-expand-lg tc pb3">
-                                    <div style={{fontSize: '30px', fontWeight: '500'}} className="br3 container">
-                                        <span className="navbar-brand">
-                                            <small className="f4">#SpecialForYou</small>
-                                        </span>
-                                        <span className="hover-blue pointer">
-                                            <Link 
-                                                to={"..maple/pages/specialoffers"} className="link black">
-                                                <small className="f5 red">See all</small>
-                                            </Link>
-                                        </span>
-                                    </div>
-                                </div>
+                        <main className="pv6">
+                            <div className="pt5">
                                 <HomeCarousel />
                             </div>
 
@@ -113,7 +84,7 @@ const Home = () => {
                                 </div>
                             </div>
 
-                            <div className="navbar navbar-expand-lg flex flex-wrap tc pb6">
+                            <div className="navbar navbar-expand-lg flex flex-wrap tc">
                                 <div style={{fontSize: '30px', fontWeight: '500'}} className="pa2 container">
                                     <Product />
                                     <Product />

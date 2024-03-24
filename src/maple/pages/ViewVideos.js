@@ -1,11 +1,11 @@
 import { render } from "@testing-library/react";
 import React from "react";
 import '../assets/css/global.css'
-import { ViewPost } from "../components/Posts";
-// import { NetworkError }from "./indexes/ErrorPages"
+import { ViewVideo } from "../components/Videos";
+// import { NetworkError } from "./indexes/ErrorPages"
 
 
-const ViewFeed = () => {
+const ViewVideos = () => {
 
     render()
         return(
@@ -13,7 +13,7 @@ const ViewFeed = () => {
                     <div>                        
                         <main>
                             <div className="pb5">
-                                <ViewPost />
+                                <ViewVideo />
                             </div>
                         </main>
 
@@ -21,10 +21,7 @@ const ViewFeed = () => {
                             <div className="br-pill field-color bw2 tc">
                                 <div className="pv1">
                                     <span className="">
-                                        <label className="hover-red">
-                                            <i className="f3 pointer gray pa3 fi fi-rs-link"></i>
-                                            <input style={{display: 'none'}}  id="file-upload" type="file" name="media" className="media pointer pa3 w-100" />
-                                        </label>
+                                        <i className="f3 pointer gray pa3 fi fi-rs-link"></i>
                                     </span>
                                     <span className="">
                                         <input type="text" name="comment" className="comment b--transparent br-pill ba field-color w-70 pa3" placeholder="Comment here" required />
@@ -40,4 +37,4 @@ const ViewFeed = () => {
             );
         }
 
-export default ViewFeed;
+export default ViewVideos;

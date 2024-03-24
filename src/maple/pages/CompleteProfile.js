@@ -94,14 +94,17 @@ const handleSubmit = e => {
                         <form onSubmit={handleSubmit} className="pa3 container" style={{width: '360px'}}>
                             <div className="tc">
                                 <div className="tc pv5 container">
-                                    <p className="pointer">
-                                        <small className="f2 red br-pill field-color tc pa4 bw2 icon-camera"></small>
-                                    </p>
+                                    <label>
+                                        <p className="pointer">
+                                            <small className="f2 red br-pill field-color tc pa4 bw2 icon-camera"></small>
+                                        </p>
+                                        <input style={{display: 'none'}}  id="file-upload" type="file" name="media" className="media pointer pa3 w-100" />
+                                    </label>
                                 </div>
                             </div>
                             <div className="tl pv2">
-                                <p className="pv2 f5">Name</p>
-                                <input type="text" name="name" className="name b--transparent ba field-color br3 pa3 w-100" placeholder="Ex. John Doe" required autoComplete="name" />
+                                <p className="pv2 f5">Handle</p>
+                                <input type="text" name="handle" className="handle b--transparent ba field-color br3 pa3 w-100" placeholder="Ex. @John Doe" required />
                             </div>
                             <div className="tl pv2">
                                 <p className="pv2 f5">Phone Number</p>

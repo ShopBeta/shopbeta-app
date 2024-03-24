@@ -4,15 +4,14 @@ import '../assets/css/simple-line-icons/css/simple-line-icons.css';
 import { Link } from "react-router-dom";
 
 const HomeHeader = () => {
-
-    // const me = localStorage.getItem("meId")
+    
     const me = 'localStorage.getItem("meId")'
     console.log(me)
 
     return(
-        <div className="pb4">
-            <nav className="navbar navbar-expand-lg pv1" style={{position: 'fixed', width: '100%', backgroundColor: '#ffffff', borderBottom: '1px thin black'}}>
-                {!me || <div style={{fontSize: '29px'}} className="pa2 ph2 container">
+        <div className="" style={{position: 'fixed', width: '100%', backgroundColor: '#ffffff', borderBottom: '1px thin black'}}>
+            <nav className="navbar navbar-expand-lg">
+                {!me || <div style={{fontSize: '29px'}} className="container">
                     <span className="navbar-brand pointer">
                         <div className="">
                             <Link className="link tj flex flex-wrap black" to={"../maple/pages/yourprofile"}>
@@ -30,38 +29,137 @@ const HomeHeader = () => {
                             </Link>
                         </div>
                     </span>
-                    {/* <span className="navbar-brand">
-                        <Link 
-                            to={"../pages/profile"}  title="profile">
-                            <img src={img} alt="user" className="br4 pointer" width="45px" height="45px" /> 
-                        </Link>
-                    </span>
-                    <span className="navbar-brand">
-                        <small className="ph2 f4 pointer">Abuja, Nigeria</small>
-                        <small className="f5 icon-arrow-down"></small> 
-                    </span> */}
                     <span className="">
                         <i style={{fontSize: '25px'}} className="pr3 pointer fi fi-rs-bell"></i> 
                     </span>
                 </div>}
 
-                {!me && <div style={{fontSize: '29px'}} className="ph2 container">
+                {!me && <div style={{fontSize: '29px'}} className="container pv2">
                     <span className="navbar-brand">
-                        <img src={img} alt="logo" className="br4 pointer" width="45px" height="45px" /> 
-                    </span>
-                    <span className="navbar-brand">
-                        <h3 className="">Welcome to Maple</h3>
+                        <h2 className="">Welcome</h2>
                     </span>
                     <span className="" style={{fontSize: '15px', fontWeight: '500'}}>
-                        <button className="pa3 br-pill pointer f6 ph4 grow ba">Login</button>
-                        <small className="ph2"></small> 
-                        <button style={{backgroundColor: '#FF4747'}} className="pa3 br-pill pointer f6 ph4 grow ba">Signup</button>
+                        <span className="hover-white pointer">
+                            <Link 
+                                to={"/maple/pages/signin"} className="link black">
+                                <small className="f5 br-pill button-bg field-color b--transparent ph4 pa3">Signin</small>
+                            </Link>
+                        </span>
+                        <span className="ph2">
+                            <small className=""></small>
+                        </span>
+                        <span className="hover-white pointer">
+                            <Link 
+                                to={"/maple/pages/signup"} className="link black">
+                                <small className="f5 button-bg br-pill b--transparent bg-red white ph4 pa3">Signup</small>
+                            </Link>
+                        </span>
                     </span>
                 </div>}
             </nav>
+            <div className="navbar navbar-expand-lg ph2 tc">
+                <div className="pv2 br4 container" style={{fontSize: '30px', fontWeight: '500', backgroundColor: '#f6f6f6'}}>
+                    <Link 
+                        to={"/maple/pages/search"} className="link black">
+                        <span className="navbar-brand">
+                            <i className="fi fi-rs-search f3 ph2"></i> 
+                            <small className="f4 gray ph3">Search</small>
+                        </span>
+                    </Link>
+                    <Link 
+                        to={"/maple/pages/visualsearch"} className="link black" title="visual search">
+                        <span className="">
+                            <i className="fi fi-rs-camera f3 ph2"></i>  
+                        </span>
+                    </Link>
+                </div>
+            </div>
         </div>
     );
 };
+
+const FeedHeader = () => {
+
+    return(
+        <div className="pa2" style={{position: 'fixed', width: '100%', backgroundColor: '#ffffff', borderBottom: '1px thin black'}}>
+            <nav className="navbar navbar-expand-lg">
+                <div style={{fontSize: '29px'}} className="container">
+                    <span className="navbar-brand">
+                        <h2 className="">Feeds</h2>
+                    </span>
+                    <span className="">
+                        <span className="pointer">
+                            <span className="">
+                                <i style={{fontSize: '25px'}} className="pointer fi fi-rs-bell"></i>
+                            </span>
+                            <span className="ph2">
+                             
+                             </span>
+                            <span className="">
+                                <Link className="link black" to={"../maple/pages/yourprofile"}>
+                                    <img src={img} alt="avatar" className="br-100 pointer" width="29px" height="29px" />
+                                </Link>
+                            </span>
+                        </span>
+                    </span>
+                </div>
+            </nav>
+            <div className="navbar navbar-expand-lg ph2 tc">
+                <div className="pv2 container">
+                    <span className="navbar-brand">
+                        <small className="f5 br-pill b--transparent red field-color ph5 pa3">Posts</small>
+                    </span>
+                    <span className="hover-white pointer">
+                        <small className="f5 button-bg br-pill b--transparent field-color ph5 pa3">Videos</small>
+                    </span>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+
+
+const VideoHeader = () => {
+
+    return(
+        <div className="pa2" style={{position: 'fixed', width: '100%', backgroundColor: '#ffffff', borderBottom: '1px thin black'}}>
+            <nav className="navbar navbar-expand-lg">
+                <div style={{fontSize: '29px'}} className="container">
+                    <span className="navbar-brand">
+                        <h2 className="">Feeds</h2>
+                    </span>
+                    <span className="">
+                        <span className="pointer">
+                            <span className="">
+                                <i style={{fontSize: '25px'}} className="pointer fi fi-rs-bell"></i>
+                            </span>
+                            <span className="ph2">
+                             
+                             </span>
+                            <span className="">
+                                <Link className="link black" to={"../maple/pages/yourprofile"}>
+                                    <img src={img} alt="avatar" className="br-100 pointer" width="29px" height="29px" />
+                                </Link>
+                            </span>
+                        </span>
+                    </span>
+                </div>
+            </nav>
+            <div className="navbar navbar-expand-lg ph2 tc">
+                <div className="pv2 container">
+                    <span className="navbar-brand">
+                        <small className="f5 br-pill button-bg b--transparent field-color ph5 pa3">Posts</small>
+                    </span>
+                    <span className="hover-white pointer">
+                        <small className="f5 br-pill b--transparent red field-color ph5 pa3">Videos</small>
+                    </span>
+                </div>
+            </div>
+        </div>
+    );
+};
+
 
 const CategoryHeader = () => {
 
@@ -191,7 +289,7 @@ const WishlistHeader = () => {
                     <span className="navbar-brand hover-white pointer">
                         <small className="f5 button-bg br-pill b--transparent field-color ph3 pa2">Clothes</small>
                     </span>
-                    <span className="navbar-brand hover-white pointer">
+                    <span className="hover-white pointer">
                         <small className="f5 button-bg br-pill b--transparent field-color ph3 pa2">Electronics</small>
                     </span>
                 </div>
@@ -203,6 +301,8 @@ const WishlistHeader = () => {
 
 export {
     HomeHeader,
+    FeedHeader,
+    VideoHeader,
     CategoryHeader,
     OnboardingHeader,
     ReviewHeader,

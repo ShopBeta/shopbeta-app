@@ -159,7 +159,7 @@ const Category = () => {
                                         <Link 
                                             to={"../pages/shop"} className="link black" title="shoes">
                                             <i className="f2 navbar-brand field-color red br-pill pa3 bw2 fi fi-rs-tools"></i>
-                                            <p className="f5 pv2 pr3">Shoes</p>
+                                            <p className="f5 pv2 pr3">Hardware</p>
                                         </Link>
                                     </span>
                                     <span className="tc">

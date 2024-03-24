@@ -70,6 +70,9 @@ import VisualSearch from "./maple/pages/VisualSearch";
 import SpecialOffers from "./maple/pages/SpecialOffers";
 import Recommendation from "./maple/pages/Recommendation";
 import Wishlist from "./maple/pages/Wishlist";
+import ViewFeed from "./maple/pages/ViewFeed";
+import Videos from "./maple/pages/Videos";
+import ViewVideo from "./maple/pages/ViewVideos";
 
 const App = () => {
     return (
@@ -107,6 +110,9 @@ const App = () => {
 
                 <Route exact path="/maple/pages/home" element={<Home />} />
                 <Route exact path="/maple/pages/feeds" element={<Feeds />} />
+                <Route exact path="/maple/pages/viewfeed" element={<ViewFeed />} />
+                <Route exact path="/maple/pages/videos" element={<Videos />} />
+                <Route exact path="/maple/pages/viewvideo" element={<ViewVideo />} />
                 <Route exact path="/maple/pages/getstarted" element={<GetStarted />} />
                 <Route exact path="/maple/pages/onboardingscreen1" element={<OnboardingScreen1 />} />
                 <Route exact path="/maple/pages/onboardingscreen2" element={<OnboardingScreen2 />} />

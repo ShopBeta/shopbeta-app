@@ -24,9 +24,9 @@ const NavBar = () => {
 
                 <span className="navbar-brand">
                     <Link 
-                        to={"../maple/pages/feed"} title="feed"
-                            className={currentRoute.includes("feed") ? "navbar-link link active" : "link black"}>
-                            <i className="f3 hover-light-blue br3 fi fi-rs-category"></i>  
+                        to={"../maple/pages/feeds"} title="feeds"
+                            className={currentRoute.includes("feeds") ? "navbar-link link active" : "link black"}>
+                            <i className="f3 hover-light-blue br3 fi fi-rs-followcollection"></i>  
                             <p className="f5">Feed</p> 
                     </Link>
                 </span>

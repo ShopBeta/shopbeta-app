@@ -16,6 +16,7 @@ const Product = () => {
                         <div className="br3" style={{backgroundImage: `url(${img})`, backgroundSize: "100%", backgroundRepeat: "no-repeat", height: '160px', width: '150px'}}>
                             <div className="navbar navbar-expand-lg pa2 white">
                                 <span className="navbar-brand">
+                                    {/* <small className="f6 bg-red br-pill b--transparent ph2 pa2">NEW</small> */}
                                     <small className="f6 bg-red br-pill b--transparent ph2 pa2">-25%</small>
                                 </span>
                                 <span className="f3">

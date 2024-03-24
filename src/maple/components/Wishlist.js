@@ -16,7 +16,8 @@ const WishlistCard = () => {
                         <div className="br3" style={{backgroundImage: `url(${img})`, backgroundSize: "100%", backgroundRepeat: "no-repeat", height: '160px', width: '150px'}}>
                             <div className="navbar navbar-expand-lg pa2 white">
                                 <span className="navbar-brand">
-                                    <small className="f6 bg-red br-pill b--transparent ph2 pa2">-25%</small>
+                                    {/* <small className="f6 bg-red br-pill b--transparent ph2 pa2">NEW</small>
+                                    <small className="f6 bg-red br-pill b--transparent ph2 pa2">-25%</small> */}
                                 </span>
                                 <span className="pointer">
                                     <i className="fi fi-rs-cross f5 gray fw6 ph2"></i>
@@ -25,7 +26,7 @@ const WishlistCard = () => {
                             <div className="navbar navbar-expand-lg white pa1" style={{width: '100%', bottom: '0', marginTop: '7.5rem'}}>
                                 <span className="navbar-brand">
                                 </span>
-                                <span className="f3">
+                                <span className="f3 pointer">
                                     <small className="icon-bag f3 b--transparent bg-red pa2 br-100"></small>
                                 </span>
                             </div>

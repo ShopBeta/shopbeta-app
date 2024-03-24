@@ -1,8 +1,6 @@
 import React from "react";
 import Carousel from 'react-material-ui-carousel';
-import { Slide1 } from "./SpecialOffers";
-import { Slide2 } from "./SpecialOffers";
-import { Slide3 } from "./SpecialOffers";
+import { Slide1, Slide2, Slide3, Slide4, Slide5 } from "./SpecialOffers";
 
 function HomeCarousel(props) {
 
@@ -18,6 +16,12 @@ function HomeCarousel(props) {
         },
         {
             image: <Slide3 />,
+        },
+        {
+            image: <Slide4 />,
+        },
+        {
+            image: <Slide5 />,
         },
     ]
 

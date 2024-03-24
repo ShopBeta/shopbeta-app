@@ -65,7 +65,6 @@ const ViewProduct = () => {
                                             <span className="navbar-brand">
                                                 <small className="f3 ">$10,500</small>
                                                 <small className="f5 ph2 line-through">$40,500</small>
-                                                <small className="f6 gray">(-25%)</small>
                                             </span>
                                             <span className="hover-blue gray f5">
                                                 <small className="f5 pr2 icon-heart"></small>
@@ -109,7 +108,7 @@ const ViewProduct = () => {
                                                 </span>
                                                 <span className="f4 pointer">
                                                     <Link 
-                                                        to={"../maple/pages/review"} className="link black">
+                                                        to={"../maple/pages/reviews"} className="link black">
                                                         <small className="f4 hover-blue">Reviews</small>
                                                     </Link>
                                                 </span>
@@ -153,50 +152,6 @@ const ViewProduct = () => {
                                             </div>
                                         </div>
                                     </div>
-
-                                    {/* <div className="" style={{display: 'contents'}}>
-                                        <div className="navbar navbar-expand-lg tc">
-                                            <div style={{fontSize: '30px', fontWeight: '500'}} className="container">
-                                                <span className="navbar-brand">
-                                                    <small className="f4">My preferences</small>
-                                                </span>
-                                                <span className="hover-blue red f5">
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div className="">
-                                            <div className="navbar navbar-expand-lg tc">
-                                                <div style={{fontSize: '30px', fontWeight: '500'}} className="container">
-                                                    <span className="navbar-brand">
-                                                        <small className="f5 gray">Color</small>
-                                                    </span>
-                                                    <span className="hover-blue f5">
-                                                        <select name="color" className="color pointer b--transparent ba field-color br3 pa2 w-100" required >
-                                                            <option>Blue</option>
-                                                            <option>Black</option>
-                                                            <option>White</option>
-                                                        </select>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div className="navbar navbar-expand-lg tc">
-                                                <div style={{fontSize: '30px', fontWeight: '500'}} className="container">
-                                                    <span className="navbar-brand">
-                                                        <small className="f5 gray">Size</small>
-                                                    </span>
-                                                    <span className="hover-blue f5">
-                                                        <select name="size" className="size pointer b--transparent ba field-color br3 pa2 w-100" required >
-                                                            <option>Small</option>
-                                                            <option>Extra Small</option>
-                                                            <option>Medium</option>
-                                                            <option>Large</option>
-                                                            <option>Extra Large</option>
-                                                        </select>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> */}
                                 </span>
                             </div>
                         </main>
