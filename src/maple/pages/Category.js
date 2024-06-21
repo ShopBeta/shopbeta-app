@@ -14,7 +14,7 @@ const Category = () => {
                         <CategoryHeader />
                         
                         <main className="pv5">
-                            <div className="navbar navbar-expand-lg tc">
+                            <div className="pt4 navbar navbar-expand-lg tc">
                                 <div style={{fontSize: '30px', fontWeight: '500'}} className="pointer pa3 container">
                                     <span className="tc">
                                         <Link 
@@ -250,7 +250,7 @@ const Category = () => {
                                     <span className="tc">
                                         <Link 
                                             to={"../pages/shop"} className="link black" title="clothes">
-                                            <i className="f2 navbar-brand red br-pill field-color pa3 bw2 fi fi-rs-house-chimney-window"></i>
+                                            <i className="f2 navbar-brand red br-pill field-color pa3 bw2 fi fi-rs-rent"></i>
                                             <p className="f5 pv2 pr3">House Rent</p>
                                         </Link>
                                     </span>

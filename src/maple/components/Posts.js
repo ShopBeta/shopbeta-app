@@ -9,7 +9,7 @@ const Post = () => {
 
         return(
                 <div className="pv2">
-                    <div className="container field-color br4 pv3" style={{width: '360px'}}>
+                    <div className="container card-bg br4 pv3" style={{width: '360px'}}>
                         <div className="navbar navbar-expand-lg tc">
                             <div style={{fontSize: '30px', fontWeight: '500'}} className="container">
                                 <span className="navbar-brand f4 pointer">

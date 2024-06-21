@@ -18,7 +18,7 @@ const Feeds = () => {
                         </header>
                         
                         <main>
-                            <div className="pv6">
+                            <div className="pv6 field-color">
                                 <Post />
                                 <Post />
                                 <Post />
@@ -36,7 +36,7 @@ const Feeds = () => {
                                             <span className="navbar-brand pointer">
                                             </span>
                                             <span className="pointer">
-                                                <small className="f3 white bg-red pa4 icon-pencil br-100"></small> 
+                                                <i className="fa fa-plus f3 white bg-red pa4  br-100"></i> 
                                             </span>
                                         </div>
                                     </div>

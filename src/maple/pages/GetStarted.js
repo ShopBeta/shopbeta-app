@@ -1,47 +1,50 @@
 
 import React from "react";
 import '../assets/css/global.css'
+import img from '../assets/images/search.png'
 import { Link } from "react-router-dom";
-import img from '../assets/images/data-points-concept-illustration_114360-1715.avif'
-// import Preloader from "./Preloader";
 
 
 const GetStarted = () => {
 
     return(
         <div className="">
-            <main>
-                <section className="tc">
-                    <div>
-                        <img src={img} alt="get started" className="tc" />
+             <div className="pa2" style={{position: 'fixed', width: '100%', backgroundColor: '#ffffff', borderBottom: '1px thin black'}}>
+                <nav className="navbar navbar-expand-lg">
+                    <div style={{fontSize: '29px'}} className="container tc">
+                        <img src={img} alt="logo" className="" width="40px" height="40px" />
                     </div>
-                </section>  
+                </nav>
+            </div>
+
+            <main className="pv7">
+                <div className="pa3 container" style={{width: '360px'}}>
+                    <section className="container">
+                        <div style={{fontSize: '35px', fontWeight: '500'}}>
+                            <p className="pv3">Your Shopping Destination For Everything</p>
+                        </div>
+                    </section>  
+                    <div className="pv3 tc">
+                        <div className="pv2">
+                            <Link 
+                                to={"../maple/pages/onboarding1"}>
+                                <button type="submit" className="button-bg bg-red white pa2 tc br-pill f4 ba pointer w-90 pv3">
+                                    Let's get started
+                                </button>
+                            </Link>
+                        </div>
+                    </div>
+                 </div>
             </main>
 
             <footer>
-                <div className="tc" style={{position: 'fixed', width: '100%', backgroundColor: '#ffffff', borderBottom: '1px thin black', borderTop: '1px thick black', bottom: '0', left: '0', marginTop: '1rem', padding: '1rem'}}>
-                    <div className="container pb3">
-                        <div className="container">
-                            <div className="">
-                                <p className="f3"><small className="f3 red">Your Shopping Destination </small><br/> for Everything</p>
-                                <p className="pv4 f6 tc">Welcome to maple, seamlessly,<br />interact with buyers and sellers anytime, anywhere.</p>
-                            </div>
-                            <div className="tc pb4">
-                                <Link 
-                                    to={"../maple/pages/onboardingscreen1"} className="link black">
-                                    <button type="button" className="b--transparent w-100 ba pa3 f4 br-pill button-bg grow bg-red white pointer">
-                                        <small className="pv1">Let's Get Started</small>
-                                    </button>
-                                </Link>
-                            </div> 
-                        </div>
-                        <div className="pb3">
-                            Already have an account?
-                            <Link 
-                                to={"../maple/pages/signin"} className="red">
-                                <small className="red f5 ph2">Sign in</small>
-                            </Link>
-                        </div>
+                <div className="pb4" style={{position: 'fixed', width: '100%', backgroundColor: '#ffffff', borderBottom: '1px thin black', borderTop: '1px thick black', bottom: '0', left: '0', marginTop: '1rem', padding: '1rem'}}>
+                    <div className="tc pb4">
+                        Have an account already?
+                        <Link 
+                            to={"../maple/pages/signin"} className="red link">
+                            <small className="red f5 ph2">Sign In</small>
+                        </Link>
                     </div>
                 </div>
             </footer>

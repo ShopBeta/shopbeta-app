@@ -4,7 +4,6 @@ import '../assets/css/global.css'
 import Navbar from '../components/NavBar';
 import { HomeHeader } from '../components/Header';
 import { Link } from "react-router-dom";
-import { HomeCarousel } from "../components/HomeCarousel";
 import Product from "../components/Product";
 // import { NetworkError }from "./indexes/ErrorPages"
 
@@ -19,15 +18,11 @@ const Home = () => {
                             <HomeHeader />
                         </header>
                         
-                        <main className="pv6">
-                            <div className="pt5">
-                                <HomeCarousel />
-                            </div>
-
+                        <main className="pv7">
                             <div className="navbar navbar-expand-lg tc">
                                 <div style={{fontSize: '30px', fontWeight: '500'}} className="container">
                                     <span className="navbar-brand">
-                                        <small className="f4">Category</small>
+                                        <h3 className="">Categories</h3>
                                     </span>
                                     <span className="hover-blue pointer">
                                         <Link 
@@ -73,7 +68,7 @@ const Home = () => {
                             <div className="navbar navbar-expand-lg tc">
                                 <div style={{fontSize: '30px', fontWeight: '500'}} className="br3 container">
                                     <span className="navbar-brand">
-                                        <small className="f4">Top Sale</small>
+                                        <h3 className="">For You</h3>
                                     </span>
                                     <span className="hover-blue pointer">
                                         <Link 

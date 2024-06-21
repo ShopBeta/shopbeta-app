@@ -2,6 +2,10 @@
     background-color: #f6f6f6;
 }
 
+.card-bg {
+    background-color: #ffffff;
+}
+
 .navbar-link {
     color: red;
 }

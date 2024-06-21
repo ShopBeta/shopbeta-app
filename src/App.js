@@ -50,9 +50,8 @@ import MarketPlace from "./assets/MarketPlace";
 import Home from "./maple/pages/Home";
 import Feeds from "./maple/pages/Feeds";
 import GetStarted from "./maple/pages/GetStarted";
-import OnboardingScreen1 from "./maple/pages/OnboardingScreen1";
-import OnboardingScreen2 from "./maple/pages/OnboardingScreen2";
-import OnboardingScreen3 from "./maple/pages/OnboardingScreen3";
+import Onboarding1 from "./maple/pages/Onboarding1";
+import Onboarding2 from "./maple/pages/Onboarding2";
 import SignUp from "./maple/pages/SignUp";
 import SignIn from "./maple/pages/SignIn";
 import VerifyCode from "./maple/pages/VerifyCode";
@@ -67,7 +66,6 @@ import Reviews from "./maple/pages/Reviews";
 import WriteReview from "./maple/pages/WriteReview";
 import Category from "./maple/pages/Category";
 import VisualSearch from "./maple/pages/VisualSearch";
-import SpecialOffers from "./maple/pages/SpecialOffers";
 import Recommendation from "./maple/pages/Recommendation";
 import Wishlist from "./maple/pages/Wishlist";
 import ViewFeed from "./maple/pages/ViewFeed";
@@ -114,9 +112,8 @@ const App = () => {
                 <Route exact path="/maple/pages/videos" element={<Videos />} />
                 <Route exact path="/maple/pages/viewvideo" element={<ViewVideo />} />
                 <Route exact path="/maple/pages/getstarted" element={<GetStarted />} />
-                <Route exact path="/maple/pages/onboardingscreen1" element={<OnboardingScreen1 />} />
-                <Route exact path="/maple/pages/onboardingscreen2" element={<OnboardingScreen2 />} />
-                <Route exact path="/maple/pages/onboardingscreen3" element={<OnboardingScreen3 />} />
+                <Route exact path="/maple/pages/onboarding1" element={<Onboarding1/>} />
+                <Route exact path="/maple/pages/onboarding2" element={<Onboarding2/>} />
                 <Route exact path="/maple/pages/signup" element={<SignUp />} />
                 <Route exact path="/maple/pages/signin" element={<SignIn />} />
                 <Route exact path="/maple/pages/verifycode" element={<VerifyCode />} />
@@ -131,7 +128,6 @@ const App = () => {
                 <Route exact path="/maple/pages/writereview" element={<WriteReview />} />
                 <Route exact path="/maple/pages/category" element={<Category />} />
                 <Route exact path="/maple/pages/visualsearch" element={<VisualSearch />} />
-                <Route exact path="/maple/pages/specialoffers" element={<SpecialOffers />} />
                 <Route exact path="/maple/pages/recommendation" element={<Recommendation />} />
                 <Route exact path="/maple/pages/wishlist" element={<Wishlist />} />
              </Routes>
